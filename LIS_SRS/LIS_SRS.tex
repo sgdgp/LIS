@@ -8,8 +8,6 @@
 \usepackage{xcolor}
 \usepackage{sectsty}
 \usepackage[explicit]{titlesec}
-
-
 \usepackage[normalem]{ulem}
 
 %\title{Library Information System\\ System Requirement Specification}
@@ -35,6 +33,22 @@ The conventions used in the document are given as follows
 \begin{itemize}
 \item 
 \end{itemize}
+
+\subsection{Definitions}
+The following terms are used in this document to refer to various componensts of the system :\\
+%\begin{center}
+
+\begin{tabular}{ c| c }
+ Librarian & Person-in-charge (human administrator) of the software\\
+ Member & Members of the library who can issue a book\\
+ Issue & The act of borrowing a book by a user against his/her account\\
+ Return & The act of returning the book issued by an user previously \\
+ Reserve & The act of reserving a book currently unavailabele but for issuing in future\\
+ Fine & The penalty to be paid by a user in case he/she fails the deadline to return the book\\
+ ISBN & International Standard Book Number, a unique ID for each book
+\end{tabular}	
+%\end{center}
+
 \subsection{Intended Audience}
 The intended readers of this document are the developers of the software, testers, library owners
 and managers and coordinators.
@@ -68,8 +82,17 @@ Finally there is a non-physical member called as LIS (syatem admin) which is aut
 
 A class diagram showing the relationship is given below to enhance the understanding of the workflow.
 \\
-\\
 \includegraphics[scale=0.25]{images/classDiagram}
+\\
+\begin{itemize}
+\item Issue Book : Allows the librarian to issue books to members on request
+\item Return book : Whenever a member returns an issued book , the library system uses this data to update the database and user history simultaneouly. This data can also be used to calculate fine if the book is returned late than the deadline
+\item Add book : It allows the librarian to add books to the library database
+\item Delete book : The librarian has an option to remove a book from the library database
+\item Add/Remove members : The software allows the user to add members like the faculty and the other students to have access to the books in the library
+\item View history : The librarian can view the issue history of any book in the library
+\item Query : The library can search for a particular book by giving a part of its name or the full name of the book.
+\end{itemize}
 
 \subsection{User Classes and Characteristics}
 
@@ -127,6 +150,7 @@ No user should be able to access a domain outside his reach.
 Care must be taken to keep the user accounts secure and all the book transaction should be properly updated to the corresponding user.
 
 \subsection{Software Quality Requirements}
+
 
 
 \subsubsection{Reliability requirements}
