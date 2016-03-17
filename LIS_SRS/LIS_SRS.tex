@@ -22,28 +22,29 @@
 
 \section{INTRODUCTION}
 
-\subsection{PURPOSE}
+\subsection{Purpose}
 This Software Requirement Specification (SRS) document provides a complete list and description of all the functions and specifications of the Library Information System (LIS).
 
 The software is meant to hold the records of the books and the users and to provide the functionality of issuing and returning books. Apart from that the users can also request to reserve a required book if available in the library.
 
 The expected audience of this document are Library clerk , librarian of an institute and the developer of the software.
 
-\subsection{DOCUMENT CONVENTIONS}
+\subsection{Document Conventions}
 The conventions used in the document are given as follows
 \begin{itemize}
 \item 
 \end{itemize}
-\subsection{INTENDED AUDIENCE}
+\subsection{Intended Audience}
 The intended readers of this document are the developers of the software, testers, library owners
 and managers and coordinators.
 Any suggested changes on the requirements listed on this document should be included in
 the last version of it so it can be a reference to developing and validating teams.
-\subsection{SCOPE}
+\subsection{Scope}
 LIS is a GUI tool that enahnces the manual process of keeping records in a library.This is an appication which has been designed keeping in mind that it is meant to run on Library computers and to allow the library to keep a track of the books present.It allows the users to check availabilty whenever they want. It also allows the users to reserve a book in advance if needed. The librarian is able to keep a record of the overdue books, add new books, dispose old data, add new member or delete a member. 
 
 It is a powerful but still functionally simple library management software for big libraries and can provide a free easy-to-use system for rising libraries.
 
+Presently the maximum number of books has been kept constant to ensure a fruitful implementation of the software architecture. In future the list of books may be made to increase dynamically to make it more realistic.
 \subsection{REFERENCES}
 The following references have been consulted to make a suitable and effective software for library information system.
 
@@ -57,14 +58,32 @@ The following references have been consulted to make a suitable and effective so
 \subsection{Product Perspective}
 
 \subsection{Product Features}
+The product provides the features to create a librarian , library clerks and a set of users comprising of UG student, PG student, Faculty and Research Scholar.
+
+All the users irrespective of their type can issue and return a book.The librarian has some special functions like creation of a library member/user. The librarian can have access to account of any user and can look into it in case need arises.
+Library clerks on the other hand can add and remove a book from the database of the library. They also have been assigned methods to impose fine in case of defautlters.
+
+Finally there is a non-physical member called as LIS (syatem admin) which is autonomous and monitors all the finctioning of the software. It automatically notifies about the delays to the clerks and helps to update and keep track of all the activities of the software.
+
+A class diagram showing the relationship is given below to enhance the understanding of the workflow.
 
 \subsection{User Classes and Characteristics}
 
 \subsection{Operating Environment}
+The software is designed to run on the following environments :
+\begin{itemize}
+\item Windows 
+\item Ubuntu 14.04.03 (LTS version)
+
+Any OS with the support of Java JDK and JRE libraries 1.7 and above can be used to execute the software.
+\end{itemize}
 
 \subsection{Design and Implementation Constraints}
+This software is optimized to run on a maximum of 10000 books .
+Exceeding this number can result in a slower running time of the algorithm and thus the execution may not fruitful enough.
 
 \subsection{User Documentation}
+User manual $:$
 
 \subsection{Assumptions and Dependencies}
 
