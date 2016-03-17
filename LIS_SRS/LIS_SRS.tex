@@ -9,6 +9,7 @@
 \usepackage{sectsty}
 \usepackage[explicit]{titlesec}
 
+
 \usepackage[normalem]{ulem}
 
 %\title{Library Information System\\ System Requirement Specification}
@@ -45,11 +46,11 @@ LIS is a GUI tool that enahnces the manual process of keeping records in a libra
 It is a powerful but still functionally simple library management software for big libraries and can provide a free easy-to-use system for rising libraries.
 
 Presently the maximum number of books has been kept constant to ensure a fruitful implementation of the software architecture. In future the list of books may be made to increase dynamically to make it more realistic.
-\subsection{REFERENCES}
+\subsection{References}
 The following references have been consulted to make a suitable and effective software for library information system.
 
 \begin{itemize}
-\item 
+\item IEEE standard 830-1998 recommended practice for Software Requirements Specifications-Description
 \item 
 \end{itemize}
 
@@ -66,6 +67,9 @@ Library clerks on the other hand can add and remove a book from the database of 
 Finally there is a non-physical member called as LIS (syatem admin) which is autonomous and monitors all the finctioning of the software. It automatically notifies about the delays to the clerks and helps to update and keep track of all the activities of the software.
 
 A class diagram showing the relationship is given below to enhance the understanding of the workflow.
+\\
+\\
+\includegraphics[scale=0.25]{images/classDiagram}
 
 \subsection{User Classes and Characteristics}
 
@@ -94,17 +98,42 @@ User manual $:$
 \section{EXTERNAL INTERAFCE REQUIREMENTS}
 \subsection{User Interfaces}
 \subsection{Hardware Interfaces}
+\begin{enumerate}
+\item The software is run offline so hard disk with sufficient space of about --- is required to store and save the records for further use
+\item Keyboard and mouse to interact with the GUI
+\end{enumerate}
 \subsection{Software Interfaces}
+\begin{enumerate}
+\item Back end  $:$ Built using Java and DBMS
+\item Front end $:$ Using Java 
+\end{enumerate}
+
 \subsection{Communication Interfaces}
 
 \section{OTHER NONFUNCTIONAL REQUIREMENTS}
 \subsection{Performance Requirements}
+With the Library Information System the librarian and library clerk can process a book transaction in a faster speed .
+The members will be able to check the status of the checked out items and can also borrow and return a book in a short amount of time.
+Automatic updates in the account of each user will enable them to know about the item they have cjecked out and all the relevant details due to which they do not need to consult or ask the library clerk each time.
+The background system admin will automatically perform the above mentioned updation in the accounts in the background autonomously without explicit invocation.
+In case of defaulters the fine and other penalties should be automatically reported and saved in the record once the deadline has crossed . This is also performed by the syatem admin (referred as LIS itself) in the background.
+ALl the background tasks should not compromise with the UX of the software.All the background processes should be methodically handled and not affect the runtime functionalities of the software
 
 \subsection{Safety Requirements}
-
+Only the valid users can change the records that too only in their respective account.
 \subsection{Security Requirements}
+The sytem must be highly secure in the login part.
+No user should be able to access a domain outside his reach.
+Care must be taken to keep the user accounts secure and all the book transaction should be properly updated to the corresponding user.
 
 \subsection{Software Quality Requirements}
+
+
+\subsubsection{Reliability requirements}
+The background database should always be updated so that whenever a member visits he/she can get the latest information required.
+\subsubsection{Usability Requirements}
+The software must be user-friendly so that the user can easily perform all the tasks which the software is meant to do.It must have a soothing UX design and clear instructions to guide the user.
+\\In case of any error suitable error messages must be displayed to assist the user.
 
 
 \section{OTHER REQUIREMENTS}
