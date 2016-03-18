@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[procnames]{listings}
+\usepackage{color}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage[explicit]{titlesec}
+
+
+\usepackage[normalem]{ulem}
+\title{SA/SD}
+\begin{document}
+\maketitle
+\part{System Analysis}
+\section{Feasability Study}
+\subsection{Understanding the problem}
+In this section, we make an effort to understand the purpose of the software.
+\\
+The LIS(Library Information Software) is intended to ensure a systematic manner of maintaining the database of a library and easing the job of a librarian.The LIS will help maintain a record of books in the library and members registered with the library.The software aims at hassle-free handling of basic library functions like issue/reserve/return books as well as giving the freedom to the librarian to add and delete books and members to the database.
+	Extending further the software can be used by the librarian to decide on disposing of books which have not been issued for a long time. This software also helps to keep track of statistics of issue of a particular book ver a period of time.Since everything is done
+on the computer, it is easy to record all data and there are minimal chances of
+inconsistencies or ambiguities.
+\subsection{Scope of the Problem}
+In this section,we list the various functions performed by the software:
+\begin{itemize}
+\item Add books to the database
+\item Modify existing records of books
+\item Delete unused books from database
+\item Add users to the database
+\item Modify existing details of users
+\item Remove user from the database
+\item Query regarding books on ISBN number or name
+\item Query regarding user on user id or name
+\item Record issue,return and reservation of books
+\item Calculation of penalty on overdue books
+\item Maintains statistics of all books 
+\end{itemize}
+\subsection{Analysing stakeholders}
+The various stakeholders are:
+\begin{itemize}
+\item Librarian
+\item Member
+\end{itemize}
+These stakeholders have been clearly described with their attributes and methods in the SRS.
+\subsection{Defining Alternatives}
+\subsubsection{Connection between software and librarian}
+\subsubsection{Connection between software and member}
+\subsubsection{Hardware Infrastructure}
+\subsubsection{Software Infrastructure}
+\subsubsection{Technology Used}
+\subsubsection{Security}
+\subsection{Defining Criteria to evaluate}
+\subsection{Report}
+\section{UML Diagrams}
+
+\subsection{Refinement of Use Case Diagram}
+\subsection{Refinement of Class Diagrams}
+\subsection{Sequence Diagram}
+\subsection{Collaboration Diagram}
+\subsection{Statechart Diagram}
+\subsection{Activity Diagram}
+\section{System Parameters}
+\subsection{Platform}
+\subsection{Language}
+\subsection{Build System}
+\subsection{Libraries}
+\subsection{Sizing}
+\subsection{Performance}
+\section{Limitations and Exceptions}
+\section{Other Information about analysis}
+\part{System Design}
+\section{Refined System Parameters}
+\subsection{Global System Architecture}
+The overall system architecture is a 2-tier architecture which includes client at one end and the
+database at the other. There is no server based middle tier in the software being designed.
+\subsection{Platform}
+\subsubsection{Hardware}
+\subsubsection{Software}
+\subsubsection{Networking}
+\subsection{Software Architecture}
+Object-oriented architecture forms the basis of the LIS. In this style data representations and
+their associated primitive operations are encapsulated in an abstract data type or object. The
+components of this style are the objects—or instances of the abstract data types. Objects
+interact through function and procedure invocations.
+Two important aspects of this style are
+A. that an object is responsible for preserving the integrity of its representation (usually by
+maintaining some invariant over it), and
+B. that the representation is hidden from other objects.
+Thus the aspects of OOA mentioned justify our choice.
+\subsubsection{Details}
+\subsubsection{Justification}
+\section{Database Design}
+\section{Design Details}
+\subsection{Refinement of UML diagrams}
+\subsection{Prototype Design}
+\subsection{Design I/O procedures and user interfaces}
+\subsection{Design of classes in target language}
+\subsection{Exception Design}
+\section{Adoptable Practices}
+\section{Any Other Information Of previous Stages}
+\end{document}
