@@ -105,6 +105,14 @@ public class MainWindow extends JFrame {
 		comboBoxUserType = new JComboBox();
 		comboBoxUserType.setBounds(170, 173, 241, 24);
 		contentPane.add(comboBoxUserType);
+		
+		JButton btnProceed = new JButton("Proceed");
+		btnProceed.setBounds(108, 257, 117, 25);
+		contentPane.add(btnProceed);
+		
+		JButton btnQuit = new JButton("Quit");
+		btnQuit.setBounds(270, 257, 117, 25);
+		contentPane.add(btnQuit);
 		comboBoxUserType.addItem("---Choose Type---");
 		comboBoxUserType.addItem("Librarian");
 		comboBoxUserType.addItem("Clerk");
