@@ -11,18 +11,17 @@
 
 
 \usepackage[normalem]{ulem}
-\title{SA/SD}
+
 \begin{document}
-\maketitle
+
 \part{System Analysis}
 \section{Feasability Study}
 \subsection{Understanding the problem}
 In this section, we make an effort to understand the purpose of the software.
 \\
 The LIS(Library Information Software) is intended to ensure a systematic manner of maintaining the database of a library and easing the job of a librarian.The LIS will help maintain a record of books in the library and members registered with the library.The software aims at hassle-free handling of basic library functions like issue/reserve/return books as well as giving the freedom to the librarian to add and delete books and members to the database.
-	Extending further the software can be used by the librarian to decide on disposing of books which have not been issued for a long time. This software also helps to keep track of statistics of issue of a particular book ver a period of time.Since everything is done
-on the computer, it is easy to record all data and there are minimal chances of
-inconsistencies or ambiguities.
+	Extending further the software can be used by the librarian to decide on disposing of books which have not been issued for a long time. This software also helps to keep track of statistics of issue of a particular book ver a period of time.Since everything is done on the computer, it is easy to record all data and there are minimal chances of inconsistencies or ambiguities.
+Also use of a secure database support enhances the security aspects of the software thus enabling to create a more robust and secure software
 \subsection{Scope of the Problem}
 In this section,we list the various functions performed by the software:
 \begin{itemize}
@@ -36,24 +35,80 @@ In this section,we list the various functions performed by the software:
 \item Query regarding user on user id or name
 \item Record issue,return and reservation of books
 \item Calculation of penalty on overdue books
-\item Maintains statistics of all books 
+\item Maintainence of statistics of all books 
 \end{itemize}
 \subsection{Analysing stakeholders}
 The various stakeholders are:
 \begin{itemize}
 \item Librarian
-\item Member
+\item Library Clerk
+\item Member / Library user
+	\begin{itemize}
+	\item Faculty
+	\item Research Scholar
+	\item PG Student
+	\item UG Student
+	\end{itemize}
 \end{itemize}
 These stakeholders have been clearly described with their attributes and methods in the SRS.
 \subsection{Defining Alternatives}
 \subsubsection{Connection between software and librarian}
+The librarian is treated as the administrator of the software who has the sole capability to create and delete the members like the faculty or the students (including research scholars,UG and PG students).
+\\The librarian can  send a print notification if required if a penalty is required to be paid in case of overdue of a book
+\\Also the librarian can study the book statistics and can send a notification to the clerk to dispose off old and unused books from the library database
 \subsubsection{Connection between software and member}
+The members can perform the following operartions:
+\begin{itemize}
+\item Can issue a book if available in the library
+\item Can 
+\end{itemize}
 \subsubsection{Hardware Infrastructure}
+\begin {enumerate}
+	\item Processor Pentium II processor or higher
+	\item Hard Disk space 500MB
+	\item RAM 512 MB
+	\item Network/Internet access
+\end{enumerate}
 \subsubsection{Software Infrastructure}
+\begin{enumerate}
+	\item Operating system
+		\begin{itemize}
+		\item  Windows 7 or later
+		\item Linux distributions like Ubuntu 14.04.03 or other
+		\end{itemize}
+	\item MySQL
+	\item Java JDK platform 1.7 or higher
+	\end{enumerate}
 \subsubsection{Technology Used}
+The technilogies used are as follows :
+\begin{itemize}
+\item Use of the platform independent JVM using JDK 1.8
+\item MySQL support to provide DBMS features to the software
+\end{itemize}
 \subsubsection{Security}
+The security of the software has been taken care of in a very cautious and judicious manner. The protocol followed to ensure data security and software safety are as follows :
+\begin{itemize}
+\item User can acces the books only after a successful login with a valid username and password.
+\item Check has been done during creation of new user to ensure a unique user id.
+\item Also check has been done to set a miminum length of 8 characters and use of alphanumeric characters to make a password without storing any value (to prevent publicity of password) so that users can give a safe and efficient password to safeguard their account. 
+\item Unsuccessful attempts may occur if the user gives wrong username or wrong pasword or even wron user type.
+\end{itemize}
 \subsection{Defining Criteria to evaluate}
+The software is evaluated on the basis of the follwoing criterias:
+\begin{itemize}
+\item Only the librarian can be created without any preprocessing. But only one librarian must be present.
+\item Addition and deletion of books can be performed by library clerk in this software
+\item Creation of users by the librarian can be performed effectively
+\item Users should be able to successfully login into the software
+\item Creation of effective users who can perform all the operations like issue, reserve and returning of a book
+\end{itemize}
 \subsection{Report}
+The software designed is able to perform all the above operations mentioned above. One can create a single librarian at first whon hold the admin acces of the software.The librarian is able to create the users or the library members who can perform all the required operations as mentioned in the SRS.
+\\The library clerk is able to add books into the library and can remove the unrequired books from the database.
+\\The login feature has also been created,tested and is working perfectly.Only the authenticate users can log into the software to perform the designated operations.
+\\A background cron job takes care of all the background processes and helps to maintain all the records as required like in the case of issuing and returning.It also takes care of the issued books and takes care if a penalty is to be issued against any user account.
+\\All the process as mentioned in the SRS document provided have been implemented and tested successfully.
+
 \section{UML Diagrams}
 
 \subsection{Refinement of Use Case Diagram}
@@ -62,15 +117,52 @@ These stakeholders have been clearly described with their attributes and methods
 \subsection{Collaboration Diagram}
 \subsection{Statechart Diagram}
 \subsection{Activity Diagram}
+
 \section{System Parameters}
 \subsection{Platform}
+The software requires the following platforms to run :
+Minimum system requirements :
+\begin{itemize}
+\item Hardware Requirements :
+	\begin {enumerate}
+	\item Processor Pentium II processor or higher
+	\item Hard Disk space 500MB
+	\item RAM 512 MB
+	\end{enumerate}
+\item Software Requirements :
+	\begin{enumerate}
+	\item Operating system
+		\begin{itemize}
+		\item  Windows 7 or later
+		\item Linux distributions like Ubuntu 14.04.03 or other
+		\end{itemize}
+	\item MySQL
+	\item Java JDK platform 1.7 or higher
+	\end{enumerate}
+\end {itemize}
 \subsection{Language}
+The entire software is written using the language Java.
+The object oriented programming paradigm of Java has been followed throughout.
 \subsection{Build System}
 \subsection{Libraries}
+The libraries used for the software are as follows :
+
+\begin{enumerate}
+\item Java Swing (java.awt.*)
+\item Java AWT   (javax.swing.*)
+\item Java Exception  (to be included)
+\end{enumerate}
 \subsection{Sizing}
 \subsection{Performance}
+
 \section{Limitations and Exceptions}
+The number of books which can be incorporated into the system has been kept to be constant in this case to ensure a simpler design.
+In case of a dynamically ncreasing book set the algorithms and the data structures used to mange have to be optimized further to keep the running time of the software as fast as possible.
+\\
+Exceptions which are present or handled in this software are as follows :
+
 \section{Other Information about analysis}
+
 \part{System Design}
 \section{Refined System Parameters}
 \subsection{Global System Architecture}
@@ -78,13 +170,26 @@ The overall system architecture is a 2-tier architecture which includes client a
 database at the other. There is no server based middle tier in the software being designed.
 \subsection{Platform}
 \subsubsection{Hardware}
+The hardware platform required in this software is :
+\begin {enumerate}
+	\item Processor Pentium II processor or higher
+	\item Hard Disk space 500MB
+	\item RAM 512 MB
+	\end{enumerate}
 \subsubsection{Software}
+The software platform of the software is fully developed in Java.
+For suitable execution Java JDK 1.7 or later is required.
+The database management has been done using a DBMS software like MySQL.
+
 \subsubsection{Networking}
+The GUI support and the database support are interlinked via a tcp network which facilitates the flow of information between the two ends.It provides scope for dividing the space requirements by distributing the load. The use of tcp network ensures secure data flow between the two interfaces.\\
+The tcp network identifies the two ends of the network and extablishes a secured connection between the two ends.Keeping the data at a separate location can improve the safety of the software as it prevents data loss to a huge extents in case of a glitch in the GUI end.
+\\
+Thus we can ensure a safe, secure, reliable and fast software design.
+
 \subsection{Software Architecture}
 Object-oriented architecture forms the basis of the LIS. In this style data representations and
-their associated primitive operations are encapsulated in an abstract data type or object. The
-components of this style are the objects—or instances of the abstract data types. Objects
-interact through function and procedure invocations.
+their associated primitive operations are encapsulated in an abstract data type or object. The components of this style are the objects—or instances of the abstract data types. Objects interact through function and procedure invocations.
 Two important aspects of this style are
 A. that an object is responsible for preserving the integrity of its representation (usually by
 maintaining some invariant over it), and
@@ -92,13 +197,18 @@ B. that the representation is hidden from other objects.
 Thus the aspects of OOA mentioned justify our choice.
 \subsubsection{Details}
 \subsubsection{Justification}
+
 \section{Database Design}
+
 \section{Design Details}
 \subsection{Refinement of UML diagrams}
 \subsection{Prototype Design}
 \subsection{Design I/O procedures and user interfaces}
 \subsection{Design of classes in target language}
 \subsection{Exception Design}
+
 \section{Adoptable Practices}
+
 \section{Any Other Information Of previous Stages}
+
 \end{document}
