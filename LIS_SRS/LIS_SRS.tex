@@ -52,10 +52,11 @@ The following terms are used in this document to refer to various componensts of
 \subsection{Intended Audience}
 The intended readers of this document are the developers of the software, testers, library owners
 and managers and coordinators.
+They can understand the functioning of the software and their individual roles in the software also.
 Any suggested changes on the requirements listed on this document should be included in
 the last version of it so it can be a reference to developing and validating teams.
 \subsection{Scope}
-LIS is a GUI tool that enahnces the manual process of keeping records in a library.This is an appication which has been designed keeping in mind that it is meant to run on Library computers and to allow the library to keep a track of the books present.It allows the users to check availabilty whenever they want. It also allows the users to reserve a book in advance if needed. The librarian is able to keep a record of the overdue books, add new books, dispose old data, add new member or delete a member. 
+LIS is a GUI tool that enhances the manual process of keeping records in a library.This is an appication which has been designed keeping in mind that it is meant to run on Library computers and to allow the library to keep a track of the books present.It allows the users to check availabilty whenever they want. It also allows the users to reserve a book in advance if needed. The librarian is able to keep a record of the overdue books, add new books, dispose old data, add new member or delete a member. 
 
 It is a powerful but still functionally simple library management software for big libraries and can provide a free easy-to-use system for rising libraries.
 
@@ -73,7 +74,9 @@ The following references have been consulted to make a suitable and effective so
 \subsection{Product Perspective}
 The product is meant to automate the manual work of a librarian and library clerk to increase the efficiency of the process. It will facilitate the users to check a book's availability status . One can reserve, issue and return a book via this software. The software is designed to automatically update the details in the account of the user thus minimizing the laboriuos work earlier used to be performed by the clerks in the manual process.
 \\
-One can genrate the reports and bills via this software directly. It is designed to make the proces of issuing and searching books more easy.
+One can genrate the reports and penalty bills via this software directly. It is designed to make the proces of issuing and searching books more easy.
+\\
+It is designed to make the process of issuing, reserving and returning of a book more swift and efficient with minimum manual effort.The background cron job takes care of updation of the user account in case any of the above functions are performed.
 
 \subsection{Product Features}
 The product provides the features to create a librarian , library clerks and a set of users comprising of UG student, PG student, Faculty and Research Scholar.
@@ -84,7 +87,263 @@ Library clerks on the other hand can add and remove a book from the database of 
 Finally there is a non-physical member called as LIS (syatem admin) which is autonomous and monitors all the finctioning of the software. It automatically notifies about the delays to the clerks and helps to update and keep track of all the activities of the software.
 
 A class diagram showing the relationship is given below to enhance the understanding of the workflow.
-\\
+
+subsubsection{Use cases}
+\begin{enumerate}
+\item User use cases:
+	\begin{itemize}
+	
+	\item Query about Book\\
+	\begin{itemize}
+	\item Preconditions:
+	1. The user must be logged in .
+	2.The book must exist in the library
+\item  Postcondition: If the book exists in the library,the availablity status of the book is returned
+ \item Failure Situations: The library does not have  the book
+ \item Postcondition in case of failure:A message to user about the same
+\item  Actors: User communiates with the system
+\item  Trigger: User chooses the option to search books
+ \item Main Success Scenario: The library has a copy of the book and it is available for issue.
+\item  Extensions/Variations: The library has a copy of the book but currently none of the copies are available.The book maybe reserved by the user.
+	\end{itemize}
+ \item Issue Book\\
+	\begin{itemize}
+	 \item Preconditions:
+	 1. The user must be logged in .
+	 2.The book must exist in the library 
+	 3.It must be available for issue.
+	 4.The user must not have exhausted his quota of number of books
+ \item Postcondition:After successful issue the user account is updated
+ \item Failure Situations:
+ 1. The library does not have  the book 
+ 2.The library has the book and it is not avaiable for issue.
+ 3.The user has exhausted his quota of maximm number of books
+ \item Postcondition in case of failure:In failure case 2. the user may choose to reserve the book if he has not exhausted his quota
+ \item Actors: User communiates with the system
+ \item Trigger: User chooses the option to issue books
+ \item Main Success Scenario: The library has a copy of the book and it is available for issue.
+	\end{itemize}
+ 
+
+ \item Return Book
+ \begin{itemize}
+ \item Precondition:
+ 1.User must be logged in.
+ 2.User must have previously issued the book.
+ \item Postcondition:
+ 1.If the book was overdue the penalty is calculated and a bill is printed 
+ 2.In case the book was reserved by some other user, a notification is sent out to the other user.
+ 3.The user account is updated
+ \item Failure Situations:The user has not issued any book
+ \item Postcondition in case of failure:A message is give to the user about the same
+ \item Actors: User communiates with the system
+ \item Trigger: User chooses the option to return issued books
+\item  Main Success Scenario: The user had previously issued the book
+ \end{itemize}
+ 
+ \item Reserve Book
+	\begin{itemize}
+	\item  Preconditions:
+	1. The user must be logged in .
+	2.The book must exist in the library 
+	3.It must not  be available for issue.
+	4.The user must not have exhausted his quota of number of books
+ \item Postcondition:
+ 1.After successful issue the user account is updated 
+ 2.When the book is returned a notification is sent to the user.
+ \item Failure Situations:
+ 1. The library does not have  the book 
+ 2.The library has the book and it is  avaiable for issue.
+ 3.The user has exhausted his quota of maximm number of books
+ \item Postcondition in case of failure:In failure case 2. the user may choose to issue the book if he has not exhausted his quota
+ \item Actors: User communiates with the system
+ \item Trigger: User chooses the option to reserve book
+ \item Main Success Scenario: The library has a copy of the book and it is not available for issue.
+ 
+	\end{itemize}
+ 
+ \item Cancel Reservation
+ \begin{itemize}
+ \item  Preconditions:
+ 1. The user must be logged in .
+ 2.The user must have reserved the book
+ \item Postcondition:
+ 1.After successful issue the user account is updated 
+Failure Situations:The user has not issued any book
+ \item Actors: User communiates with the system
+ \item Trigger: 
+ 1.User chooses the option to cancel reservation of a book 
+ 2.User does not issue the reserved book within 7 days of return
+ \item Main Success Scenario: The library has a copy of the book and the user must have reserved it previously
+	
+ \end{itemize}
+
+\item Pay Fine
+	\begin{itemize}
+	\item  Precondition:
+	\begin{enumerate}	
+	\item User must be logged in.
+	\item User must have previously issued the book.3.The book must be overdue
+	\end{enumerate}
+ \item Postcondition:\\
+  The book was overdue the penalty is calculated and a bill is printed 
+ \item Failure Situations:
+ \begin{enumerate}
+ \item The user has not issued any book
+  \item No returned books are overdue
+	\end{enumerate} 
+ \item Actors: User communiates with the system
+ \item Trigger: User chooses the option to return issued books
+ \item Main Success Scenario: The user had previously issued the book and the book is overdue
+	\end{itemize}
+\end{itemize}
+
+
+\item Library Clerk Use Cases
+ \begin{itemize}
+ \item Enter details of a book
+ \begin{itemize}
+ \item Preconditions:1. The clerk must be logged in.2.The book must not be previously entered in the system
+ Failure Situations: The book is already in the system
+ Postcondition in case of failure:A message to clerk about the same
+ Actors: library clerk communicates with the system
+ Trigger: Clerk chooses the option to enter new books
+ Main Success Scenario: The library  does not have the book and the book is newly entered in the system
+ Extensions/Variations: The library hasthe book and the umber of copies is increased
+ \item Delete a book 
+ \begin{itemize}
+	\item 	Preconditions:1. The clerk must be logged in.2.The book must  be previously entered in the system 3.The librarian has decided to dispose the book
+ Failure Situations: The book is not in the system
+ Postcondition in case of failure:A message to clerk about the same
+ Actors: library clerk communicates with the system
+ Trigger: Clerk chooses the option to delete books
+ Main Success Scenario: The library  has the book and it is removed from the system.
+ Extensions/Variations: The library has the book and the number of copies is reduced.
+\end{itemize}	 
+ 
+ \end{itemize}
+ \end{itemize}
+
+
+\item Librarian Use Cases:
+\begin{itemize}
+ \item Add new member
+ \begin{itemize}
+  \item Preconditions:1.Librarian must be logged in2. A person must apply for membership
+ Postcondition:A new member account is created 
+ Failure Situations: The user is already registered
+ Postcondition in case of failure:A message to librarian about the same
+ Actors: Librarian communicates with the system
+ Trigger: Librarian  chooses the option to add member
+ Main Success Scenario: The user is not previously registered
+ \end{itemize}
+
+\item Delete member
+ \begin{itemize}
+  \item Preconditions:1.Librarian must be logged in2. A person must apply for cacellation membership
+ Postcondition:The member account is deleted
+ Failure Situations: The user has no account
+ Postcondition in case of failure:A message to librarian about the same
+ Actors: Librarian communicates with the system
+ Trigger: Librarian  chooses the option to delete member
+ Main Success Scenario: The user   previously has an account
+ \end{itemize}
+ 
+ \item Order to print reminder
+ \begin{itemize}
+  \item Preconditions:1.Librarian must be logged in2. A book issued by a member must be overdue
+ Postcondition:A message is sent to the user.
+ Failure Situations: There are no overdue books
+ Postcondition in case of failure:A message to librarian about the same
+ Actors: Librarian communicates with the system
+ Trigger: Librarian  chooses the option to print reminder
+ Main Success Scenario: There are some overdue books
+ \end{itemize}
+
+\item Plan to dispose books
+ \begin{itemize}
+  \item Preconditions:1.Librarian must be logged in2. The book must not have been issued even once for 5 years
+ Postcondition:The book is disposed with a message to the library clerk to delete it.
+ Actors: Librarian communicates with the system
+ Trigger: Librarian  chooses the option to dispose book
+ Main Success Scenario: The book has not been issue for 5 years
+ \end{itemize}
+ 
+
+\end{itemize}
+
+\item System Use Cases:
+ \begin{itemize}
+ 
+  \item Answer availibilty Query about Book
+	\begin{itemize}
+	\item  Preconditions:1.An user makes a query
+ Postcondition: If the book is available, use cases display rack number and number of copies are called
+ Actors: System communiates with the user
+ Trigger: User chooses the option to search books
+	\end{itemize}
+
+\item Display rack number of book
+	\begin{itemize}
+	\item  Preconditions:1.If the book is available the use case answer availibility query invokes this
+ Postcondition: Rack numbers are displayed
+ Actors: System communiates with the user
+ Trigger: answer availibity query triggers this
+	\end{itemize}
+ 
+ \item Display number of copies of book
+	\begin{itemize}
+	\item  Preconditions:1.If the book is available the use case answer availibility query invokes this
+ Postcondition: the number of copies of a book are displayed
+ Actors: System communiates with the user
+ Trigger: answer availibity query triggers this
+	\end{itemize}
+
+\item Calculate lateness penalty
+	\begin{itemize}
+	\item  Preconditions:1.If the book is overdue, return book invokes this
+ Postcondition:Penalty is calculated and print bill is invoked
+ Actors: System communiates with the user
+ Trigger: return book query triggers this
+	\end{itemize}
+ 
+ \item Provide book issue statistics
+	\begin{itemize}
+	\item  Preconditions:1.The use case is invoked by plan to dispose books
+ Postcondition:Statistics of books is displayed
+ Actors: system communicates with librarian
+ Trigger:Plan dispose book is invoked
+	\end{itemize}
+
+ \end{itemize}
+\item Printer use cases:
+\begin{itemize}
+\item Print bill of penalty
+\begin{itemize}
+\item Preconditions:Some user must have returned the issued book later than his designated return date.
+ Postcondition:Bill of penalty is printed
+ Actors: Printer communiates with the system
+ Trigger: Calculate lateness penalty triggers print bill
+\end{itemize}
+
+\item Print reminder
+\begin{itemize}
+\item  Preconditions:Some user must have exceeded the due date
+ Postcondition:Reminder to user is printed
+ Actors: Printer communiates with the system
+ Trigger:order to print reminder triggers this
+\end{itemize}
+
+\item Print notification on return of reserved book
+\begin{itemize}
+\item Preconditions:Some user must have returned a reserved book 
+ Postcondition:A notification is printed to the user who reserved the book
+ Actors: Printer communiates with the system which communicates with user
+ Trigger: return book may trigger this use case
+\end{itemize}
+
+\end{itemize}
+\end{enumerate}
 \includegraphics[scale=0.25]{images/classDiagram}
 \\
 \begin{itemize}
@@ -114,6 +373,27 @@ Exceeding this number can result in a slower running time of the algorithm and t
 
 \subsection{User Documentation}
 User manual $:$
+
+\subsubsection*{User Login}
+Any user with a valid username and password will be able to login to the software to access the features. Initially just after the installation of the software only a librarian can be created in the software. Upon thd creation of the librarian the librarian can then create the other users in the library.
+\begin{itemize}
+\item For librarian : If a user logs in as librarian he is then shown a librarian home page screen with the functionalities exclusively of a libraraian.
+\item For clerk : If user logs in as clerkhe is then shown the clerk home page with the functions like adding or deleting book etc.
+\item For others(members) : We switch on to a new screen which is the home screen of the member. The member has the options of issuing, reserving and returning a book.
+\end{itemize}
+
+\subsubsection*{User creation}
+The librarian can be created in the beginning when the software is first installed. Once a librarian is creates an new librarian can not be created until and unless the old one is removed.
+\\
+Only the librarian can create a new member of the library like the faculty or the students.
+During the creation of a member the librarian should also provide the type of the user as the maximim book count is different for different categories of the users.Once the type of a library member is given during creation one does not need to provide it anywhere else during issuing or returning of a book as it will be saved in the database and automatically fetched when required.
+
+\subsubsection*{Librarian Home Screen}
+The librarian hold the administrator access of the library.The feature available to him are as follows :
+\begin{itemize}
+\item Creation of user :
+For this purpose the librian will be directed to a new scree where he will have to provide the necessary details in order to create a new account and he has to provide the member type during account creation.
+\end{itemize}
 
 \subsection{Assumptions and Dependencies}
 

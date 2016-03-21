@@ -25,6 +25,8 @@ public class MainWindow extends JFrame {
 	private JComboBox<String> comboBoxUserType;
 
 	public static void main(String[] args) {
+		
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				splashTimer();

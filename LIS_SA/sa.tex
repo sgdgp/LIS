@@ -60,7 +60,9 @@ The librarian is treated as the administrator of the software who has the sole c
 The members can perform the following operartions:
 \begin{itemize}
 \item Can issue a book if available in the library
-\item Can 
+\item Can request for reserving a book if already issued to another user (subjected to the condition that he does not exceed his/her maximum book limit)
+\item Can return a book to the library
+\item pay fine/penalty if required in case of a overdue of book
 \end{itemize}
 \subsubsection{Hardware Infrastructure}
 \begin {enumerate}
@@ -144,6 +146,7 @@ Minimum system requirements :
 The entire software is written using the language Java.
 The object oriented programming paradigm of Java has been followed throughout.
 \subsection{Build System}
+
 \subsection{Libraries}
 The libraries used for the software are as follows :
 
@@ -162,7 +165,7 @@ In case of a dynamically ncreasing book set the algorithms and the data structur
 Exceptions which are present or handled in this software are as follows :
 
 \section{Other Information about analysis}
-
+The other analysis performed are mainly on focusing how to achieve more abstarction and also at the same time maintain the safety and the security of the software
 \part{System Design}
 \section{Refined System Parameters}
 \subsection{Global System Architecture}
