@@ -9,16 +9,20 @@
 \usepackage{sectsty}
 \usepackage[explicit]{titlesec}
 \usepackage[normalem]{ulem}
-
-\title{Library Information System\\ System Requirement Specification}
+\usepackage[hidelinks]{hyperref}
+\title{Library Information System}
 
 \author{}
-%\date{March 2016}
+\date{}
 
 
 \begin{document}
 
 \maketitle
+
+\newpage
+%\clearpage
+\hypertarget{toc}{}
 \tableofcontents
 
 
@@ -30,12 +34,42 @@ This Software Requirement Specification (SRS) document provides a complete list 
 The software is meant to hold the records of the books and the users and to provide the functionality of issuing and returning books. Apart from that the users can also request to reserve a required book if available in the library.
 
 The expected audience of this document are Library clerk , librarian of an institute and the developer of the software.
-
-\subsection{Document Conventions}
-The conventions used in the document are given as follows
+\subsubsection*{Problem Statement}
+Different activities of the library of our institute pertaining to the issue and return of the books by the members
+of the library and various queries regarding books as listed below are to be automated.
 \begin{itemize}
-\item 
+
+
+\item The library has 10,000 books. Each book is assigned a unique identification number (called ISBN number).
+The Library clerk should be able to enter the details of the book into the LIS through a suitable interface.
+\item There are four categories of members of the library: undergraduate students, post graduate students,
+research scholars, and faculty members.
+\item Each library member is assigned a unique library membership code number.
+\item Each undergraduate student can issue up to 2 books for 1 month duration.
+\item Each postgraduate student can issue up to 4 books for 1 month duration.
+\item Each research scholar can issue up to 6 books for 3 months duration.
+\item Each faculty member can issue up to 10 books for six months duration.
+\item The LIS should answer user queries regarding whether a particular book is available. If a book is available,
+LIS should display the rack number in which the book is available and the number of copies available.
+\item LIS registers each book issued to a member. When a member returns a book, LIS deletes the book from
+the member’s account and makes the book available for future issue.
+\item Members should be allowed to reserve books which have been issued out. When such a reserved book is
+returned, LIS should print a slip for the concerned member to get the book issued and should disallow
+issue of the book to any other member for a period of seven days or until the member who has reserved
+the books gets it issued.
+\item When a member returns a book, LIS prints a bill for the penalty charge for overdue books. LIS calculates
+the penalty charge by multiplying the number of days the book is overdue by the penalty rate.
+\item LIS prints reminder messages for the members against whom books are over due, upon a request by the
+Librarian.
+\item LIS should allow the Librarian to create and delete member records.
+\item The Librarian periodically needs to check if there are any books which have not been issued even once
+during the last five years. He uses this information in planning to dispose off unused and old books. For
+this purpose it is necessary for LIS to maintain the statistics regarding issuance of different books.
+\item When books are disposed off, the Library clerk should be able to delete the book from the list of books
+in the Library and when a book is procured the system should support entering the details.
 \end{itemize}
+\subsection{Document Conventions}
+The conventions used in the document are as per the IEEE standard provided for formatting the SRS document of a software
 
 \subsection{Definitions}
 The following terms are used in this document to refer to various componensts of the system :\\
@@ -54,16 +88,20 @@ The following terms are used in this document to refer to various componensts of
 
 \subsection{Intended Audience}
 The intended readers of this document are the developers of the software, testers, library owners
-and managers and coordinators.
-They can understand the functioning of the software and their individual roles in the software also.
+and managers and coordinators.\\
+These people are meant to understand the details of the software architecture modelled and used to understand the proper functioning of the software and their individual roles in the software also.\\
 Any suggested changes on the requirements listed on this document should be included in
 the last version of it so it can be a reference to developing and validating teams.
 \subsection{Scope}
 LIS is a GUI tool that enhances the manual process of keeping records in a library.This is an appication which has been designed keeping in mind that it is meant to run on Library computers and to allow the library to keep a track of the books present.It allows the users to check availabilty whenever they want. It also allows the users to reserve a book in advance if needed. The librarian is able to keep a record of the overdue books, add new books, dispose old data, add new member or delete a member. 
-
+\\
 It is a powerful but still functionally simple library management software for big libraries and can provide a free easy-to-use system for rising libraries.
-
+\\
 Presently the maximum number of books has been kept constant to ensure a fruitful implementation of the software architecture. In future the list of books may be made to increase dynamically to make it more realistic.
+\\
+Also since the software is very useful and lightweight in design it may be further incorporated in a bigger software like school automation system or an university automation system of which this will be a small but a necessary module.
+\\
+The software may be futher modified to make a web interface also later in order to enable a remote access feature thus generalizing it further for common use of the public.
 \subsection{References}
 The following references have been consulted to make a suitable and effective software for library information system.
 
@@ -405,7 +443,25 @@ For this purpose the librian will be directed to a new scree where he will have 
 
 \section{SYSTEM FEATURES}
 \subsection{User login}
-The software should allow the user to provide the details of a 
+The software should allow the user to provide the details of a user to login into the system.
+\subsection{Add user}
+The librarian is allowed to create a new user of the library who can have the facilities like issuing , searching and returning of a book.
+\\
+The librarian gives the valid details in the fields to make the user and adds it to the database
+\subsection{Remove user}
+The librarian who hold the administrator acces to the software can remove any user from the user if need arises.All the records of the user will be removed from the databse maintained in the software.
+\subsection{Search book}
+A library user(faculty,research scholar,UG or PG student) can search a book to see if it is available in the library for issuing.
+
+\subsection{Issue book}
+A library user(faculty,research scholar,UG or PG student) can issue a book which is available in the library only if he/she has not exceeded the maximum issue count aginst his/her account.
+\subsection{Return book}
+A library user(faculty,research scholar,UG or PG student) can return a book which is available in the library only and is liable to pay fines in case of overdue.
+
+\subsection{Give penalty}
+A library user(faculty,research scholar,UG or PG student) can pay the fine if he/she has aprevious overdue dute to late returning of a book.
+
+
 \section{EXTERNAL INTERAFCE REQUIREMENTS}
 \subsection{User Interfaces}
 \subsection{Hardware Interfaces}
@@ -415,11 +471,12 @@ The software should allow the user to provide the details of a
 \end{enumerate}
 \subsection{Software Interfaces}
 \begin{enumerate}
-\item Back end  $:$ Built using Java and DBMS
+\item Back end  $:$ Built using Java and DBMS(MySQL)
 \item Front end $:$ Using Java 
 \end{enumerate}
 
 \subsection{Communication Interfaces}
+The databases can be kept in a separeate location other than the source computer itself to make it more space efficient.It can be done by using tcp/ip protocol for network access.It is not mandatory fot this specific design but can be taken up as a  feature which can be appiled to make the software more realistic and user friendly.
 
 \section{OTHER NONFUNCTIONAL REQUIREMENTS}
 \subsection{Performance Requirements}
@@ -431,24 +488,31 @@ In case of defaulters the fine and other penalties should be automatically repor
 ALl the background tasks should not compromise with the UX of the software.All the background processes should be methodically handled and not affect the runtime functionalities of the software
 
 \subsection{Safety Requirements}
-Only the valid users can change the records that too only in their respective account.
+Only the valid users can change the records that too only in their respective account.In case any invalid user tries to tamper with the data a error message will be flagged thus aborting the action.
 \subsection{Security Requirements}
 The sytem must be highly secure in the login part.
 No user should be able to access a domain outside his reach.
 Care must be taken to keep the user accounts secure and all the book transaction should be properly updated to the corresponding user.
 
 \subsection{Software Quality Requirements}
-
-
-
 \subsubsection{Reliability requirements}
-The background database should always be updated so that whenever a member visits he/she can get the latest information required.
+The software is extremely reliable and has a lightweight design.It uses as minimum resources as possible but still it provides a quality support for the intended software requirements.
+Multiple copies of the database have been kept at sepearte locations to ensure that the data is not lost in case of a serious software glitch. These backup datasets can be recovered easily by a file reader to get back the lost data.
+\\
+The background database should always be updated so that whenever a member visits he/she can get the latest information required.Also the duplicate or the backup databases must also be updated at the same time so that no discrepancy is there among the parallel databases.
+\\
+For every process that the software can do the steps are quite clearly framed and unambiguous in nature so that the user will not face any problem in doing the job.
 \subsubsection{Usability Requirements}
 The software must be user-friendly so that the user can easily perform all the tasks which the software is meant to do.It must have a soothing UX design and clear instructions to guide the user.
-\\In case of any error suitable error messages must be displayed to assist the user.
+\\In case of any error suitable error messages must be displayed to assist the user.Also a user manual is provided with the glimpses of the software design to show how the softwar eis supposed to work.
+\\
+Care has been taken to make the software process very fast and reliable.The running time of the software and the space complexity have been optimized as far as possible to keep the software more realistic and usable
 
 
 \section{OTHER REQUIREMENTS}
+The other thing which is required to make the back-end of the software is sql support. The sql framework used behind this software is MySQL for JAVA. Using the packages the sql support has been estblished.\\
+Use of sql is there to ensure proper database facilities rather than just using normal text files which might have also served our purpose.Use of proper databse structure greatly reduces the running time making it logarithmic from linear with respect to the number of records.
+\\
 
 
 \end{document}
