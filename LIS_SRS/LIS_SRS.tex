@@ -10,14 +10,17 @@
 \usepackage[explicit]{titlesec}
 \usepackage[normalem]{ulem}
 
-%\title{Library Information System\\ System Requirement Specification}
+\title{Library Information System\\ System Requirement Specification}
 
-%\author{}
+\author{}
 %\date{March 2016}
+
 
 \begin{document}
 
-%\maketitle
+\maketitle
+\tableofcontents
+
 
 \section{INTRODUCTION}
 
@@ -95,95 +98,95 @@ subsubsection{Use cases}
 	
 	\item Query about Book\\
 	\begin{itemize}
-	\item Preconditions:
-	1. The user must be logged in .
-	2.The book must exist in the library
-\item  Postcondition: If the book exists in the library,the availablity status of the book is returned
- \item Failure Situations: The library does not have  the book
- \item Postcondition in case of failure:A message to user about the same
-\item  Actors: User communiates with the system
-\item  Trigger: User chooses the option to search books
- \item Main Success Scenario: The library has a copy of the book and it is available for issue.
-\item  Extensions/Variations: The library has a copy of the book but currently none of the copies are available.The book maybe reserved by the user.
+	\item Preconditions:\\
+	1. The user must be logged in .\\
+	2.The book must exist in the library\\
+\item  Postcondition: \\If the book exists in the library,the availablity status of the book is returned\\
+ \item Failure Situations:\\ The library does not have  the book \\
+ \item Postcondition in case of failure:\\A message to user about the same\\
+\item  Actors:\\ User communiates with the system\\
+\item  Trigger:\\ User chooses the option to search books\\
+ \item Main Success Scenario: \\The library has a copy of the book and it is available for issue.\\
+\item  Extensions/Variations: \\The library has a copy of the book but currently none of the copies are available.The book maybe reserved by the user.
 	\end{itemize}
  \item Issue Book\\
 	\begin{itemize}
-	 \item Preconditions:
-	 1. The user must be logged in .
-	 2.The book must exist in the library 
-	 3.It must be available for issue.
-	 4.The user must not have exhausted his quota of number of books
- \item Postcondition:After successful issue the user account is updated
- \item Failure Situations:
- 1. The library does not have  the book 
- 2.The library has the book and it is not avaiable for issue.
- 3.The user has exhausted his quota of maximm number of books
- \item Postcondition in case of failure:In failure case 2. the user may choose to reserve the book if he has not exhausted his quota
- \item Actors: User communiates with the system
- \item Trigger: User chooses the option to issue books
- \item Main Success Scenario: The library has a copy of the book and it is available for issue.
+	 \item Preconditions:\\
+	 1. The user must be logged in .\\
+	 2.The book must exist in the library \\
+	 3.It must be available for issue.\\
+	 4.The user must not have exhausted his quota of number of books\\
+ \item Postcondition:\\After successful issue the user account is updated\\
+ \item Failure Situations:\\
+ 1. The library does not have  the book\\ 
+ 2.The library has the book and it is not avaiable for issue.\\
+ 3.The user has exhausted his quota of maximum number of books\\
+ \item Postcondition in case of failure:\\In failure case 2. the user may choose to reserve the book if he has not exhausted his quota\\
+ \item Actors:\\ User communiates with the system\\
+ \item Trigger: \\User chooses the option to issue books\\
+ \item Main Success Scenario:\\ The library has a copy of the book and it is available for issue.
 	\end{itemize}
  
 
- \item Return Book
+ \item Return Book\\
  \begin{itemize}
- \item Precondition:
- 1.User must be logged in.
- 2.User must have previously issued the book.
- \item Postcondition:
- 1.If the book was overdue the penalty is calculated and a bill is printed 
- 2.In case the book was reserved by some other user, a notification is sent out to the other user.
- 3.The user account is updated
- \item Failure Situations:The user has not issued any book
- \item Postcondition in case of failure:A message is give to the user about the same
- \item Actors: User communiates with the system
- \item Trigger: User chooses the option to return issued books
-\item  Main Success Scenario: The user had previously issued the book
+ \item Precondition:\\
+ 1.User must be logged in.\\
+ 2.User must have previously issued the book.\\
+ \item Postcondition:\\
+ 1.If the book was overdue the penalty is calculated and a bill is printed\\ 
+ 2.In case the book was reserved by some other user, a notification is sent out to the other user.\\
+ 3.The user account is updated\\
+ \item Failure Situations:\\The user has not issued any book\\
+ \item Postcondition in case of failure:\\A message is give to the user about the same\\
+ \item Actors:\\ User communiates with the system\\
+ \item Trigger:\\ User chooses the option to return issued books\\
+\item  Main Success Scenario: \\The user had previously issued the book\\
  \end{itemize}
  
- \item Reserve Book
+ \item Reserve Book\\
 	\begin{itemize}
-	\item  Preconditions:
-	1. The user must be logged in .
-	2.The book must exist in the library 
-	3.It must not  be available for issue.
-	4.The user must not have exhausted his quota of number of books
- \item Postcondition:
- 1.After successful issue the user account is updated 
- 2.When the book is returned a notification is sent to the user.
- \item Failure Situations:
- 1. The library does not have  the book 
- 2.The library has the book and it is  avaiable for issue.
- 3.The user has exhausted his quota of maximm number of books
- \item Postcondition in case of failure:In failure case 2. the user may choose to issue the book if he has not exhausted his quota
- \item Actors: User communiates with the system
- \item Trigger: User chooses the option to reserve book
- \item Main Success Scenario: The library has a copy of the book and it is not available for issue.
+	\item  Preconditions:\\
+	1. The user must be logged in .\\
+	2.The book must exist in the library\\ 
+	3.It must not  be available for issue.\\
+	4.The user must not have exhausted his quota of number of books\\
+ \item Postcondition:\\
+ 1.After successful issue the user account is updated \\
+ 2.When the book is returned a notification is sent to the user.\\
+ \item Failure Situations:\\
+ 1. The library does not have  the book \\
+ 2.The library has the book and it is  avaiable for issue.\\
+ 3.The user has exhausted his quota of maximm number of books\\
+ \item Postcondition in case of failure:\\In failure case 2. the user may choose to issue the book if he has not exhausted his quota\\
+ \item Actors:\\ User communiates with the system\\
+ \item Trigger:\\ User chooses the option to reserve book\\
+ \item Main Success Scenario:\\ The library has a copy of the book and it is not available for issue.\\
  
 	\end{itemize}
  
- \item Cancel Reservation
+ \item Cancel Reservation\\
  \begin{itemize}
- \item  Preconditions:
- 1. The user must be logged in .
- 2.The user must have reserved the book
- \item Postcondition:
- 1.After successful issue the user account is updated 
-Failure Situations:The user has not issued any book
- \item Actors: User communiates with the system
- \item Trigger: 
- 1.User chooses the option to cancel reservation of a book 
- 2.User does not issue the reserved book within 7 days of return
- \item Main Success Scenario: The library has a copy of the book and the user must have reserved it previously
+ \item  Preconditions:\\
+ 1. The user must be logged in .\\
+ 2.The user must have reserved the book\\
+ \item Postcondition:\\
+ 1.After successful issue the user account is updated \\
+Failure Situations:\\The user has not issued any book\\
+ \item Actors: \\User communiates with the system\\
+ \item Trigger:\\ 
+ 1.User chooses the option to cancel reservation of a book \\
+ 2.User does not issue the reserved book within 7 days of return\\
+ \item Main Success Scenario:\\ The library has a copy of the book and the user must have reserved it previously\\
 	
  \end{itemize}
 
-\item Pay Fine
+\item Pay Fine\\
 	\begin{itemize}
-	\item  Precondition:
+	\item  Precondition:\\
 	\begin{enumerate}	
-	\item User must be logged in.
-	\item User must have previously issued the book.3.The book must be overdue
+	\item User must be logged in.\\
+	\item User must have previously issued the book.\\The book must be overdue\\
 	\end{enumerate}
  \item Postcondition:\\
   The book was overdue the penalty is calculated and a bill is printed 
@@ -203,158 +206,160 @@ Failure Situations:The user has not issued any book
  \begin{itemize}
  \item Enter details of a book
  \begin{itemize}
- \item Preconditions:1. The clerk must be logged in.2.The book must not be previously entered in the system
- Failure Situations: The book is already in the system
- Postcondition in case of failure:A message to clerk about the same
- Actors: library clerk communicates with the system
- Trigger: Clerk chooses the option to enter new books
- Main Success Scenario: The library  does not have the book and the book is newly entered in the system
- Extensions/Variations: The library hasthe book and the umber of copies is increased
+ \item Preconditions:1. The clerk must be logged in.\\2.The book must not be previously entered in the system
+ \item Failure Situations:\\ The book is already in the system
+ \item Postcondition in case of failure:\\A message to clerk about the same
+ \item Actors:\\ library clerk communicates with the system
+ \item Trigger:\\ Clerk chooses the option to enter new books
+ \item Main Success Scenario:\\ The library  does not have the book and the book is newly entered in the system
+\item  Extensions/Variations:\\ The library hasthe book and the umber of copies is increased
+\end{itemize}
  \item Delete a book 
  \begin{itemize}
-	\item 	Preconditions:1. The clerk must be logged in.2.The book must  be previously entered in the system 3.The librarian has decided to dispose the book
- Failure Situations: The book is not in the system
- Postcondition in case of failure:A message to clerk about the same
- Actors: library clerk communicates with the system
- Trigger: Clerk chooses the option to delete books
- Main Success Scenario: The library  has the book and it is removed from the system.
- Extensions/Variations: The library has the book and the number of copies is reduced.
+	\item 	Preconditions:\\1. The clerk must be logged in.\\2.The book must  be previously entered in the system \\3.The librarian has decided to dispose the book\\
+ \item Failure Situations:\\ The book is not in the system\\
+ \item Postcondition in case of failure:\\A message to clerk about the same\\
+ \item Actors:\\ library clerk communicates with the system\\
+ \item Trigger:\\ Clerk chooses the option to delete books\\
+ \item Main Success Scenario:\\ The library  has the book and it is removed from the system.\\
+ \item Extensions/Variations: \\The library has the book and the number of copies is reduced.\\
+ 
 \end{itemize}	 
  
  \end{itemize}
- \end{itemize}
+ 
 
 
 \item Librarian Use Cases:
 \begin{itemize}
  \item Add new member
  \begin{itemize}
-  \item Preconditions:1.Librarian must be logged in2. A person must apply for membership
- Postcondition:A new member account is created 
- Failure Situations: The user is already registered
- Postcondition in case of failure:A message to librarian about the same
- Actors: Librarian communicates with the system
- Trigger: Librarian  chooses the option to add member
- Main Success Scenario: The user is not previously registered
+  \item Preconditions:1.Librarian must be logged in\\2. A person must apply for membership
+ \\ \item Postcondition:\\A new member account is created \\
+ \item Failure Situations:\\ The user is already registered\\
+ \item Postcondition in case of failure:\\A message to librarian about the same\\
+\item  Actors:\\ Librarian communicates with the system\\
+ \item Trigger: \\Librarian  chooses the option to add member\\
+ \item Main Success Scenario:\\ The user is not previously registered\\
  \end{itemize}
 
-\item Delete member
+\item Delete member\\ 
  \begin{itemize}
-  \item Preconditions:1.Librarian must be logged in2. A person must apply for cacellation membership
- Postcondition:The member account is deleted
- Failure Situations: The user has no account
- Postcondition in case of failure:A message to librarian about the same
- Actors: Librarian communicates with the system
- Trigger: Librarian  chooses the option to delete member
- Main Success Scenario: The user   previously has an account
+  \item Preconditions:\\ 1.Librarian must be logged in\\ 2. A person must apply for cacellation membership\\ 
+ \item Postcondition:\\ The member account is deleted\\ 
+ \item Failure Situations: \\ The user has no account\\ 
+ \item Postcondition in case of failure:\\ A message to librarian about the same\\ 
+ \item Actors: \\ Librarian communicates with the system\\ 
+ \item Trigger:\\  Librarian  chooses the option to delete member\\ 
+ \item Main Success Scenario:\\  The user   previously has an account\\ 
  \end{itemize}
  
- \item Order to print reminder
+ \item Order to print reminder\\ 
  \begin{itemize}
-  \item Preconditions:1.Librarian must be logged in2. A book issued by a member must be overdue
- Postcondition:A message is sent to the user.
- Failure Situations: There are no overdue books
- Postcondition in case of failure:A message to librarian about the same
- Actors: Librarian communicates with the system
- Trigger: Librarian  chooses the option to print reminder
- Main Success Scenario: There are some overdue books
+  \item Preconditions:\\ 1.Librarian must be logged in\\ 2. A book issued by a member must be overdue\\ 
+ \item Postcondition:\\ A message is sent to the user.\\ 
+ \item Failure Situations:\\  There are no overdue books\\ 
+ \item Postcondition in case of failure:\\ A message to librarian about the same\\ 
+ \item Actors: \\ Librarian communicates with the system\\ 
+ \item Trigger:\\  Librarian  chooses the option to print reminder\\ 
+ \item Main Success Scenario :\\  There are some overdue books\\ 
  \end{itemize}
 
-\item Plan to dispose books
+\item Plan to dispose books\\ 
  \begin{itemize}
-  \item Preconditions:1.Librarian must be logged in2. The book must not have been issued even once for 5 years
- Postcondition:The book is disposed with a message to the library clerk to delete it.
- Actors: Librarian communicates with the system
- Trigger: Librarian  chooses the option to dispose book
- Main Success Scenario: The book has not been issue for 5 years
+  \item Preconditions:\\ 1.Librarian must be logged in\\ 2. The book must not have been issued even once for 5 years\\ 
+ \item Postcondition:\\ The book is disposed with a message to the library clerk to delete it.\\ 
+ \item Actors:\\  Librarian communicates with the system\\ 
+ \item Trigger:\\  Librarian  chooses the option to dispose book\\ 
+ \item Main Success Scenario:\\  The book has not been issue for 5 years\\ 
  \end{itemize}
  
 
 \end{itemize}
 
-\item System Use Cases:
+\item System Use Cases:\\ 
  \begin{itemize}
  
-  \item Answer availibilty Query about Book
+  \item Answer availibilty Query about Book\\ 
 	\begin{itemize}
-	\item  Preconditions:1.An user makes a query
- Postcondition: If the book is available, use cases display rack number and number of copies are called
- Actors: System communiates with the user
- Trigger: User chooses the option to search books
+	\item  Preconditions:\\ 1.An user makes a query\\ 
+ \item Postcondition: \\ If the book is available, use cases display rack number and number of copies are called\\ 
+ \item Actors:\\  System communiates with the user\\ 
+ \item Trigger: \\ User chooses the option to search books\\ 
 	\end{itemize}
 
-\item Display rack number of book
+\item Display rack number of book\\ 
 	\begin{itemize}
-	\item  Preconditions:1.If the book is available the use case answer availibility query invokes this
- Postcondition: Rack numbers are displayed
- Actors: System communiates with the user
- Trigger: answer availibity query triggers this
+	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
+ \item Postcondition:\\  Rack numbers are displayed\\ 
+ \item Actors:\\  System communiates with the user\\ 
+ \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
  
- \item Display number of copies of book
+ \item Display number of copies of book\\ 
 	\begin{itemize}
-	\item  Preconditions:1.If the book is available the use case answer availibility query invokes this
- Postcondition: the number of copies of a book are displayed
- Actors: System communiates with the user
- Trigger: answer availibity query triggers this
+	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
+ \item Postcondition:\\  the number of copies of a book are displayed\\ 
+ \item Actors: \\ System communiates with the user\\ 
+ \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
 
-\item Calculate lateness penalty
+\item Calculate lateness penalty\\ 
 	\begin{itemize}
-	\item  Preconditions:1.If the book is overdue, return book invokes this
- Postcondition:Penalty is calculated and print bill is invoked
- Actors: System communiates with the user
- Trigger: return book query triggers this
+	\item  Preconditions:\\ 1.If the book is overdue, return book invokes this\\ 
+ \item Postcondition:\\ Penalty is calculated and print bill is invoked\\ 
+ \item Actors: \\ System communiates with the user\\ 
+ \item Trigger: \\ return book query triggers this\\ 
 	\end{itemize}
  
  \item Provide book issue statistics
 	\begin{itemize}
-	\item  Preconditions:1.The use case is invoked by plan to dispose books
- Postcondition:Statistics of books is displayed
- Actors: system communicates with librarian
- Trigger:Plan dispose book is invoked
+	\item  Preconditions:\\ 1.The use case is invoked by plan to dispose books\\ 
+ \item Postcondition:\\ Statistics of books is displayed\\ 
+ \item Actors: \\ system communicates with librarian\\ 
+ \item Trigger:\\ Plan dispose book is invoked\\ 
 	\end{itemize}
 
  \end{itemize}
-\item Printer use cases:
+\item Printer use cases:\\ 
 \begin{itemize}
-\item Print bill of penalty
+\item Print bill of penalty\\ 
 \begin{itemize}
-\item Preconditions:Some user must have returned the issued book later than his designated return date.
- Postcondition:Bill of penalty is printed
- Actors: Printer communiates with the system
- Trigger: Calculate lateness penalty triggers print bill
+\item Preconditions:\\ Some user must have returned the issued book later than his designated return date.\\ 
+ \item Postcondition:\\ Bill of penalty is printed\\ 
+ \item Actors:\\  Printer communiates with the system\\ 
+ \item Trigger:\\  Calculate lateness penalty triggers print bill\\ 
 \end{itemize}
 
-\item Print reminder
+\item Print reminder\\ 
 \begin{itemize}
-\item  Preconditions:Some user must have exceeded the due date
- Postcondition:Reminder to user is printed
- Actors: Printer communiates with the system
- Trigger:order to print reminder triggers this
+\item  Preconditions:\\ Some user must have exceeded the due date\\ 
+ \item Postcondition:\\ Reminder to user is printed\\ 
+ \item Actors:\\  Printer communiates with the system\\ 
+ \item Trigger:\\ order to print reminder triggers this\\ 
 \end{itemize}
 
-\item Print notification on return of reserved book
+\item Print notification on return of reserved book\\ 
 \begin{itemize}
-\item Preconditions:Some user must have returned a reserved book 
- Postcondition:A notification is printed to the user who reserved the book
- Actors: Printer communiates with the system which communicates with user
- Trigger: return book may trigger this use case
+\item Preconditions:\\ Some user must have returned a reserved book \\ 
+ \item Postcondition:\\ A notification is printed to the user who reserved the book\\ 
+ \item Actors: \\ Printer communiates with the system which communicates with user\\ 
+ \item Trigger:\\ return book may trigger this use case\\ 
 \end{itemize}
 
 \end{itemize}
 \end{enumerate}
 \includegraphics[scale=0.25]{images/classDiagram}
 \\
-\begin{itemize}
-\item Issue Book : Allows the librarian to issue books to members on request
-\item Return book : Whenever a member returns an issued book , the library system uses this data to update the database and user history simultaneouly. This data can also be used to calculate fine if the book is returned late than the deadline
-\item Add book : It allows the librarian to add books to the library database
-\item Delete book : The librarian has an option to remove a book from the library database
-\item Add/Remove members : The software allows the user to add members like the faculty and the other students to have access to the books in the library
-\item View history : The librarian can view the issue history of any book in the library
-\item Query : The library can search for a particular book by giving a part of its name or the full name of the book.
-\end{itemize}
+%\begin{itemize}
+%\item Issue Book : Allows the librarian to issue books to members on request
+%\item Return book : Whenever a member returns an issued book , the library system uses this data to update the database and user history simultaneouly. This data can also be used to calculate fine if the book is returned late than the deadline
+%\item Add book : It allows the librarian to add books to the library database
+%\item Delete book : The librarian has an option to remove a book from the library database
+%\item Add/Remove members : The software allows the user to add members like the faculty and the other students to have access to the books in the library
+%\item View history : The librarian can view the issue history of any book in the library
+%\item Query : The library can search for a particular book by giving a part of its name or the full name of the book.
+%\end{itemize}
 
 \subsection{User Classes and Characteristics}
 
@@ -420,7 +425,7 @@ The software should allow the user to provide the details of a
 \subsection{Performance Requirements}
 With the Library Information System the librarian and library clerk can process a book transaction in a faster speed .
 The members will be able to check the status of the checked out items and can also borrow and return a book in a short amount of time.
-Automatic updates in the account of each user will enable them to know about the item they have cjecked out and all the relevant details due to which they do not need to consult or ask the library clerk each time.
+Automatic updates in the account of each user will enable them to know about the item they have checked out and all the relevant details due to which they do not need to consult or ask the library clerk each time.
 The background system admin will automatically perform the above mentioned updation in the accounts in the background autonomously without explicit invocation.
 In case of defaulters the fine and other penalties should be automatically reported and saved in the record once the deadline has crossed . This is also performed by the syatem admin (referred as LIS itself) in the background.
 ALl the background tasks should not compromise with the UX of the software.All the background processes should be methodically handled and not affect the runtime functionalities of the software
@@ -444,4 +449,6 @@ The software must be user-friendly so that the user can easily perform all the t
 
 
 \section{OTHER REQUIREMENTS}
+
+
 \end{document}

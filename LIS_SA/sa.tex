@@ -147,31 +147,51 @@ The entire software is written using the language Java.
 The object oriented programming paradigm of Java has been followed throughout.
 \subsection{Build System}
 
+
 \subsection{Libraries}
 The libraries used for the software are as follows :
 
 \begin{enumerate}
 \item Java Swing (java.awt.*)
 \item Java AWT   (javax.swing.*)
-\item Java Exception  (to be included)
+\item Java Exception  (java.lang.Exception.*,java.io.*)
+\item Java mySQL libraries:(java.sql.*)
 \end{enumerate}
 \subsection{Sizing}
-\subsection{Performance}
+This is an extremely lightweight software consuming negligibly small amount of main memory during runtime.\\ 
+At a later point of time it can be modified to run as a web applet or servelet. 
 
+\subsection{Performance}
+Performance of the Library Information of System is enhanced by the following listed technique:
+\begin{enumerate}
+\item There is practically no lag in the main GUI.This has been ensured by 
+ensuring that all cron jobs are run in the background, not hampering the running time of the main GUI.
+\item The implementation of database through mySQL considerably speeding up the insertion,deletion and answering queries. mySQL through the use of balanced search trees does all of these in worst case O(lg n) time.This reduces the processing time considerably and speeds up the execution of the software. 
+
+\end{enumerate}
 \section{Limitations and Exceptions}
 The number of books which can be incorporated into the system has been kept to be constant in this case to ensure a simpler design.
 In case of a dynamically ncreasing book set the algorithms and the data structures used to mange have to be optimized further to keep the running time of the software as fast as possible.
 \\
 Exceptions which are present or handled in this software are as follows :
-
+\begin{enumerate}
+\item Username cannot contain any special characters except underscore.Entering any username not following this rule will throw an exception and prompt the user to re-enter the username.
+\item The password of the user must be atleast 8 charactes long,must containt atleast one alphabet,atleast one digit and atleat one special character. Violation of these rules will throw an exeption and prompt the user to re-enter password.This is done to enhance the security level by making the password extremely difficult to crack by brute force algorithms.
+\item The user type by default is empty in the initial  loginscreen.The user must specify the user type while logging in.Keeping it default shall throw an exception and prompt the user to try and login again.
+\item The user who has fulfilled his issue/reserve quota may click on issue book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to issue books.
+\item The user who has fulfilled his issue/reserve quota may click on reserve book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to reserve books.
+   
+\end{enumerate}
 \section{Other Information about analysis}
-The other analysis performed are mainly on focusing how to achieve more abstarction and also at the same time maintain the safety and the security of the software
+The other analysis performed are mainly on focusing how to achieve more abstraction and also at the same time maintain the safety and the security of the software
 \part{System Design}
 \section{Refined System Parameters}
+
 \subsection{Global System Architecture}
 The overall system architecture is a 2-tier architecture which includes client at one end and the
 database at the other. There is no server based middle tier in the software being designed.
 \subsection{Platform}
+
 \subsubsection{Hardware}
 The hardware platform required in this software is :
 \begin {enumerate}
@@ -206,8 +226,11 @@ Thus the aspects of OOA mentioned justify our choice.
 \section{Design Details}
 \subsection{Refinement of UML diagrams}
 \subsection{Prototype Design}
+
 \subsection{Design I/O procedures and user interfaces}
 \subsection{Design of classes in target language}
+
+
 \subsection{Exception Design}
 
 \section{Adoptable Practices}
