@@ -146,7 +146,7 @@ Minimum system requirements :
 The entire software is written using the language Java.
 The object oriented programming paradigm of Java has been followed throughout.
 \subsection{Build System}
-
+The code is compiled and built using Java Standard library.Java converts the code into bytecode which is platform independent and can be run onnany system with JRE installed.
 
 \subsection{Libraries}
 The libraries used for the software are as follows :
@@ -186,12 +186,10 @@ Exceptions which are present or handled in this software are as follows :
 The other analysis performed are mainly on focusing how to achieve more abstraction and also at the same time maintain the safety and the security of the software
 \part{System Design}
 \section{Refined System Parameters}
-
 \subsection{Global System Architecture}
 The overall system architecture is a 2-tier architecture which includes client at one end and the
 database at the other. There is no server based middle tier in the software being designed.
 \subsection{Platform}
-
 \subsubsection{Hardware}
 The hardware platform required in this software is :
 \begin {enumerate}
@@ -218,8 +216,8 @@ A. that an object is responsible for preserving the integrity of its representat
 maintaining some invariant over it), and
 B. that the representation is hidden from other objects.
 Thus the aspects of OOA mentioned justify our choice.
-\subsubsection{Details}
-\subsubsection{Justification}
+%\subsubsection{Details}
+%\subsubsection{Justification}
 
 \section{Database Design}
 
@@ -229,12 +227,26 @@ Thus the aspects of OOA mentioned justify our choice.
 
 \subsection{Design I/O procedures and user interfaces}
 \subsection{Design of classes in target language}
-
+Java being an object oriented language implements classes  as a blueprint or template of objects. Here the main classes shall be books and user.
+We shall be using multiple inheritance to classify users into UG students,PG students,Research Scholar and Faculty.
+All the data members will be made private to restrict them from being accessed and modified from outside.Some data members like user id which do need to be accessed outside will have getter functions and setter functions. 
 
 \subsection{Exception Design}
-
+Exceptions which are present or handled in this software are as follows :
+\begin{enumerate}
+\item Username cannot contain any special characters except underscore.Entering any username not following this rule will throw an exception and prompt the user to re-enter the username.
+\item The password of the user must be atleast 8 charactes long,must containt atleast one alphabet,atleast one digit and atleat one special character. Violation of these rules will throw an exeption and prompt the user to re-enter password.This is done to enhance the security level by making the password extremely difficult to crack by brute force algorithms.
+\item The user type by default is empty in the initial  loginscreen.The user must specify the user type while logging in.Keeping it default shall throw an exception and prompt the user to try and login again.
+\item The user who has fulfilled his issue/reserve quota may click on issue book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to issue books.
+\item The user who has fulfilled his issue/reserve quota may click on reserve book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to reserve books.
+\end{enumerate}
 \section{Adoptable Practices}
-
-\section{Any Other Information Of previous Stages}
+Some adoptable practices for this software are:
+\begin{itemize}
+\item Reuse of code from one part to other wherever possible
+\item Division of code into small modules for better organization
+\item Using camel case and meaningful variable names
+\end{itemize}
+%\section{Any Other Information Of previous Stages}
 
 \end{document}
