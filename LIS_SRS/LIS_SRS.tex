@@ -12,14 +12,13 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{geometry}
  \geometry{
- %a4paper,
+ a4paper,
  %total={170mm,257mm},
  left=20mm,
- %right=20mm,
-%top=20mm,
+ %top=20mm,
  }
+\title{\textbf{Library Information System}}
 
-\title{Library Information System}
 
 \author{}
 \date{}
@@ -28,12 +27,26 @@
 \begin{document}
 
 \maketitle
+\begin{center}
+\includegraphics[scale=0.6]{images/logoLIS_modified.jpg}
+\\
+\textbf{LIBRERIA}\\
+LIBRARY INFORMATION SYSTEM\\
+%\vspace{2 cm}
+Group Number : 52\\
+ Name of group members: \\
+\begin{itemize}
+\item \begin{center}Ashrujit Ghoshal (14CS10060)\end{center}
+\item \begin{center}Sayan Ghosh (14CS10060)\end{center}
+\end{itemize}
+
+\end{center}
 
 \newpage
 %\clearpage
 \hypertarget{toc}{}
 \tableofcontents
-
+\newpage
 
 \section{INTRODUCTION}
 
@@ -418,9 +431,24 @@ Failure Situations:\\The user has not issued any book\\
 \end{itemize}
 \end{enumerate}
 
+\subsubsection*{Data Flow Diagram}
+
+\begin{itemize}
+\item Context Diagram\\
+\includegraphics[scale=0.5]{images/contextDiag.jpg}
+\item Level 1 DFD\\
+\begin{itemize}
+\item Diagram for login : \\
+\includegraphics[scale=0.5]{images/dfdDiagLogin.png}\\
+\item Diagram for issuing books : \\ \includegraphics[scale=0.5]{images/DFDDiagIssue.png}\\
+\item Diagram for returning books : \\ \includegraphics[scale=0.5]{images/dfdDiagReturnBook.png}\\
+\item Diagram for searching books : \\ \includegraphics[scale=0.5]{images/dfdDiagSearch.png}\\
+\end{itemize}
+\end{itemize}
+
 \subsection{User Classes and Characteristics}
 
-\includegraphics[scale=0.50]{images/classDiagSRS.png}
+\includegraphics[scale=0.50]{images/classDiagNaive.png}
 \begin{itemize}
 
 \item Book

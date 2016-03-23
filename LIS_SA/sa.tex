@@ -14,16 +14,33 @@
 \usepackage{geometry}
  \geometry{
  a4paper,
- total={170mm,257mm},
+ %total={170mm,257mm},
  left=20mm,
- top=20mm,
+ %top=20mm,
  }
+\title{\textbf{ SA SD Document}}
+
 \author{}
 \date{}
+
 \begin{document}
 
-%\maketitle
 
+\maketitle
+\begin{center}
+\includegraphics[scale=0.6]{images/logoLIS_modified.jpg}
+\\
+\textbf{LIBRERIA}\\
+LIBRARY INFORMATION SYSTEM\\
+%\vspace{2 cm}
+Group Number : 52\\
+ Name of group members: \\
+\begin{itemize}
+\item \begin{center}Ashrujit Ghoshal (14CS10060)\end{center}
+\item \begin{center}Sayan Ghosh (14CS10060)\end{center}
+\end{itemize}
+
+\end{center}
 \newpage
 %\clearpage
 \hypertarget{toc}{}
@@ -130,7 +147,7 @@ The software designed is able to perform all the above operations mentioned abov
 
 \subsection{Refinement of Use Case Diagram}
 
-
+\includegraphics[scale=0.55]{images/useCaseDiag.jpg}\\
 
 Description :
 \\
@@ -394,7 +411,132 @@ Failure Situations:\\The user has not issued any book\\
 \subsection{Refinement of Class Diagrams}
 \includegraphics[scale=0.35]{images/classDiag.png}
 \\
-Description : 
+Description : \\
+
+\begin{itemize}
+\item Book
+\begin{itemize}
+\item Class Attributes:\\
+\\Name:Store the name of book
+\\No$\_$of$\_$copies:Stores the number of copies of a book
+\\Penalty$\_$Rate:the rate of penalty for book.A static member as it is common for all the books
+\\Author:stores name  author of book 
+\\LastIssueDateDate:Stores the last issued date of book
+\\NoOfCopiesIssued:Stores the number of copies of the book that have been issued out
+\\NoOfCopiesReserved:Stores the number of issued books that have been reserved
+\\NoOfBooks:A static variable storing the total number of books
+\\IDsofIssuedMembers[]:An array of integers storing the ids of all the members who have issued copies of the book
+\\IDsOfMembersReserved[]:An array of integers storing the ids of all the members who have issued copies of the book
+\\RackNo:stores the rack number where the book is kept
+
+\item Operations:
+\\Getter functions for name,No$\_$of$\_$copies,ISBN number,Penalty$\_$rate,LastIssueDate,author,NoOfCopiesIssued,NoOfCopiesReserved,NoOfBooks,IDsofIssuedMembers,IDsOfMembersReserved,RackNo.
+
+We have used getters for these as we need to view these attributes from outside 
+\\
+Setters for No$\_$of$\_$copies,LastIssueDate,NoOfCopiesIssued,NoOfCopiesReserved,IDsOfIssuedMembers, IDSOfMembersReserved,RackNo.
+
+We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
+\end{itemize}
+
+
+\item Library Member 
+\begin{itemize}
+\item Attributes:
+\begin{itemize}
+\item Name:Name of the user
+\item ID$\_$number:Login id of the user
+\item Number of books in account:Total number of issued books
+\item Number of reserved books:Total number of books issued by the user
+\item NoOfUsers:A static variable storuing total number of users
+\item ISBNnosOfIssuedBooks[]:an array storing the ISBN number of all books issued by the user
+\item ISBNnosOfReservedBooks[]:an array storing the ISBN number of all books reserved by the user
+\item maximumNoOfBooksIssued:the maximum number of books that the user can issue
+\item Pasword:The login password of the user which is necessary for login authentication
+\end{itemize}
+
+\item Operations:
+\begin{itemize}
+
+\item Constructor to initialize member\\
+\item Getters for NumberOfBooksinAccount,No ofReservedBooks,NoOfUsers.
+We have used getters for these as we need to view these attributes from outside \\\
+\item Setters for NumberOfUsers,Number of books in account,No Of reserved Books.
+
+
+We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
+\\
+\item IssueBook:called when member tries to issue a book\\
+\item SearchBook:Called when member tries to search fo a book\\
+\item Reserve Book:Called when member tries to reserve a book\\
+\item ReturnBook:called when member tries to return a book\\
+\item PayFine:Called when member returns an overdue book\\
+
+\end{itemize}
+\end{itemize}
+
+\item Library Clerk
+\begin{itemize}
+\item Attributes:
+\begin{itemize}
+\item UserId:User Id of the library Clerk\\
+\item Password:Password of the library Clerk\\
+\end{itemize}
+
+\item Operations:
+\begin{itemize}
+\item AddBook:Adds a new procured book to database\\
+\item Removebook:Deletes a disposed book from database\\
+\end{itemize}
+\end{itemize}
+\item Librarian
+
+\begin{itemize}
+
+\item Attributes:
+\begin{itemize}
+\item UserId:User Id of the librarian
+\item Password:Password of the librarian
+\end{itemize}
+\item Operations:
+\begin{itemize}
+\item AddUser:Adds a new user account
+\item DeleteUser:Deletes an existing user account
+\item getStatistics: asks for statistics from LIS
+\item DisposeBooks:Disposes a book not issued in 5 years
+\item OrderReminder:Orders LIS to print reminder on overdue books
+\end{itemize}
+\end{itemize}
+
+\item LIS
+\begin{itemize}
+\item Operations:\\
+\begin{itemize}
+
+\item ApproveIssue:Called when user tries to issue a book
+\item ApproveReturn:Called when user tries to return a book
+
+\item ApproveReserve:Called when user tries to reserve a book
+\item CalculatePenalty:Calculates penalty on overdue book
+\item PrintBill:prints penalty Bill
+\item PrintReminder:prints Reminder on overdue books
+\item Show Statistics:Display statistics of books issued
+
+\end{itemize}
+\end{itemize}
+
+\item Faculty\\
+It is a generalization of Library User
+\item Student\\
+It is a generalization of Library User
+\item Research Scholar\\
+It is a generalization of Student
+\item UG Student\\
+It is a generalization of Student
+\item PG Student\\
+It is a generalization of Student
+
+\end{itemize}
 \subsection{Sequence Diagram}
 \subsubsection*{Add User Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagAddUser.png}
@@ -469,6 +611,23 @@ Description : We first check for the validation of the member. If the member suc
 \includegraphics[scale=0.50]{images/activityDiagSearch.jpg}
 \\
 Description : The user may not need to validate into the system that is the search feature is kept as a global access feature. The person needs to put in the details of the book required in the search field to search for its availability. If the book is present the software will diplay the number of the copies along with their respective rack number for easy access else it will diplay that the book is not currently available.
+
+\subsection{Data Flow Diagram}
+
+\begin{itemize}
+\item Context Diagram\\
+\includegraphics[scale=0.5]{images/contextDiag.jpg}
+\item Level 1 DFD\\
+\begin{itemize}
+\item Diagram for login : \\
+\includegraphics[scale=0.5]{images/dfdDiagLogin.png}\\
+\item Diagram for issuing books : \\ \includegraphics[scale=0.5]{images/DFDDiagIssue.png}\\
+\item Diagram for returning books : \\ \includegraphics[scale=0.5]{images/dfdDiagReturnBook.png}\\
+\item Diagram for searching books : \\ \includegraphics[scale=0.5]{images/dfdDiagSearch.png}\\
+\end{itemize}
+\end{itemize}
+
+
 
 \section{System Parameters}
 \subsection{Platform}
@@ -548,15 +707,15 @@ The hardware platform required in this software is :
 	\item RAM 512 MB
 	\end{enumerate}
 \subsubsection{Software}
-The software platform of the software is fully developed in Java.
-For suitable execution Java JDK 1.7 or later is required.
-The database management has been done using a DBMS software like MySQL.
+The software platform of the software is fully developed in Java.\\
+For suitable execution Java JDK 1.7 or later is required.\\
+The database management has been done using a DBMS software like MySQL.\\
 
 \subsubsection{Networking}
 The GUI support and the database support are interlinked via a tcp network which facilitates the flow of information between the two ends.It provides scope for dividing the space requirements by distributing the load. The use of tcp network ensures secure data flow between the two interfaces.\\
 The tcp network identifies the two ends of the network and extablishes a secured connection between the two ends.Keeping the data at a separate location can improve the safety of the software as it prevents data loss to a huge extents in case of a glitch in the GUI end.
 \\
-Thus we can ensure a safe, secure, reliable and fast software design.
+Thus we can ensure a safe, secure, reliable and fast software design.\\
 
 \subsection{Software Architecture}
 Object-oriented architecture forms the basis of the LIS. In this style data representations and
@@ -618,8 +777,14 @@ The librarian also has the opportunity to remove a user from the library databas
 
 \subsection{Refinement of Use Case Diagram}
 
+\includegraphics[scale=0.55]{images/useCaseDiag.jpg}\\
 
-
+\subsubsection*{Use case of User :}
+\includegraphics[scale=0.6]{images/userCaseDiag.png}\\
+\subsubsection*{Use case of Library Clerk :}
+\includegraphics[scale=0.6]{images/clerkClassDiag.png}\\
+\subsubsection*{Use case of Librarian :}
+\includegraphics[scale=0.6]{images/librarianCaseDiag.png}\\
 Description :
 \\
 \begin{enumerate}
@@ -879,10 +1044,150 @@ Failure Situations:\\The user has not issued any book\\
 
 \end{itemize}
 \end{enumerate}
+
+\subsection{Data Flow Diagram}
+
+\begin{itemize}
+\item Context Diagram\\
+\includegraphics[scale=0.5]{images/contextDiag.jpg}
+\item Level 1 DFD\\
+\begin{itemize}
+\item Diagram for login : \\
+\includegraphics[scale=0.5]{images/dfdDiagLogin.png}\\
+\item Diagram for issuing books : \\ \includegraphics[scale=0.5]{images/DFDDiagIssue.png}\\
+\item Diagram for returning books : \\ \includegraphics[scale=0.5]{images/dfdDiagReturnBook.png}\\
+\item Diagram for searching books : \\ \includegraphics[scale=0.5]{images/dfdDiagSearch.png}\\
+\end{itemize}
+\end{itemize}
 \subsection{Refinement of Class Diagrams}
-\includegraphics[scale=0.35]{images/classDiag.png}
+\includegraphics[scale=0.35]{images/classDiagFinal.jpg}
 \\
-Description : 
+Description of classes:
+\\
+ \begin{itemize}
+\item Book
+\begin{itemize}
+\item Class Attributes:\\
+\\Name:Store the name of book
+\\No$\_$of$\_$copies:Stores the number of copies of a book
+\\Penalty$\_$Rate:the rate of penalty for book.A static member as it is common for all the books
+\\Author:stores name  author of book 
+\\LastIssueDateDate:Stores the last issued date of book
+\\NoOfCopiesIssued:Stores the number of copies of the book that have been issued out
+\\NoOfCopiesReserved:Stores the number of issued books that have been reserved
+\\NoOfBooks:A static variable storing the total number of books
+\\IDsofIssuedMembers[]:An array of integers storing the ids of all the members who have issued copies of the book
+\\IDsOfMembersReserved[]:An array of integers storing the ids of all the members who have issued copies of the book
+\\RackNo:stores the rack number where the book is kept
+
+\item Operations:
+\\Getter functions for name,No$\_$of$\_$copies,ISBN number,Penalty$\_$rate,LastIssueDate,author,NoOfCopiesIssued,NoOfCopiesReserved,NoOfBooks,IDsofIssuedMembers,IDsOfMembersReserved,RackNo.
+
+We have used getters for these as we need to view these attributes from outside 
+\\
+Setters for No$\_$of$\_$copies,LastIssueDate,NoOfCopiesIssued,NoOfCopiesReserved,IDsOfIssuedMembers, IDSOfMembersReserved,RackNo.
+
+We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
+\end{itemize}
+
+
+\item Library Member 
+\begin{itemize}
+\item Attributes:
+\begin{itemize}
+\item Name:Name of the user
+\item ID$\_$number:Login id of the user
+\item Number of books in account:Total number of issued books
+\item Number of reserved books:Total number of books issued by the user
+\item NoOfUsers:A static variable storuing total number of users
+\item ISBNnosOfIssuedBooks[]:an array storing the ISBN number of all books issued by the user
+\item ISBNnosOfReservedBooks[]:an array storing the ISBN number of all books reserved by the user
+\item maximumNoOfBooksIssued:the maximum number of books that the user can issue
+\item Pasword:The login password of the user which is necessary for login authentication
+\end{itemize}
+
+\item Operations:
+\begin{itemize}
+
+\item Constructor to initialize member\\
+\item Getters for NumberOfBooksinAccount,No ofReservedBooks,NoOfUsers.
+We have used getters for these as we need to view these attributes from outside \\\
+\item Setters for NumberOfUsers,Number of books in account,No Of reserved Books.
+
+
+We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
+\\
+\item IssueBook:called when member tries to issue a book\\
+\item SearchBook:Called when member tries to search fo a book\\
+\item Reserve Book:Called when member tries to reserve a book\\
+\item ReturnBook:called when member tries to return a book\\
+\item PayFine:Called when member returns an overdue book\\
+
+\end{itemize}
+\end{itemize}
+
+\item Library Clerk
+\begin{itemize}
+\item Attributes:
+\begin{itemize}
+\item UserId:User Id of the library Clerk\\
+\item Password:Password of the library Clerk\\
+\end{itemize}
+
+\item Operations:
+\begin{itemize}
+\item AddBook:Adds a new procured book to database\\
+\item Removebook:Deletes a disposed book from database\\
+\end{itemize}
+\end{itemize}
+\item Librarian
+
+\begin{itemize}
+
+\item Attributes:
+\begin{itemize}
+\item UserId:User Id of the librarian
+\item Password:Password of the librarian
+\end{itemize}
+\item Operations:
+\begin{itemize}
+\item AddUser:Adds a new user account
+\item DeleteUser:Deletes an existing user account
+\item getStatistics: asks for statistics from LIS
+\item DisposeBooks:Disposes a book not issued in 5 years
+\item OrderReminder:Orders LIS to print reminder on overdue books
+\end{itemize}
+\end{itemize}
+
+\item LIS
+\begin{itemize}
+\item Operations:\\
+\begin{itemize}
+
+\item ApproveIssue:Called when user tries to issue a book
+\item ApproveReturn:Called when user tries to return a book
+
+\item ApproveReserve:Called when user tries to reserve a book
+\item CalculatePenalty:Calculates penalty on overdue book
+\item PrintBill:prints penalty Bill
+\item PrintReminder:prints Reminder on overdue books
+\item Show Statistics:Display statistics of books issued
+
+\end{itemize}
+\end{itemize}
+
+\item Faculty\\
+It is a generalization of Library User
+\item Student\\
+It is a generalization of Library User
+\item Research Scholar\\
+It is a generalization of Student
+\item UG Student\\
+It is a generalization of Student
+\item PG Student\\
+It is a generalization of Student
+
+\end{itemize}
 \subsection{Sequence Diagram}
 \subsubsection*{Add User Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagAddUser.png}
@@ -1011,7 +1316,19 @@ The user can issue book from this portal if the book is present in the library a
 \end{itemize}
 
 \subsection{Design I/O procedures and user interfaces}
+The software takes input through a interactive GUI application.\\
+Few rudimentary GUI screen of the software have been provided in the section below for showing which are subject to changes as the coding stage progresses.
 
+\begin{itemize}
+\item Login Screen : \\
+\includegraphics[scale=0.5]{images/login.png}
+\item Librarian Home Screen : \\
+\includegraphics[scale=0.5]{images/librarian.png}
+\item Library Clerk Home Screen : \\
+\includegraphics[scale=0.5]{images/clerk.png}
+\item Library User Home Screen : \\
+\includegraphics[scale=0.5]{images/user.png}
+\end{itemize}
 
 \subsection{Design of classes in target language}
 Java being an object oriented language implements classes  as a blueprint or template of objects. Here the main classes shall be books and user.
