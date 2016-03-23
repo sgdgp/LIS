@@ -10,6 +10,15 @@
 \usepackage[explicit]{titlesec}
 \usepackage[normalem]{ulem}
 \usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+ \geometry{
+ %a4paper,
+ %total={170mm,257mm},
+ left=20mm,
+ %right=20mm,
+%top=20mm,
+ }
+
 \title{Library Information System}
 
 \author{}
@@ -68,6 +77,22 @@ this purpose it is necessary for LIS to maintain the statistics regarding issuan
 \item When books are disposed off, the Library clerk should be able to delete the book from the list of books
 in the Library and when a book is procured the system should support entering the details.
 \end{itemize}
+
+\subsubsection*{Q and A with the client}
+Question Answer with the client:
+\begin{itemize}
+\item Q : Is the ISBN number same for all the copies of a book.If yes then how do we differentiate between copies?
+\\A : Yes,ISBN number is same for all copies of a book.They are differentiated by a seperate copy ID
+
+\item Q : Is the month mentioned in the problem satement 30 days or from a date of one month to the sme date of the next?
+\\A : It is not 30 days.It is from a date of a month to the same date of another.For instance, one month from 5th February is 5th March.
+
+\item Q : Can an user reserve books if he has exhausted his reseve quota?
+\\A : No, he has to return his issued books before he can reserve books.
+
+\item Q : When asked to display rack number of a book,do we need to display rack number of all copies of a book?
+\\A : Yes
+\end{itemize}
 \subsection{Document Conventions}
 The conventions used in the document are as per the IEEE standard provided for formatting the SRS document of a software
 
@@ -107,7 +132,10 @@ The following references have been consulted to make a suitable and effective so
 
 \begin{itemize}
 \item IEEE standard 830-1998 recommended practice for Software Requirements Specifications-Description
-\item 
+\item Bourque, P.; Fairley, R.E. (2014). "Guide to the Software Engineering Body of Knowledge (SWEBOK)". IEEE Computer Society. Retrieved 17 July 2014.
+\item Pressman, Roger (2010). Software Engineering: A Practitioner's Approach. Boston: McGraw Hill. p. 123. ISBN 9780073375977.
+\item "DI-IPSC-81433A, DATA ITEM DESCRIPTION SOFTWARE REQUIREMENTS SPECIFICATION (SRS)". everyspec.com. 1999-12-15. Retrieved 2013-04-04.
+\item Stellman, Andrew and Greene, Jennifer (2005). Applied software project management. O'Reilly Media, Inc. p. 308. ISBN 0596009488.
 \end{itemize}
 
 
@@ -122,14 +150,16 @@ It is designed to make the process of issuing, reserving and returning of a book
 \subsection{Product Features}
 The product provides the features to create a librarian , library clerks and a set of users comprising of UG student, PG student, Faculty and Research Scholar.
 
-All the users irrespective of their type can issue and return a book.The librarian has some special functions like creation of a library member/user. The librarian can have access to account of any user and can look into it in case need arises.
-Library clerks on the other hand can add and remove a book from the database of the library. They also have been assigned methods to impose fine in case of defautlters.
+All the users irrespective of their type can issue and return a book.The librarian has some special functions like creation of a library member/user. The librarian can have access to account of any user and can look into it in case need arises.\\
+The librarian has the sole administrator access to the software and can also issue a notification to the clerk to remove a book from the library if need arises.\\
+Library clerks on the other hand can add and remove a book from the database of the library. During the return of the book the background cron job automatically checks if there is a need to impose fine in case the book has been overdue.\\
 
 Finally there is a non-physical member called as LIS (syatem admin) which is autonomous and monitors all the finctioning of the software. It automatically notifies about the delays to the clerks and helps to update and keep track of all the activities of the software.
 
-A class diagram showing the relationship is given below to enhance the understanding of the workflow.
+A class diagram showing the relationship is given below to enhance the understanding of the workflow.\\
 
-subsubsection{Use cases}
+\includegraphics[scale=0.60]{images/useCaseDiag.jpg}
+\subsubsection*{Use cases}
 \begin{enumerate}
 \item User use cases:
 	\begin{itemize}
@@ -387,60 +417,215 @@ Failure Situations:\\The user has not issued any book\\
 
 \end{itemize}
 \end{enumerate}
-\includegraphics[scale=0.25]{images/classDiagram}
-\\
-%\begin{itemize}
-%\item Issue Book : Allows the librarian to issue books to members on request
-%\item Return book : Whenever a member returns an issued book , the library system uses this data to update the database and user history simultaneouly. This data can also be used to calculate fine if the book is returned late than the deadline
-%\item Add book : It allows the librarian to add books to the library database
-%\item Delete book : The librarian has an option to remove a book from the library database
-%\item Add/Remove members : The software allows the user to add members like the faculty and the other students to have access to the books in the library
-%\item View history : The librarian can view the issue history of any book in the library
-%\item Query : The library can search for a particular book by giving a part of its name or the full name of the book.
-%\end{itemize}
 
 \subsection{User Classes and Characteristics}
+
+\includegraphics[scale=0.50]{images/classDiagSRS.png}
+\begin{itemize}
+
+\item Book
+\begin{itemize}
+\item Class Attributes:\\
+\\Name:Store the name of book
+\\No$\_$of$\_$copies:Stores the number of copies of a book
+\\Penalty$\_$Rate:the rate of penalty for book.A static member as it is common for all the books
+\\Author:stores name  author of book 
+\\LastIssueDateDate:Stores the last issued date of book
+\\NoOfCopiesIssued:Stores the number of copies of the book that have been issued out
+\\NoOfCopiesReserved:Stores the number of issued books that have been reserved
+\\NoOfBooks:A static variable storing the total number of books
+\\IDsofIssuedMembers[]:An array of integers storing the ids of all the members who have issued copies of the book
+\\IDsOfMembersReserved[]:An array of integers storing the ids of all the members who have issued copies of the book
+\\RackNo:stores the rack number where the book is kept
+
+\item Operations:
+\\Getter functions for name,No$\_$of$\_$copies,ISBN number,Penalty$\_$rate,LastIssueDate,author,NoOfCopiesIssued,NoOfCopiesReserved,NoOfBooks,IDsofIssuedMembers,IDsOfMembersReserved,RackNo.
+
+We have used getters for these as we need to view these attributes from outside 
+\\
+Setters for No$\_$of$\_$copies,LastIssueDate,NoOfCopiesIssued,NoOfCopiesReserved,IDsOfIssuedMembers, IDSOfMembersReserved,RackNo.
+
+We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
+\end{itemize}
+
+
+\item Library Member 
+\begin{itemize}
+\item Attributes:
+\begin{itemize}
+\item Name:Name of the user
+\item ID$\_$number:Login id of the user
+\item Number of books in account:Total number of issued books
+\item Number of reserved books:Total number of books issued by the user
+\item NoOfUsers:A static variable storuing total number of users
+\item ISBNnosOfIssuedBooks[]:an array storing the ISBN number of all books issued by the user
+\item ISBNnosOfReservedBooks[]:an array storing the ISBN number of all books reserved by the user
+\item maximumNoOfBooksIssued:the maximum number of books that the user can issue
+\item Pasword:The login password of the user which is necessary for login authentication
+\end{itemize}
+
+\item Operations:
+\begin{itemize}
+
+\item Constructor to initialize member\\
+\item Getters for NumberOfBooksinAccount,No ofReservedBooks,NoOfUsers.
+We have used getters for these as we need to view these attributes from outside \\\
+\item Setters for NumberOfUsers,Number of books in account,No Of reserved Books.
+
+
+We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
+\\
+\item IssueBook:called when member tries to issue a book\\
+\item SearchBook:Called when member tries to search fo a book\\
+\item Reserve Book:Called when member tries to reserve a book\\
+\item ReturnBook:called when member tries to return a book\\
+\item PayFine:Called when member returns an overdue book\\
+
+\end{itemize}
+\end{itemize}
+
+\item Library Clerk
+\begin{itemize}
+\item Attributes:
+\begin{itemize}
+\item UserId:User Id of the library Clerk\\
+\item Password:Password of the library Clerk\\
+\end{itemize}
+
+\item Operations:
+\begin{itemize}
+\item AddBook:Adds a new procured book to database\\
+\item Removebook:Deletes a disposed book from database\\
+\end{itemize}
+\end{itemize}
+\item Librarian
+
+\begin{itemize}
+
+\item Attributes:
+\begin{itemize}
+\item UserId:User Id of the librarian
+\item Password:Password of the librarian
+\end{itemize}
+\item Operations:
+\begin{itemize}
+\item AddUser:Adds a new user account
+\item DeleteUser:Deletes an existing user account
+\item getStatistics: asks for statistics from LIS
+\item DisposeBooks:Disposes a book not issued in 5 years
+\item OrderReminder:Orders LIS to print reminder on overdue books
+\end{itemize}
+\end{itemize}
+
+\item LIS
+\begin{itemize}
+\item Operations:\\
+\begin{itemize}
+
+\item ApproveIssue:Called when user tries to issue a book
+\item ApproveReturn:Called when user tries to return a book
+
+\item ApproveReserve:Called when user tries to reserve a book
+\item CalculatePenalty:Calculates penalty on overdue book
+\item PrintBill:prints penalty Bill
+\item PrintReminder:prints Reminder on overdue books
+\item Show Statistics:Display statistics of books issued
+
+\end{itemize}
+\end{itemize}
+
+\item Faculty\\
+It is a generalization of Library User
+\item Student\\
+It is a generalization of Library User
+\item Research Scholar\\
+It is a generalization of Student
+\item UG Student\\
+It is a generalization of Student
+\item PG Student\\
+It is a generalization of Student
+
+\end{itemize}
+
 
 \subsection{Operating Environment}
 The software is designed to run on the following environments :
 \begin{itemize}
-\item Windows 
+\item Windows 7 or later
 \item Ubuntu 14.04.03 (LTS version)
-
-Any OS with the support of Java JDK and JRE libraries 1.7 and above can be used to execute the software.
 \end{itemize}
+
+Any OS with the support of Java JDK and JRE libraries 1.7 and above can be used to execute the software.\\
+
 
 \subsection{Design and Implementation Constraints}
 This software is optimized to run on a maximum of 10000 books .
 Exceeding this number can result in a slower running time of the algorithm and thus the execution may not fruitful enough.
-
+\newpage
 \subsection{User Documentation}
-User manual $:$
+User manual :
 
 \subsubsection*{User Login}
 Any user with a valid username and password will be able to login to the software to access the features. Initially just after the installation of the software only a librarian can be created in the software. Upon thd creation of the librarian the librarian can then create the other users in the library.
 \begin{itemize}
-\item For librarian : If a user logs in as librarian he is then shown a librarian home page screen with the functionalities exclusively of a libraraian.
-\item For clerk : If user logs in as clerkhe is then shown the clerk home page with the functions like adding or deleting book etc.
-\item For others(members) : We switch on to a new screen which is the home screen of the member. The member has the options of issuing, reserving and returning a book.
+\item \underline{For librarian} :\\ If a user logs in as librarian he is then shown a librarian home page screen with the functionalities exclusively of a libraraian.
+\item \underline{For clerk} :\\ If user logs in as clerkhe is then shown the clerk home page with the functions like adding or deleting book etc.
+\item \underline{For others(members)} : \\We switch on to a new screen which is the home screen of the member. The member has the options of issuing, reserving and returning a book.
 \end{itemize}
 
 \subsubsection*{User creation}
 The librarian can be created in the beginning when the software is first installed. Once a librarian is creates an new librarian can not be created until and unless the old one is removed.
 \\
 Only the librarian can create a new member of the library like the faculty or the students.
-During the creation of a member the librarian should also provide the type of the user as the maximim book count is different for different categories of the users.Once the type of a library member is given during creation one does not need to provide it anywhere else during issuing or returning of a book as it will be saved in the database and automatically fetched when required.
+During the creation of a member the librarian should also provide the type of the user as the maximim book count is different for different categories of the users.Once the type of a library member is given during creation one does not need to provide it anywhere else during issuing or returning of a book as it will be saved in the database and automatically fetched when required.\\
+There are several rules while creating the user :
+\begin{itemize}
+\item The username can consist of alphanumeric characters along with an underscore $(\_)$
+\item The password needs to consist atleast one of each type i.e. atleast one alphabet , atleast one number and atleast one special character.\\
+The password needs to atlest 8 characters long to ensure good security.
+\item The user type also needs to be provided.
+
+\end{itemize}
 
 \subsubsection*{Librarian Home Screen}
 The librarian hold the administrator access of the library.The feature available to him are as follows :
 \begin{itemize}
-\item Creation of user :
-For this purpose the librian will be directed to a new scree where he will have to provide the necessary details in order to create a new account and he has to provide the member type during account creation.
+\item \underline{Creation of user} :\\
+For this purpose the librian will be directed to a new screen where he will have to provide the necessary details in order to create a new account and he has to provide the member type during account creation.
+\item \underline{Removing user} : \\
+The librarian will provide with the details of the user to remove . If clicked to remove the details of the corresponding user will be removed from the database if and only if all his issued books are returned and there is no penalty due for him.
+\item \underline{Print notifications}:\\ The librarian can access any user history an can send a request or notification of printing the same
+\item \underline{Notification to print penalty bill} :\\ The librarian can send message to the printer to print the penalty bill.
+\item \underline{Notification to clerk to remove book} :\\
+The librarian can also issue a request to the clerk to remove a book from the kibrary database is he finds it necessary.
 \end{itemize}
 
+\subsubsection*{User home screen}
+\begin{itemize}
+\item \underline{Issue book}:\\
+The user can issue book from this portal if the book is present in the library at that point of time.
+\item \underline{Return book} :\\ The user can return the book earlier issued via a portal.It also checks if the book is returned in time and if any fine is due.
+\item \underline{Reserve book} :\\ The user can reserve any book if it is not present at that point of time and the user will not exceed his maximum issue count.
+\item \underline{Search book} :\\ The user can search for any book in the library database by providing any details of the book.If it is present the software will display the rack number of the location of the book.
+
+\end{itemize}
+\subsubsection*{Clerk home screen}
+\begin{itemize}
+\item \underline{Add book} :\\ The clerk can add a book into the library database with all the relevant details
+\item \underline{Remove book} :\\ The clerk can remove any old and unused book from the library and remove all its details from the database.
+\end{itemize}
 \subsection{Assumptions and Dependencies}
+We have assumed that the user can cancel his reservation any time later if he/she feels that the book is not required for issuing.
+Also the other things that have been taken care of are :
+\begin{itemize}
+\item ISBN number is same for all copies of a book.They are differentiated by a seperate copy ID
+\item For penalty date calculation a "month" is not just 30 days.It is from a date of a month to the same date of another.For instance, one month from 5th February is 5th March.
+\item The user has to return his issued books before he can reserve books.
 
-
+The software depends on the java awt and swing packages\\
+Also for the database support we have used Mysql which is enabled by the java sql libraries.
+\\So the software depends on these above mentioned packages and without these it wont execute.
+\end{itemize}
 \section{SYSTEM FEATURES}
 \subsection{User login}
 The software should allow the user to provide the details of a user to login into the system.
@@ -471,28 +656,36 @@ A library user(faculty,research scholar,UG or PG student) can pay the fine if he
 \end{enumerate}
 \subsection{Software Interfaces}
 \begin{enumerate}
-\item Back end  $:$ Built using Java and DBMS(MySQL)
+\item Back end  $:$ Built using Java and MySQL (for DBMS)
 \item Front end $:$ Using Java 
 \end{enumerate}
 
 \subsection{Communication Interfaces}
-The databases can be kept in a separeate location other than the source computer itself to make it more space efficient.It can be done by using tcp/ip protocol for network access.It is not mandatory fot this specific design but can be taken up as a  feature which can be appiled to make the software more realistic and user friendly.
+The databases can be kept in a separeate location other than the source computer itself to make it more space efficient.It can be done by using tcp/ip protocol for network access.
+\\It is not mandatory for this specific design but can be taken up as a  feature which can be appiled to make the software more realistic and user friendly.
+\\This will not only make the software more space efficient but at the same time maintain data security since we will be using a secured channel for data communication.
 
 \section{OTHER NONFUNCTIONAL REQUIREMENTS}
 \subsection{Performance Requirements}
-With the Library Information System the librarian and library clerk can process a book transaction in a faster speed .
-The members will be able to check the status of the checked out items and can also borrow and return a book in a short amount of time.
-Automatic updates in the account of each user will enable them to know about the item they have checked out and all the relevant details due to which they do not need to consult or ask the library clerk each time.
-The background system admin will automatically perform the above mentioned updation in the accounts in the background autonomously without explicit invocation.
-In case of defaulters the fine and other penalties should be automatically reported and saved in the record once the deadline has crossed . This is also performed by the syatem admin (referred as LIS itself) in the background.
-ALl the background tasks should not compromise with the UX of the software.All the background processes should be methodically handled and not affect the runtime functionalities of the software
+\begin{itemize}
+\item With the Library Information System the librarian and library clerk can process a book transaction in a faster speed .\\
+\item The members will be able to check the status of the checked out items and can also borrow and return a book in a short amount of time.\\
+\item Automatic updates in the account of each user will enable them to know about the item they have checked out and all the relevant details due to which they do not need to consult or ask the library clerk each time.\\
+\item The background system admin will automatically perform the above mentioned updation in the accounts in the background autonomously without explicit invocation.\\
+\item In case of defaulters the fine and other penalties should be automatically reported and saved in the record once the deadline has crossed . This is also performed by the syatem admin (referred as LIS itself) in the background.\\
+\item ALl the background tasks should not compromise with the UX of the software.All the background processes should be methodically handled and not affect the runtime functionalities of the software
+\end{itemize}
+
 
 \subsection{Safety Requirements}
-Only the valid users can change the records that too only in their respective account.In case any invalid user tries to tamper with the data a error message will be flagged thus aborting the action.
+Only the valid users can change the records that too only in their respective account.In case any invalid user tries to tamper with the data a error message will be flagged thus aborting the action.\\
+In this type of software safety is a necessary thing that needs to be taken care of.For this absolute care needs to be taken to check the validity of user before tampering any information in the database.
+\\
+Also a seperate copy of the database needs to be maintained so that a backup of the dynamic data is available all the time if required. In case the software breaks down due to a glitch all the data should not be lost.\\
 \subsection{Security Requirements}
-The sytem must be highly secure in the login part.
-No user should be able to access a domain outside his reach.
-Care must be taken to keep the user accounts secure and all the book transaction should be properly updated to the corresponding user.
+The sytem must be highly secure in the login part.\\
+No user should be able to access a domain outside his reach.\\
+Care must be taken to keep the user accounts secure and all the book transaction should be properly updated to the corresponding user.\\
 
 \subsection{Software Quality Requirements}
 \subsubsection{Reliability requirements}
