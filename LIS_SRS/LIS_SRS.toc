@@ -11,26 +11,26 @@
 \contentsline {subsection}{\numberline {2.3}User Classes and Characteristics}{18}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Operating Environment}{20}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Design and Implementation Constraints}{21}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}User Documentation}{22}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.6}User Documentation}{21}{subsection.2.6}
 \contentsline {subsection}{\numberline {2.7}Assumptions and Dependencies}{23}{subsection.2.7}
-\contentsline {section}{\numberline {3}SYSTEM FEATURES}{24}{section.3}
-\contentsline {subsection}{\numberline {3.1}User login}{24}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Add user}{24}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Remove user}{24}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Search book}{24}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Issue book}{24}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Return book}{24}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Give penalty}{24}{subsection.3.7}
-\contentsline {section}{\numberline {4}EXTERNAL INTERAFCE REQUIREMENTS}{24}{section.4}
+\contentsline {section}{\numberline {3}SYSTEM FEATURES}{23}{section.3}
+\contentsline {subsection}{\numberline {3.1}User login}{23}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Add user}{23}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Remove user}{23}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Search book}{23}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Issue book}{23}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Return book}{23}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Give penalty}{23}{subsection.3.7}
+\contentsline {section}{\numberline {4}EXTERNAL INTERFACE REQUIREMENTS}{24}{section.4}
 \contentsline {subsection}{\numberline {4.1}User Interfaces}{24}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Hardware Interfaces}{24}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}Hardware Interfaces}{25}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Software Interfaces}{25}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Communication Interfaces}{25}{subsection.4.4}
-\contentsline {section}{\numberline {5}OTHER NONFUNCTIONAL REQUIREMENTS}{25}{section.5}
-\contentsline {subsection}{\numberline {5.1}Performance Requirements}{25}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Safety Requirements}{25}{subsection.5.2}
+\contentsline {section}{\numberline {5}OTHER NONFUNCTIONAL REQUIREMENTS}{26}{section.5}
+\contentsline {subsection}{\numberline {5.1}Performance Requirements}{26}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Safety Requirements}{26}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}Security Requirements}{26}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Software Quality Requirements}{26}{subsection.5.4}
-\contentsline {subsubsection}{\numberline {5.4.1}Reliability requirements}{26}{subsubsection.5.4.1}
-\contentsline {subsubsection}{\numberline {5.4.2}Usability Requirements}{26}{subsubsection.5.4.2}
-\contentsline {section}{\numberline {6}OTHER REQUIREMENTS}{26}{section.6}
+\contentsline {subsection}{\numberline {5.4}Software Quality Requirements}{27}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}Reliability requirements}{27}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}Usability Requirements}{27}{subsubsection.5.4.2}
+\contentsline {section}{\numberline {6}OTHER REQUIREMENTS}{27}{section.6}

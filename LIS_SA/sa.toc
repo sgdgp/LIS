@@ -1,5 +1,5 @@
 \contentsline {part}{I\hspace {1em}System Analysis}{4}{part.1}
-\contentsline {section}{\numberline {1}Feasability Study}{4}{section.1}
+\contentsline {section}{\numberline {1}Feasibility Study}{4}{section.1}
 \contentsline {subsection}{\numberline {1.1}Understanding the problem}{4}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Scope of the Problem}{4}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Analysing stakeholders}{4}{subsection.1.3}
@@ -40,15 +40,16 @@
 \contentsline {section}{\numberline {7}Database Design}{31}{section.7}
 \contentsline {section}{\numberline {8}Design Details}{31}{section.8}
 \contentsline {subsection}{\numberline {8.1}Refinement of UML diagrams}{32}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Refinement of Use Case Diagram}{32}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}Data Flow Diagram}{43}{subsection.8.3}
-\contentsline {subsection}{\numberline {8.4}Refinement of Class Diagrams}{45}{subsection.8.4}
-\contentsline {subsection}{\numberline {8.5}Sequence Diagram}{48}{subsection.8.5}
-\contentsline {subsection}{\numberline {8.6}Collaboration Diagram}{51}{subsection.8.6}
-\contentsline {subsection}{\numberline {8.7}Statechart Diagram}{52}{subsection.8.7}
-\contentsline {subsection}{\numberline {8.8}Activity Diagram}{53}{subsection.8.8}
-\contentsline {subsection}{\numberline {8.9}Prototype Design}{55}{subsection.8.9}
-\contentsline {subsection}{\numberline {8.10}Design I/O procedures and user interfaces}{57}{subsection.8.10}
-\contentsline {subsection}{\numberline {8.11}Design of classes in target language}{59}{subsection.8.11}
-\contentsline {subsection}{\numberline {8.12}Exception Design}{59}{subsection.8.12}
+\contentsline {subsubsection}{\numberline {8.1.1}Refinement of Use Case Diagram}{32}{subsubsection.8.1.1}
+\contentsline {subsubsection}{\numberline {8.1.2}Data Flow Diagram}{43}{subsubsection.8.1.2}
+\contentsline {subsubsection}{\numberline {8.1.3}Refinement of Class Diagrams}{45}{subsubsection.8.1.3}
+\contentsline {subsubsection}{\numberline {8.1.4}Sequence Diagram}{48}{subsubsection.8.1.4}
+\contentsline {subsubsection}{\numberline {8.1.5}Collaboration Diagram}{51}{subsubsection.8.1.5}
+\contentsline {subsubsection}{\numberline {8.1.6}Statechart Diagram}{52}{subsubsection.8.1.6}
+\contentsline {subsubsection}{\numberline {8.1.7}Activity Diagram}{53}{subsubsection.8.1.7}
+\contentsline {subsection}{\numberline {8.2}Prototype Design}{55}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Design I/O procedures and user interfaces}{57}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Design of classes in target language}{59}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Exception Design}{59}{subsection.8.5}
 \contentsline {section}{\numberline {9}Adoptable Practices}{59}{section.9}
+\contentsline {section}{\numberline {10}Any Other Information Of previous Stages}{59}{section.10}

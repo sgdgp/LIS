@@ -1,5 +1,5 @@
 \BOOKMARK [0][-]{part.1}{I System Analysis}{}% 1
-\BOOKMARK [1][-]{section.1}{Feasability Study}{part.1}% 2
+\BOOKMARK [1][-]{section.1}{Feasibility Study}{part.1}% 2
 \BOOKMARK [2][-]{subsection.1.1}{Understanding the problem}{section.1}% 3
 \BOOKMARK [2][-]{subsection.1.2}{Scope of the Problem}{section.1}% 4
 \BOOKMARK [2][-]{subsection.1.3}{Analysing stakeholders}{section.1}% 5
@@ -40,15 +40,16 @@
 \BOOKMARK [1][-]{section.7}{Database Design}{part.2}% 40
 \BOOKMARK [1][-]{section.8}{Design Details}{part.2}% 41
 \BOOKMARK [2][-]{subsection.8.1}{Refinement of UML diagrams}{section.8}% 42
-\BOOKMARK [2][-]{subsection.8.2}{Refinement of Use Case Diagram}{section.8}% 43
-\BOOKMARK [2][-]{subsection.8.3}{Data Flow Diagram}{section.8}% 44
-\BOOKMARK [2][-]{subsection.8.4}{Refinement of Class Diagrams}{section.8}% 45
-\BOOKMARK [2][-]{subsection.8.5}{Sequence Diagram}{section.8}% 46
-\BOOKMARK [2][-]{subsection.8.6}{Collaboration Diagram}{section.8}% 47
-\BOOKMARK [2][-]{subsection.8.7}{Statechart Diagram}{section.8}% 48
-\BOOKMARK [2][-]{subsection.8.8}{Activity Diagram}{section.8}% 49
-\BOOKMARK [2][-]{subsection.8.9}{Prototype Design}{section.8}% 50
-\BOOKMARK [2][-]{subsection.8.10}{Design I/O procedures and user interfaces}{section.8}% 51
-\BOOKMARK [2][-]{subsection.8.11}{Design of classes in target language}{section.8}% 52
-\BOOKMARK [2][-]{subsection.8.12}{Exception Design}{section.8}% 53
+\BOOKMARK [3][-]{subsubsection.8.1.1}{Refinement of Use Case Diagram}{subsection.8.1}% 43
+\BOOKMARK [3][-]{subsubsection.8.1.2}{Data Flow Diagram}{subsection.8.1}% 44
+\BOOKMARK [3][-]{subsubsection.8.1.3}{Refinement of Class Diagrams}{subsection.8.1}% 45
+\BOOKMARK [3][-]{subsubsection.8.1.4}{Sequence Diagram}{subsection.8.1}% 46
+\BOOKMARK [3][-]{subsubsection.8.1.5}{Collaboration Diagram}{subsection.8.1}% 47
+\BOOKMARK [3][-]{subsubsection.8.1.6}{Statechart Diagram}{subsection.8.1}% 48
+\BOOKMARK [3][-]{subsubsection.8.1.7}{Activity Diagram}{subsection.8.1}% 49
+\BOOKMARK [2][-]{subsection.8.2}{Prototype Design}{section.8}% 50
+\BOOKMARK [2][-]{subsection.8.3}{Design I/O procedures and user interfaces}{section.8}% 51
+\BOOKMARK [2][-]{subsection.8.4}{Design of classes in target language}{section.8}% 52
+\BOOKMARK [2][-]{subsection.8.5}{Exception Design}{section.8}% 53
 \BOOKMARK [1][-]{section.9}{Adoptable Practices}{part.2}% 54
+\BOOKMARK [1][-]{section.10}{Any Other Information Of previous Stages}{part.2}% 55

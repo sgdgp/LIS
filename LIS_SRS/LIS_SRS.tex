@@ -34,10 +34,10 @@
 LIBRARY INFORMATION SYSTEM\\
 %\vspace{2 cm}
 Group Number : 52\\
- Name of group members: \\
+Group members: \\
 \begin{itemize}
 \item \begin{center}Ashrujit Ghoshal (14CS10060)\end{center}
-\item \begin{center}Sayan Ghosh (14CS10060)\end{center}
+\item \begin{center}Sayan Ghosh (14CS10061)\end{center}
 \end{itemize}
 
 \end{center}
@@ -185,7 +185,7 @@ A class diagram showing the relationship is given below to enhance the understan
 \item  Postcondition: \\If the book exists in the library,the availablity status of the book is returned\\
  \item Failure Situations:\\ The library does not have  the book \\
  \item Postcondition in case of failure:\\A message to user about the same\\
-\item  Actors:\\ User communiates with the system\\
+\item  Actors:\\ User communicates with the system\\
 \item  Trigger:\\ User chooses the option to search books\\
  \item Main Success Scenario: \\The library has a copy of the book and it is available for issue.\\
 \item  Extensions/Variations: \\The library has a copy of the book but currently none of the copies are available.The book maybe reserved by the user.
@@ -203,7 +203,7 @@ A class diagram showing the relationship is given below to enhance the understan
  2.The library has the book and it is not avaiable for issue.\\
  3.The user has exhausted his quota of maximum number of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to reserve the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger: \\User chooses the option to issue books\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is available for issue.
 	\end{itemize}
@@ -220,7 +220,7 @@ A class diagram showing the relationship is given below to enhance the understan
  3.The user account is updated\\
  \item Failure Situations:\\The user has not issued any book\\
  \item Postcondition in case of failure:\\A message is give to the user about the same\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to return issued books\\
 \item  Main Success Scenario: \\The user had previously issued the book\\
  \end{itemize}
@@ -240,7 +240,7 @@ A class diagram showing the relationship is given below to enhance the understan
  2.The library has the book and it is  avaiable for issue.\\
  3.The user has exhausted his quota of maximm number of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to issue the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to reserve book\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is not available for issue.\\
  
@@ -254,7 +254,7 @@ A class diagram showing the relationship is given below to enhance the understan
  \item Postcondition:\\
  1.After successful issue the user account is updated \\
 Failure Situations:\\The user has not issued any book\\
- \item Actors: \\User communiates with the system\\
+ \item Actors: \\User communicates with the system\\
  \item Trigger:\\ 
  1.User chooses the option to cancel reservation of a book \\
  2.User does not issue the reserved book within 7 days of return\\
@@ -276,7 +276,7 @@ Failure Situations:\\The user has not issued any book\\
  \item The user has not issued any book
   \item No returned books are overdue
 	\end{enumerate} 
- \item Actors: User communiates with the system
+ \item Actors: User communicates with the system
  \item Trigger: User chooses the option to return issued books
  \item Main Success Scenario: The user had previously issued the book and the book is overdue
 	\end{itemize}
@@ -365,7 +365,7 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.An user makes a query\\ 
  \item Postcondition: \\ If the book is available, use cases display rack number and number of copies are called\\ 
- \item Actors:\\  System communiates with the user\\ 
+ \item Actors:\\  System communicates with the user\\ 
  \item Trigger: \\ User chooses the option to search books\\ 
 	\end{itemize}
 
@@ -373,23 +373,23 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
  \item Postcondition:\\  Rack numbers are displayed\\ 
- \item Actors:\\  System communiates with the user\\ 
- \item Trigger:\\  answer availibity query triggers this\\ 
+ \item Actors:\\  System communicates with the user\\ 
+ \item Trigger:\\  answer availability query triggers this\\ 
 	\end{itemize}
  
  \item Display number of copies of book\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
  \item Postcondition:\\  the number of copies of a book are displayed\\ 
- \item Actors: \\ System communiates with the user\\ 
- \item Trigger:\\  answer availibity query triggers this\\ 
+ \item Actors: \\ System communicates with the user\\ 
+ \item Trigger:\\  answer availability query triggers this\\ 
 	\end{itemize}
 
 \item Calculate lateness penalty\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is overdue, return book invokes this\\ 
  \item Postcondition:\\ Penalty is calculated and print bill is invoked\\ 
- \item Actors: \\ System communiates with the user\\ 
+ \item Actors: \\ System communicates with the user\\ 
  \item Trigger: \\ return book query triggers this\\ 
 	\end{itemize}
  
@@ -408,7 +408,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned the issued book later than his designated return date.\\ 
  \item Postcondition:\\ Bill of penalty is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\  Calculate lateness penalty triggers print bill\\ 
 \end{itemize}
 
@@ -416,7 +416,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item  Preconditions:\\ Some user must have exceeded the due date\\ 
  \item Postcondition:\\ Reminder to user is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\ order to print reminder triggers this\\ 
 \end{itemize}
 
@@ -424,7 +424,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned a reserved book \\ 
  \item Postcondition:\\ A notification is printed to the user who reserved the book\\ 
- \item Actors: \\ Printer communiates with the system which communicates with user\\ 
+ \item Actors: \\ Printer communicates with the system which communicates with user\\ 
  \item Trigger:\\ return book may trigger this use case\\ 
 \end{itemize}
 
@@ -587,17 +587,18 @@ Any OS with the support of Java JDK and JRE libraries 1.7 and above can be used 
 
 
 \subsection{Design and Implementation Constraints}
-This software is optimized to run on a maximum of 10000 books .
-Exceeding this number can result in a slower running time of the algorithm and thus the execution may not fruitful enough.
-\newpage
+This software is optimized to run on a maximum of 10000 books .\\
+Exceeding this number can result in a slower running time of the algorithm and thus the execution may not fruitful enough.\\
+Also the netwotrk facilities have been used which are not optimized to the fullest.\\
+This is an initial version of the software and all the improvements can be done in subsequent releases.\\
 \subsection{User Documentation}
 User manual :
 
 \subsubsection*{User Login}
-Any user with a valid username and password will be able to login to the software to access the features. Initially just after the installation of the software only a librarian can be created in the software. Upon thd creation of the librarian the librarian can then create the other users in the library.
+Any user with a valid username and password will be able to login to the software to access the features. Initially just after the installation of the software only a librarian can be created in the software. Upon the creation of the librarian the librarian can then create the other users in the library.
 \begin{itemize}
-\item \underline{For librarian} :\\ If a user logs in as librarian he is then shown a librarian home page screen with the functionalities exclusively of a libraraian.
-\item \underline{For clerk} :\\ If user logs in as clerkhe is then shown the clerk home page with the functions like adding or deleting book etc.
+\item \underline{For librarian} :\\ If a user logs in as librarian he is then shown a librarian home page screen with the functionalities exclusively of a librarian.
+\item \underline{For clerk} :\\ If user logs in as clerk is then shown the clerk home page with the functions like adding or deleting book etc.
 \item \underline{For others(members)} : \\We switch on to a new screen which is the home screen of the member. The member has the options of issuing, reserving and returning a book.
 \end{itemize}
 
@@ -610,7 +611,7 @@ There are several rules while creating the user :
 \begin{itemize}
 \item The username can consist of alphanumeric characters along with an underscore $(\_)$
 \item The password needs to consist atleast one of each type i.e. atleast one alphabet , atleast one number and atleast one special character.\\
-The password needs to atlest 8 characters long to ensure good security.
+The password needs to atleast 8 characters long to ensure good security.
 \item The user type also needs to be provided.
 
 \end{itemize}
@@ -625,7 +626,7 @@ The librarian will provide with the details of the user to remove . If clicked t
 \item \underline{Print notifications}:\\ The librarian can access any user history an can send a request or notification of printing the same
 \item \underline{Notification to print penalty bill} :\\ The librarian can send message to the printer to print the penalty bill.
 \item \underline{Notification to clerk to remove book} :\\
-The librarian can also issue a request to the clerk to remove a book from the kibrary database is he finds it necessary.
+The librarian can also issue a request to the clerk to remove a book from the library database is he finds it necessary.
 \end{itemize}
 
 \subsubsection*{User home screen}
@@ -662,21 +663,36 @@ The librarian is allowed to create a new user of the library who can have the fa
 \\
 The librarian gives the valid details in the fields to make the user and adds it to the database
 \subsection{Remove user}
-The librarian who hold the administrator acces to the software can remove any user from the user if need arises.All the records of the user will be removed from the databse maintained in the software.
+The librarian who hold the administrator acces to the software can remove any user from the user if need arises.All the records of the user will be removed from the database maintained in the software.
 \subsection{Search book}
 A library user(faculty,research scholar,UG or PG student) can search a book to see if it is available in the library for issuing.
 
 \subsection{Issue book}
-A library user(faculty,research scholar,UG or PG student) can issue a book which is available in the library only if he/she has not exceeded the maximum issue count aginst his/her account.
+A library user(faculty,research scholar,UG or PG student) can issue a book which is available in the library only if he/she has not exceeded the maximum issue count against his/her account.
 \subsection{Return book}
 A library user(faculty,research scholar,UG or PG student) can return a book which is available in the library only and is liable to pay fines in case of overdue.
 
 \subsection{Give penalty}
-A library user(faculty,research scholar,UG or PG student) can pay the fine if he/she has aprevious overdue dute to late returning of a book.
+A library user(faculty,research scholar,UG or PG student) can pay the fine if he/she has a previous overdue due to late returning of a book.
 
 
-\section{EXTERNAL INTERAFCE REQUIREMENTS}
+\section{EXTERNAL INTERFACE REQUIREMENTS}
 \subsection{User Interfaces}
+The software takes input through a interactive GUI application.\\
+Few rudimentary GUI screen of the software have been provided in the section below for showing which are subject to changes as the coding stage progresses.
+
+\begin{itemize}
+\item Login Screen : \\
+\includegraphics[scale=0.5]{images/login.png}
+\item Librarian Home Screen : \\
+\includegraphics[scale=0.5]{images/librarian.png}\\
+
+\item Library Clerk Home Screen : \\
+\includegraphics[scale=0.5]{images/clerk.png}
+\item Library User Home Screen : \\
+\includegraphics[scale=0.5]{images/user.png}
+\end{itemize}
+
 \subsection{Hardware Interfaces}
 \begin{enumerate}
 \item The software is run offline so hard disk with sufficient space of about --- is required to store and save the records for further use
@@ -690,7 +706,7 @@ A library user(faculty,research scholar,UG or PG student) can pay the fine if he
 
 \subsection{Communication Interfaces}
 The databases can be kept in a separeate location other than the source computer itself to make it more space efficient.It can be done by using tcp/ip protocol for network access.
-\\It is not mandatory for this specific design but can be taken up as a  feature which can be appiled to make the software more realistic and user friendly.
+\\It is not mandatory for this specific design but can be taken up as a  feature which can be applied to make the software more realistic and user friendly.
 \\This will not only make the software more space efficient but at the same time maintain data security since we will be using a secured channel for data communication.
 
 \section{OTHER NONFUNCTIONAL REQUIREMENTS}
@@ -718,21 +734,21 @@ Care must be taken to keep the user accounts secure and all the book transaction
 \subsection{Software Quality Requirements}
 \subsubsection{Reliability requirements}
 The software is extremely reliable and has a lightweight design.It uses as minimum resources as possible but still it provides a quality support for the intended software requirements.
-Multiple copies of the database have been kept at sepearte locations to ensure that the data is not lost in case of a serious software glitch. These backup datasets can be recovered easily by a file reader to get back the lost data.
+Multiple copies of the database have been kept at separate locations to ensure that the data is not lost in case of a serious software glitch. These backup datasets can be recovered easily by a file reader to get back the lost data.
 \\
 The background database should always be updated so that whenever a member visits he/she can get the latest information required.Also the duplicate or the backup databases must also be updated at the same time so that no discrepancy is there among the parallel databases.
 \\
 For every process that the software can do the steps are quite clearly framed and unambiguous in nature so that the user will not face any problem in doing the job.
 \subsubsection{Usability Requirements}
 The software must be user-friendly so that the user can easily perform all the tasks which the software is meant to do.It must have a soothing UX design and clear instructions to guide the user.
-\\In case of any error suitable error messages must be displayed to assist the user.Also a user manual is provided with the glimpses of the software design to show how the softwar eis supposed to work.
+\\In case of any error suitable error messages must be displayed to assist the user.Also a user manual is provided with the glimpses of the software design to show how the softwares supposed to work.
 \\
 Care has been taken to make the software process very fast and reliable.The running time of the software and the space complexity have been optimized as far as possible to keep the software more realistic and usable
 
 
 \section{OTHER REQUIREMENTS}
-The other thing which is required to make the back-end of the software is sql support. The sql framework used behind this software is MySQL for JAVA. Using the packages the sql support has been estblished.\\
-Use of sql is there to ensure proper database facilities rather than just using normal text files which might have also served our purpose.Use of proper databse structure greatly reduces the running time making it logarithmic from linear with respect to the number of records.
+The other thing which is required to make the back-end of the software is sql support. The sql framework used behind this software is MySQL for JAVA. Using the packages the sql support has been established.\\
+Use of sql is there to ensure proper database facilities rather than just using normal text files which might have also served our purpose.Use of proper database structure greatly reduces the running time making it logarithmic from linear with respect to the number of records.
 \\
 
 

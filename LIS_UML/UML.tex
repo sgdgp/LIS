@@ -34,10 +34,10 @@
 LIBRARY INFORMATION SYSTEM\\
 %\vspace{2 cm}
 Group Number : 52\\
- Name of group members: \\
+Group members: \\
 \begin{itemize}
 \item \begin{center}Ashrujit Ghoshal (14CS10060)\end{center}
-\item \begin{center}Sayan Ghosh (14CS10060)\end{center}
+\item \begin{center}Sayan Ghosh (14CS10061)\end{center}
 \end{itemize}
 
 \end{center}
@@ -50,7 +50,12 @@ Group Number : 52\\
 \section{Use Case Diagram}
 
 \includegraphics[scale=0.55]{images/useCaseDiag.jpg}\\
-
+\subsubsection*{Use case of User :}
+\includegraphics[scale=0.6]{images/userCaseDiag.png}\\
+\subsubsection*{Use case of Library Clerk :}
+\includegraphics[scale=0.6]{images/clerkClassDiag.png}\\
+\subsubsection*{Use case of Librarian :}
+\includegraphics[scale=0.6]{images/librarianCaseDiag.png}\\
 Description :
 \\
 \begin{enumerate}
@@ -65,7 +70,7 @@ Description :
 \item  Postcondition: \\If the book exists in the library,the availablity status of the book is returned\\
  \item Failure Situations:\\ The library does not have  the book \\
  \item Postcondition in case of failure:\\A message to user about the same\\
-\item  Actors:\\ User communiates with the system\\
+\item  Actors:\\ User communicates with the system\\
 \item  Trigger:\\ User chooses the option to search books\\
  \item Main Success Scenario: \\The library has a copy of the book and it is available for issue.\\
 \item  Extensions/Variations: \\The library has a copy of the book but currently none of the copies are available.The book maybe reserved by the user.
@@ -83,7 +88,7 @@ Description :
  2.The library has the book and it is not avaiable for issue.\\
  3.The user has exhausted his quota of maximum number of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to reserve the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger: \\User chooses the option to issue books\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is available for issue.
 	\end{itemize}
@@ -100,7 +105,7 @@ Description :
  3.The user account is updated\\
  \item Failure Situations:\\The user has not issued any book\\
  \item Postcondition in case of failure:\\A message is give to the user about the same\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to return issued books\\
 \item  Main Success Scenario: \\The user had previously issued the book\\
  \end{itemize}
@@ -120,7 +125,7 @@ Description :
  2.The library has the book and it is  avaiable for issue.\\
  3.The user has exhausted his quota of maximm number of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to issue the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to reserve book\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is not available for issue.\\
  
@@ -134,7 +139,7 @@ Description :
  \item Postcondition:\\
  1.After successful issue the user account is updated \\
 Failure Situations:\\The user has not issued any book\\
- \item Actors: \\User communiates with the system\\
+ \item Actors: \\User communicates with the system\\
  \item Trigger:\\ 
  1.User chooses the option to cancel reservation of a book \\
  2.User does not issue the reserved book within 7 days of return\\
@@ -156,7 +161,7 @@ Failure Situations:\\The user has not issued any book\\
  \item The user has not issued any book
   \item No returned books are overdue
 	\end{enumerate} 
- \item Actors: User communiates with the system
+ \item Actors: User communicates with the system
  \item Trigger: User chooses the option to return issued books
  \item Main Success Scenario: The user had previously issued the book and the book is overdue
 	\end{itemize}
@@ -245,7 +250,7 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.An user makes a query\\ 
  \item Postcondition: \\ If the book is available, use cases display rack number and number of copies are called\\ 
- \item Actors:\\  System communiates with the user\\ 
+ \item Actors:\\  System communicates with the user\\ 
  \item Trigger: \\ User chooses the option to search books\\ 
 	\end{itemize}
 
@@ -253,7 +258,7 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
  \item Postcondition:\\  Rack numbers are displayed\\ 
- \item Actors:\\  System communiates with the user\\ 
+ \item Actors:\\  System communicates with the user\\ 
  \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
  
@@ -261,7 +266,7 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
  \item Postcondition:\\  the number of copies of a book are displayed\\ 
- \item Actors: \\ System communiates with the user\\ 
+ \item Actors: \\ System communicates with the user\\ 
  \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
 
@@ -269,7 +274,7 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is overdue, return book invokes this\\ 
  \item Postcondition:\\ Penalty is calculated and print bill is invoked\\ 
- \item Actors: \\ System communiates with the user\\ 
+ \item Actors: \\ System communicates with the user\\ 
  \item Trigger: \\ return book query triggers this\\ 
 	\end{itemize}
  
@@ -288,7 +293,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned the issued book later than his designated return date.\\ 
  \item Postcondition:\\ Bill of penalty is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\  Calculate lateness penalty triggers print bill\\ 
 \end{itemize}
 
@@ -296,7 +301,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item  Preconditions:\\ Some user must have exceeded the due date\\ 
  \item Postcondition:\\ Reminder to user is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\ order to print reminder triggers this\\ 
 \end{itemize}
 
@@ -304,16 +309,21 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned a reserved book \\ 
  \item Postcondition:\\ A notification is printed to the user who reserved the book\\ 
- \item Actors: \\ Printer communiates with the system which communicates with user\\ 
+ \item Actors: \\ Printer communicates with the system which communicates with user\\ 
  \item Trigger:\\ return book may trigger this use case\\ 
 \end{itemize}
 
 \end{itemize}
 \end{enumerate}
 
-\section{Refinement of Class Diagrams}
-\includegraphics[scale=0.35]{images/classDiag.png}
+\section{Class Diagrams}
+\subsection*{Initial Draft}
+\includegraphics[scale=0.35]{images/classDiagNaive.png}\\
 \\
+\subsection*{Final Draft}
+\includegraphics[scale=0.35]{images/classDiagFinal.jpg}
+
+
 Description : \\
 
 \begin{itemize}
@@ -482,7 +492,7 @@ The user needs to successfully login as a valid member of the library to avail t
 \\
 The user needs to successfully login to search if a book is present in the library.The user needs to give the details of the book in the system and it will notify about the prescence of the book in the library.
 
-\subsection{Collaboration Diagram}
+\section{Collaboration Diagram}
 
 \includegraphics[scale=0.50]{images/collaDiag.jpg}
 \\
@@ -494,7 +504,7 @@ The librarian has the sole administrator access to the software and the priviled
 \\
 The printer is also linked with the sytem and is used to print the notification and the penalty bills and reminder notifications
 
-\subsection{Statechart Diagram}
+\section{Statechart Diagram}
 
 \includegraphics[scale=0.50]{images/stateDiagIssue.png}
 \\

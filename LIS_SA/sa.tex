@@ -18,7 +18,7 @@
  left=20mm,
  %top=20mm,
  }
-\title{\textbf{ SA SD Document}}
+\title{\textbf{ SA/SD Document}}
 
 \author{}
 \date{}
@@ -34,10 +34,10 @@
 LIBRARY INFORMATION SYSTEM\\
 %\vspace{2 cm}
 Group Number : 52\\
- Name of group members: \\
+Group members: \\
 \begin{itemize}
 \item \begin{center}Ashrujit Ghoshal (14CS10060)\end{center}
-\item \begin{center}Sayan Ghosh (14CS10060)\end{center}
+\item \begin{center}Sayan Ghosh (14CS10061)\end{center}
 \end{itemize}
 
 \end{center}
@@ -47,7 +47,7 @@ Group Number : 52\\
 \tableofcontents
 \newpage
 \part{System Analysis}
-\section{Feasability Study}
+\section{Feasibility Study}
 \subsection{Understanding the problem}
 In this section, we make an effort to understand the purpose of the software.
 \\
@@ -63,7 +63,7 @@ In this section,we list the various functions performed by the software:
 \item Add users to the database
 \item Modify existing details of users
 \item Remove user from the database
-\item Query regarding books on ISBN number or name
+\item Query regarding books on ISBN nnumber or name
 \item Query regarding user on user id or name
 \item Record issue,return and reservation of books
 \item Calculation of penalty on overdue books
@@ -89,7 +89,7 @@ The librarian is treated as the administrator of the software who has the sole c
 \\The librarian can  send a print notification if required if a penalty is required to be paid in case of overdue of a book
 \\Also the librarian can study the book statistics and can send a notification to the clerk to dispose off old and unused books from the library database
 \subsubsection{Connection between software and member}
-The members can perform the following operartions:
+The members can perform the following operations:
 \begin{itemize}
 \item Can issue a book if available in the library
 \item Can request for reserving a book if already issued to another user (subjected to the condition that he does not exceed his/her maximum book limit)
@@ -101,7 +101,7 @@ The members can perform the following operartions:
 	\item Processor Pentium II processor or higher
 	\item Hard Disk space 500MB
 	\item RAM 512 MB
-	\item Network/Internet access
+	\item Network/Internet accesss
 \end{enumerate}
 \subsubsection{Software Infrastructure}
 \begin{enumerate}
@@ -114,7 +114,7 @@ The members can perform the following operartions:
 	\item Java JDK platform 1.7 or higher
 	\end{enumerate}
 \subsubsection{Technology Used}
-The technilogies used are as follows :
+The technologies used are as follows :
 \begin{itemize}
 \item Use of the platform independent JVM using JDK 1.8
 \item MySQL support to provide DBMS features to the software
@@ -122,13 +122,13 @@ The technilogies used are as follows :
 \subsubsection{Security}
 The security of the software has been taken care of in a very cautious and judicious manner. The protocol followed to ensure data security and software safety are as follows :
 \begin{itemize}
-\item User can acces the books only after a successful login with a valid username and password.
+\item User can accesss the books only after a successful login with a valid username and password.
 \item Check has been done during creation of new user to ensure a unique user id.
-\item Also check has been done to set a miminum length of 8 characters and use of alphanumeric characters to make a password without storing any value (to prevent publicity of password) so that users can give a safe and efficient password to safeguard their account. 
-\item Unsuccessful attempts may occur if the user gives wrong username or wrong pasword or even wron user type.
+\item Also check has been done to set a minimum length of 8 characters and use of alphanumeric characters to make a password without storing any value (to prevent publicity of password) so that users can give a safe and efficient password to safeguard their account. 
+\item Unsuccessful attempts may occur if the user gives wrong username or wrong password or even wrong user type.
 \end{itemize}
 \subsection{Defining Criteria to evaluate}
-The software is evaluated on the basis of the follwoing criterias:
+The software is evaluated on the basis of the following criterias:
 \begin{itemize}
 \item Only the librarian can be created without any preprocessing. But only one librarian must be present.
 \item Addition and deletion of books can be performed by library clerk in this software
@@ -137,9 +137,9 @@ The software is evaluated on the basis of the follwoing criterias:
 \item Creation of effective users who can perform all the operations like issue, reserve and returning of a book
 \end{itemize}
 \subsection{Report}
-The software designed is able to perform all the above operations mentioned above. One can create a single librarian at first whon hold the admin acces of the software.The librarian is able to create the users or the library members who can perform all the required operations as mentioned in the SRS.
+The software designed is able to perform all the above operations mentioned above. One can create a single librarian at first when hold the admin accesss of the software.The librarian is able to create the users or the library members who can perform all the required operations as mentioned in the SRS.
 \\The library clerk is able to add books into the library and can remove the unrequired books from the database.
-\\The login feature has also been created,tested and is working perfectly.Only the authenticate users can log into the software to perform the designated operations.
+\\The login feature has also been created,tested and is working perfectly.Only the authenticated users can log into the software to perform the designated operations.
 \\A background cron job takes care of all the background processes and helps to maintain all the records as required like in the case of issuing and returning.It also takes care of the issued books and takes care if a penalty is to be issued against any user account.
 \\All the process as mentioned in the SRS document provided have been implemented and tested successfully.
 
@@ -160,10 +160,10 @@ Description :
 	\item Preconditions:\\
 	1. The user must be logged in .\\
 	2.The book must exist in the library\\
-\item  Postcondition: \\If the book exists in the library,the availablity status of the book is returned\\
+\item  Postcondition: \\If the book exists in the library,the availability status of the book is returned\\
  \item Failure Situations:\\ The library does not have  the book \\
  \item Postcondition in case of failure:\\A message to user about the same\\
-\item  Actors:\\ User communiates with the system\\
+\item  Actors:\\ User communicates with the system\\
 \item  Trigger:\\ User chooses the option to search books\\
  \item Main Success Scenario: \\The library has a copy of the book and it is available for issue.\\
 \item  Extensions/Variations: \\The library has a copy of the book but currently none of the copies are available.The book maybe reserved by the user.
@@ -174,14 +174,14 @@ Description :
 	 1. The user must be logged in .\\
 	 2.The book must exist in the library \\
 	 3.It must be available for issue.\\
-	 4.The user must not have exhausted his quota of number of books\\
+	 4.The user must not have exhausted his quota of nnumber of books\\
  \item Postcondition:\\After successful issue the user account is updated\\
  \item Failure Situations:\\
  1. The library does not have  the book\\ 
- 2.The library has the book and it is not avaiable for issue.\\
- 3.The user has exhausted his quota of maximum number of books\\
+ 2.The library has the book and it is not available for issue.\\
+ 3.The user has exhausted his quota of maximum nnumber of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to reserve the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger: \\User chooses the option to issue books\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is available for issue.
 	\end{itemize}
@@ -198,7 +198,7 @@ Description :
  3.The user account is updated\\
  \item Failure Situations:\\The user has not issued any book\\
  \item Postcondition in case of failure:\\A message is give to the user about the same\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to return issued books\\
 \item  Main Success Scenario: \\The user had previously issued the book\\
  \end{itemize}
@@ -209,16 +209,16 @@ Description :
 	1. The user must be logged in .\\
 	2.The book must exist in the library\\ 
 	3.It must not  be available for issue.\\
-	4.The user must not have exhausted his quota of number of books\\
+	4.The user must not have exhausted his quota of nnumber of books\\
  \item Postcondition:\\
  1.After successful issue the user account is updated \\
  2.When the book is returned a notification is sent to the user.\\
  \item Failure Situations:\\
  1. The library does not have  the book \\
- 2.The library has the book and it is  avaiable for issue.\\
- 3.The user has exhausted his quota of maximm number of books\\
+ 2.The library has the book and it is  available for issue.\\
+ 3.The user has exhausted his quota of maximum nnumber of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to issue the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to reserve book\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is not available for issue.\\
  
@@ -232,7 +232,7 @@ Description :
  \item Postcondition:\\
  1.After successful issue the user account is updated \\
 Failure Situations:\\The user has not issued any book\\
- \item Actors: \\User communiates with the system\\
+ \item Actors: \\User communicates with the system\\
  \item Trigger:\\ 
  1.User chooses the option to cancel reservation of a book \\
  2.User does not issue the reserved book within 7 days of return\\
@@ -254,7 +254,7 @@ Failure Situations:\\The user has not issued any book\\
  \item The user has not issued any book
   \item No returned books are overdue
 	\end{enumerate} 
- \item Actors: User communiates with the system
+ \item Actors: User communicates with the system
  \item Trigger: User chooses the option to return issued books
  \item Main Success Scenario: The user had previously issued the book and the book is overdue
 	\end{itemize}
@@ -271,7 +271,7 @@ Failure Situations:\\The user has not issued any book\\
  \item Actors:\\ library clerk communicates with the system
  \item Trigger:\\ Clerk chooses the option to enter new books
  \item Main Success Scenario:\\ The library  does not have the book and the book is newly entered in the system
-\item  Extensions/Variations:\\ The library hasthe book and the umber of copies is increased
+\item  Extensions/Variations:\\ The library has the book and the number of copies is increased
 \end{itemize}
  \item Delete a book 
  \begin{itemize}
@@ -281,7 +281,7 @@ Failure Situations:\\The user has not issued any book\\
  \item Actors:\\ library clerk communicates with the system\\
  \item Trigger:\\ Clerk chooses the option to delete books\\
  \item Main Success Scenario:\\ The library  has the book and it is removed from the system.\\
- \item Extensions/Variations: \\The library has the book and the number of copies is reduced.\\
+ \item Extensions/Variations: \\The library has the book and the nnumber of copies is reduced.\\
  
 \end{itemize}	 
  
@@ -304,7 +304,7 @@ Failure Situations:\\The user has not issued any book\\
 
 \item Delete member\\ 
  \begin{itemize}
-  \item Preconditions:\\ 1.Librarian must be logged in\\ 2. A person must apply for cacellation membership\\ 
+  \item Preconditions:\\ 1.Librarian must be logged in\\ 2. A person must apply for cancellation membership\\ 
  \item Postcondition:\\ The member account is deleted\\ 
  \item Failure Situations: \\ The user has no account\\ 
  \item Postcondition in case of failure:\\ A message to librarian about the same\\ 
@@ -339,27 +339,27 @@ Failure Situations:\\The user has not issued any book\\
 \item System Use Cases:\\ 
  \begin{itemize}
  
-  \item Answer availibilty Query about Book\\ 
+  \item Answer availability Query about Book\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.An user makes a query\\ 
- \item Postcondition: \\ If the book is available, use cases display rack number and number of copies are called\\ 
- \item Actors:\\  System communiates with the user\\ 
+ \item Postcondition: \\ If the book is available, use cases display rack nnumber and nnumber of copies are called\\ 
+ \item Actors:\\  System communicates with the user\\ 
  \item Trigger: \\ User chooses the option to search books\\ 
 	\end{itemize}
 
-\item Display rack number of book\\ 
+\item Display rack nnumber of book\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
- \item Postcondition:\\  Rack numbers are displayed\\ 
- \item Actors:\\  System communiates with the user\\ 
+ \item Postcondition:\\  Rack nnumbers are displayed\\ 
+ \item Actors:\\  System communicates with the user\\ 
  \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
  
- \item Display number of copies of book\\ 
+ \item Display nnumber of copies of book\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
- \item Postcondition:\\  the number of copies of a book are displayed\\ 
- \item Actors: \\ System communiates with the user\\ 
+ \item Postcondition:\\  the nnumber of copies of a book are displayed\\ 
+ \item Actors: \\ System communicates with the user\\ 
  \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
 
@@ -367,7 +367,7 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is overdue, return book invokes this\\ 
  \item Postcondition:\\ Penalty is calculated and print bill is invoked\\ 
- \item Actors: \\ System communiates with the user\\ 
+ \item Actors: \\ System communicates with the user\\ 
  \item Trigger: \\ return book query triggers this\\ 
 	\end{itemize}
  
@@ -386,7 +386,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned the issued book later than his designated return date.\\ 
  \item Postcondition:\\ Bill of penalty is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\  Calculate lateness penalty triggers print bill\\ 
 \end{itemize}
 
@@ -394,7 +394,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item  Preconditions:\\ Some user must have exceeded the due date\\ 
  \item Postcondition:\\ Reminder to user is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\ order to print reminder triggers this\\ 
 \end{itemize}
 
@@ -402,14 +402,15 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned a reserved book \\ 
  \item Postcondition:\\ A notification is printed to the user who reserved the book\\ 
- \item Actors: \\ Printer communiates with the system which communicates with user\\ 
+ \item Actors: \\ Printer communicates with the system which communicates with user\\ 
  \item Trigger:\\ return book may trigger this use case\\ 
 \end{itemize}
 
 \end{itemize}
 \end{enumerate}
+
 \subsection{Refinement of Class Diagrams}
-\includegraphics[scale=0.35]{images/classDiag.png}
+\includegraphics[scale=0.35]{images/classDiagFinal.jpg}
 \\
 Description : \\
 
@@ -418,19 +419,19 @@ Description : \\
 \begin{itemize}
 \item Class Attributes:\\
 \\Name:Store the name of book
-\\No$\_$of$\_$copies:Stores the number of copies of a book
+\\No$\_$of$\_$copies:Stores the nnumber of copies of a book
 \\Penalty$\_$Rate:the rate of penalty for book.A static member as it is common for all the books
 \\Author:stores name  author of book 
 \\LastIssueDateDate:Stores the last issued date of book
-\\NoOfCopiesIssued:Stores the number of copies of the book that have been issued out
-\\NoOfCopiesReserved:Stores the number of issued books that have been reserved
-\\NoOfBooks:A static variable storing the total number of books
+\\NoOfCopiesIssued:Stores the nnumber of copies of the book that have been issued out
+\\NoOfCopiesReserved:Stores the nnumber of issued books that have been reserved
+\\NoOfBooks:A static variable storing the total nnumber of books
 \\IDsofIssuedMembers[]:An array of integers storing the ids of all the members who have issued copies of the book
 \\IDsOfMembersReserved[]:An array of integers storing the ids of all the members who have issued copies of the book
-\\RackNo:stores the rack number where the book is kept
+\\RackNo:stores the rack nnumber where the book is kept
 
 \item Operations:
-\\Getter functions for name,No$\_$of$\_$copies,ISBN number,Penalty$\_$rate,LastIssueDate,author,NoOfCopiesIssued,NoOfCopiesReserved,NoOfBooks,IDsofIssuedMembers,IDsOfMembersReserved,RackNo.
+\\Getter functions for name,No$\_$of$\_$copies,ISBN nnumber,Penalty$\_$rate,LastIssueDate,author,NoOfCopiesIssued,NoOfCopiesReserved,NoOfBooks,IDsofIssuedMembers,IDsOfMembersReserved,RackNo.
 
 We have used getters for these as we need to view these attributes from outside 
 \\
@@ -445,23 +446,23 @@ We have used setters for these as these are changeable with time and need to be 
 \item Attributes:
 \begin{itemize}
 \item Name:Name of the user
-\item ID$\_$number:Login id of the user
-\item Number of books in account:Total number of issued books
-\item Number of reserved books:Total number of books issued by the user
-\item NoOfUsers:A static variable storuing total number of users
-\item ISBNnosOfIssuedBooks[]:an array storing the ISBN number of all books issued by the user
-\item ISBNnosOfReservedBooks[]:an array storing the ISBN number of all books reserved by the user
-\item maximumNoOfBooksIssued:the maximum number of books that the user can issue
-\item Pasword:The login password of the user which is necessary for login authentication
+\item ID$\_$nnumber:Login id of the user
+\item Nnumber of books in account:Total nnumber of issued books
+\item Nnumber of reserved books:Total nnumber of books issued by the user
+\item NoOfUsers:A static variable storing total nnumber of users
+\item ISBNnosOfIssuedBooks[]:an array storing the ISBN nnumber of all books issued by the user
+\item ISBNnosOfReservedBooks[]:an array storing the ISBN nnumber of all books reserved by the user
+\item maximumNoOfBooksIssued:the maximum nnumber of books that the user can issue
+\item password:The login password of the user which is necessary for login authentication
 \end{itemize}
 
 \item Operations:
 \begin{itemize}
 
 \item Constructor to initialize member\\
-\item Getters for NumberOfBooksinAccount,No ofReservedBooks,NoOfUsers.
+\item Getters for NnumberOfBooksinAccount,No ofReservedBooks,NoOfUsers.
 We have used getters for these as we need to view these attributes from outside \\\
-\item Setters for NumberOfUsers,Number of books in account,No Of reserved Books.
+\item Setters for NnumberOfUsers,Nnumber of books in account,No Of reserved Books.
 
 
 We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
@@ -541,31 +542,31 @@ It is a generalization of Student
 \subsubsection*{Add User Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagAddUser.png}
 \\
-Description : The user needs to login succesfully into the account as the librarian as he/she only has the priviledge to add a user .He then provides the suitable details required to create a user in the library and creates it.
+Description : The user needs to login successfully into the account as the librarian as he/she only has the privilege to add a user .He then provides the suitable details required to create a user in the library and creates it.
 \\
 
 \subsubsection*{Remove User Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagRemoveUser.png}
 \\
-Description : The user needs to login succesfully into the account as the librarian as he/she only has the priviledge to remove a user .He then provides the suitable details required to remove a user in the library and the user along with all the user history is removed from the library database.
+Description : The user needs to login successfully into the account as the librarian as he/she only has the privilege to remove a user .He then provides the suitable details required to remove a user in the library and the user along with all the user history is removed from the library database.
 \\
 
 \subsubsection*{Add book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagAddBook.png}
 \\
-Description : The user needs to login succesfully into the account as the library clerk as he/she only has the priviledge to add a book into the database of the library.The clerk then provides the suitable details of the book into the system and it automatically updates this into the database at the same time. The book will then be available for issuing ad reservation by the members.
+Description : The user needs to login successfully into the account as the library clerk as he/she only has the privilege to add a book into the database of the library.The clerk then provides the suitable details of the book into the system and it automatically updates this into the database at the same time. The book will then be available for issuing ad reservation by the members.
 \\
 
 \subsubsection*{Remove book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagBookRemoval.png}
 \\
-The user needs to succesfully login as the library clerk as he/she only has the priviledge to remove a book from the sytem if he/she feels that the book has been unused for a long period of time and is not required anymore.The user feeds the details of the book to be removed and the system automatically removes all the records related to this book from the system and will not be thereafter available for issuing and reservation by the other library members/users.
+The user needs to successfully login as the library clerk as he/she only has the privilege to remove a book from the system if he/she feels that the book has been unused for a long period of time and is not required anymore.The user feeds the details of the book to be removed and the system automatically removes all the records related to this book from the system and will not be thereafter available for issuing and reservation by the other library members/users.
 \\
 
 \subsubsection*{Issue book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagIssueBook.png}
 \\
-The user needs to succesfully login as a valid member or user of the library to issue a book. Also the book must be available in the library at that instant and also he/she must not exceed the maximum book count against his/her account in the library.The book is then added into the user's account and is thus issued.\\
+The user needs to successfully login as a valid member or user of the library to issue a book. Also the book must be available in the library at that instant and also he/she must not exceed the maximum book count against his/her account in the library.The book is then added into the user's account and is thus issued.\\
 
 \subsubsection*{Return book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagReturnBook.png}
@@ -576,26 +577,26 @@ The user needs to successfully login as a valid member of the library to avail t
 \subsubsection*{Search book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagBookRemoval.png}
 \\
-The user needs to successfully login to search if a book is present in the library.The user needs to give the details of the book in the system and it will notify about the prescence of the book in the library.
+The user needs to successfully login to search if a book is present in the library.The user needs to give the details of the book in the system and it will notify about the presence of the book in the library.
 \\
 
 \subsection{Collaboration Diagram}
 
 \includegraphics[scale=0.50]{images/collaDiag.jpg}
 \\
-Description : The user send a specific set of requests to the LIS system like the login request , issue request , return request , serach request and penalty/fine payment.The LIS is bound to send back suitable return messages in case of each of the request messages sent ot the system.
+Description : The user send a specific set of requests to the LIS system like the login request , issue request , return request , search request and penalty/fine payment.The LIS is bound to send back suitable return messages in case of each of the request messages sent ot the system.
 \\
-The library clerk has the priviledge of adding and removing books from the system and the LIS system will automatically update its database inside by a cron job.
+The library clerk has the privilege of adding and removing books from the system and the LIS system will automatically update its database inside by a cron job.
 \\
-The librarian has the sole administrator access to the software and the priviledge of adding a member as well as removing his record from the library.The librian can acces the user details or the history of any user.He can also take a alook into the statistics of any book that is can see the book history and can send a notification to remove a book to the library clerk in case the book has been unused and unissued for a long period of time.
+The librarian has the sole administrator accesss to the software and the privilege of adding a member as well as removing his record from the library.The librarian can access the user details or the history of any user.He can also take a a look into the statistics of any book that is can see the book history and can send a notification to remove a book to the library clerk in case the book has been unused and unissued for a long period of time.
 \\
-The printer is also linked with the sytem and is used to print the notification and the penalty bills and reminder notifications
+The printer is also linked with the system and is used to print the notification and the penalty bills and reminder notifications
 
 \subsection{Statechart Diagram}
 
 \includegraphics[scale=0.50]{images/stateDiagIssue.png}
 \\
-Description : The book is avilable for unrestricted issue if it has not been reserved or enen it has been then the user who has reserved it has not issued it within the 7 days afer the notification that the book is available. The book is issued and returned in a separate state. There is also a facility to cancel a reservation .Even after issuing the book may be reserved by some other user. The transition between the states have been clearly shown and demarcated in the above diagram
+Description : The book is avilable for unrestricted issue if it has not been reserved or it has been then the user who has reserved it has not issued it within the 7 days after the notification that the book is available. The book is issued and returned in a separate state. There is also a facility to cancel a reservation .Even after issuing the book may be reserved by some other user. The transition between the states have been clearly shown and demarcated in the above diagram
 
 
 \subsection{Activity Diagram}
@@ -606,11 +607,11 @@ Description : First after succesful login the member has to check the availabili
 \subsubsection*{Return Book Activity Diagram}
 \includegraphics[scale=0.40]{images/activityDiagReturn.png}
 \\
-Description : We first check for the validation of the member. If the member succesfully logs into his/her account then we ask for the book to be returned. The time for the issue is then checked and using that the number of days he book has been kept is calculated. If trhe book has been kept for a longer period of time than it was meant to be the member or the user is liable to pay fines as per the rate predecided.The fine is calculated by a base on the time the book has been overdue.In any case the book is returned and required updation is donw on the account of the user.
+Description : We first check for the validation of the member. If the member successfully logs into his/her account then we ask for the book to be returned. The time for the issue is then checked and using that the nnumber of days he book has been kept is calculated. If trhe book has been kept for a longer period of time than it was meant to be the member or the user is liable to pay fines as per the rate predecided.The fine is calculated by a base on the time the book has been overdue.In any case the book is returned and required updation is donw on the account of the user.
 \subsubsection*{Search Book Activity Diagram}
 \includegraphics[scale=0.50]{images/activityDiagSearch.jpg}
 \\
-Description : The user may not need to validate into the system that is the search feature is kept as a global access feature. The person needs to put in the details of the book required in the search field to search for its availability. If the book is present the software will diplay the number of the copies along with their respective rack number for easy access else it will diplay that the book is not currently available.
+Description : The user may not need to validate into the system that is the search feature is kept as a global accesss feature. The person needs to put in the details of the book required in the search field to search for its availability. If the book is present the software will display the nnumber of the copies along with their respective rack nnumber for easy accesss else it will display that the book is not currently available.
 
 \subsection{Data Flow Diagram}
 
@@ -668,7 +669,7 @@ The libraries used for the software are as follows :
 \end{enumerate}
 \subsection{Sizing}
 This is an extremely lightweight software consuming negligibly small amount of main memory during runtime.\\ 
-At a later point of time it can be modified to run as a web applet or servelet. 
+At a later point of time it can be modified to run as a web applet or servlet. 
 
 \subsection{Performance}
 Performance of the Library Information of System is enhanced by the following listed technique:
@@ -679,13 +680,13 @@ ensuring that all cron jobs are run in the background, not hampering the running
 
 \end{enumerate}
 \section{Limitations and Exceptions}
-The number of books which can be incorporated into the system has been kept to be constant in this case to ensure a simpler design.
+The nnumber of books which can be incorporated into the system has been kept to be constant in this case to ensure a simpler design.
 In case of a dynamically ncreasing book set the algorithms and the data structures used to mange have to be optimized further to keep the running time of the software as fast as possible.
 \\
 Exceptions which are present or handled in this software are as follows :
 \begin{enumerate}
 \item Username cannot contain any special characters except underscore.Entering any username not following this rule will throw an exception and prompt the user to re-enter the username.
-\item The password of the user must be atleast 8 charactes long,must containt atleast one alphabet,atleast one digit and atleat one special character. Violation of these rules will throw an exeption and prompt the user to re-enter password.This is done to enhance the security level by making the password extremely difficult to crack by brute force algorithms.
+\item The password of the user must be atleast 8 characters long,must constraint atleast one alphabet,atleast one digit and atleat one special character. Violation of these rules will throw an exception and prompt the user to re-enter password.This is done to enhance the security level by making the password extremely difficult to crack by brute force algorithms.
 \item The user type by default is empty in the initial  loginscreen.The user must specify the user type while logging in.Keeping it default shall throw an exception and prompt the user to try and login again.
 \item The user who has fulfilled his issue/reserve quota may click on issue book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to issue books.
 \item The user who has fulfilled his issue/reserve quota may click on reserve book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to reserve books.
@@ -713,7 +714,7 @@ The database management has been done using a DBMS software like MySQL.\\
 
 \subsubsection{Networking}
 The GUI support and the database support are interlinked via a tcp network which facilitates the flow of information between the two ends.It provides scope for dividing the space requirements by distributing the load. The use of tcp network ensures secure data flow between the two interfaces.\\
-The tcp network identifies the two ends of the network and extablishes a secured connection between the two ends.Keeping the data at a separate location can improve the safety of the software as it prevents data loss to a huge extents in case of a glitch in the GUI end.
+The tcp network identifies the two ends of the network and establishes a secured connection between the two ends.Keeping the data at a separate location can improve the safety of the software as it prevents data loss to a huge extents in case of a glitch in the GUI end.
 \\
 Thus we can ensure a safe, secure, reliable and fast software design.\\
 
@@ -730,8 +731,8 @@ Thus the aspects of OOA mentioned justify our choice.
 
 \section{Database Design}
 There is need to maintain a central database to keep all the details of the users and the books in the library to maintain the data more easily.\\
-Even though this thing could have been done by using a simole list or even a balanced tree (to increase efficiency) but the use of DBMS is preferred to perform the operation more easily without worrying how the operation is being impolemented.\\
-Also the DBMS managaement softwares or the technologies provide very less time complexity to perform all the required operations like adding a record, deleting a record or even searching and modifying a data record which is perfectly applicable for our software.\\
+Even though this thing could have been done by using a simple list or even a balanced tree (to increase efficiency) but the use of DBMS is preferred to perform the operation more easily without worrying how the operation is being implemented.\\
+Also the DBMS management softwares or the technologies provide very less time complexity to perform all the required operations like adding a record, deleting a record or even searching and modifying a data record which is perfectly applicable for our software.\\
 The database used will have the following table : 
 \begin{enumerate}
 \item \underline{Table of users} :\\
@@ -742,16 +743,16 @@ The list or table of all the clerks in the library along with their usernames an
 The table of all the books along with the specification of the copies of the same book present in the library.
 \\The fields which needed to be maintained in this table are :
 \begin{itemize}
-\item the ISBN id or number of the book
+\item the ISBN id or nnumber of the book
 \item the name of the book
 \item the author of the book
-\item number of copies of the same book present in the library
+\item nnumber of copies of the same book present in the library
 \item the list stating whether any copy of the book is issued
 \item the list specifying which user issued which copy
 \end{itemize}
 
 
-Also a backup copy of this entire databse needs to maintained to keep the data safety to the maximum level possible.This is to ensure that the data is not lost even if a glitch occurs in the software at any point of time.\\This make the software more user friendly and realistic.
+Also a backup copy of this entire database needs to maintained to keep the data safety to the maximum level possible.This is to ensure that the data is not lost even if a glitch occurs in the software at any point of time.\\This make the software more user friendly and realistic.
 The updation needs to be carried out in both the databases at the same time so that no discrepancy occurs in the tables in both the databases.
 \\
 \end{enumerate}
@@ -775,7 +776,7 @@ The librarian also has the opportunity to remove a user from the library databas
 \end{itemize}
 \subsection{Refinement of UML diagrams}
 
-\subsection{Refinement of Use Case Diagram}
+\subsubsection{Refinement of Use Case Diagram}
 
 \includegraphics[scale=0.55]{images/useCaseDiag.jpg}\\
 
@@ -799,7 +800,7 @@ Description :
 \item  Postcondition: \\If the book exists in the library,the availablity status of the book is returned\\
  \item Failure Situations:\\ The library does not have  the book \\
  \item Postcondition in case of failure:\\A message to user about the same\\
-\item  Actors:\\ User communiates with the system\\
+\item  Actors:\\ User communicates with the system\\
 \item  Trigger:\\ User chooses the option to search books\\
  \item Main Success Scenario: \\The library has a copy of the book and it is available for issue.\\
 \item  Extensions/Variations: \\The library has a copy of the book but currently none of the copies are available.The book maybe reserved by the user.
@@ -810,14 +811,14 @@ Description :
 	 1. The user must be logged in .\\
 	 2.The book must exist in the library \\
 	 3.It must be available for issue.\\
-	 4.The user must not have exhausted his quota of number of books\\
+	 4.The user must not have exhausted his quota of nnumber of books\\
  \item Postcondition:\\After successful issue the user account is updated\\
  \item Failure Situations:\\
  1. The library does not have  the book\\ 
- 2.The library has the book and it is not avaiable for issue.\\
- 3.The user has exhausted his quota of maximum number of books\\
+ 2.The library has the book and it is not available for issue.\\
+ 3.The user has exhausted his quota of maximum nnumber of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to reserve the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger: \\User chooses the option to issue books\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is available for issue.
 	\end{itemize}
@@ -834,7 +835,7 @@ Description :
  3.The user account is updated\\
  \item Failure Situations:\\The user has not issued any book\\
  \item Postcondition in case of failure:\\A message is give to the user about the same\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to return issued books\\
 \item  Main Success Scenario: \\The user had previously issued the book\\
  \end{itemize}
@@ -845,16 +846,16 @@ Description :
 	1. The user must be logged in .\\
 	2.The book must exist in the library\\ 
 	3.It must not  be available for issue.\\
-	4.The user must not have exhausted his quota of number of books\\
+	4.The user must not have exhausted his quota of nnumber of books\\
  \item Postcondition:\\
  1.After successful issue the user account is updated \\
  2.When the book is returned a notification is sent to the user.\\
  \item Failure Situations:\\
  1. The library does not have  the book \\
- 2.The library has the book and it is  avaiable for issue.\\
- 3.The user has exhausted his quota of maximm number of books\\
+ 2.The library has the book and it is  available for issue.\\
+ 3.The user has exhausted his quota of maximum nnumber of books\\
  \item Postcondition in case of failure:\\In failure case 2. the user may choose to issue the book if he has not exhausted his quota\\
- \item Actors:\\ User communiates with the system\\
+ \item Actors:\\ User communicates with the system\\
  \item Trigger:\\ User chooses the option to reserve book\\
  \item Main Success Scenario:\\ The library has a copy of the book and it is not available for issue.\\
  
@@ -868,7 +869,7 @@ Description :
  \item Postcondition:\\
  1.After successful issue the user account is updated \\
 Failure Situations:\\The user has not issued any book\\
- \item Actors: \\User communiates with the system\\
+ \item Actors: \\User communicates with the system\\
  \item Trigger:\\ 
  1.User chooses the option to cancel reservation of a book \\
  2.User does not issue the reserved book within 7 days of return\\
@@ -890,7 +891,7 @@ Failure Situations:\\The user has not issued any book\\
  \item The user has not issued any book
   \item No returned books are overdue
 	\end{enumerate} 
- \item Actors: User communiates with the system
+ \item Actors: User communicates with the system
  \item Trigger: User chooses the option to return issued books
  \item Main Success Scenario: The user had previously issued the book and the book is overdue
 	\end{itemize}
@@ -907,7 +908,7 @@ Failure Situations:\\The user has not issued any book\\
  \item Actors:\\ library clerk communicates with the system
  \item Trigger:\\ Clerk chooses the option to enter new books
  \item Main Success Scenario:\\ The library  does not have the book and the book is newly entered in the system
-\item  Extensions/Variations:\\ The library hasthe book and the umber of copies is increased
+\item  Extensions/Variations:\\ The library has the book and the number of copies is increased
 \end{itemize}
  \item Delete a book 
  \begin{itemize}
@@ -917,7 +918,7 @@ Failure Situations:\\The user has not issued any book\\
  \item Actors:\\ library clerk communicates with the system\\
  \item Trigger:\\ Clerk chooses the option to delete books\\
  \item Main Success Scenario:\\ The library  has the book and it is removed from the system.\\
- \item Extensions/Variations: \\The library has the book and the number of copies is reduced.\\
+ \item Extensions/Variations: \\The library has the book and the nnumber of copies is reduced.\\
  
 \end{itemize}	 
  
@@ -940,7 +941,7 @@ Failure Situations:\\The user has not issued any book\\
 
 \item Delete member\\ 
  \begin{itemize}
-  \item Preconditions:\\ 1.Librarian must be logged in\\ 2. A person must apply for cacellation membership\\ 
+  \item Preconditions:\\ 1.Librarian must be logged in\\ 2. A person must apply for cancellation membership\\ 
  \item Postcondition:\\ The member account is deleted\\ 
  \item Failure Situations: \\ The user has no account\\ 
  \item Postcondition in case of failure:\\ A message to librarian about the same\\ 
@@ -966,7 +967,7 @@ Failure Situations:\\The user has not issued any book\\
  \item Postcondition:\\ The book is disposed with a message to the library clerk to delete it.\\ 
  \item Actors:\\  Librarian communicates with the system\\ 
  \item Trigger:\\  Librarian  chooses the option to dispose book\\ 
- \item Main Success Scenario:\\  The book has not been issue for 5 years\\ 
+ \item Main Success Scenario:\\  The book has not been issued for 5 years\\ 
  \end{itemize}
  
 
@@ -975,27 +976,27 @@ Failure Situations:\\The user has not issued any book\\
 \item System Use Cases:\\ 
  \begin{itemize}
  
-  \item Answer availibilty Query about Book\\ 
+  \item Answer availability Query about Book\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.An user makes a query\\ 
- \item Postcondition: \\ If the book is available, use cases display rack number and number of copies are called\\ 
- \item Actors:\\  System communiates with the user\\ 
+ \item Postcondition: \\ If the book is available, use cases display rack nnumber and nnumber of copies are called\\ 
+ \item Actors:\\  System communicates with the user\\ 
  \item Trigger: \\ User chooses the option to search books\\ 
 	\end{itemize}
 
-\item Display rack number of book\\ 
+\item Display rack nnumber of book\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
- \item Postcondition:\\  Rack numbers are displayed\\ 
- \item Actors:\\  System communiates with the user\\ 
+ \item Postcondition:\\  Rack nnumbers are displayed\\ 
+ \item Actors:\\  System communicates with the user\\ 
  \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
  
- \item Display number of copies of book\\ 
+ \item Display nnumber of copies of book\\ 
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is available the use case answer availibility query invokes this\\ 
- \item Postcondition:\\  the number of copies of a book are displayed\\ 
- \item Actors: \\ System communiates with the user\\ 
+ \item Postcondition:\\  the nnumber of copies of a book are displayed\\ 
+ \item Actors: \\ System communicates with the user\\ 
  \item Trigger:\\  answer availibity query triggers this\\ 
 	\end{itemize}
 
@@ -1003,7 +1004,7 @@ Failure Situations:\\The user has not issued any book\\
 	\begin{itemize}
 	\item  Preconditions:\\ 1.If the book is overdue, return book invokes this\\ 
  \item Postcondition:\\ Penalty is calculated and print bill is invoked\\ 
- \item Actors: \\ System communiates with the user\\ 
+ \item Actors: \\ System communicates with the user\\ 
  \item Trigger: \\ return book query triggers this\\ 
 	\end{itemize}
  
@@ -1022,7 +1023,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned the issued book later than his designated return date.\\ 
  \item Postcondition:\\ Bill of penalty is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\  Calculate lateness penalty triggers print bill\\ 
 \end{itemize}
 
@@ -1030,7 +1031,7 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item  Preconditions:\\ Some user must have exceeded the due date\\ 
  \item Postcondition:\\ Reminder to user is printed\\ 
- \item Actors:\\  Printer communiates with the system\\ 
+ \item Actors:\\  Printer communicates with the system\\ 
  \item Trigger:\\ order to print reminder triggers this\\ 
 \end{itemize}
 
@@ -1038,14 +1039,14 @@ Failure Situations:\\The user has not issued any book\\
 \begin{itemize}
 \item Preconditions:\\ Some user must have returned a reserved book \\ 
  \item Postcondition:\\ A notification is printed to the user who reserved the book\\ 
- \item Actors: \\ Printer communiates with the system which communicates with user\\ 
+ \item Actors: \\ Printer communicates with the system which communicates with user\\ 
  \item Trigger:\\ return book may trigger this use case\\ 
 \end{itemize}
 
 \end{itemize}
 \end{enumerate}
 
-\subsection{Data Flow Diagram}
+\subsubsection{Data Flow Diagram}
 
 \begin{itemize}
 \item Context Diagram\\
@@ -1059,7 +1060,7 @@ Failure Situations:\\The user has not issued any book\\
 \item Diagram for searching books : \\ \includegraphics[scale=0.5]{images/dfdDiagSearch.png}\\
 \end{itemize}
 \end{itemize}
-\subsection{Refinement of Class Diagrams}
+\subsubsection{Refinement of Class Diagrams}
 \includegraphics[scale=0.35]{images/classDiagFinal.jpg}
 \\
 Description of classes:
@@ -1069,19 +1070,19 @@ Description of classes:
 \begin{itemize}
 \item Class Attributes:\\
 \\Name:Store the name of book
-\\No$\_$of$\_$copies:Stores the number of copies of a book
+\\No$\_$of$\_$copies:Stores the nnumber of copies of a book
 \\Penalty$\_$Rate:the rate of penalty for book.A static member as it is common for all the books
 \\Author:stores name  author of book 
 \\LastIssueDateDate:Stores the last issued date of book
-\\NoOfCopiesIssued:Stores the number of copies of the book that have been issued out
-\\NoOfCopiesReserved:Stores the number of issued books that have been reserved
-\\NoOfBooks:A static variable storing the total number of books
+\\NoOfCopiesIssued:Stores the nnumber of copies of the book that have been issued out
+\\NoOfCopiesReserved:Stores the nnumber of issued books that have been reserved
+\\NoOfBooks:A static variable storing the total nnumber of books
 \\IDsofIssuedMembers[]:An array of integers storing the ids of all the members who have issued copies of the book
 \\IDsOfMembersReserved[]:An array of integers storing the ids of all the members who have issued copies of the book
-\\RackNo:stores the rack number where the book is kept
+\\RackNo:stores the rack nnumber where the book is kept
 
 \item Operations:
-\\Getter functions for name,No$\_$of$\_$copies,ISBN number,Penalty$\_$rate,LastIssueDate,author,NoOfCopiesIssued,NoOfCopiesReserved,NoOfBooks,IDsofIssuedMembers,IDsOfMembersReserved,RackNo.
+\\Getter functions for name,No$\_$of$\_$copies,ISBN nnumber,Penalty$\_$rate,LastIssueDate,author,NoOfCopiesIssued,NoOfCopiesReserved,NoOfBooks,IDsofIssuedMembers,IDsOfMembersReserved,RackNo.
 
 We have used getters for these as we need to view these attributes from outside 
 \\
@@ -1096,29 +1097,29 @@ We have used setters for these as these are changeable with time and need to be 
 \item Attributes:
 \begin{itemize}
 \item Name:Name of the user
-\item ID$\_$number:Login id of the user
-\item Number of books in account:Total number of issued books
-\item Number of reserved books:Total number of books issued by the user
-\item NoOfUsers:A static variable storuing total number of users
-\item ISBNnosOfIssuedBooks[]:an array storing the ISBN number of all books issued by the user
-\item ISBNnosOfReservedBooks[]:an array storing the ISBN number of all books reserved by the user
-\item maximumNoOfBooksIssued:the maximum number of books that the user can issue
-\item Pasword:The login password of the user which is necessary for login authentication
+\item ID$\_$nnumber:Login id of the user
+\item Nnumber of books in account:Total nnumber of issued books
+\item Nnumber of reserved books:Total nnumber of books issued by the user
+\item NoOfUsers:A static variable storing total nnumber of users
+\item ISBNnosOfIssuedBooks[]:an array storing the ISBN nnumber of all books issued by the user
+\item ISBNnosOfReservedBooks[]:an array storing the ISBN nnumber of all books reserved by the user
+\item maximumNoOfBooksIssued:the maximum nnumber of books that the user can issue
+\item password:The login password of the user which is necessary for login authentication
 \end{itemize}
 
 \item Operations:
 \begin{itemize}
 
 \item Constructor to initialize member\\
-\item Getters for NumberOfBooksinAccount,No ofReservedBooks,NoOfUsers.
+\item Getters for NnumberOfBooksinAccount,No ofReservedBooks,NoOfUsers.
 We have used getters for these as we need to view these attributes from outside \\\
-\item Setters for NumberOfUsers,Number of books in account,No Of reserved Books.
+\item Setters for NnumberOfUsers,Nnumber of books in account,No Of reserved Books.
 
 
 We have used setters for these as these are changeable with time and need to be changesd at a later point of time.These being private members setters ar only way to modify them
 \\
 \item IssueBook:called when member tries to issue a book\\
-\item SearchBook:Called when member tries to search fo a book\\
+\item SearchBook:Called when member tries to search for a book\\
 \item Reserve Book:Called when member tries to reserve a book\\
 \item ReturnBook:called when member tries to return a book\\
 \item PayFine:Called when member returns an overdue book\\
@@ -1188,35 +1189,35 @@ It is a generalization of Student
 It is a generalization of Student
 
 \end{itemize}
-\subsection{Sequence Diagram}
+\subsubsection{Sequence Diagram}
 \subsubsection*{Add User Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagAddUser.png}
 \\
-Description : The user needs to login succesfully into the account as the librarian as he/she only has the priviledge to add a user .He then provides the suitable details required to create a user in the library and creates it.
+Description : The user needs to login successfully into the account as the librarian as he/she only has the privilege to add a user .He then provides the suitable details required to create a user in the library and creates it.
 \\
 
 \subsubsection*{Remove User Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagRemoveUser.png}
 \\
-Description : The user needs to login succesfully into the account as the librarian as he/she only has the priviledge to remove a user .He then provides the suitable details required to remove a user in the library and the user along with all the user history is removed from the library database.
+Description : The user needs to login successfully into the account as the librarian as he/she only has the privilege to remove a user .He then provides the suitable details required to remove a user in the library and the user along with all the user history is removed from the library database.
 \\
 
 \subsubsection*{Add book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagAddBook.png}
 \\
-Description : The user needs to login succesfully into the account as the library clerk as he/she only has the priviledge to add a book into the database of the library.The clerk then provides the suitable details of the book into the system and it automatically updates this into the database at the same time. The book will then be available for issuing ad reservation by the members.
+Description : The user needs to login successfully into the account as the library clerk as he/she only has the privilege to add a book into the database of the library.The clerk then provides the suitable details of the book into the system and it automatically updates this into the database at the same time. The book will then be available for issuing ad reservation by the members.
 \\
 
 \subsubsection*{Remove book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagBookRemoval.png}
 \\
-The user needs to succesfully login as the library clerk as he/she only has the priviledge to remove a book from the sytem if he/she feels that the book has been unused for a long period of time and is not required anymore.The user feeds the details of the book to be removed and the system automatically removes all the records related to this book from the system and will not be thereafter available for issuing and reservation by the other library members/users.
+The user needs to successfully login as the library clerk as he/she only has the privilege to remove a book from the system if he/she feels that the book has been unused for a long period of time and is not required anymore.The user feeds the details of the book to be removed and the system automatically removes all the records related to this book from the system and will not be thereafter available for issuing and reservation by the other library members/users.
 \\
 
 \subsubsection*{Issue book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagIssueBook.png}
 \\
-The user needs to succesfully login as a valid member or user of the library to issue a book. Also the book must be available in the library at that instant and also he/she must not exceed the maximum book count against his/her account in the library.The book is then added into the user's account and is thus issued.\\
+The user needs to successfully login as a valid member or user of the library to issue a book. Also the book must be available in the library at that instant and also he/she must not exceed the maximum book count against his/her account in the library.The book is then added into the user's account and is thus issued.\\
 
 \subsubsection*{Return book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagReturnBook.png}
@@ -1227,29 +1228,29 @@ The user needs to successfully login as a valid member of the library to avail t
 \subsubsection*{Search book Sequence Diagram}
 \includegraphics[scale=0.50]{images/seqDiagBookRemoval.png}
 \\
-The user needs to successfully login to search if a book is present in the library.The user needs to give the details of the book in the system and it will notify about the prescence of the book in the library.
+The user needs to successfully login to search if a book is present in the library.The user needs to give the details of the book in the system and it will notify about the presence of the book in the library.
 \\
 
-\subsection{Collaboration Diagram}
+\subsubsection{Collaboration Diagram}
 
 \includegraphics[scale=0.50]{images/collaDiag.jpg}
 \\
-Description : The user send a specific set of requests to the LIS system like the login request , issue request , return request , serach request and penalty/fine payment.The LIS is bound to send back suitable return messages in case of each of the request messages sent ot the system.
+Description : The user send a specific set of requests to the LIS system like the login request , issue request , return request , search request and penalty/fine payment.The LIS is bound to send back suitable return messages in case of each of the request messages sent ot the system.
 \\
-The library clerk has the priviledge of adding and removing books from the system and the LIS system will automatically update its database inside by a cron job.
+The library clerk has the privilege of adding and removing books from the system and the LIS system will automatically update its database inside by a cron job.
 \\
-The librarian has the sole administrator access to the software and the priviledge of adding a member as well as removing his record from the library.The librian can acces the user details or the history of any user.He can also take a alook into the statistics of any book that is can see the book history and can send a notification to remove a book to the library clerk in case the book has been unused and unissued for a long period of time.
+The librarian has the sole administrator accesss to the software and the privilege of adding a member as well as removing his record from the library.The librarian can access the user details or the history of any user.He can also take a a look into the statistics of any book that is can see the book history and can send a notification to remove a book to the library clerk in case the book has been unused and unissued for a long period of time.
 \\
-The printer is also linked with the sytem and is used to print the notification and the penalty bills and reminder notifications
+The printer is also linked with the system and is used to print the notification and the penalty bills and reminder notifications
 
-\subsection{Statechart Diagram}
+\subsubsection{Statechart Diagram}
 
 \includegraphics[scale=0.50]{images/stateDiagIssue.png}
 \\
-Description : The book is avilable for unrestricted issue if it has not been reserved or enen it has been then the user who has reserved it has not issued it within the 7 days afer the notification that the book is available. The book is issued and returned in a separate state. There is also a facility to cancel a reservation .Even after issuing the book may be reserved by some other user. The transition between the states have been clearly shown and demarcated in the above diagram
+Description : The book is avilable for unrestricted issue if it has not been reserved or it has been then the user who has reserved it has not issued it within the 7 days after the notification that the book is available. The book is issued and returned in a separate state. There is also a facility to cancel a reservation .Even after issuing the book may be reserved by some other user. The transition between the states have been clearly shown and demarcated in the above diagram
 
 
-\subsection{Activity Diagram}
+\subsubsection{Activity Diagram}
 \subsubsection*{Issue Book Activity Diagram}
 \includegraphics[scale=0.50]{images/activityDiagIssue.png}
 \\
@@ -1257,16 +1258,16 @@ Description : First after succesful login the member has to check the availabili
 \subsubsection*{Return Book Activity Diagram}
 \includegraphics[scale=0.40]{images/activityDiagReturn.png}
 \\
-Description : We first check for the validation of the member. If the member succesfully logs into his/her account then we ask for the book to be returned. The time for the issue is then checked and using that the number of days he book has been kept is calculated. If trhe book has been kept for a longer period of time than it was meant to be the member or the user is liable to pay fines as per the rate predecided.The fine is calculated by a base on the time the book has been overdue.In any case the book is returned and required updation is donw on the account of the user.
+Description : We first check for the validation of the member. If the member successfully logs into his/her account then we ask for the book to be returned. The time for the issue is then checked and using that the nnumber of days he book has been kept is calculated. If trhe book has been kept for a longer period of time than it was meant to be the member or the user is liable to pay fines as per the rate predecided.The fine is calculated by a base on the time the book has been overdue.In any case the book is returned and required updation is donw on the account of the user.
 \subsubsection*{Search Book Activity Diagram}
 \includegraphics[scale=0.50]{images/activityDiagSearch.jpg}
 \\
-Description : The user may not need to validate into the system that is the search feature is kept as a global access feature. The person needs to put in the details of the book required in the search field to search for its availability. If the book is present the software will diplay the number of the copies along with their respective rack number for easy access else it will diplay that the book is not currently available.
+Description : The user may not need to validate into the system that is the search feature is kept as a global accesss feature. The person needs to put in the details of the book required in the search field to search for its availability. If the book is present the software will display the nnumber of the copies along with their respective rack nnumber for easy accesss else it will display that the book is not currently available.
 \subsection{Prototype Design}
 The prototype design involves creation of the follwing things :
 
 \subsubsection*{User Login}
-Any user with a valid username and password will be able to login to the software to access the features. Initially just after the installation of the software only a librarian can be created in the software. Upon thd creation of the librarian the librarian can then create the other users in the library.
+Any user with a valid username and password will be able to login to the software to accesss the features. Initially just after the installation of the software only a librarian can be created in the software. Upon thd creation of the librarian the librarian can then create the other users in the library.
 \begin{itemize}
 \item \underline{For librarian} :\\ If a user logs in as librarian he is then shown a librarian home page screen with the functionalities exclusively of a libraraian.
 \item \underline{For clerk} :\\ If user logs in as clerkhe is then shown the clerk home page with the functions like adding or deleting book etc.
@@ -1281,20 +1282,20 @@ During the creation of a member the librarian should also provide the type of th
 There are several rules while creating the user :
 \begin{itemize}
 \item The username can consist of alphanumeric characters along with an underscore $(\_)$
-\item The password needs to consist atleast one of each type i.e. atleast one alphabet , atleast one number and atleast one special character.\\
-The password needs to atlest 8 characters long to ensure good security.
+\item The password needs to consist atleast one of each type i.e. atleast one alphabet , atleast one nnumber and atleast one special character.\\
+The password needs to atleast 8 characters long to ensure good security.
 \item The user type also needs to be provided.
 
 \end{itemize}
 
 \subsubsection*{Librarian Home Screen}
-The librarian hold the administrator access of the library.The feature available to him are as follows :
+The librarian hold the administrator accesss of the library.The feature available to him are as follows :
 \begin{itemize}
 \item \underline{Creation of user} :\\
-For this purpose the librian will be directed to a new screen where he will have to provide the necessary details in order to create a new account and he has to provide the member type during account creation.
+For this purpose the librarian will be directed to a new screen where he will have to provide the necessary details in order to create a new account and he has to provide the member type during account creation.
 \item \underline{Removing user} : \\
 The librarian will provide with the details of the user to remove . If clicked to remove the details of the corresponding user will be removed from the database if and only if all his issued books are returned and there is no penalty due for him.
-\item \underline{Print notifications}:\\ The librarian can access any user history an can send a request or notification of printing the same
+\item \underline{Print notifications}:\\ The librarian can accesss any user history an can send a request or notification of printing the same
 \item \underline{Notification to print penalty bill} :\\ The librarian can send message to the printer to print the penalty bill.
 \item \underline{Notification to clerk to remove book} :\\
 The librarian can also issue a request to the clerk to remove a book from the kibrary database is he finds it necessary.
@@ -1306,7 +1307,7 @@ The librarian can also issue a request to the clerk to remove a book from the ki
 The user can issue book from this portal if the book is present in the library at that point of time.
 \item \underline{Return book} :\\ The user can return the book earlier issued via a portal.It also checks if the book is returned in time and if any fine is due.
 \item \underline{Reserve book} :\\ The user can reserve any book if it is not present at that point of time and the user will not exceed his maximum issue count.
-\item \underline{Search book} :\\ The user can search for any book in the library database by providing any details of the book.If it is present the software will display the rack number of the location of the book.
+\item \underline{Search book} :\\ The user can search for any book in the library database by providing any details of the book.If it is present the software will display the rack nnumber of the location of the book.
 
 \end{itemize}
 \subsubsection*{Clerk home screen}
@@ -1333,13 +1334,13 @@ Few rudimentary GUI screen of the software have been provided in the section bel
 \subsection{Design of classes in target language}
 Java being an object oriented language implements classes  as a blueprint or template of objects. Here the main classes shall be books and user.
 We shall be using multiple inheritance to classify users into UG students,PG students,Research Scholar and Faculty.
-All the data members will be made private to restrict them from being accessed and modified from outside.Some data members like user id which do need to be accessed outside will have getter functions and setter functions. 
+All the data members will be made private to restrict them from being accesssed and modified from outside.Some data members like user id which do need to be accessed outside will have getter functions and setter functions. 
 
 \subsection{Exception Design}
 Exceptions which are present or handled in this software are as follows :
 \begin{enumerate}
 \item Username cannot contain any special characters except underscore.Entering any username not following this rule will throw an exception and prompt the user to re-enter the username.
-\item The password of the user must be atleast 8 charactes long,must containt atleast one alphabet,atleast one digit and atleat one special character. Violation of these rules will throw an exeption and prompt the user to re-enter password.This is done to enhance the security level by making the password extremely difficult to crack by brute force algorithms.
+\item The password of the user must be atleast 8 characters long,must  atleast one alphabet,atleast one digit and atleat one special character. Violation of these rules will throw an exception and prompt the user to re-enter password.This is done to enhance the security level by making the password extremely difficult to crack by brute force algorithms.
 \item The user type by default is empty in the initial  loginscreen.The user must specify the user type while logging in.Keeping it default shall throw an exception and prompt the user to try and login again.
 \item The user who has fulfilled his issue/reserve quota may click on issue book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to issue books.
 \item The user who has fulfilled his issue/reserve quota may click on reserve book.This shall throw an exception and a dialogue box shall appear informing the user to return issued books or cancel reserved books(if any) and then try to reserve books.
@@ -1351,6 +1352,7 @@ Some adoptable practices for this software are:
 \item Division of code into small modules for better organization
 \item Using camel case and meaningful variable names
 \end{itemize}
-%\section{Any Other Information Of previous Stages}
-
+\section{Any Other Information Of previous Stages}
+This is the first release of the software and hence no information about previous stages are
+available.
 \end{document}
