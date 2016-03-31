@@ -6,6 +6,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -13,31 +22,35 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class CreateUser extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textFieldName;
+	private JTextField textFieldUsername;
+	private JTextField textFieldAddress;
+	private JTextField textFieldPhone;
+	private JPasswordField textFieldPassword;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreateUser frame = new CreateUser();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					CreateUser frame = new CreateUser();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -95,32 +108,45 @@ public class CreateUser extends JFrame {
 		lblChooseUserType.setBounds(78, 203, 159, 14);
 		contentPane.add(lblChooseUserType);
 		
-		textField = new JTextField();
-		textField.setBounds(203, 54, 209, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setBounds(203, 54, 209, 20);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(203, 79, 209, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldUsername = new JTextField();
+		textFieldUsername.setBounds(203, 79, 209, 20);
+		contentPane.add(textFieldUsername);
+		textFieldUsername.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(203, 104, 209, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldAddress = new JTextField();
+		textFieldAddress.setBounds(203, 104, 209, 20);
+		contentPane.add(textFieldAddress);
+		textFieldAddress.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(204, 129, 208, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textFieldPhone = new JTextField();
+		textFieldPhone.setBounds(204, 129, 208, 20);
+		contentPane.add(textFieldPhone);
+		textFieldPhone.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(203, 154, 209, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		textFieldPassword = new JPasswordField();
+		textFieldPassword.setBounds(203, 154, 209, 20);
+		contentPane.add(textFieldPassword);
+		textFieldPassword.setColumns(10);
 		
 		JButton btnCreateUser = new JButton("Create User");
+		btnCreateUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = textFieldUsername.getText().trim();
+				String password = String.valueOf(textFieldPassword.getPassword()).trim();
+				String name = textFieldName.getText().trim();
+				String address = textFieldAddress.getText().trim();
+				String phone = textFieldPhone.getText().trim();
+//				boolean check = checkEntry();
+				
+				addtoDatabase(username,name,address,phone,password);
+				
+			}
+		});
 		btnCreateUser.setBackground(new Color(255, 105, 180));
 		btnCreateUser.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnCreateUser.setBounds(305, 251, 124, 23);
@@ -137,5 +163,21 @@ public class CreateUser extends JFrame {
 		lblCreateNewUser.setFont(new Font("Segoe UI Semibold", Font.BOLD | Font.ITALIC, 18));
 		lblCreateNewUser.setBounds(48, 11, 209, 34);
 		contentPane.add(lblCreateNewUser);
+	}
+	
+	public void addtoDatabase(String username,String name,String address,String phone,String password){
+		Connection con;
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+			Statement stmt = con.createStatement();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+		}
+		
+		
+		
 	}
 }

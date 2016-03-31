@@ -123,7 +123,7 @@ public class Initialize {
             System.out.println("Success");	
             
     	}catch(SQLException ex){
-    		ex.printStackTrace();
+//    		ex.printStackTrace();
     		return false;
     	}
 		return true;

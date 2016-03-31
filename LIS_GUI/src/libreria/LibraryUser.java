@@ -20,18 +20,18 @@ public class LibraryUser extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LibraryUser frame = new LibraryUser();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					LibraryUser frame = new LibraryUser();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -57,7 +57,13 @@ public class LibraryUser extends JFrame {
 		JButton btnIssueBook = new JButton("Issue Book");
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				SearchBook window=new SearchBook();
+				dispose();
+				try {
+					SearchBook frame = new SearchBook();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		btnIssueBook.setBackground(new Color(46, 139, 87));
@@ -68,7 +74,13 @@ public class LibraryUser extends JFrame {
 		JButton btnReserveBook = new JButton("Reserve Book");
 		btnReserveBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				SearchBook window=new SearchBook();
+				dispose();
+				try {
+					SearchBook frame = new SearchBook();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		btnReserveBook.setBackground(new Color(46, 139, 87));
@@ -85,7 +97,13 @@ public class LibraryUser extends JFrame {
 		JButton btnSearchBook = new JButton("Search Book");
 		btnSearchBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				SearchBook window=new SearchBook();
+				dispose();
+				try {
+					SearchBook frame = new SearchBook();
+					frame.setVisible(true);
+				} catch (Exception ex) {
+//					e.printStackTrace();
+				}
 			}
 		});
 		btnSearchBook.setBackground(new Color(60, 179, 113));

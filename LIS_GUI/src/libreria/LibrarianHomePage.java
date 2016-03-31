@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LibrarianHomePage extends JFrame {
 
@@ -17,18 +19,18 @@ public class LibrarianHomePage extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LibrarianHomePage frame = new LibrarianHomePage();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					LibrarianHomePage frame = new LibrarianHomePage();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -55,6 +57,17 @@ public class LibrarianHomePage extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnAddUser = new JButton("Add user");
+		btnAddUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				try {
+					CreateUser frame = new CreateUser();
+					frame.setVisible(true);
+				} catch (Exception ex) {
+//					ex.printStackTrace();
+				}
+			}
+		});
 		btnAddUser.setBackground(new Color(221, 160, 221));
 		btnAddUser.setBounds(45, 117, 139, 23);
 		contentPane.add(btnAddUser);
@@ -65,6 +78,17 @@ public class LibrarianHomePage extends JFrame {
 		contentPane.add(btnRemoveUser);
 		
 		JButton btnAddClerk = new JButton("Add clerk");
+		btnAddClerk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				try {
+					CreateClerk frame = new CreateClerk();
+					frame.setVisible(true);
+				} catch (Exception ex) {
+//					e.printStackTrace();
+				}
+			}
+		});
 		btnAddClerk.setBackground(new Color(221, 160, 221));
 		btnAddClerk.setBounds(45, 166, 139, 23);
 		contentPane.add(btnAddClerk);
