@@ -21,18 +21,18 @@ public class LibraryClerkScreen extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LibraryClerkScreen frame = new LibraryClerkScreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					LibraryClerkScreen frame = new LibraryClerkScreen();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -52,6 +52,13 @@ public class LibraryClerkScreen extends JFrame {
 		btnAddBook.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
 		btnAddBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				try {
+					AddBook frame = new AddBook();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		btnAddBook.setBounds(128, 79, 166, 49);

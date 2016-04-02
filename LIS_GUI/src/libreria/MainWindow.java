@@ -105,10 +105,13 @@ public class MainWindow extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("WELCOME");
-		lblNewLabel.setBounds(202, 12, 81, 31);
+		lblNewLabel.setForeground(new Color(51, 51, 102));
+		lblNewLabel.setFont(new Font("Calisto MT", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel.setBounds(182, 11, 161, 31);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblPassword = new JLabel("Password :");
+		lblPassword.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblPassword.setBounds(49, 131, 103, 25);
 		contentPane.add(lblPassword);
 		
@@ -118,6 +121,7 @@ public class MainWindow extends JFrame {
 		textFieldPassword.setColumns(10);
 		
 		JLabel lblUsername = new JLabel("Username :");
+		lblUsername.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblUsername.setBounds(49, 97, 103, 25);
 		contentPane.add(lblUsername);
 		
@@ -127,6 +131,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(textFieldUsername);
 		
 		lblUsertype = new JLabel("Type :");
+		lblUsertype.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblUsertype.setBounds(49, 173, 103, 25);
 		contentPane.add(lblUsertype);
 		
@@ -135,6 +140,8 @@ public class MainWindow extends JFrame {
 		contentPane.add(comboBoxUserType);
 		
 		JButton btnProceed = new JButton("Proceed");
+		btnProceed.setFont(new Font("Trebuchet MS", Font.BOLD, 11));
+		btnProceed.setBackground(new Color(102, 102, 153));
 		btnProceed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String username = textFieldUsername.getText().trim();
@@ -172,8 +179,40 @@ public class MainWindow extends JFrame {
 						}
 						break;
 					case "Clerk" :
+						query = "SELECT * FROM clerks";
+						//query  = "SELECT password FROM librarian WHERE username="+username;
+						stmt = con.createStatement();
+					    rs = stmt.executeQuery(query);
+						while(rs.next()){
+							
+							if(rs.getString("password").equals(password) && rs.getString("username").equals(username)){
+								try {
+									LibraryClerkScreen frame = new LibraryClerkScreen();
+									frame.setVisible(true);
+									dispose();
+									break;
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							}
+						}
 						break;
 					case "User" :
+						query = "SELECT * FROM users";
+						stmt = con.createStatement();
+					    rs = stmt.executeQuery(query);
+						while(rs.next()){
+							
+							if(rs.getString("password").equals(password) && rs.getString("username").equals(username)){
+								try {
+									LibraryUser frame = new LibraryUser(username);
+									frame.setVisible(true);
+									dispose();
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							}
+						}
 						break;
 					}
 				
@@ -191,6 +230,8 @@ public class MainWindow extends JFrame {
 		contentPane.add(btnProceed);
 		
 		JButton btnQuit = new JButton("Quit");
+		btnQuit.setFont(new Font("Trebuchet MS", Font.BOLD, 11));
+		btnQuit.setBackground(new Color(102, 102, 153));
 		btnQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String ObjButtons[] = {"Yes","No"};
@@ -205,7 +246,9 @@ public class MainWindow extends JFrame {
 		contentPane.add(btnQuit);
 		
 		JLabel lblLibreriaLibrary = new JLabel("LIBRERIA ---- LIBRARY INFORMATION SYSTEM");
-		lblLibreriaLibrary.setBounds(113, 44, 241, 14);
+		lblLibreriaLibrary.setForeground(new Color(204, 51, 153));
+		lblLibreriaLibrary.setFont(new Font("Candara", Font.BOLD, 18));
+		lblLibreriaLibrary.setBounds(49, 54, 374, 32);
 		contentPane.add(lblLibreriaLibrary);
 		comboBoxUserType.addItem("---Choose Type---");
 		comboBoxUserType.addItem("Librarian");

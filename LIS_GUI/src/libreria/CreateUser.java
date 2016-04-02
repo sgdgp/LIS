@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -141,9 +142,10 @@ public class CreateUser extends JFrame {
 				String name = textFieldName.getText().trim();
 				String address = textFieldAddress.getText().trim();
 				String phone = textFieldPhone.getText().trim();
+				String type = comboBox.getSelectedItem().toString().trim();
 //				boolean check = checkEntry();
 				
-				addtoDatabase(username,name,address,phone,password);
+				addtoDatabase(username,name,address,phone,password,type);
 				
 			}
 		});
@@ -165,15 +167,56 @@ public class CreateUser extends JFrame {
 		contentPane.add(lblCreateNewUser);
 	}
 	
-	public void addtoDatabase(String username,String name,String address,String phone,String password){
+	public void addtoDatabase(String username,String name,String address,String phone,String password,String type){
 		Connection con;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
-			Statement stmt = con.createStatement();
 			
+			int bl=0;
+			int d =0;
+			ArrayList<UserIssueDetails> rList = new ArrayList<UserIssueDetails>();
+			
+			switch(type){
+			case "UG Student":
+				bl=2;
+				d = 1;
+				break;
+			case "PG Student":
+				bl = 4;
+				d = 1;
+				break;
+			case "Research Scholar" :
+				bl = 6;
+				d = 3;
+				break;
+			case "Faculty ":
+				bl = 10;
+				d = 6;
+				break;
+			
+			}
+			
+			//SQL QUERY
+			
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+			String sql = "INSERT INTO users (username,name,phoneNo,address,type,fine,bookLimit,duration,booksIssued,password)" +
+                    " VALUES(?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, username);
+			stmt.setString(2, name);
+			stmt.setString(3, phone);
+			stmt.setString(4, address);
+			stmt.setString(5, type);
+			stmt.setDouble(6, 0);
+			
+			stmt.setInt(7,bl);
+			stmt.setInt(8, d);
+			 
+			stmt.setObject(9, rList);
+			stmt.setString(10,password);
+			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 //			e.printStackTrace();
 		}
 		

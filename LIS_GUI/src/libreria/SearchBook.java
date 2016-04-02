@@ -17,9 +17,9 @@ import java.awt.event.ActionEvent;
 public class SearchBook extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldISBN;
+	private JTextField textFieldName;
+	private JTextField textFieldAuthor;
 
 	/**
 	 * Launch the application.
@@ -40,7 +40,10 @@ public class SearchBook extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SearchBook() {
+	String username;
+	public SearchBook(String uname) {
+
+		username = uname;
 		setTitle("Search Book");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -53,6 +56,18 @@ public class SearchBook extends JFrame {
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String name = textFieldName.getText().trim();
+				String author = textFieldAuthor.getText().trim();
+				String ISBN = textFieldISBN.getText().trim();
+				dispose();
+				try {
+					BookDetails frame = new BookDetails(username);
+					frame.setVisible(true);
+					frame.showParams(name,author,ISBN);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			}
 		});
 		btnSearch.setBackground(new Color(119, 136, 153));
@@ -60,20 +75,20 @@ public class SearchBook extends JFrame {
 		btnSearch.setBounds(303, 205, 89, 23);
 		contentPane.add(btnSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(171, 73, 231, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldISBN = new JTextField();
+		textFieldISBN.setBounds(171, 73, 231, 20);
+		contentPane.add(textFieldISBN);
+		textFieldISBN.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(171, 112, 231, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setBounds(171, 112, 231, 20);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(171, 159, 231, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldAuthor = new JTextField();
+		textFieldAuthor.setBounds(171, 159, 231, 20);
+		contentPane.add(textFieldAuthor);
+		textFieldAuthor.setColumns(10);
 		
 		JLabel lblIsbnNumber = new JLabel("ISBN Number");
 		lblIsbnNumber.setFont(new Font("Trebuchet MS", Font.BOLD, 12));

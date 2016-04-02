@@ -35,9 +35,9 @@ public class Initialize {
 			}
         	Connection con = DriverManager.getConnection(url, user, password);
         	
-        	String sql1 = "DROP DATABASE lis";
-        	stmt = con.createStatement();
-            stmt.executeUpdate(sql1);
+//        	String sql1 = "DROP DATABASE lis";
+//        	stmt = con.createStatement();
+//            stmt.executeUpdate(sql1);
             
             
         	ResultSet dbSet = con.getMetaData().getCatalogs();
@@ -53,7 +53,14 @@ public class Initialize {
         	
             if(dbExist){
         		System.out.println("Database exists");
-        	}
+        		con = DriverManager.getConnection(url+"lis", user, password);
+        		Statement s = con.createStatement();
+        		ResultSet r  = s.executeQuery("Select * from clerks ");
+        		while(r.next()){
+        			System.out.println(r.getString("username"));
+        		}
+        		System.out.println("exit if");
+            }
         	else{
         		query = "CREATE DATABASE lis";
         		stmt = con.createStatement();
@@ -64,24 +71,25 @@ public class Initialize {
         		String sql = "CREATE TABLE books "
                         + "(ISBN VARCHAR(20), "
                         + " name VARCHAR(255), "
+                        + " author VARCHAR(255), "
                         + " publisher VARCHAR(255), "
-                        + " yearOfPurchase INTEGER, "
-                        + " rackNo INTEGER, "
+                        + " yearOfPurchase VARCHAR(255), "
+                        + " rackNo VARCHAR(255), "
                         + " onShelf INTEGER, "
                         + " countID INTEGER, "
-                        + " price DOUBLE, "
+                        + " price VARCHAR(255), "
                         + " isReserved BOOLEAN, "
                         + " copyDetails LONGBLOB, "
                         + " reserveList LONGBLOB)";
         		stmt = con.createStatement();
                 stmt.executeUpdate(sql);
                 System.out.println("books table created");
-                sql = "CREATE TABLE members "
-                        + " (ID INTEGER, "
-                        + " username VARCHAR(255), "
+                sql = "CREATE TABLE users "
+                        + " (username VARCHAR(255), "
                         + " name VARCHAR(255), "
                         + " phoneNo VARCHAR(20), "
                         + " address VARCHAR(255), "
+                        + " type VARCHAR(255), "
                         + " fine DOUBLE, "
                         + " bookLimit INTEGER, "
                         + " duration INTEGER, "
@@ -92,8 +100,7 @@ public class Initialize {
                 System.out.println("members table created");
                 
                 sql = "CREATE TABLE clerks "
-                        + "( ID INTEGER, "
-                        + " username VARCHAR(255), "
+                        + "(username VARCHAR(255), "
                         + " name VARCHAR(255), "
                         + " phoneNo VARCHAR(20), "
                         + " address VARCHAR(255), "

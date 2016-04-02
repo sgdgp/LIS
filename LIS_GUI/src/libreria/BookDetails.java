@@ -1,5 +1,6 @@
 package libreria;
 
+import java.sql.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -17,36 +18,37 @@ import java.awt.Color;
 public class BookDetails extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
+	private JTextField textFieldName;
+	private JTextField textFieldAuthor;
+	private JTextField textFieldISBN;
+	private JTextField textFieldCopies;
+	private JTextField textFieldCopiesIssued;
+	private JTextField textFieldReserveStatus;
+	private JTextField textFieldRackNo;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BookDetails frame = new BookDetails();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					BookDetails frame = new BookDetails();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public BookDetails() {
+	String username,ISBN;
+	public BookDetails(String uname) {
+		username = uname;
+		
 		setTitle("Book Details");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 538, 401);
@@ -72,23 +74,23 @@ public class BookDetails extends JFrame {
 		lblIsbnNumber.setBounds(40, 112, 93, 14);
 		contentPane.add(lblIsbnNumber);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(243, 58, 222, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setEditable(false);
+		textFieldName.setBounds(243, 58, 222, 20);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(243, 84, 222, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldAuthor = new JTextField();
+		textFieldAuthor.setEditable(false);
+		textFieldAuthor.setBounds(243, 84, 222, 20);
+		contentPane.add(textFieldAuthor);
+		textFieldAuthor.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setBounds(243, 109, 222, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldISBN = new JTextField();
+		textFieldISBN.setEditable(false);
+		textFieldISBN.setBounds(243, 109, 222, 20);
+		contentPane.add(textFieldISBN);
+		textFieldISBN.setColumns(10);
 		
 		JLabel lblBookDetails = new JLabel("Book Details");
 		lblBookDetails.setForeground(new Color(72, 61, 139));
@@ -112,27 +114,24 @@ public class BookDetails extends JFrame {
 		lblNumberOfCopies_1.setBounds(40, 162, 169, 14);
 		contentPane.add(lblNumberOfCopies_1);
 		
-		JLabel lblNumberOfCopies_2 = new JLabel("Number of Copies reserved");
+		JLabel lblNumberOfCopies_2 = new JLabel("Reserve Status");
 		lblNumberOfCopies_2.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblNumberOfCopies_2.setBounds(40, 187, 159, 14);
 		contentPane.add(lblNumberOfCopies_2);
 		
-		JLabel lblNumberOfCopies_3 = new JLabel("Number of Copies on shelf");
-		lblNumberOfCopies_3.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblNumberOfCopies_3.setBounds(40, 215, 169, 14);
-		contentPane.add(lblNumberOfCopies_3);
-		
 		JLabel lblRackNumber = new JLabel("Rack Number");
 		lblRackNumber.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblRackNumber.setBounds(40, 240, 118, 14);
+		lblRackNumber.setBounds(40, 215, 118, 14);
 		contentPane.add(lblRackNumber);
 		
-		JLabel lblEarliestDueDate = new JLabel("Earliest Due date of an issued book");
-		lblEarliestDueDate.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblEarliestDueDate.setBounds(40, 265, 211, 14);
-		contentPane.add(lblEarliestDueDate);
-		
 		JButton btnIssueBook = new JButton("Issue Book");
+		btnIssueBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				libraryfunc l = new libraryfunc();
+				l.issue(ISBN, username);
+			}
+			
+		});
 		btnIssueBook.setBackground(new Color(176, 224, 230));
 		btnIssueBook.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnIssueBook.setBounds(186, 328, 118, 23);
@@ -148,41 +147,53 @@ public class BookDetails extends JFrame {
 		btnReturnBook.setBounds(339, 328, 144, 23);
 		contentPane.add(btnReturnBook);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setBounds(243, 134, 222, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textFieldCopies = new JTextField();
+		textFieldCopies.setEditable(false);
+		textFieldCopies.setBounds(243, 134, 222, 20);
+		contentPane.add(textFieldCopies);
+		textFieldCopies.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		textField_4.setBounds(243, 159, 222, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		textFieldCopiesIssued = new JTextField();
+		textFieldCopiesIssued.setEditable(false);
+		textFieldCopiesIssued.setBounds(243, 159, 222, 20);
+		contentPane.add(textFieldCopiesIssued);
+		textFieldCopiesIssued.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		textField_5.setBounds(243, 184, 222, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		textFieldReserveStatus = new JTextField();
+		textFieldReserveStatus.setEditable(false);
+		textFieldReserveStatus.setBounds(243, 184, 222, 20);
+		contentPane.add(textFieldReserveStatus);
+		textFieldReserveStatus.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setEditable(false);
-		textField_6.setBounds(243, 212, 222, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
-		
-		textField_7 = new JTextField();
-		textField_7.setEditable(false);
-		textField_7.setBounds(243, 262, 222, 20);
-		contentPane.add(textField_7);
-		textField_7.setColumns(10);
-		
-		textField_8 = new JTextField();
-		textField_8.setEditable(false);
-		textField_8.setBounds(243, 237, 222, 20);
-		contentPane.add(textField_8);
-		textField_8.setColumns(10);
+		textFieldRackNo = new JTextField();
+		textFieldRackNo.setEditable(false);
+		textFieldRackNo.setBounds(243, 212, 222, 20);
+		contentPane.add(textFieldRackNo);
+		textFieldRackNo.setColumns(10);
 	}
-
+	
+	public void showParams(String name,String author,String ISBN){
+//		this.name = name;
+		this.ISBN = ISBN;
+		textFieldName.setText(name);
+		textFieldAuthor.setText(author);
+		textFieldISBN.setText(ISBN);
+		
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+			Statement st = con.createStatement();
+			String query = "Select * from books where ISBN='"+ISBN+"'";
+			ResultSet r = st.executeQuery(query);
+			while(r.next()){
+				textFieldCopies.setText(r.getString("countID"));
+//				textFieldCopiesIssued.setText(r.getString("copyIssued"));
+				textFieldRackNo.setText(r.getString("rackNo"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }
