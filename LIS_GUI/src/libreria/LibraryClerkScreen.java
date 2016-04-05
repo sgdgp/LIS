@@ -76,14 +76,19 @@ public class LibraryClerkScreen extends JFrame {
 		lblLibraryClerkOptions.setBounds(113, 28, 213, 40);
 		contentPane.add(lblLibraryClerkOptions);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
-		btnBack.setBounds(10, 227, 89, 23);
-		contentPane.add(btnBack);
-		
 		JButton btnViewTasks = new JButton("View Tasks");
 		btnViewTasks.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
-		btnViewTasks.setBounds(307, 228, 117, 23);
+		btnViewTasks.setBounds(153, 227, 117, 23);
 		contentPane.add(btnViewTasks);
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
+		btnLogout.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		btnLogout.setBounds(335, 11, 89, 23);
+		contentPane.add(btnLogout);
 	}
 }

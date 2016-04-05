@@ -57,6 +57,7 @@ public class CreateUser extends JFrame {
 	 * Create the frame.
 	 */
 	public CreateUser() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Create New User");
 		setBackground(new Color(138, 43, 226));
 		setBounds(100, 100, 494, 324);
@@ -146,6 +147,7 @@ public class CreateUser extends JFrame {
 //				boolean check = checkEntry();
 				
 				addtoDatabase(username,name,address,phone,password,type);
+				setVisible(false);
 				
 			}
 		});
@@ -155,6 +157,11 @@ public class CreateUser extends JFrame {
 		contentPane.add(btnCreateUser);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 		btnBack.setBackground(new Color(255, 105, 180));
 		btnBack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBack.setBounds(21, 251, 89, 23);

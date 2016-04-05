@@ -25,9 +25,10 @@ public class AddBook extends JFrame {
 	private JTextField textFieldISBN;
 	private JTextField textFieldRack;
 	private JTextField textFieldYear;
-	private JTextField textFieldCopy;
-	private JTextField textFieldPublisher;
+	private JLabel lblPrice;
+	private JLabel lblPublisher;
 	private JTextField textFieldPrice;
+	private JTextField textFieldPublisher;
 
 	/**
 	 * Launch the application.
@@ -50,7 +51,7 @@ public class AddBook extends JFrame {
 	 */
 	public AddBook() {
 		setTitle("Book Details");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 467, 372);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 153));
@@ -96,6 +97,11 @@ public class AddBook extends JFrame {
 		contentPane.add(lblBookDetails);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 		btnBack.setBackground(new Color(176, 224, 230));
 		btnBack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBack.setBounds(10, 299, 89, 23);
@@ -135,24 +141,30 @@ public class AddBook extends JFrame {
 		contentPane.add(textFieldYear);
 		textFieldYear.setColumns(10);
 		
-		textFieldCopy = new JTextField();
-		textFieldCopy.setBounds(150, 187, 222, 20);
-		contentPane.add(textFieldCopy);
-		textFieldCopy.setColumns(10);
-		
-		textFieldPublisher = new JTextField();
-		textFieldPublisher.setBounds(150, 213, 222, 20);
-		contentPane.add(textFieldPublisher);
-		textFieldPublisher.setColumns(10);
-		
 		JLabel lblYear = new JLabel("Year");
+		lblYear.setFont(new Font("Trebuchet MS", Font.BOLD, 11));
 		lblYear.setBounds(40, 162, 46, 14);
 		contentPane.add(lblYear);
 		
+		lblPrice = new JLabel("Price");
+		lblPrice.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		lblPrice.setBounds(40, 192, 78, 14);
+		contentPane.add(lblPrice);
+		
+		lblPublisher = new JLabel("Publisher");
+		lblPublisher.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		lblPublisher.setBounds(40, 217, 78, 14);
+		contentPane.add(lblPublisher);
+		
 		textFieldPrice = new JTextField();
-		textFieldPrice.setBounds(150, 244, 222, 20);
+		textFieldPrice.setBounds(150, 189, 224, 20);
 		contentPane.add(textFieldPrice);
 		textFieldPrice.setColumns(10);
+		
+		textFieldPublisher = new JTextField();
+		textFieldPublisher.setBounds(150, 214, 222, 20);
+		contentPane.add(textFieldPublisher);
+		textFieldPublisher.setColumns(10);
 	}
 	@SuppressWarnings("unchecked")
 	public void addToDatabase(String ISBN,String name,String author, String publisher,String year,String rackno,String price){
@@ -177,7 +189,7 @@ public class AddBook extends JFrame {
                 ObjectInputStream o1 = new ObjectInputStream(new ByteArrayInputStream(buf1));
                 cd = (ArrayList<BookInfo>) o1.readObject();
                 
-//                cd.add("-");
+                cd.add(new BookInfo(false));
 				//set up the reserve list arraylist
 				byte[] buf2 = r.getBytes("reserveList");
                 ObjectInputStream o2 = new ObjectInputStream(new ByteArrayInputStream(buf2));
@@ -197,10 +209,10 @@ public class AddBook extends JFrame {
 			}
 			else{
 				System.out.println("else part of add book adtodatabase, count="+count);
-//				cd.add("-");
+				cd.add(new BookInfo(false));
 //				rl.add("-");
-				String sql = "INSERT INTO books (ISBN,name,author,publisher,yearOfPurchase,rackNo,onShelf,countID,price,isReserved,copyDetails,reserveList)" +
-	                    " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+				String sql = "INSERT INTO books (ISBN,name,author,publisher,yearOfPurchase,rackNo,onShelf,countID,issueStats,price,isReserved,copyDetails,reserveList)" +
+	                    " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement stmt = con.prepareStatement(sql);
 				stmt.setString(1, ISBN);
 				stmt.setString(2, name);
@@ -210,10 +222,11 @@ public class AddBook extends JFrame {
 				stmt.setString(6, rackno);
 				stmt.setInt(7, oS+1);
 				stmt.setInt(8, count+1);
-				stmt.setString(9, price);
-				stmt.setBoolean(10, false);
-				stmt.setObject(11,cd);
-				stmt.setObject(12, rl);
+				stmt.setInt(9, 0);
+				stmt.setString(10, price);
+				stmt.setBoolean(11, false);
+				stmt.setObject(12,cd);
+				stmt.setObject(13, rl);
 				
 				stmt.executeUpdate();
 				

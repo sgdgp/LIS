@@ -47,6 +47,20 @@ public class libraryfunc {
     //private static ArrayList<Book> bookList;
     //private static ArrayList<Member> memberList;
     public void statistics() {
+        try {
+			Connection con = DriverManager.getConnection(url+"lis", user, password);
+			Statement s = con.createStatement();
+			String sql = "Select * from books";
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()){
+				String isbn = rs.getString("ISBN");
+				String a = rs.getString("issueStats");
+				System.out.println(isbn+"     "+a);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
 
@@ -162,7 +176,7 @@ public class libraryfunc {
         }
     }
 
-    public static void informReservedMembers(String ISBN) throws IOException, ClassNotFoundException {
+    public static void informReservedMembers(String ISBN){
         try {
             int flag = 0;
             Statement stmt = null;
@@ -181,18 +195,25 @@ public class libraryfunc {
             System.out.println("Success-info");
             Iterator itr = reserveList.iterator();
             while (itr.hasNext() && (onShelf > 0)) {
-                System.out.println("Book Available for member ID = " + ((Integer) itr.next()));
+                System.out.println("Book Available for member username = " +itr.next() );
             }
         } catch (SQLException ex) {
             Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     public void penalty() {
 
     }
 
-    public void issue(String ISBN, String username){
+    @SuppressWarnings("unchecked")
+	public void issue(String ISBN, String username){
     	
 //    	try {
 //			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
@@ -221,13 +242,16 @@ public class libraryfunc {
                 	 boolean isReserved = rs.getBoolean("isReserved");
                      int onShelf = rs.getInt("onShelf");
                     
+                     
+                    int issueStats = rs.getInt("issueStats"); 
+                    System.out.println(issueStats);
                     byte[] buf = rs.getBytes("copyDetails");
                     ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
                     ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
 
                     byte[] buf1 = rs.getBytes("reserveList");
                     ObjectInputStream o1 = new ObjectInputStream(new ByteArrayInputStream(buf1));
-                    ArrayList<Integer> reserveList = (ArrayList<Integer>) o1.readObject();
+                    ArrayList<String> reserveList = (ArrayList<String>) o1.readObject();
 
                     String mem = "SELECT * FROM users WHERE username = '" + username+"'";
                     ResultSet ms = stmt1.executeQuery(mem);
@@ -263,8 +287,9 @@ public class libraryfunc {
                         if (isReserved == false) {
                             if (onShelf > 0) {
                                 Iterator itr = copyDetails.iterator();
-
+                                
                                 while (itr.hasNext()) {
+                                	
                                     BookInfo sb = (BookInfo) itr.next();
                                     if (!sb.isIsIssued()) {
                                         onShelf--;
@@ -277,12 +302,15 @@ public class libraryfunc {
                                         issuedMembers.add(temp);
                                         sb.setIssuedMembers(issuedMembers);
                                         PopUpFrame pop = new PopUpFrame("Book Issued!");
+                                        issueStats++;
                                         pop.setVisible(true);
                                         UserIssueDetails memtemp = new UserIssueDetails(ISBN, date);
                                         booksIssued.add(memtemp);
                                         copyDetails.add(sb);
+                                        
                                         break;
                                     }
+                                    
                                 }
 
                             } else {
@@ -331,6 +359,7 @@ public class libraryfunc {
 
                                         PopUpFrame pop = new PopUpFrame("Book Issued!");
                                         pop.setVisible(true);
+                                        issueStats++;
                                         UserIssueDetails memtemp = new UserIssueDetails(ISBN, date);
                                         booksIssued.add(memtemp);
                                         copyDetails.add(sb);
@@ -345,13 +374,16 @@ public class libraryfunc {
                         }
 
                         add = "UPDATE books SET reserveList = " + "?"
+                        		+ ", issueStats = " + "?"
                                 + ", isReserved = " + isReserved
                                 + ", copyDetails = " + "?"
                                 + ", onShelf = " + onShelf
                                 + " WHERE ISBN = '" + ISBN + "'";
                         PreparedStatement pstmt = con.prepareStatement(add);
+                        System.out.println(issueStats);
+                        pstmt.setInt(2, issueStats);
                         pstmt.setObject(1, reserveList);
-                        pstmt.setObject(2, copyDetails);
+                        pstmt.setObject(3, copyDetails);
                         pstmt.executeUpdate();
                         //stmt.executeUpdate(add);
 
@@ -383,12 +415,12 @@ public class libraryfunc {
 
     }
 
-    public void returned(String ISBN, int subID) throws IOException, ClassNotFoundException {
+    public void returned(String ISBN, String username) {
 
         try {
             int ID = 0;
             int flag = 0;
-            String username="";
+            
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
             System.out.println("Success");
@@ -405,16 +437,16 @@ public class libraryfunc {
                 byte[] buf1 = rs.getBytes("reserveList");
                 ObjectInputStream o1 = new ObjectInputStream(new ByteArrayInputStream(buf1));
                 ArrayList<Integer> reserveList = (ArrayList<Integer>) o1.readObject();
-                Iterator itr1 = copyDetails.iterator();
-                while (itr1.hasNext()) {
-                    BookInfo sb = (BookInfo) itr1.next();
-                    if (sb.getIssuedMembers().size() > 0) {
-                        if (sb.getID() == subID) {
-                            username = sb.getIssuedMembers().get(sb.getIssuedMembers().size() - 1).getIssueMember();
-                        }
-                    }
-                }
-                System.out.println(ID);
+//                Iterator itr1 = copyDetails.iterator();
+//                while (itr1.hasNext()) {
+//                    BookInfo sb = (BookInfo) itr1.next();
+//                    if (sb.getIssuedMembers().size() > 0) {
+//                        if (sb.getID() == subID) {
+//                            username = sb.getIssuedMembers().get(sb.getIssuedMembers().size() - 1).getIssueMember();
+//                        }
+//                    }
+//                }
+//                System.out.println(ID);
                 String mem = "SELECT * FROM users WHERE username = '" + username+"'";
                 ResultSet ms = stmt.executeQuery(mem);
                 if (ms.next()) {
@@ -427,11 +459,11 @@ public class libraryfunc {
                     Iterator itr = copyDetails.iterator();
                     while (itr.hasNext() && flag == 0) {
                         BookInfo sb = (BookInfo) itr.next();
-                        if (sb.getID() == subID && sb.isIsIssued()) {
+                        if ( sb.isIsIssued()) {
                             Iterator iter = sb.getIssuedMembers().iterator();
                             while (iter.hasNext()) {
                                 BookCopy iss = (BookCopy) iter.next();
-                                if (iss.getIssueMember() == username && iss.getReturnDate().equalsIgnoreCase("")) {
+                                if (iss.getIssueMember().equals(username) && iss.getReturnDate().equalsIgnoreCase("")) {
                                     iter.remove();
                                     itr.remove();
                                     flag = 1;
@@ -500,49 +532,82 @@ public class libraryfunc {
                 pop.setVisible(true);
             }
 
-        } catch (SQLException ex) {
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
             Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public void reserve(String ISBN, int ID) throws IOException, ClassNotFoundException {
+    @SuppressWarnings({ "unchecked", "unused" })
+	public void reserve(String ISBN, String username){
         try {
             int flag = 0;
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
             System.out.println("Success");
             stmt = con.createStatement();
+            String add0 = "SELECT * FROM users WHERE username = '" + username + "'";
+            ResultSet rs0 = stmt.executeQuery(add0);
+            rs0.next();
+            byte[] buf0 = rs0.getBytes("booksIssued");
+            ObjectInputStream o0 = new ObjectInputStream(new ByteArrayInputStream(buf0));
+            ArrayList<UserIssueDetails> bookList = (ArrayList<UserIssueDetails>) o0.readObject();
+            for(int i=0;i<bookList.size();i++){
+            	if(bookList.get(i).getIssuedBook().equals(ISBN)){
+            		PopUpFrame pop = new PopUpFrame("Book already issued by you!");
+                    pop.setVisible(true);
+                    return;
+            	}
+            		
+            }
+            
             String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
             ResultSet rs = stmt.executeQuery(add);
             rs.next();
             boolean isReserved = rs.getBoolean("isReserved");
             isReserved = true;
-            byte[] buf = rs.getBytes("booksIssued");
+            System.out.println("is reserved set to true");
+            byte[] buf = rs.getBytes("reserveList");
             ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
-            ArrayList<Integer> reserveList = (ArrayList<Integer>) o.readObject();
-            Iterator itr = reserveList.iterator();
-            while (itr.hasNext()) {
-                int sb = (int) itr.next();
-                if (sb == ID) {
-                    flag = 1;
-                    break;
-                }
+            ArrayList<String> reserveList = (ArrayList<String>) o.readObject();
+//            Iterator itr = reserveList.iterator();
+//            while (itr.hasNext()) {
+//                String sb = (String) itr.next();
+//                if (sb.equals(username)) {
+//                    flag = 1;
+//                    break;
+//                }
+//            }
+//            if (flag == 0) {
+            if(reserveList.contains(username)){
+            	PopUpFrame pop = new PopUpFrame("Book already reserved under this username!");
+                pop.setVisible(true);
+                return;
             }
-            if (flag == 0) {
-                reserveList.add(ID);
-            }
+            
+            reserveList.add(username);
+//            }
             rs.close();
+            
+            System.out.println("Resrve list of books table updated");
             add = "UPDATE books SET reserveList = " + "?"
                     + ", isReserved = " + isReserved
                     + " WHERE ISBN = '" + ISBN + "'";
             PreparedStatement pstmt = con.prepareStatement(add);
             pstmt.setObject(1, reserveList);
             pstmt.executeUpdate();
+            System.out.println("Table updated");
             //stmt.executeUpdate(add);
-            System.out.println("Book Reserved!!");
+            PopUpFrame pop = new PopUpFrame("Book Reserved!");
+            pop.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

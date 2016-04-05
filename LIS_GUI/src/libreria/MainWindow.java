@@ -207,7 +207,10 @@ public class MainWindow extends JFrame {
 								try {
 									LibraryUser frame = new LibraryUser(username);
 									frame.setVisible(true);
+//									libraryfunc l = new libraryfunc();
+//									l.returned("b", username);
 									dispose();
+									
 								} catch (Exception e) {
 									e.printStackTrace();
 								}

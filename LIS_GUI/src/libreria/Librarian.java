@@ -123,171 +123,171 @@ public class Librarian {
 	        }
 	    }
 
-	    public void create_book(String ISBN, String name, String publisher, int yearOfPurchase, int rackNo, double price, int copies) {
-	        ArrayList<BookInfo> copyDetails = new ArrayList<>();
-	        ArrayList<Integer> reserveList = new ArrayList<>();
-	        for (int i = 0; i < copies; i++) {
-	            BookInfo newCopy = new BookInfo(i + 1, false);
-	            copyDetails.add(newCopy);
-	        }
-	        try {
-	            //book = new Book(ISBN, name, publisher, yearOfPurchase, rackNo, price);
-	            Statement stmt = null;
+//	    public void create_book(String ISBN, String name, String publisher, int yearOfPurchase, int rackNo, double price, int copies) {
+//	        ArrayList<BookInfo> copyDetails = new ArrayList<>();
+//	        ArrayList<Integer> reserveList = new ArrayList<>();
+//	        for (int i = 0; i < copies; i++) {
+//	            BookInfo newCopy = new BookInfo(i + 1, false);
+//	            copyDetails.add(newCopy);
+//	        }
+//	        try {
+//	            //book = new Book(ISBN, name, publisher, yearOfPurchase, rackNo, price);
+//	            Statement stmt = null;
+//
+//	            Connection con = DriverManager.getConnection(url, user, password);
+//	            System.out.println("Success");
+//	            stmt = con.createStatement();
+//	            String add = "INSERT into books VALUES ('"
+//	                    + ISBN + "', '"
+//	                    + name + "', '"
+//	                    + publisher + "', "
+//	                    + yearOfPurchase + ", "
+//	                    + rackNo + ", "
+//	                    + copies + ", "
+//	                    + (copies + 1) + ", "
+//	                    + price + ", "
+//	                    + false + ", "
+//	                    + "?" + ", "
+//	                    + "?" + ")";
+//	            PreparedStatement statement = con.prepareStatement(add);
+//	            statement.setObject(1, copyDetails);
+//	            statement.setObject(2, reserveList);
+//	            statement.executeUpdate();
+//	            //stmt.executeUpdate(add);
+//	            PopUpFrame pop = new PopUpFrame("Book record successfully created!");
+//	            pop.setVisible(true);
+//
+//	        } catch (SQLException ex) {
+//	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
+//	        }
+//
+//	    }
 
-	            Connection con = DriverManager.getConnection(url, user, password);
-	            System.out.println("Success");
-	            stmt = con.createStatement();
-	            String add = "INSERT into books VALUES ('"
-	                    + ISBN + "', '"
-	                    + name + "', '"
-	                    + publisher + "', "
-	                    + yearOfPurchase + ", "
-	                    + rackNo + ", "
-	                    + copies + ", "
-	                    + (copies + 1) + ", "
-	                    + price + ", "
-	                    + false + ", "
-	                    + "?" + ", "
-	                    + "?" + ")";
-	            PreparedStatement statement = con.prepareStatement(add);
-	            statement.setObject(1, copyDetails);
-	            statement.setObject(2, reserveList);
-	            statement.executeUpdate();
-	            //stmt.executeUpdate(add);
-	            PopUpFrame pop = new PopUpFrame("Book record successfully created!");
-	            pop.setVisible(true);
+//	    public void delete_book(String ISBN) throws IOException, ClassNotFoundException {
+//	        try {
+//	            Statement stmt = null;
+//
+//	            Connection con = DriverManager.getConnection(url, user, password);
+//	            System.out.println("Success");
+//	            stmt = con.createStatement();
+//	            String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
+//	            ResultSet rs = stmt.executeQuery(add);
+//	            rs.next();
+//	            int onShelf = rs.getInt("onShelf");
+//	            byte[] buf = rs.getBytes("copyDetails");
+//	            ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
+//
+//	            ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
+//	            if (onShelf == copyDetails.size()) {
+//	                add = "DELETE from books WHERE ISBN = '" + ISBN + "'";
+//	                stmt.executeUpdate(add);
+//	                PopUpFrame pop = new PopUpFrame("Book Deleted!");
+//	                pop.setVisible(true);
+//	            }
+//
+//	        } catch (SQLException ex) {
+//	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
+//	        }
+//	    }
 
-	        } catch (SQLException ex) {
-	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
-	        }
+//	    public void create_BookInfo(String ISBN, int copies) throws IOException, ClassNotFoundException {
+//	        try {
+//	            Statement stmt = null;
+//
+//	            Connection con = DriverManager.getConnection(url, user, password);
+//	            System.out.println("Success");
+//	            stmt = con.createStatement();
+//	            String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
+//	            ResultSet rs = stmt.executeQuery(add);
+//	            rs.next();
+//	            int onShelf = rs.getInt("onShelf");
+//	            boolean isReserved = rs.getBoolean("isReserved");
+//	            byte[] buf = rs.getBytes("copyDetails");
+//	            ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
+//
+//	            ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
+//	            System.out.println(onShelf);
+//
+//	            int countID = rs.getInt("countID");
+//	            for (int i = 0; i < copies; i++) {
+//	                BookInfo newCopy = new BookInfo(countID + i, false);
+//	                copyDetails.add(newCopy);
+//	            }
+//	            countID = countID + copies;
+//	            onShelf = onShelf + copies;
+//	            rs.close();
+//
+//	            if (isReserved) {
+//	                libraryfunc ls = new libraryfunc();
+//	                ls.informReservedMembers(ISBN);
+//	            }
+//
+//	            add = "UPDATE books SET countID = " + countID
+//	                    + ", copyDetails = " + "?"
+//	                    + ", onShelf = " + onShelf
+//	                    + " WHERE ISBN = '" + ISBN + "'";
+//	            PreparedStatement statement = con.prepareStatement(add);
+//	            statement.setObject(1, copyDetails);
+//	            statement.executeUpdate();
+//	            //stmt.executeUpdate(add);
+//	            PopUpFrame pop = new PopUpFrame("Books added!");
+//	            pop.setVisible(true);
+//	        } catch (SQLException ex) {
+//	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
+//	        }
+//	    }
 
-	    }
-
-	    public void delete_book(String ISBN) throws IOException, ClassNotFoundException {
-	        try {
-	            Statement stmt = null;
-
-	            Connection con = DriverManager.getConnection(url, user, password);
-	            System.out.println("Success");
-	            stmt = con.createStatement();
-	            String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
-	            ResultSet rs = stmt.executeQuery(add);
-	            rs.next();
-	            int onShelf = rs.getInt("onShelf");
-	            byte[] buf = rs.getBytes("copyDetails");
-	            ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
-
-	            ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
-	            if (onShelf == copyDetails.size()) {
-	                add = "DELETE from books WHERE ISBN = '" + ISBN + "'";
-	                stmt.executeUpdate(add);
-	                PopUpFrame pop = new PopUpFrame("Book Deleted!");
-	                pop.setVisible(true);
-	            }
-
-	        } catch (SQLException ex) {
-	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
-	        }
-	    }
-
-	    public void create_BookInfo(String ISBN, int copies) throws IOException, ClassNotFoundException {
-	        try {
-	            Statement stmt = null;
-
-	            Connection con = DriverManager.getConnection(url, user, password);
-	            System.out.println("Success");
-	            stmt = con.createStatement();
-	            String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
-	            ResultSet rs = stmt.executeQuery(add);
-	            rs.next();
-	            int onShelf = rs.getInt("onShelf");
-	            boolean isReserved = rs.getBoolean("isReserved");
-	            byte[] buf = rs.getBytes("copyDetails");
-	            ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
-
-	            ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
-	            System.out.println(onShelf);
-
-	            int countID = rs.getInt("countID");
-	            for (int i = 0; i < copies; i++) {
-	                BookInfo newCopy = new BookInfo(countID + i, false);
-	                copyDetails.add(newCopy);
-	            }
-	            countID = countID + copies;
-	            onShelf = onShelf + copies;
-	            rs.close();
-
-	            if (isReserved) {
-	                libraryfunc ls = new libraryfunc();
-	                ls.informReservedMembers(ISBN);
-	            }
-
-	            add = "UPDATE books SET countID = " + countID
-	                    + ", copyDetails = " + "?"
-	                    + ", onShelf = " + onShelf
-	                    + " WHERE ISBN = '" + ISBN + "'";
-	            PreparedStatement statement = con.prepareStatement(add);
-	            statement.setObject(1, copyDetails);
-	            statement.executeUpdate();
-	            //stmt.executeUpdate(add);
-	            PopUpFrame pop = new PopUpFrame("Books added!");
-	            pop.setVisible(true);
-	        } catch (SQLException ex) {
-	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
-	        }
-	    }
-
-	    public void delete_BookInfo(String ISBN, int ID) throws IOException, ClassNotFoundException {
-	        try {
-	            boolean flag = false;
-	            boolean flag1 = false;
-	            Statement stmt = null;
-	            Connection con = DriverManager.getConnection(url, user, password);
-	            System.out.println("Success");
-	            stmt = con.createStatement();
-	            String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
-	            ResultSet rs = stmt.executeQuery(add);
-	            rs.next();
-	            int onShelf = rs.getInt("onShelf");
-	            byte[] buf = rs.getBytes("copyDetails");
-	            ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
-
-	            ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
-	            Iterator itr = copyDetails.iterator();
-	            while (itr.hasNext()) {
-	                BookInfo sb = (BookInfo) itr.next();
-	                if (sb.getID() == ID) {
-	                    flag = true;
-	                    if (sb.isIsIssued() == false) {
-	                        onShelf--;
-	                        flag1 = true;
-	                        itr.remove();
-	                        break;
-	                    }
-	                }
-	            }
-	            rs.close();
-	            add = "UPDATE books SET copyDetails = " + "?"
-	                    + ", onShelf = " + onShelf
-	                    + " WHERE ISBN = '" + ISBN + "'";
-	            PreparedStatement statement = con.prepareStatement(add);
-	            statement.setObject(1, copyDetails);
-	            statement.executeUpdate();
-	            //stmt.executeUpdate(add);
-	            if (flag1 == true) {
-	                PopUpFrame pop = new PopUpFrame("Book deleted!");
-	                pop.setVisible(true);
-	            } else if (flag == true && flag1 == false) {
-	                PopUpFrame pop = new PopUpFrame("Book issued out, can't be deleted!");
-	                pop.setVisible(true);
-	            } else {
-	                PopUpFrame pop = new PopUpFrame("Invalid ID!");
-	                pop.setVisible(true);
-	            }
-	        } catch (SQLException ex) {
-	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
-	        }
-	    }
+//	    public void delete_BookInfo(String ISBN, int ID) throws IOException, ClassNotFoundException {
+//	        try {
+//	            boolean flag = false;
+//	            boolean flag1 = false;
+//	            Statement stmt = null;
+//	            Connection con = DriverManager.getConnection(url, user, password);
+//	            System.out.println("Success");
+//	            stmt = con.createStatement();
+//	            String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
+//	            ResultSet rs = stmt.executeQuery(add);
+//	            rs.next();
+//	            int onShelf = rs.getInt("onShelf");
+//	            byte[] buf = rs.getBytes("copyDetails");
+//	            ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
+//
+//	            ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
+//	            Iterator itr = copyDetails.iterator();
+//	            while (itr.hasNext()) {
+//	                BookInfo sb = (BookInfo) itr.next();
+//	                if (sb.getID() == ID) {
+//	                    flag = true;
+//	                    if (sb.isIsIssued() == false) {
+//	                        onShelf--;
+//	                        flag1 = true;
+//	                        itr.remove();
+//	                        break;
+//	                    }
+//	                }
+//	            }
+//	            rs.close();
+//	            add = "UPDATE books SET copyDetails = " + "?"
+//	                    + ", onShelf = " + onShelf
+//	                    + " WHERE ISBN = '" + ISBN + "'";
+//	            PreparedStatement statement = con.prepareStatement(add);
+//	            statement.setObject(1, copyDetails);
+//	            statement.executeUpdate();
+//	            //stmt.executeUpdate(add);
+//	            if (flag1 == true) {
+//	                PopUpFrame pop = new PopUpFrame("Book deleted!");
+//	                pop.setVisible(true);
+//	            } else if (flag == true && flag1 == false) {
+//	                PopUpFrame pop = new PopUpFrame("Book issued out, can't be deleted!");
+//	                pop.setVisible(true);
+//	            } else {
+//	                PopUpFrame pop = new PopUpFrame("Invalid ID!");
+//	                pop.setVisible(true);
+//	            }
+//	        } catch (SQLException ex) {
+//	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
+//	        }
+//	    }
 
 	    public void modify_book(String ISBN, String name, String publisher, int yearOfPurchase, int rackNo, double price) {
 	        try {

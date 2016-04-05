@@ -8,28 +8,24 @@ package libreria;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- *
- * @author AKASH
- */
 class BookInfo implements Serializable{
-    private int ID;
+//    private int ID;
     private boolean isIssued;
-    private ArrayList<BookCopy> issuedMembers;
+    private ArrayList<BookCopy> issuedMembers=new ArrayList<BookCopy>();
 
-    public BookInfo(int ID, boolean isIssued) {
-        this.ID = ID;
+    public BookInfo(boolean isIssued) {
+//        this.ID = ID;
         this.isIssued = isIssued;
         issuedMembers=new ArrayList<>();
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+//    public int getID() {
+//        return ID;
+//    }
+//
+//    public void setID(int ID) {
+//        this.ID = ID;
+//    }
 
     public boolean isIsIssued() {
         return isIssued;

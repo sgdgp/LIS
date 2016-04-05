@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
-import com.sun.org.apache.xml.internal.security.Init;
+//import com.sun.org.apache.xml.internal.security.Init;
 
 /**
  *
@@ -77,10 +77,13 @@ public class Initialize {
                         + " rackNo VARCHAR(255), "
                         + " onShelf INTEGER, "
                         + " countID INTEGER, "
+                        + " issueStats INTEGER, "
                         + " price VARCHAR(255), "
                         + " isReserved BOOLEAN, "
                         + " copyDetails LONGBLOB, "
-                        + " reserveList LONGBLOB)";
+                        + " reserveList LONGBLOB, "
+                        + " delNotif BOOLEAN )";
+        		
         		stmt = con.createStatement();
                 stmt.executeUpdate(sql);
                 System.out.println("books table created");
@@ -94,7 +97,8 @@ public class Initialize {
                         + " bookLimit INTEGER, "
                         + " duration INTEGER, "
                         + " booksIssued LONGBLOB, "
-                        + " password VARCHAR(12))";
+                        + " password VARCHAR(12), "
+                        + " overNotif BOOLEAN)";
                 stmt = con.createStatement();
                 stmt.executeUpdate(sql);
                 System.out.println("members table created");
@@ -128,6 +132,26 @@ public class Initialize {
             System.out.println(query);
             
             System.out.println("Success");	
+            Timer t = new Timer();
+            t.scheduleAtFixedRate(
+                    new TimerTask() {
+                        public void run() {
+                            try {
+                                libraryfunc ls = new libraryfunc();
+                                Connection con = DriverManager.getConnection(url + "lis", user, password);
+//                                System.out.println("Success");
+                                Statement stmt = con.createStatement();
+                                String add = "SELECT * FROM users ";
+                                ResultSet rs = stmt.executeQuery(add);
+                                while(rs.next()){
+                                	String n = rs.getString("username");
+                                	ls.fine(n);
+                                }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }, 0, 3600000);
             
     	}catch(SQLException ex){
 //    		ex.printStackTrace();

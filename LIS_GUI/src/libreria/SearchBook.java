@@ -45,7 +45,7 @@ public class SearchBook extends JFrame {
 
 		username = uname;
 		setTitle("Search Book");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(233, 150, 122));
@@ -114,6 +114,7 @@ public class SearchBook extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
 			}
 		});
 		btnBack.setBackground(new Color(119, 136, 153));

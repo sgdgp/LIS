@@ -50,7 +50,7 @@ public class BookDetails extends JFrame {
 		username = uname;
 		
 		setTitle("Book Details");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 538, 401);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(224, 255, 255));
@@ -99,6 +99,11 @@ public class BookDetails extends JFrame {
 		contentPane.add(lblBookDetails);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 		btnBack.setBackground(new Color(176, 224, 230));
 		btnBack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBack.setBounds(10, 328, 89, 23);
@@ -109,7 +114,7 @@ public class BookDetails extends JFrame {
 		lblNumberOfCopies.setBounds(40, 137, 128, 14);
 		contentPane.add(lblNumberOfCopies);
 		
-		JLabel lblNumberOfCopies_1 = new JLabel("Number of Copies issued");
+		JLabel lblNumberOfCopies_1 = new JLabel("Number of Copies available");
 		lblNumberOfCopies_1.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblNumberOfCopies_1.setBounds(40, 162, 169, 14);
 		contentPane.add(lblNumberOfCopies_1);
@@ -129,6 +134,7 @@ public class BookDetails extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				libraryfunc l = new libraryfunc();
 				l.issue(ISBN, username);
+//				l.returned(ISBN, "i");
 			}
 			
 		});
@@ -142,6 +148,8 @@ public class BookDetails extends JFrame {
 		btnReturnBook.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				libraryfunc l = new libraryfunc();
+				l.reserve(ISBN, username);
 			}
 		});
 		btnReturnBook.setBounds(339, 328, 144, 23);
@@ -188,6 +196,7 @@ public class BookDetails extends JFrame {
 				textFieldCopies.setText(r.getString("countID"));
 //				textFieldCopiesIssued.setText(r.getString("copyIssued"));
 				textFieldRackNo.setText(r.getString("rackNo"));
+				textFieldCopiesIssued.setText(r.getString("onShelf"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
