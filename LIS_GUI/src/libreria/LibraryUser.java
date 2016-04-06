@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -50,7 +52,16 @@ public class LibraryUser extends JFrame {
 	public LibraryUser(String name) {
 		username = name;
 		setTitle("Library User Actions");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				MainWindow x = new MainWindow();
+				x.setVisible(true);
+				x.setLocationRelativeTo(null);
+			}
+		});
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 471, 330);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 182, 193));
@@ -69,7 +80,7 @@ public class LibraryUser extends JFrame {
 		JButton btnIssueBook = new JButton("Issue Book");
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
+//				dispose();
 				try {
 					OptionSelect frame = new OptionSelect(username);
 					frame.setVisible(true);
@@ -114,6 +125,14 @@ public class LibraryUser extends JFrame {
 					ResultSet rs = st.executeQuery("Select * from users where username='"+username+"'");
 					rs.next();
 					ReturnWrapper.uid = (ArrayList<UserIssueDetails>) (new ObjectInputStream(new ByteArrayInputStream(rs.getBytes("booksIssued")))).readObject() ;
+					try{
+						Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+						ResultSet r = con1.createStatement().executeQuery("Select * from books where ISBN = 'b'");
+						r.next();
+						System.out.println("is reserved value :"+r.getBoolean("isReserved"));
+					}catch(Exception e){
+						e.printStackTrace();
+					}
 					ReturnWindow d1=new ReturnWindow(username);
 					
 					
@@ -137,7 +156,7 @@ public class LibraryUser extends JFrame {
 		JButton btnSearchBook = new JButton("Search Book");
 		btnSearchBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
+//				dispose();
 				try {
 					SearchBook frame = new SearchBook(username);
 					frame.setVisible(true);
@@ -178,6 +197,13 @@ public class LibraryUser extends JFrame {
 		contentPane.add(btnPayFine);
 		
 		JButton btnNotifications = new JButton("Notifications");
+		btnNotifications.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UserNotificationOption frame = new UserNotificationOption(username);
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
+			}
+		});
 		btnNotifications.setBackground(new Color(0, 153, 102));
 		btnNotifications.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 12));
 		btnNotifications.setBounds(325, 257, 120, 23);
@@ -186,8 +212,10 @@ public class LibraryUser extends JFrame {
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				MainWindow frame=new MainWindow();
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 			}
 		});
 		btnLogout.setBackground(new Color(0, 153, 102));

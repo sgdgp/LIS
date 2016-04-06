@@ -7,13 +7,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.event.WindowEvent;
 
 public class LibrarianHomePage extends JFrame {
 
@@ -39,7 +42,18 @@ public class LibrarianHomePage extends JFrame {
 	 * Create the frame.
 	 */
 	public LibrarianHomePage() {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				MainWindow x = new MainWindow();
+				x.setVisible(true);
+				x.setLocationRelativeTo(null);
+			}
+		});
+		
+		
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 467, 325);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 153));
@@ -57,8 +71,10 @@ public class LibrarianHomePage extends JFrame {
 		btnLogout.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				MainWindow frame=new MainWindow();
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 			}
 		});
 		btnLogout.setBounds(324, 7, 117, 25);
@@ -136,6 +152,16 @@ public class LibrarianHomePage extends JFrame {
 		contentPane.add(btnRemoveClerk);
 		
 		JButton btnPrintNotifications = new JButton("Print notifications");
+		btnPrintNotifications.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					SendOverdueNotif frame = new SendOverdueNotif();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		btnPrintNotifications.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnPrintNotifications.setBackground(new Color(153, 102, 153));
 		btnPrintNotifications.setBounds(45, 220, 155, 23);

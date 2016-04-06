@@ -195,7 +195,19 @@ public class libraryfunc {
             System.out.println("Success-info");
             Iterator itr = reserveList.iterator();
             while (itr.hasNext() && (onShelf > 0)) {
-                System.out.println("Book Available for member username = " +itr.next() );
+            	try{
+//            		Connection com = ;
+            		String sql = "INSERT INTO rbList (username,ISBN)" +
+                            " VALUES(?,?)";
+        			PreparedStatement st = con.prepareStatement(sql);
+        			st.setString(1, (String) itr.next());
+        			st.setString(2, ISBN);
+        			st.executeUpdate();
+        			System.out.println("itr.next : "+itr.next());
+            	}catch(Exception e){
+            		System.out.println("Exception???");
+            	}
+//                System.out.println("Book Available for member username = " +itr.next() );
             }
         } catch (SQLException ex) {
             Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
@@ -256,7 +268,8 @@ public class libraryfunc {
                     String mem = "SELECT * FROM users WHERE username = '" + username+"'";
                     ResultSet ms = stmt1.executeQuery(mem);
                     if (ms.next()) {
-
+                    	
+                    	int dur = ms.getInt("duration");
                         double fine = ms.getDouble("fine");
                         int bookLimit = ms.getInt("bookLimit");
                         byte[] buf2 = ms.getBytes("booksIssued");
@@ -298,13 +311,16 @@ public class libraryfunc {
                                         ArrayList<BookCopy> issuedMembers = sb.getIssuedMembers();
                                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                                         String date = sdf.format(Calendar.getInstance().getTime());
-                                        BookCopy temp = new BookCopy(username, date);
+                                        Calendar c = Calendar.getInstance();
+                                        c.add(Calendar.MONTH, dur);
+                                        String date1 = sdf.format(c.getTime());   
+                                        BookCopy temp = new BookCopy(username, date,date1);
                                         issuedMembers.add(temp);
                                         sb.setIssuedMembers(issuedMembers);
                                         PopUpFrame pop = new PopUpFrame("Book Issued!");
                                         issueStats++;
                                         pop.setVisible(true);
-                                        UserIssueDetails memtemp = new UserIssueDetails(ISBN, date);
+                                        UserIssueDetails memtemp = new UserIssueDetails(ISBN, date,date1);
                                         booksIssued.add(memtemp);
                                         copyDetails.add(sb);
                                         
@@ -350,7 +366,10 @@ public class libraryfunc {
                                         ArrayList<BookCopy> issuedMembers = sb.getIssuedMembers();
                                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                                         String date = sdf.format(Calendar.getInstance().getTime());
-                                        BookCopy temp = new BookCopy(username, date);
+                                        Calendar c = Calendar.getInstance();
+                                        c.add(Calendar.MONTH, dur);
+                                        String date1 = sdf.format(c.getTime());   
+                                        BookCopy temp = new BookCopy(username, date,date1);
                                         issuedMembers.add(temp);
                                         sb.setIssuedMembers(issuedMembers);
                                         if (reserveList.isEmpty()) {
@@ -360,7 +379,7 @@ public class libraryfunc {
                                         PopUpFrame pop = new PopUpFrame("Book Issued!");
                                         pop.setVisible(true);
                                         issueStats++;
-                                        UserIssueDetails memtemp = new UserIssueDetails(ISBN, date);
+                                        UserIssueDetails memtemp = new UserIssueDetails(ISBN, date,date1);
                                         booksIssued.add(memtemp);
                                         copyDetails.add(sb);
                                         break;
@@ -420,7 +439,6 @@ public class libraryfunc {
         try {
             int ID = 0;
             int flag = 0;
-            
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
             System.out.println("Success");
@@ -429,6 +447,8 @@ public class libraryfunc {
             ResultSet rs = stmt.executeQuery(add);
             if (rs.next()) {
                 boolean isReserved = rs.getBoolean("isReserved");
+                
+                System.out.println(isReserved);
                 int onShelf = rs.getInt("onShelf");
                 byte[] buf = rs.getBytes("copyDetails");
                 ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
@@ -452,10 +472,10 @@ public class libraryfunc {
                 if (ms.next()) {
                     double fine = ms.getDouble("fine");
                     int bookLimit = ms.getInt("bookLimit");
-                    byte[] buf2 = ms.getBytes("booksIssued");
-                    ObjectInputStream o2 = new ObjectInputStream(new ByteArrayInputStream(buf2));
-                    ArrayList<UserIssueDetails> booksIssued = (ArrayList<UserIssueDetails>) o2.readObject();
-
+//                    byte[] buf2 = ms.getBytes("booksIssued");
+//                    ObjectInputStream o2 = new ObjectInputStream(new ByteArrayInputStream(buf2));
+//                    ArrayList<UserIssueDetails> booksIssued = (ArrayList<UserIssueDetails>) o2.readObject();
+                    ArrayList<UserIssueDetails> booksIssued = ReturnWrapper.uid;
                     Iterator itr = copyDetails.iterator();
                     while (itr.hasNext() && flag == 0) {
                         BookInfo sb = (BookInfo) itr.next();
@@ -463,7 +483,7 @@ public class libraryfunc {
                             Iterator iter = sb.getIssuedMembers().iterator();
                             while (iter.hasNext()) {
                                 BookCopy iss = (BookCopy) iter.next();
-                                if (iss.getIssueMember().equals(username) && iss.getReturnDate().equalsIgnoreCase("")) {
+                                if (iss.getIssueMember().equals(username)) {
                                     iter.remove();
                                     itr.remove();
                                     flag = 1;
@@ -480,10 +500,11 @@ public class libraryfunc {
                                     Iterator itrr = booksIssued.iterator();
                                     while (itrr.hasNext()) {
                                         UserIssueDetails memb = (UserIssueDetails) itrr.next();
-                                        if (memb.getIssuedBook().equals(ISBN) && memb.getReturnDate().equalsIgnoreCase("")) {
+                                        if (memb.getIssuedBook().equals(ISBN) ) {
                                             itrr.remove();
-                                            memb.setReturnDate(date);
-                                            booksIssued.add(memb);
+                                            System.out.println("details removed");
+//                                            memb.setReturnDate(date);
+//                                            booksIssued.add(memb);
                                             break;
                                         }
                                     }
@@ -514,8 +535,10 @@ public class libraryfunc {
                         PopUpFrame pop = new PopUpFrame("Book returned!");
                         pop.setVisible(true);
                         if (isReserved == true) {
+                        	System.out.println("reach");
                             libraryfunc.informReservedMembers(ISBN);
                         }
+                       
                     } else {
                         PopUpFrame pop = new PopUpFrame("Book ID invalid!");
                         pop.setVisible(true);
@@ -588,13 +611,14 @@ public class libraryfunc {
             reserveList.add(username);
 //            }
             rs.close();
-            
+            System.out.println("isreserved =  "+isReserved);
             System.out.println("Resrve list of books table updated");
             add = "UPDATE books SET reserveList = " + "?"
-                    + ", isReserved = " + isReserved
+                    + ", isReserved = ?" 
                     + " WHERE ISBN = '" + ISBN + "'";
             PreparedStatement pstmt = con.prepareStatement(add);
             pstmt.setObject(1, reserveList);
+            pstmt.setBoolean(2, isReserved);
             pstmt.executeUpdate();
             System.out.println("Table updated");
             //stmt.executeUpdate(add);

@@ -114,7 +114,7 @@ public class SearchBook extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				dispose();
 			}
 		});
 		btnBack.setBackground(new Color(119, 136, 153));

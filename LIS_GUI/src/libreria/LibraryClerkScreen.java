@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 public class LibraryClerkScreen extends JFrame {
@@ -39,7 +41,16 @@ public class LibraryClerkScreen extends JFrame {
 	 */
 	public LibraryClerkScreen() {
 		setTitle("Library Clerk Options");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				MainWindow x = new MainWindow();
+				x.setVisible(true);
+				x.setLocationRelativeTo(null);
+			}
+		});
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(240, 230, 140));
@@ -77,6 +88,16 @@ public class LibraryClerkScreen extends JFrame {
 		contentPane.add(lblLibraryClerkOptions);
 		
 		JButton btnViewTasks = new JButton("View Tasks");
+		btnViewTasks.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					ClerkNotification frame = new ClerkNotification();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		btnViewTasks.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		btnViewTasks.setBounds(153, 227, 117, 23);
 		contentPane.add(btnViewTasks);
@@ -84,7 +105,10 @@ public class LibraryClerkScreen extends JFrame {
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				dispose();
+				MainWindow frame=new MainWindow();
+				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 			}
 		});
 		btnLogout.setFont(new Font("Trebuchet MS", Font.BOLD, 12));

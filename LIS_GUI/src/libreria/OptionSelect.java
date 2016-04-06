@@ -40,7 +40,7 @@ public class OptionSelect extends JFrame {
 	 * Create the frame.
 	 */
 	public OptionSelect(String username) {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 153, 102));

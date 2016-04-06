@@ -78,10 +78,11 @@ public class ReturnWindow extends JFrame {
                 return canEdit[columnIndex];
             }
 };
-		String[] columnNames = {"ISBN Number of  Book","Name of Book", "Date of Issue", "Date of Return", "Actions available "};
+		String[] columnNames = {"ISBN Number of  Book","Name of Book", "Date of Issue", "Due Date", "Actions available "};
 		t.setColumnIdentifiers(columnNames);
 		
 		table = new JTable();
+		table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(table);
 		table.setModel(t);
 		
@@ -114,7 +115,7 @@ public class ReturnWindow extends JFrame {
             {
             	data1[i][0]=booksIssued.get(i).getIssuedBook();
             	data1[i][2]=(String)booksIssued.get(i).getIssueDate();
-            	data1[i][3]=(String)booksIssued.get(i).getReturnDate();
+            	data1[i][3]=(String)booksIssued.get(i).getDueDate();
             	
             	data1[i][4]="Return";
             	String add = "SELECT * FROM books WHERE ISBN = '" +booksIssued.get(i).getIssuedBook() + "'";

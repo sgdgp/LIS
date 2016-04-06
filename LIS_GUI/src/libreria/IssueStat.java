@@ -97,8 +97,9 @@ public class IssueStat extends JFrame {
         	issue[i]=Integer.toString(rs.getInt("issueStats"));
         	String a[]={ISBN[i],name[i],issue[i],"Dispose"};
         	t.addRow(a);
+        
         }
-      
+        DisposeNotifWrapper.ISBN = ISBN;
         
 
 	

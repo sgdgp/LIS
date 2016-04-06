@@ -19,23 +19,12 @@ public class UserNotificationOption extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UserNotificationOption frame = new UserNotificationOption();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
-	public UserNotificationOption() {
+	public UserNotificationOption(String username) {
 		setTitle("Notification Options");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -56,6 +45,8 @@ public class UserNotificationOption extends JFrame {
 		btnReserveNotifications.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		btnReserveNotifications.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				UserReserveNotifications frame=new UserReserveNotifications(username);
+				frame.setVisible(true);
 			}
 		});
 		btnReserveNotifications.setBounds(109, 59, 216, 41);
@@ -66,6 +57,8 @@ public class UserNotificationOption extends JFrame {
 		btnOverdueNotifications.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		btnOverdueNotifications.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				UserOverdueNotification frame=new UserOverdueNotification(username);
+				frame.setVisible(true);
 			}
 		});
 		btnOverdueNotifications.setBounds(109, 111, 216, 41);

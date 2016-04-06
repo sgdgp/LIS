@@ -4,12 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.*;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+
 
 @SuppressWarnings("serial")
 class ButtonEditor extends DefaultCellEditor {
@@ -54,6 +57,41 @@ private JTable tbl;
     	  l.returned(ReturnWrapper.uid.get(r).getIssuedBook(), ReturnWrapper.username);
       }
       
+      
+      if(button.getText().equals("Dispose")){
+    	try{
+    		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+			con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
+    		String query = "update books set delNotif=true where ISBN='"+DisposeNotifWrapper.ISBN[r]+"'";
+    		Statement s = con.createStatement();
+    		s.executeUpdate(query);
+    	}catch(Exception e){
+    	
+    	}
+    	
+    	
+     }
+      if(button.getText().equals("Send Overdue Notification")){
+      	try{
+      		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+  			con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
+      		for(int i=0;i<SendOverNotifWrapper.uid.size();i++){
+      			String z = SendOverNotifWrapper.ISBN.get(r);
+      			if(SendOverNotifWrapper.uid.get(i).getIssuedBook().equals(z)){
+      				SendOverNotifWrapper.uid.get(i).setNotif(true);
+      			}
+      		}
+      		con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
+			String sql = "update users set booksIssued = ?";
+			
+      		PreparedStatement s = con.prepareStatement(sql);
+      		s.setObject(1, SendOverNotifWrapper.uid);
+      		s.executeUpdate();
+      	}catch(Exception e){
+      	
+      	}
+      	
+       } 
     }
     isPushed = false;
     return new String(label);

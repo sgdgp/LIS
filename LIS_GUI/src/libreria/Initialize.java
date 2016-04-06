@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
+
 //import com.sun.org.apache.xml.internal.security.Init;
 
 /**
@@ -54,7 +55,13 @@ public class Initialize {
             if(dbExist){
         		System.out.println("Database exists");
         		con = DriverManager.getConnection(url+"lis", user, password);
+        		
+        		Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+				ResultSet r1 = con1.createStatement().executeQuery("Select * from books where ISBN = 'b'");
+				r1.next();
+				System.out.println("is reserved after initialize value :"+r1.getBoolean("isReserved"));
         		Statement s = con.createStatement();
+        		
         		ResultSet r  = s.executeQuery("Select * from clerks ");
         		while(r.next()){
         			System.out.println(r.getString("username"));
@@ -101,7 +108,7 @@ public class Initialize {
                         + " overNotif BOOLEAN)";
                 stmt = con.createStatement();
                 stmt.executeUpdate(sql);
-                System.out.println("members table created");
+                System.out.println("users table created");
                 
                 sql = "CREATE TABLE clerks "
                         + "(username VARCHAR(255), "
@@ -112,6 +119,10 @@ public class Initialize {
                 stmt = con.createStatement();
                 stmt.executeUpdate(sql);
                 System.out.println("clerks table created");
+                
+                sql = "create table rbList (username VARCHAR(255), ISBN VARCHAR(255))";
+                stmt = con.createStatement();
+                stmt.executeUpdate(sql);
                 
                 sql = "CREATE TABLE librarian "
                 		+ " (username VARCHAR(255), "
@@ -152,7 +163,28 @@ public class Initialize {
                             }
                         }
                     }, 0, 3600000);
-            
+//            Timer t1 = new Timer();
+//            t1.scheduleAtFixedRate(
+//                    new TimerTask() {
+//                        public void run() {
+//                            try {
+//                                libraryfunc ls = new libraryfunc();
+//                                Connection con = DriverManager.getConnection(url + "lis", user, password);
+//                                System.out.println("Success");
+//                                Statement stmt = con.createStatement();
+//                                String add = "SELECT * FROM books";
+//                                ResultSet rs = stmt.executeQuery(add);
+//                                while (rs.next()) {
+//                                    String isbn = rs.getString("ISBN");
+//                                    ls.checkReserve(isbn);
+//                                }
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
+//                            } catch (ParseException ex) {
+//                                Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                        }
+//                    }, 0, 3600000);
     	}catch(SQLException ex){
 //    		ex.printStackTrace();
     		return false;

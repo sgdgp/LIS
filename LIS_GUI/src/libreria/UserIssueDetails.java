@@ -11,11 +11,15 @@ public class UserIssueDetails implements Serializable{
     private String issuedBook;
     private String issueDate;
     private String returnDate;
+    private boolean isOverdue;
+    private boolean isNotif;
+    private String dueDate;
 
-    public UserIssueDetails(String issuedBook, String issueDate) {
+    public UserIssueDetails(String issuedBook, String issueDate,String dueDate) {
         this.issuedBook = issuedBook;
         this.issueDate = issueDate;
         this.returnDate = "";
+        this.setDueDate(dueDate);
     }
     
     
@@ -42,6 +46,36 @@ public class UserIssueDetails implements Serializable{
     public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
+
+
+	public String getDueDate() {
+		return dueDate;
+	}
+
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+
+
+	public boolean isOverdue() {
+		return isOverdue;
+	}
+
+
+	public void setOverdue(boolean isOverdue) {
+		this.isOverdue = isOverdue;
+	}
+
+
+	public boolean isNotif() {
+		return isNotif;
+	}
+
+
+	public void setNotif(boolean isNotif) {
+		this.isNotif = isNotif;
+	}
     
     
 }

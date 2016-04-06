@@ -205,8 +205,8 @@ public class CreateUser extends JFrame {
 			//SQL QUERY
 			
 			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
-			String sql = "INSERT INTO users (username,name,phoneNo,address,type,fine,bookLimit,duration,booksIssued,password)" +
-                    " VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO users (username,name,phoneNo,address,type,fine,bookLimit,duration,booksIssued,password,overNotif)" +
+                    " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, username);
 			stmt.setString(2, name);
@@ -220,6 +220,7 @@ public class CreateUser extends JFrame {
 			 
 			stmt.setObject(9, rList);
 			stmt.setString(10,password);
+			stmt.setBoolean(11, false);
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {

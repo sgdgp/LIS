@@ -211,8 +211,8 @@ public class AddBook extends JFrame {
 				System.out.println("else part of add book adtodatabase, count="+count);
 				cd.add(new BookInfo(false));
 //				rl.add("-");
-				String sql = "INSERT INTO books (ISBN,name,author,publisher,yearOfPurchase,rackNo,onShelf,countID,issueStats,price,isReserved,copyDetails,reserveList)" +
-	                    " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				String sql = "INSERT INTO books (ISBN,name,author,publisher,yearOfPurchase,rackNo,onShelf,countID,issueStats,price,isReserved,copyDetails,reserveList,delNotif)" +
+	                    " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement stmt = con.prepareStatement(sql);
 				stmt.setString(1, ISBN);
 				stmt.setString(2, name);
@@ -227,7 +227,7 @@ public class AddBook extends JFrame {
 				stmt.setBoolean(11, false);
 				stmt.setObject(12,cd);
 				stmt.setObject(13, rl);
-				
+				stmt.setBoolean(14, false);
 				stmt.executeUpdate();
 				
 			}
