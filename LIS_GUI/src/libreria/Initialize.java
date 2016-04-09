@@ -34,7 +34,7 @@ public class Initialize {
 				System.out.println("Exception 1");
 				e.printStackTrace();
 			}
-        	Connection con = DriverManager.getConnection(url, user, password);
+        	Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
         	
 //        	String sql1 = "DROP DATABASE lis";
 //        	stmt = con.createStatement();
@@ -54,9 +54,9 @@ public class Initialize {
         	
             if(dbExist){
         		System.out.println("Database exists");
-        		con = DriverManager.getConnection(url+"lis", user, password);
+        		con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
         		
-        		Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+        		Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
 				ResultSet r1 = con1.createStatement().executeQuery("Select * from books where ISBN = 'b'");
 				r1.next();
 				System.out.println("is reserved after initialize value :"+r1.getBoolean("isReserved"));
@@ -73,7 +73,7 @@ public class Initialize {
         		stmt = con.createStatement();
         		stmt.executeUpdate(query);
         		
-        		con = DriverManager.getConnection(url+"lis", user, password);
+        		con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
         		
         		String sql = "CREATE TABLE books "
                         + "(ISBN VARCHAR(20), "
@@ -84,13 +84,12 @@ public class Initialize {
                         + " rackNo VARCHAR(255), "
                         + " onShelf INTEGER, "
                         + " countID INTEGER, "
-                        + " issueStats INTEGER, "
                         + " price VARCHAR(255), "
                         + " isReserved BOOLEAN, "
                         + " copyDetails LONGBLOB, "
                         + " reserveList LONGBLOB, "
-                        + " delNotif BOOLEAN )";
-        		
+                        + " delNotif BOOLEAN ,"
+        				+ " issueStats LONGBLOB) ";
         		stmt = con.createStatement();
                 stmt.executeUpdate(sql);
                 System.out.println("books table created");
@@ -149,7 +148,7 @@ public class Initialize {
                         public void run() {
                             try {
                                 libraryfunc ls = new libraryfunc();
-                                Connection con = DriverManager.getConnection(url + "lis", user, password);
+                                Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
 //                                System.out.println("Success");
                                 Statement stmt = con.createStatement();
                                 String add = "SELECT * FROM users ";
@@ -163,28 +162,28 @@ public class Initialize {
                             }
                         }
                     }, 0, 3600000);
-//            Timer t1 = new Timer();
-//            t1.scheduleAtFixedRate(
-//                    new TimerTask() {
-//                        public void run() {
-//                            try {
-//                                libraryfunc ls = new libraryfunc();
-//                                Connection con = DriverManager.getConnection(url + "lis", user, password);
-//                                System.out.println("Success");
-//                                Statement stmt = con.createStatement();
-//                                String add = "SELECT * FROM books";
-//                                ResultSet rs = stmt.executeQuery(add);
-//                                while (rs.next()) {
-//                                    String isbn = rs.getString("ISBN");
-//                                    ls.checkReserve(isbn);
-//                                }
-//                            } catch (SQLException ex) {
-//                                Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
-//                            } catch (ParseException ex) {
-//                                Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
-//                            }
-//                        }
-//                    }, 0, 3600000);
+            Timer t1 = new Timer();
+            t1.scheduleAtFixedRate(
+                    new TimerTask() {
+                        public void run() {
+                            try {
+                                libraryfunc ls = new libraryfunc();
+                                Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
+                                System.out.println("Success");
+                                Statement stmt = con.createStatement();
+                                String add = "SELECT * FROM books";
+                                ResultSet rs = stmt.executeQuery(add);
+                                while (rs.next()) {
+                                    String isbn = rs.getString("ISBN");
+                                    ls.checkReserve(isbn);
+                                }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (ParseException ex) {
+                                Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }, 0, 3600000);
     	}catch(SQLException ex){
 //    		ex.printStackTrace();
     		return false;

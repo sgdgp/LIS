@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 
 public class LibrarianHomePage extends JFrame {
 
@@ -42,6 +43,7 @@ public class LibrarianHomePage extends JFrame {
 	 * Create the frame.
 	 */
 	public LibrarianHomePage() {
+		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -67,6 +69,7 @@ public class LibrarianHomePage extends JFrame {
 		contentPane.add(lblNameOfLibrarian);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setIcon(new ImageIcon(LibrarianHomePage.class.getResource("/libreria/logout.png")));
 		btnLogout.setBackground(new Color(153, 102, 153));
 		btnLogout.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnLogout.addActionListener(new ActionListener() {
@@ -77,7 +80,7 @@ public class LibrarianHomePage extends JFrame {
 				frame.setLocationRelativeTo(null);
 			}
 		});
-		btnLogout.setBounds(324, 7, 117, 25);
+		btnLogout.setBounds(302, 7, 139, 33);
 		contentPane.add(btnLogout);
 		
 		JLabel lblNewLabel = new JLabel("Operations that can be performed");
@@ -86,77 +89,91 @@ public class LibrarianHomePage extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnAddUser = new JButton("Add user");
+		btnAddUser.setIcon(new ImageIcon(LibrarianHomePage.class.getResource("/libreria/add.png")));
 		btnAddUser.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnAddUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				
 				try {
+					setVisible(false);
 					CreateUser frame = new CreateUser();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception ex) {
 //					ex.printStackTrace();
 				}
 			}
 		});
 		btnAddUser.setBackground(new Color(153, 102, 153));
-		btnAddUser.setBounds(45, 117, 139, 23);
+		btnAddUser.setBounds(45, 117, 139, 30);
 		contentPane.add(btnAddUser);
 		
 		JButton btnRemoveUser = new JButton("Remove User");
+		btnRemoveUser.setIcon(new ImageIcon(LibrarianHomePage.class.getResource("/libreria/delete.png")));
 		btnRemoveUser.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnRemoveUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					setVisible(false);
 					RemoveUser frame = new RemoveUser();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
 		btnRemoveUser.setBackground(new Color(153, 102, 153));
-		btnRemoveUser.setBounds(278, 117, 149, 23);
+		btnRemoveUser.setBounds(278, 117, 149, 30);
 		contentPane.add(btnRemoveUser);
 		
 		JButton btnAddClerk = new JButton("Add clerk");
+		btnAddClerk.setIcon(new ImageIcon(LibrarianHomePage.class.getResource("/libreria/add.png")));
 		btnAddClerk.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnAddClerk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+
 				try {
+					setVisible(false);
 					CreateClerk frame = new CreateClerk();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception ex) {
 //					e.printStackTrace();
 				}
 			}
 		});
 		btnAddClerk.setBackground(new Color(153, 102, 153));
-		btnAddClerk.setBounds(45, 166, 139, 23);
+		btnAddClerk.setBounds(45, 166, 139, 30);
 		contentPane.add(btnAddClerk);
 		
 		JButton btnRemoveClerk = new JButton("Remove clerk");
+		btnRemoveClerk.setIcon(new ImageIcon(LibrarianHomePage.class.getResource("/libreria/delete.png")));
 		btnRemoveClerk.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnRemoveClerk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					setVisible(false);
 					RemoveClerk frame = new RemoveClerk();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 		btnRemoveClerk.setBackground(new Color(153, 102, 153));
-		btnRemoveClerk.setBounds(278, 166, 149, 23);
+		btnRemoveClerk.setBounds(278, 166, 149, 30);
 		contentPane.add(btnRemoveClerk);
 		
 		JButton btnPrintNotifications = new JButton("Print notifications");
 		btnPrintNotifications.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					setVisible(false);
 					SendOverdueNotif frame = new SendOverdueNotif();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -164,7 +181,7 @@ public class LibrarianHomePage extends JFrame {
 		});
 		btnPrintNotifications.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnPrintNotifications.setBackground(new Color(153, 102, 153));
-		btnPrintNotifications.setBounds(45, 220, 155, 23);
+		btnPrintNotifications.setBounds(45, 220, 155, 30);
 		contentPane.add(btnPrintNotifications);
 		
 		JButton btnNewButton = new JButton("Get Statistics");
@@ -174,8 +191,11 @@ public class LibrarianHomePage extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				IssueStat frame;
 				try {
+					setVisible(false);
 					frame = new IssueStat();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+				
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -189,7 +209,7 @@ public class LibrarianHomePage extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(278, 220, 149, 23);
+		btnNewButton.setBounds(278, 220, 149, 30);
 		contentPane.add(btnNewButton);
 	}
 }

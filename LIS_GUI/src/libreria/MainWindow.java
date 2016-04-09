@@ -48,13 +48,13 @@ public class MainWindow extends JFrame {
 				        }
 				    }
 				} catch (Exception e) {
-				   System.out.println("Nimbus not available");
+//				   System.out.println("Nimbus not available");
 				}
 				Initialize I = new Initialize();
 				boolean flagInit = I.init();
-				System.out.println(flagInit);
-				if (flagInit)
-					JOptionPane.showMessageDialog(null, "Init done");
+//				System.out.println(flagInit);
+//				if (flagInit)
+//					JOptionPane.showMessageDialog(null, "Init done");
 				try {
 					MainWindow frame = new MainWindow();
 					frame.setVisible(true);
@@ -81,6 +81,7 @@ public class MainWindow extends JFrame {
 	/*constructor for the main window */
 	
 	public MainWindow() {
+		setResizable(false);
 		setMinimumSize(new Dimension(500, 340));
 
 		setTitle("LIBRERIA v1.0");
@@ -140,6 +141,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(comboBoxUserType);
 		
 		JButton btnProceed = new JButton("Proceed");
+		btnProceed.setIcon(new ImageIcon(MainWindow.class.getResource("/libreria/proceed.png")));
 		btnProceed.setFont(new Font("Trebuchet MS", Font.BOLD, 11));
 		btnProceed.setBackground(new Color(102, 102, 153));
 		btnProceed.addActionListener(new ActionListener() {
@@ -150,11 +152,13 @@ public class MainWindow extends JFrame {
 				String type = comboBoxUserType.getSelectedItem().toString().trim();
 				
 				boolean checkEmpty = true;//checkEmpty(username,password,type);
-				
+				if(type.equals("---Choose Type---"))
+					checkEmpty = false;
+					
 				if(checkEmpty){
 					Connection con;
 					try {
-						con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+						con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 					
 					Statement stmt = null;
 					String query = null;
@@ -164,12 +168,16 @@ public class MainWindow extends JFrame {
 						//query  = "SELECT password FROM librarian WHERE username="+username;
 						stmt = con.createStatement();
 						ResultSet rs = stmt.executeQuery(query);
+						int flag=0;
 						while(rs.next()){
 							
 							if(rs.getString("password").equals(password) && rs.getString("username").equals(username)){
+								flag = 1;
 								try {
 									LibrarianHomePage frame = new LibrarianHomePage();
 									frame.setVisible(true);
+									frame.setLocationRelativeTo(null);
+									LastScreen.screen1 = frame;
 									dispose();
 									break;
 								} catch (Exception e) {
@@ -177,18 +185,24 @@ public class MainWindow extends JFrame {
 								}
 							}
 						}
+						if(flag==0)
+							JOptionPane.showMessageDialog(null, "Wrong username and password combination");
 						break;
 					case "Clerk" :
 						query = "SELECT * FROM clerks";
 						//query  = "SELECT password FROM librarian WHERE username="+username;
 						stmt = con.createStatement();
 					    rs = stmt.executeQuery(query);
-						while(rs.next()){
+						flag=0;
+					    while(rs.next()){
 							
 							if(rs.getString("password").equals(password) && rs.getString("username").equals(username)){
+								flag=1;
 								try {
 									LibraryClerkScreen frame = new LibraryClerkScreen();
 									frame.setVisible(true);
+									frame.setLocationRelativeTo(null);
+									LastScreen.screen1 = frame;
 									dispose();
 									break;
 								} catch (Exception e) {
@@ -196,19 +210,23 @@ public class MainWindow extends JFrame {
 								}
 							}
 						}
+						if(flag==0)
+							JOptionPane.showMessageDialog(null, "Wrong username and password combination");
 						break;
 					case "User" :
 						query = "SELECT * FROM users";
 						stmt = con.createStatement();
 					    rs = stmt.executeQuery(query);
-						while(rs.next()){
+					    flag=0;
+					    while(rs.next()){
 							
 							if(rs.getString("password").equals(password) && rs.getString("username").equals(username)){
+								flag=1;
 								try {
 									LibraryUser frame = new LibraryUser(username);
 									frame.setVisible(true);
-//									libraryfunc l = new libraryfunc();
-//									l.returned("b", username);
+									frame.setLocationRelativeTo(null);
+									LastScreen.screen1 = frame;
 									dispose();
 									
 								} catch (Exception e) {
@@ -216,6 +234,8 @@ public class MainWindow extends JFrame {
 								}
 							}
 						}
+						if(flag==0)
+							JOptionPane.showMessageDialog(null, "Wrong username and password combination");
 						break;
 					}
 				
@@ -225,14 +245,15 @@ public class MainWindow extends JFrame {
 				}
 				}
 				else{
-					System.out.println("else part");
+					JOptionPane.showMessageDialog(null, "Choose a proper type");
 				}
 			}
 		});
-		btnProceed.setBounds(108, 257, 117, 25);
+		btnProceed.setBounds(108, 257, 117, 30);
 		contentPane.add(btnProceed);
 		
 		JButton btnQuit = new JButton("Quit");
+		btnQuit.setIcon(new ImageIcon(MainWindow.class.getResource("/libreria/exit.png")));
 		btnQuit.setFont(new Font("Trebuchet MS", Font.BOLD, 11));
 		btnQuit.setBackground(new Color(102, 102, 153));
 		btnQuit.addActionListener(new ActionListener() {
@@ -245,7 +266,7 @@ public class MainWindow extends JFrame {
 		        }
 			}
 		});
-		btnQuit.setBounds(270, 257, 117, 25);
+		btnQuit.setBounds(270, 257, 117, 30);
 		contentPane.add(btnQuit);
 		
 		JLabel lblLibreriaLibrary = new JLabel("LIBRERIA ---- LIBRARY INFORMATION SYSTEM");

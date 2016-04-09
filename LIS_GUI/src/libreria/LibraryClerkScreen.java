@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class LibraryClerkScreen extends JFrame {
 
@@ -40,6 +41,7 @@ public class LibraryClerkScreen extends JFrame {
 	 * Create the frame.
 	 */
 	public LibraryClerkScreen() {
+		setResizable(false);
 		setTitle("Library Clerk Options");
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -51,7 +53,7 @@ public class LibraryClerkScreen extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 471, 333);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(240, 230, 140));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,50 +61,69 @@ public class LibraryClerkScreen extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnAddBook = new JButton("Add Book");
+		btnAddBook.setIcon(new ImageIcon(LibraryClerkScreen.class.getResource("/libreria/add.png")));
 		btnAddBook.setBackground(new Color(144, 238, 144));
 		btnAddBook.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
 		btnAddBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
 				try {
+					setVisible(false);
 					AddBook frame = new AddBook();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		btnAddBook.setBounds(128, 79, 166, 49);
+		btnAddBook.setBounds(128, 106, 166, 49);
 		contentPane.add(btnAddBook);
 		
 		JButton btnDeleteBook = new JButton("Delete Book");
+		btnDeleteBook.setIcon(new ImageIcon(LibraryClerkScreen.class.getResource("/libreria/delete.png")));
+		btnDeleteBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					setVisible(false);
+					DelBook frame = new DelBook();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		btnDeleteBook.setBackground(new Color(144, 238, 144));
 		btnDeleteBook.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
-		btnDeleteBook.setBounds(128, 139, 166, 49);
+		btnDeleteBook.setBounds(128, 166, 166, 49);
 		contentPane.add(btnDeleteBook);
 		
 		JLabel lblLibraryClerkOptions = new JLabel("Library Clerk Options");
 		lblLibraryClerkOptions.setForeground(UIManager.getColor("ComboBox.selectionBackground"));
 		lblLibraryClerkOptions.setFont(new Font("Yu Gothic", Font.BOLD | Font.ITALIC, 20));
-		lblLibraryClerkOptions.setBounds(113, 28, 213, 40);
+		lblLibraryClerkOptions.setBounds(113, 55, 213, 40);
 		contentPane.add(lblLibraryClerkOptions);
 		
 		JButton btnViewTasks = new JButton("View Tasks");
 		btnViewTasks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					setVisible(false);
 					ClerkNotification frame = new ClerkNotification();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 		btnViewTasks.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
-		btnViewTasks.setBounds(153, 227, 117, 23);
+		btnViewTasks.setBounds(153, 254, 117, 23);
 		contentPane.add(btnViewTasks);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setIcon(new ImageIcon(LibraryClerkScreen.class.getResource("/libreria/logout.png")));
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -112,7 +133,7 @@ public class LibraryClerkScreen extends JFrame {
 			}
 		});
 		btnLogout.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		btnLogout.setBounds(335, 11, 89, 23);
+		btnLogout.setBounds(297, 11, 127, 33);
 		contentPane.add(btnLogout);
 	}
 }

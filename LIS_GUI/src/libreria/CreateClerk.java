@@ -6,15 +6,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
@@ -49,7 +54,15 @@ public class CreateClerk extends JFrame {
 	 * Create the frame.
 	 */
 	public CreateClerk() {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setTitle("Create New Clerk");
 		setBackground(new Color(138, 43, 226));
 		setBounds(100, 100, 494, 324);
@@ -90,27 +103,27 @@ public class CreateClerk extends JFrame {
 		contentPane.add(lblPassword);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(203, 54, 209, 20);
+		textFieldName.setBounds(203, 54, 209, 22);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldUsername = new JTextField();
-		textFieldUsername.setBounds(203, 79, 209, 20);
+		textFieldUsername.setBounds(203, 79, 209, 22);
 		contentPane.add(textFieldUsername);
 		textFieldUsername.setColumns(10);
 		
 		textFieldAddress = new JTextField();
-		textFieldAddress.setBounds(203, 104, 209, 20);
+		textFieldAddress.setBounds(203, 104, 209, 22);
 		contentPane.add(textFieldAddress);
 		textFieldAddress.setColumns(10);
 		
 		textFieldPhone = new JTextField();
-		textFieldPhone.setBounds(204, 129, 208, 20);
+		textFieldPhone.setBounds(204, 129, 208, 22);
 		contentPane.add(textFieldPhone);
 		textFieldPhone.setColumns(10);
 		
 		textFieldPassword = new JPasswordField();
-		textFieldPassword.setBounds(203, 154, 209, 20);
+		textFieldPassword.setBounds(203, 154, 209, 22);
 		contentPane.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
@@ -122,11 +135,16 @@ public class CreateClerk extends JFrame {
 				String name = textFieldName.getText().trim();
 				String address = textFieldAddress.getText().trim();
 				String phone = textFieldPhone.getText().trim();
-//				boolean check = checkEntry();
-				
-				addtoDatabase(username,name,address,phone,password);
-				dispose();
+				boolean check = checkEntry(username,password,name,address,phone);
+				if(check){
+					addtoDatabase(username,name,address,phone,password);
+					dispose();
+					LastScreen.screen1.setVisible(true);
 
+				}
+				
+				
+				
 			}
 		});
 		btnCreateUser.setBackground(new Color(255, 105, 180));
@@ -137,7 +155,8 @@ public class CreateClerk extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				dispose();
+				LastScreen.screen1.setVisible(true);
 			}
 		});
 		btnBack.setBackground(new Color(255, 105, 180));
@@ -154,7 +173,7 @@ public class CreateClerk extends JFrame {
 	public void addtoDatabase(String username,String name,String address,String phone,String password){
 		Connection con;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 			String sql = "INSERT INTO clerks (username,name,phoneNo,address,password)" +
                     " VALUES(?,?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -176,4 +195,62 @@ public class CreateClerk extends JFrame {
 		
 		
 	}
+	
+	public boolean checkEntry(String username,String password,String name,String address,String phone){
+		if(username.equals("")|| password.equals("")||name.equals("")||address.equals("")||phone.equals("")){
+			JOptionPane.showMessageDialog(null,"Blank entries and invalid entries given!!!");
+			return false;
+		}
+		if(!checkPhone(phone)){
+			JOptionPane.showMessageDialog(null,"Phone number given as string!!!");
+			return false;
+		}
+		
+//		if(!checkPassword(password)){
+//			JOptionPane.showMessageDialog(null,"Password not meeting requirements!!!");
+//			return false;
+//		}
+		
+		if(!checkUsername(username)){
+			JOptionPane.showMessageDialog(null,"Username not unique!!!");
+			return false;
+		}
+		return true;
+	}
+	public static boolean checkUsername(String x){
+		Connection con;
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
+			ResultSet r = con.createStatement().executeQuery("Select * from users");
+			while(r.next()){
+				String a  = r.getString("username");
+				if(a.equals(x))
+					return false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+	public static boolean checkPhone(String x){
+		try { 
+	        Long.parseLong(x); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    } catch(NullPointerException e) {
+	        return false;
+	    }
+		return true;
+	}
+//	public static boolean checkPassword(String x){
+//		boolean a =false;
+//		boolean b = false;
+//		boolean c =false;
+//		
+//	}
+
+	
+	
 }

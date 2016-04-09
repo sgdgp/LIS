@@ -12,6 +12,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
@@ -40,7 +42,15 @@ public class OptionSelect extends JFrame {
 	 * Create the frame.
 	 */
 	public OptionSelect(String username) {
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 153, 102));
@@ -68,6 +78,8 @@ public class OptionSelect extends JFrame {
 				try {
 					frame = new FullBookList(username);
 					frame.setVisible(true);
+					IssueWrapper.username = username;
+					ReserveWrapper.username = username;
 				} catch (ClassNotFoundException | SQLException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -85,7 +97,8 @@ public class OptionSelect extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				dispose();
+				LastScreen.screen1.setVisible(true);
 			}
 		});
 		btnBack.setBackground(new Color(204, 255, 153));

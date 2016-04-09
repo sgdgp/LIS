@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class LibraryUser extends JFrame {
 
@@ -50,6 +52,7 @@ public class LibraryUser extends JFrame {
 	 */
 	String username;
 	public LibraryUser(String name) {
+		setResizable(false);
 		username = name;
 		setTitle("Library User Actions");
 		addWindowListener(new WindowAdapter() {
@@ -80,10 +83,13 @@ public class LibraryUser extends JFrame {
 		JButton btnIssueBook = new JButton("Issue Book");
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				dispose();
+
 				try {
+					setVisible(false);
 					OptionSelect frame = new OptionSelect(username);
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					LastScreen.screen2 = frame;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -97,10 +103,13 @@ public class LibraryUser extends JFrame {
 		JButton btnReserveBook = new JButton("Reserve Book");
 		btnReserveBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
+
 				try {
+					setVisible(false);
 					OptionSelect frame = new OptionSelect(username);
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					LastScreen.screen2 = frame;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -116,17 +125,18 @@ public class LibraryUser extends JFrame {
 			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					setVisible(false);
 					ReturnWrapper retWrap = new ReturnWrapper();
 //					retWrap.username = username;
 					ReturnWrapper.username = username;
 				
-					Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+					Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 					Statement st = con.createStatement();
 					ResultSet rs = st.executeQuery("Select * from users where username='"+username+"'");
 					rs.next();
 					ReturnWrapper.uid = (ArrayList<UserIssueDetails>) (new ObjectInputStream(new ByteArrayInputStream(rs.getBytes("booksIssued")))).readObject() ;
 					try{
-						Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+						Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
 						ResultSet r = con1.createStatement().executeQuery("Select * from books where ISBN = 'b'");
 						r.next();
 						System.out.println("is reserved value :"+r.getBoolean("isReserved"));
@@ -134,6 +144,8 @@ public class LibraryUser extends JFrame {
 						e.printStackTrace();
 					}
 					ReturnWindow d1=new ReturnWindow(username);
+					d1.setVisible(true);
+					d1.setLocationRelativeTo(null);
 					
 					
 				} catch (ClassNotFoundException e) {
@@ -156,10 +168,12 @@ public class LibraryUser extends JFrame {
 		JButton btnSearchBook = new JButton("Search Book");
 		btnSearchBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				dispose();
+				setVisible(false);
 				try {
 					SearchBook frame = new SearchBook(username);
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					LastScreen.screen2 = frame;
 				} catch (Exception ex) {
 //					e.printStackTrace();
 				}
@@ -173,10 +187,17 @@ public class LibraryUser extends JFrame {
 		JButton btnPayFine = new JButton("Pay Fine");
 		btnPayFine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+//				setVisible(false);
 				Connection con;
 				try {
-					con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+					con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 				
+				ResultSet r = con.createStatement().executeQuery("Select * from users where username='"+username+"'");
+				r.next();
+				if(r.getDouble("fine")==0.0){
+					JOptionPane.showMessageDialog(null, "No fine is charged yet");
+					return;
+				}
 				Statement st = con.createStatement();
 
 				String add = "UPDATE users SET fine = " +0
@@ -187,8 +208,9 @@ public class LibraryUser extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				PopUpFrame frame=new PopUpFrame("Fine Paid");
+				PopUp frame=new PopUp("Fine Paid");
 				frame.setVisible(true);
+//				setVisible(true);
 			}
 		});
 		btnPayFine.setBackground(new Color(0, 153, 102));
@@ -199,9 +221,11 @@ public class LibraryUser extends JFrame {
 		JButton btnNotifications = new JButton("Notifications");
 		btnNotifications.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
 				UserNotificationOption frame = new UserNotificationOption(username);
 				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				frame.setLocationRelativeTo(null);	
+				LastScreen.screen2 = frame;
 			}
 		});
 		btnNotifications.setBackground(new Color(0, 153, 102));
@@ -210,6 +234,7 @@ public class LibraryUser extends JFrame {
 		contentPane.add(btnNotifications);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setIcon(new ImageIcon(LibraryUser.class.getResource("/libreria/logout.png")));
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -220,7 +245,7 @@ public class LibraryUser extends JFrame {
 		});
 		btnLogout.setBackground(new Color(0, 153, 102));
 		btnLogout.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		btnLogout.setBounds(335, 11, 89, 23);
+		btnLogout.setBounds(280, 11, 144, 33);
 		contentPane.add(btnLogout);
 		
 		JLabel lblNameOfUser = new JLabel(name);

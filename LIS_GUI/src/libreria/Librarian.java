@@ -76,7 +76,7 @@ public class Librarian {
 	            pstmt.setObject(1, issue_member);
 	            pstmt.executeUpdate();
 	            //stmt.executeUpdate(add);
-	            PopUpFrame pop = new PopUpFrame("<html>Member record added! Member ID is " + ID
+	            PopUp pop = new PopUp("<html>Member record added! Member ID is " + ID
 	                    + "<br> Your password is " + passWd);
 	            pop.setVisible(true);
 	        } catch (SQLException ex) {
@@ -111,10 +111,10 @@ public class Librarian {
 	                add = "DELETE from members WHERE ID = " + ID;
 	                stmt.executeUpdate(add);
 
-	                PopUpFrame pop = new PopUpFrame("Member record deleted!");
+	                PopUp pop = new PopUp("Member record deleted!");
 	                pop.setVisible(true);
 	            } else {
-	                PopUpFrame pop = new PopUpFrame("Member has issued a book, can't be removed!");
+	                PopUp pop = new PopUp("Member has issued a book, can't be removed!");
 	                pop.setVisible(true);
 
 	            }
@@ -154,7 +154,7 @@ public class Librarian {
 //	            statement.setObject(2, reserveList);
 //	            statement.executeUpdate();
 //	            //stmt.executeUpdate(add);
-//	            PopUpFrame pop = new PopUpFrame("Book record successfully created!");
+//	            PopUp pop = new PopUp("Book record successfully created!");
 //	            pop.setVisible(true);
 //
 //	        } catch (SQLException ex) {
@@ -181,7 +181,7 @@ public class Librarian {
 //	            if (onShelf == copyDetails.size()) {
 //	                add = "DELETE from books WHERE ISBN = '" + ISBN + "'";
 //	                stmt.executeUpdate(add);
-//	                PopUpFrame pop = new PopUpFrame("Book Deleted!");
+//	                PopUp pop = new PopUp("Book Deleted!");
 //	                pop.setVisible(true);
 //	            }
 //
@@ -230,7 +230,7 @@ public class Librarian {
 //	            statement.setObject(1, copyDetails);
 //	            statement.executeUpdate();
 //	            //stmt.executeUpdate(add);
-//	            PopUpFrame pop = new PopUpFrame("Books added!");
+//	            PopUp pop = new PopUp("Books added!");
 //	            pop.setVisible(true);
 //	        } catch (SQLException ex) {
 //	            Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
@@ -275,13 +275,13 @@ public class Librarian {
 //	            statement.executeUpdate();
 //	            //stmt.executeUpdate(add);
 //	            if (flag1 == true) {
-//	                PopUpFrame pop = new PopUpFrame("Book deleted!");
+//	                PopUp pop = new PopUp("Book deleted!");
 //	                pop.setVisible(true);
 //	            } else if (flag == true && flag1 == false) {
-//	                PopUpFrame pop = new PopUpFrame("Book issued out, can't be deleted!");
+//	                PopUp pop = new PopUp("Book issued out, can't be deleted!");
 //	                pop.setVisible(true);
 //	            } else {
-//	                PopUpFrame pop = new PopUpFrame("Invalid ID!");
+//	                PopUp pop = new PopUp("Invalid ID!");
 //	                pop.setVisible(true);
 //	            }
 //	        } catch (SQLException ex) {
@@ -304,7 +304,7 @@ public class Librarian {
 	                    + ", price = " + price
 	                    + " WHERE ISBN = '" + ISBN + "'";
 	            stmt.executeUpdate(add);
-	            PopUpFrame pop = new PopUpFrame("Changes saved!");
+	            PopUp pop = new PopUp("Changes saved!");
 	            pop.setVisible(true);
 	        } catch (Exception e) {
 
@@ -323,7 +323,7 @@ public class Librarian {
 	                    + "', phoneNo = '" + phNo
 	                    + "' WHERE ID = " + ID;
 	            stmt.executeUpdate(add);
-	            PopUpFrame pop = new PopUpFrame("Changes saved!");
+	            PopUp pop = new PopUp("Changes saved!");
 	            pop.setVisible(true);
 	        } catch (Exception e) {
 

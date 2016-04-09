@@ -2,6 +2,8 @@ package libreria;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,6 +22,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class ReturnWindow extends JFrame {
@@ -59,13 +64,21 @@ public class ReturnWindow extends JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	public ReturnWindow(String username) throws SQLException, IOException, ClassNotFoundException {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setVisible(true);
 		setBounds(100, 100, 585, 300);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(26, 36, 533, 214);
+		scrollPane.setBounds(26, 36, 533, 169);
 		getContentPane().add(scrollPane);
 		
 		DefaultTableModel t = new DefaultTableModel() {
@@ -91,6 +104,16 @@ public class ReturnWindow extends JFrame {
 		JLabel label = new JLabel(username);
 		label.setBounds(47, 11, 102, 14);
 		getContentPane().add(label);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
+		btnBack.setBounds(248, 227, 89, 23);
+		getContentPane().add(btnBack);
 		 
 		table.getColumn("Actions available ").setCellRenderer(new ButtonRenderer());
 		table.getColumn("Actions available ").setCellEditor(new ButtonEditor(new JCheckBox()));

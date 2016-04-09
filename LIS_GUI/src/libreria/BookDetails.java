@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class BookDetails extends JFrame {
 
@@ -23,7 +26,6 @@ public class BookDetails extends JFrame {
 	private JTextField textFieldISBN;
 	private JTextField textFieldCopies;
 	private JTextField textFieldCopiesIssued;
-	private JTextField textFieldReserveStatus;
 	private JTextField textFieldRackNo;
 
 	/**
@@ -47,10 +49,18 @@ public class BookDetails extends JFrame {
 	 */
 	String username,ISBN;
 	public BookDetails(String uname) {
+		setResizable(false);
 		username = uname;
 		
 		setTitle("Book Details");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen2.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 538, 401);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(224, 255, 255));
@@ -76,19 +86,19 @@ public class BookDetails extends JFrame {
 		
 		textFieldName = new JTextField();
 		textFieldName.setEditable(false);
-		textFieldName.setBounds(243, 58, 222, 20);
+		textFieldName.setBounds(243, 58, 222, 22);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldAuthor = new JTextField();
 		textFieldAuthor.setEditable(false);
-		textFieldAuthor.setBounds(243, 84, 222, 20);
+		textFieldAuthor.setBounds(243, 84, 222, 22);
 		contentPane.add(textFieldAuthor);
 		textFieldAuthor.setColumns(10);
 		
 		textFieldISBN = new JTextField();
 		textFieldISBN.setEditable(false);
-		textFieldISBN.setBounds(243, 109, 222, 20);
+		textFieldISBN.setBounds(243, 109, 222, 22);
 		contentPane.add(textFieldISBN);
 		textFieldISBN.setColumns(10);
 		
@@ -99,9 +109,11 @@ public class BookDetails extends JFrame {
 		contentPane.add(lblBookDetails);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setIcon(new ImageIcon("D:\\LIS\\LIS_GUI\\src\\libreria\\1460225365_go-back.png"));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				dispose();
+				LastScreen.screen2.setVisible(true);
 			}
 		});
 		btnBack.setBackground(new Color(176, 224, 230));
@@ -119,14 +131,9 @@ public class BookDetails extends JFrame {
 		lblNumberOfCopies_1.setBounds(40, 162, 169, 14);
 		contentPane.add(lblNumberOfCopies_1);
 		
-		JLabel lblNumberOfCopies_2 = new JLabel("Reserve Status");
-		lblNumberOfCopies_2.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblNumberOfCopies_2.setBounds(40, 187, 159, 14);
-		contentPane.add(lblNumberOfCopies_2);
-		
 		JLabel lblRackNumber = new JLabel("Rack Number");
 		lblRackNumber.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblRackNumber.setBounds(40, 215, 118, 14);
+		lblRackNumber.setBounds(40, 187, 118, 14);
 		contentPane.add(lblRackNumber);
 		
 		JButton btnIssueBook = new JButton("Issue Book");
@@ -157,27 +164,32 @@ public class BookDetails extends JFrame {
 		
 		textFieldCopies = new JTextField();
 		textFieldCopies.setEditable(false);
-		textFieldCopies.setBounds(243, 134, 222, 20);
+		textFieldCopies.setBounds(243, 134, 222, 22);
 		contentPane.add(textFieldCopies);
 		textFieldCopies.setColumns(10);
 		
 		textFieldCopiesIssued = new JTextField();
 		textFieldCopiesIssued.setEditable(false);
-		textFieldCopiesIssued.setBounds(243, 159, 222, 20);
+		textFieldCopiesIssued.setBounds(243, 159, 222, 22);
 		contentPane.add(textFieldCopiesIssued);
 		textFieldCopiesIssued.setColumns(10);
 		
-		textFieldReserveStatus = new JTextField();
-		textFieldReserveStatus.setEditable(false);
-		textFieldReserveStatus.setBounds(243, 184, 222, 20);
-		contentPane.add(textFieldReserveStatus);
-		textFieldReserveStatus.setColumns(10);
-		
 		textFieldRackNo = new JTextField();
 		textFieldRackNo.setEditable(false);
-		textFieldRackNo.setBounds(243, 212, 222, 20);
+		textFieldRackNo.setBounds(243, 187, 222, 22);
 		contentPane.add(textFieldRackNo);
 		textFieldRackNo.setColumns(10);
+		
+		JButton btnBackToUser = new JButton("Back to User Home Screen");
+		btnBackToUser.setIcon(new ImageIcon(BookDetails.class.getResource("/libreria/home.png")));
+		btnBackToUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
+		btnBackToUser.setBounds(10, 291, 222, 23);
+		contentPane.add(btnBackToUser);
 	}
 	
 	public void showParams(String name,String author,String ISBN){
@@ -188,7 +200,8 @@ public class BookDetails extends JFrame {
 		textFieldISBN.setText(ISBN);
 		
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
+			
 			Statement st = con.createStatement();
 			String query = "Select * from books where ISBN='"+ISBN+"'";
 			ResultSet r = st.executeQuery(query);

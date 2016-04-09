@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 public class libraryfunc {
 
     private String url1 = "jdbc:mysql://localhost:3306/";
-    private static String url = "jdbc:mysql://localhost:3306/lis";
+    private static String url = "jdbc:mysql://localhost:3306/lis?useSSL=false";
     private static final String user = "root";
     private static final String password = "qwerty";
 
@@ -46,37 +46,34 @@ public class libraryfunc {
 
     //private static ArrayList<Book> bookList;
     //private static ArrayList<Member> memberList;
-    public void statistics() {
-        try {
-			Connection con = DriverManager.getConnection(url+"lis", user, password);
-			Statement s = con.createStatement();
-			String sql = "Select * from books";
-			ResultSet rs = s.executeQuery(sql);
-			while(rs.next()){
-				String isbn = rs.getString("ISBN");
-				String a = rs.getString("issueStats");
-				System.out.println(isbn+"     "+a);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//    public void statistics() {
+//        try {
+//			Connection con = DriverManager.getConnection(url+"lis", user, password);
+//			Statement s = con.createStatement();
+//			String sql = "Select * from books";
+//			ResultSet rs = s.executeQuery(sql);
+//			while(rs.next()){
+//				String isbn = rs.getString("ISBN");
+//				String a = rs.getString("issueStats");
+//				System.out.println(isbn+"     "+a);
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//    }
 
-    }
-
-    public void print() {
-
-    }
-
+  
     public void checkReserve(String ISBN) throws ParseException {
         try {
-            System.out.println("Check Reserve!");
+//            System.out.println("Check Reserve!");
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
             stmt = con.createStatement();
             String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
             ResultSet rs = stmt.executeQuery(add);
-            Date date = new Date(0);
+            Date date = (Calendar.getInstance().getTime());
             if (rs.next()) {
                 boolean isReserved = rs.getBoolean("isReserved");
                 int onShelf = rs.getInt("onShelf");
@@ -94,21 +91,40 @@ public class libraryfunc {
                             BookInfo sb = (BookInfo) itr.next();
                             ArrayList<BookCopy> iss = (ArrayList<BookCopy>) sb.getIssuedMembers();
                             SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
-                            if (!iss.get(iss.size() - 1).getReturnDate().equals("")) {
-                                Date dd = sd.parse(iss.get(iss.size() - 1).getReturnDate());
-                                if (dd.compareTo(date) > 0) {
+                            for(int i=0;i<iss.size();++i)
+                            {
+                            	if (iss.get(i).getReturnDate().equals("")==false)
+                            	{
+                            	Date dd = sd.parse(iss.get(i).getReturnDate());
+                            	if (dd.compareTo(date) < 0) {
                                     date = dd;
+                            	}
+                            }
+                           
                                 }
                             }
-                        }
+                        
                     }
                 }
-                Date date1 = new Date();
-                System.out.println(date.toString());
-                System.out.println(date1.toString());
-                if ((date1.getTime() - date.getTime()) >= 7 * 24 * 60 * 60 * 1000) {
+                Date date1 = Calendar.getInstance().getTime();
+//                System.out.println(date.toString());
+//                System.out.println(date1.toString());
+                
+                Calendar c1 = Calendar.getInstance();
+                Calendar c2 = Calendar.getInstance();
+                
+                c1.setTime(date1);
+                c2.setTime(date);
+                long diff=date1.getTime()-date.getTime();
+                if (diff >= 7 * 24 * 60 * 60 * 1000) {
                     reservedList.clear();
                     isReserved = false;
+                    String sql="delete from rbList where ISBN='"+ISBN+"'";
+                   
+                    con.createStatement().executeUpdate("Set SQL_SAFE_UPDATES=0");
+                    con.createStatement().executeUpdate(sql);
+//                    System.out.println("Deleted in rblist");
+                    
                     add = "UPDATE books SET reserveList = " + "?"
                             + ", isReserved = " + isReserved
                             + " WHERE ISBN = '" + ISBN + "'";
@@ -130,14 +146,14 @@ public class libraryfunc {
 
     public void fine(String username ) {
         try {
-            System.out.println("fine");
+//            System.out.println("fine");
             int flag = 0;
             double fine = 0.0;
             String issueDate = "";
             String returnDate = "";
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
-            System.out.println("Success");
+//            System.out.println("Success");
             stmt = con.createStatement();
             String add = "SELECT * FROM users WHERE username = '" + username+"'";
             ResultSet rs = stmt.executeQuery(add);
@@ -147,7 +163,7 @@ public class libraryfunc {
             ObjectInputStream o1 = new ObjectInputStream(new ByteArrayInputStream(buf1));
             ArrayList<UserIssueDetails> booksIssued = (ArrayList<UserIssueDetails>) o1.readObject();
             Iterator itr = booksIssued.iterator();
-            System.out.println(username);
+//            System.out.println(username);
 
             while (itr.hasNext()) {
                 UserIssueDetails iss = (UserIssueDetails) itr.next();
@@ -181,7 +197,7 @@ public class libraryfunc {
             int flag = 0;
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
-            System.out.println("Success");
+//            System.out.println("Success");
             stmt = con.createStatement();
             String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
             ResultSet rs = stmt.executeQuery(add);
@@ -191,8 +207,8 @@ public class libraryfunc {
             byte[] buf1 = rs.getBytes("reserveList");
             ObjectInputStream o1 = new ObjectInputStream(new ByteArrayInputStream(buf1));
             ArrayList<Integer> reserveList = (ArrayList<Integer>) o1.readObject();
-            System.out.println(reserveList.size());
-            System.out.println("Success-info");
+//            System.out.println(reserveList.size());
+//            System.out.println("Success-info");
             Iterator itr = reserveList.iterator();
             while (itr.hasNext() && (onShelf > 0)) {
             	try{
@@ -203,9 +219,9 @@ public class libraryfunc {
         			st.setString(1, (String) itr.next());
         			st.setString(2, ISBN);
         			st.executeUpdate();
-        			System.out.println("itr.next : "+itr.next());
+//        			System.out.println("itr.next : "+itr.next());
             	}catch(Exception e){
-            		System.out.println("Exception???");
+//            		System.out.println("Exception???");
             	}
 //                System.out.println("Book Available for member username = " +itr.next() );
             }
@@ -255,8 +271,10 @@ public class libraryfunc {
                      int onShelf = rs.getInt("onShelf");
                     
                      
-                    int issueStats = rs.getInt("issueStats"); 
-                    System.out.println(issueStats);
+                     byte[] buf3 = rs.getBytes("issueStats");
+                     ObjectInputStream o3 = new ObjectInputStream(new ByteArrayInputStream(buf3));
+                     ArrayList<Date> issueStats = (ArrayList<Date>) o3.readObject();
+                    
                     byte[] buf = rs.getBytes("copyDetails");
                     ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
                     ArrayList<BookInfo> copyDetails = (ArrayList<BookInfo>) o.readObject();
@@ -278,7 +296,7 @@ public class libraryfunc {
 
                         //if fine is not paid or max books issued
                         if (fine > 0) {
-                            PopUpFrame pop = new PopUpFrame("Can't issue book! Fine due Rs." + fine);
+                            PopUp pop = new PopUp("Can't issue book! Fine due Rs." + fine);
                             pop.setVisible(true);
                             return;
                         }
@@ -291,7 +309,7 @@ public class libraryfunc {
                             }
                         }
                         if (count >= bookLimit) {
-                            PopUpFrame pop = new PopUpFrame("Can't issue book! Book limit reached");
+                            PopUp pop = new PopUp("Can't issue book! Book limit reached");
                             pop.setVisible(true);
                             return;
                         }
@@ -317,8 +335,8 @@ public class libraryfunc {
                                         BookCopy temp = new BookCopy(username, date,date1);
                                         issuedMembers.add(temp);
                                         sb.setIssuedMembers(issuedMembers);
-                                        PopUpFrame pop = new PopUpFrame("Book Issued!");
-                                        issueStats++;
+                                        PopUp pop = new PopUp("Book Issued!");
+                                        issueStats.add(Calendar.getInstance().getTime());
                                         pop.setVisible(true);
                                         UserIssueDetails memtemp = new UserIssueDetails(ISBN, date,date1);
                                         booksIssued.add(memtemp);
@@ -330,7 +348,7 @@ public class libraryfunc {
                                 }
 
                             } else {
-                                PopUpFrame pop = new PopUpFrame("Book not on shelf!");
+                                PopUp pop = new PopUp("Book not on shelf!");
                                 pop.setVisible(true);
                             }
                         }
@@ -350,7 +368,7 @@ public class libraryfunc {
                                 }
 
                                 if (!member_exists) {
-                                    PopUpFrame pop = new PopUpFrame("Book reserved! Can't be issued out!");
+                                    PopUp pop = new PopUp("Book reserved! Can't be issued out!");
                                     pop.setVisible(true);
                                     return;
                                 }
@@ -376,9 +394,13 @@ public class libraryfunc {
                                             isReserved = false;
                                         }
 
-                                        PopUpFrame pop = new PopUpFrame("Book Issued!");
+                                        PopUp pop = new PopUp("Book Issued!");
                                         pop.setVisible(true);
-                                        issueStats++;
+                                        String sql="delete from rbList where ISBN='"+ISBN+"'";
+                                        
+                                        con.createStatement().executeUpdate("Set SQL_SAFE_UPDATES=0");
+                                        con.createStatement().executeUpdate(sql);
+                                        issueStats.add(Calendar.getInstance().getTime());
                                         UserIssueDetails memtemp = new UserIssueDetails(ISBN, date,date1);
                                         booksIssued.add(memtemp);
                                         copyDetails.add(sb);
@@ -387,7 +409,7 @@ public class libraryfunc {
                                 }
 
                             } else {
-                                PopUpFrame pop = new PopUpFrame("Book still not on shelf!");
+                                PopUp pop = new PopUp("Book still not on shelf!");
                                 pop.setVisible(true);
                             }
                         }
@@ -399,8 +421,8 @@ public class libraryfunc {
                                 + ", onShelf = " + onShelf
                                 + " WHERE ISBN = '" + ISBN + "'";
                         PreparedStatement pstmt = con.prepareStatement(add);
-                        System.out.println(issueStats);
-                        pstmt.setInt(2, issueStats);
+//                        System.out.println(issueStats);
+                        pstmt.setObject(2, issueStats);
                         pstmt.setObject(1, reserveList);
                         pstmt.setObject(3, copyDetails);
                         pstmt.executeUpdate();
@@ -414,12 +436,12 @@ public class libraryfunc {
                         //stmt.executeUpdate(mem);
                         ms.close();
                     } else {
-                        PopUpFrame pop = new PopUpFrame("Inavalid Friend ID!");
+                        PopUp pop = new PopUp("Inavalid Friend ID!");
                         pop.setVisible(true);
                     }
                     rs.close();
                 } else {
-                    PopUpFrame pop = new PopUpFrame("ISBN doesn't exist!");
+                    PopUp pop = new PopUp("ISBN doesn't exist!");
                     pop.setVisible(true);
                 }
             } catch (SQLException | IOException ex) {
@@ -441,14 +463,14 @@ public class libraryfunc {
             int flag = 0;
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
-            System.out.println("Success");
+//            System.out.println("Success");
             stmt = con.createStatement();
             String add = "SELECT * FROM books WHERE ISBN = '" + ISBN + "'";
             ResultSet rs = stmt.executeQuery(add);
             if (rs.next()) {
                 boolean isReserved = rs.getBoolean("isReserved");
                 
-                System.out.println(isReserved);
+//                System.out.println(isReserved);
                 int onShelf = rs.getInt("onShelf");
                 byte[] buf = rs.getBytes("copyDetails");
                 ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
@@ -502,7 +524,7 @@ public class libraryfunc {
                                         UserIssueDetails memb = (UserIssueDetails) itrr.next();
                                         if (memb.getIssuedBook().equals(ISBN) ) {
                                             itrr.remove();
-                                            System.out.println("details removed");
+//                                            System.out.println("details removed");
 //                                            memb.setReturnDate(date);
 //                                            booksIssued.add(memb);
                                             break;
@@ -532,26 +554,26 @@ public class libraryfunc {
                     pstmt.executeUpdate();
                     //stmt.executeUpdate(mem);
                     if (flag == 1) {
-                        PopUpFrame pop = new PopUpFrame("Book returned!");
+                        PopUp pop = new PopUp("Book returned!");
                         pop.setVisible(true);
                         if (isReserved == true) {
-                        	System.out.println("reach");
+//                        	System.out.println("reach");
                             libraryfunc.informReservedMembers(ISBN);
                         }
                        
                     } else {
-                        PopUpFrame pop = new PopUpFrame("Book ID invalid!");
+                        PopUp pop = new PopUp("Book ID invalid!");
                         pop.setVisible(true);
                     }
                     ms.close();
                 } else {
-                    PopUpFrame pop = new PopUpFrame("Book ID invalid!");
+                    PopUp pop = new PopUp("Book ID invalid!");
                     pop.setVisible(true);
                 }
 
                 rs.close();
             } else {
-                PopUpFrame pop = new PopUpFrame("ISBN invalid!");
+                PopUp pop = new PopUp("ISBN invalid!");
                 pop.setVisible(true);
             }
 
@@ -567,7 +589,7 @@ public class libraryfunc {
             int flag = 0;
             Statement stmt = null;
             Connection con = DriverManager.getConnection(url, user, password);
-            System.out.println("Success");
+//            System.out.println("Success");
             stmt = con.createStatement();
             String add0 = "SELECT * FROM users WHERE username = '" + username + "'";
             ResultSet rs0 = stmt.executeQuery(add0);
@@ -577,7 +599,7 @@ public class libraryfunc {
             ArrayList<UserIssueDetails> bookList = (ArrayList<UserIssueDetails>) o0.readObject();
             for(int i=0;i<bookList.size();i++){
             	if(bookList.get(i).getIssuedBook().equals(ISBN)){
-            		PopUpFrame pop = new PopUpFrame("Book already issued by you!");
+            		PopUp pop = new PopUp("Book already issued by you!");
                     pop.setVisible(true);
                     return;
             	}
@@ -589,7 +611,7 @@ public class libraryfunc {
             rs.next();
             boolean isReserved = rs.getBoolean("isReserved");
             isReserved = true;
-            System.out.println("is reserved set to true");
+//            System.out.println("is reserved set to true");
             byte[] buf = rs.getBytes("reserveList");
             ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
             ArrayList<String> reserveList = (ArrayList<String>) o.readObject();
@@ -603,7 +625,7 @@ public class libraryfunc {
 //            }
 //            if (flag == 0) {
             if(reserveList.contains(username)){
-            	PopUpFrame pop = new PopUpFrame("Book already reserved under this username!");
+            	PopUp pop = new PopUp("Book already reserved under this username!");
                 pop.setVisible(true);
                 return;
             }
@@ -611,8 +633,8 @@ public class libraryfunc {
             reserveList.add(username);
 //            }
             rs.close();
-            System.out.println("isreserved =  "+isReserved);
-            System.out.println("Resrve list of books table updated");
+//            System.out.println("isreserved =  "+isReserved);
+//            System.out.println("Resrve list of books table updated");
             add = "UPDATE books SET reserveList = " + "?"
                     + ", isReserved = ?" 
                     + " WHERE ISBN = '" + ISBN + "'";
@@ -620,9 +642,9 @@ public class libraryfunc {
             pstmt.setObject(1, reserveList);
             pstmt.setBoolean(2, isReserved);
             pstmt.executeUpdate();
-            System.out.println("Table updated");
+//            System.out.println("Table updated");
             //stmt.executeUpdate(add);
-            PopUpFrame pop = new PopUpFrame("Book Reserved!");
+            PopUp pop = new PopUp("Book Reserved!");
             pop.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);

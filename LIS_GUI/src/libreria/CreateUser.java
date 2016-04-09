@@ -15,8 +15,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -57,7 +61,15 @@ public class CreateUser extends JFrame {
 	 * Create the frame.
 	 */
 	public CreateUser() {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setTitle("Create New User");
 		setBackground(new Color(138, 43, 226));
 		setBounds(100, 100, 494, 324);
@@ -101,7 +113,7 @@ public class CreateUser extends JFrame {
 		comboBox.setBackground(new Color(173, 216, 230));
 		comboBox.setFont(new Font("Verdana", Font.BOLD, 12));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"UG Student", "PG Student", "Research Scholar", "Faculty"}));
-		comboBox.setBounds(260, 201, 116, 18);
+		comboBox.setBounds(228, 201, 169, 18);
 		contentPane.add(comboBox);
 		
 		JLabel lblChooseUserType = new JLabel("Choose User Type");
@@ -111,44 +123,46 @@ public class CreateUser extends JFrame {
 		contentPane.add(lblChooseUserType);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(203, 54, 209, 20);
+		textFieldName.setBounds(203, 54, 209, 22);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldUsername = new JTextField();
-		textFieldUsername.setBounds(203, 79, 209, 20);
+		textFieldUsername.setBounds(203, 79, 209, 22);
 		contentPane.add(textFieldUsername);
 		textFieldUsername.setColumns(10);
 		
 		textFieldAddress = new JTextField();
-		textFieldAddress.setBounds(203, 104, 209, 20);
+		textFieldAddress.setBounds(203, 104, 209, 22);
 		contentPane.add(textFieldAddress);
 		textFieldAddress.setColumns(10);
 		
 		textFieldPhone = new JTextField();
-		textFieldPhone.setBounds(204, 129, 208, 20);
+		textFieldPhone.setBounds(204, 129, 208, 22);
 		contentPane.add(textFieldPhone);
 		textFieldPhone.setColumns(10);
 		
 		textFieldPassword = new JPasswordField();
-		textFieldPassword.setBounds(203, 154, 209, 20);
+		textFieldPassword.setBounds(203, 154, 209, 22);
 		contentPane.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
 		JButton btnCreateUser = new JButton("Create User");
 		btnCreateUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String username = textFieldUsername.getText().trim();
 				String password = String.valueOf(textFieldPassword.getPassword()).trim();
 				String name = textFieldName.getText().trim();
 				String address = textFieldAddress.getText().trim();
 				String phone = textFieldPhone.getText().trim();
 				String type = comboBox.getSelectedItem().toString().trim();
-//				boolean check = checkEntry();
-				
-				addtoDatabase(username,name,address,phone,password,type);
-				setVisible(false);
-				
+				boolean check = checkEntry(username,password,name,address,phone,type);
+				if(check){
+					addtoDatabase(username,name,address,phone,password,type);
+					dispose();
+					LastScreen.screen1.setVisible(true);
+				}
 			}
 		});
 		btnCreateUser.setBackground(new Color(255, 105, 180));
@@ -159,7 +173,8 @@ public class CreateUser extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				dispose();
+				LastScreen.screen1.setVisible(true);
 			}
 		});
 		btnBack.setBackground(new Color(255, 105, 180));
@@ -204,7 +219,7 @@ public class CreateUser extends JFrame {
 			
 			//SQL QUERY
 			
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 			String sql = "INSERT INTO users (username,name,phoneNo,address,type,fine,bookLimit,duration,booksIssued,password,overNotif)" +
                     " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -231,4 +246,61 @@ public class CreateUser extends JFrame {
 		
 		
 	}
+	
+	public boolean checkEntry(String username,String password,String name,String address,String phone,String type){
+		if(username.equals("")|| password.equals("")||name.equals("")||address.equals("")||phone.equals("")||type.equals("---Choose Type---")){
+			JOptionPane.showMessageDialog(null,"Blank entries and invalid entries given!!!");
+			return false;
+		}
+		if(!checkPhone(phone)){
+			JOptionPane.showMessageDialog(null,"Phone number given as string!!!");
+			return false;
+		}
+		
+//		if(!checkPassword(password)){
+//			JOptionPane.showMessageDialog(null,"Password not meeting requirements!!!");
+//			return false;
+//		}
+		
+		if(!checkUsername(username,type)){
+			JOptionPane.showMessageDialog(null,"Username not unique!!!");
+			return false;
+		}
+		return true;
+	}
+	public static boolean checkUsername(String x,String y){
+		Connection con;
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
+			ResultSet r = con.createStatement().executeQuery("Select * from users");
+			while(r.next()){
+				String a  = r.getString("username");
+				String t = r.getString("type");
+				if(a.equals(x) && t.equals(y))
+					return false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+	public static boolean checkPhone(String x){
+		try { 
+	        Long.parseLong(x); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    } catch(NullPointerException e) {
+	        return false;
+	    }
+		return true;
+	}
+//	public static boolean checkPassword(String x){
+//		boolean a =false;
+//		boolean b = false;
+//		boolean c =false;
+//		
+//	}
+
 }

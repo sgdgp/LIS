@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -25,8 +27,16 @@ public class UserNotificationOption extends JFrame {
 	 * Create the frame.
 	 */
 	public UserNotificationOption(String username) {
+		setResizable(false);
 		setTitle("Notification Options");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 204, 102));
@@ -35,6 +45,12 @@ public class UserNotificationOption extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		btnBack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBack.setBackground(new Color(255, 255, 102));
 		btnBack.setBounds(39, 205, 89, 23);
@@ -47,6 +63,7 @@ public class UserNotificationOption extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				UserReserveNotifications frame=new UserReserveNotifications(username);
 				frame.setVisible(true);
+				
 			}
 		});
 		btnReserveNotifications.setBounds(109, 59, 216, 41);

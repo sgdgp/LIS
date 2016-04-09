@@ -15,6 +15,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.sql.*;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.ActionEvent;
 
 public class UserReserveNotifications extends JFrame {
 
@@ -30,7 +36,15 @@ public class UserReserveNotifications extends JFrame {
 	 * Create the frame.
 	 */
 	public UserReserveNotifications(String username) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen2.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 398, 382);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -38,7 +52,7 @@ public class UserReserveNotifications extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 42, 362, 290);
+		scrollPane.setBounds(10, 42, 362, 258);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -57,5 +71,19 @@ public class UserReserveNotifications extends JFrame {
 			
 		}
 		scrollPane.setViewportView(table);
+		
+		JLabel lblReservedBooks = new JLabel("RESERVED BOOKS");
+		lblReservedBooks.setBounds(122, 11, 163, 14);
+		contentPane.add(lblReservedBooks);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				LastScreen.screen2.setVisible(true);
+			}
+		});
+		btnBack.setBounds(150, 311, 89, 23);
+		contentPane.add(btnBack);
 	}
 }

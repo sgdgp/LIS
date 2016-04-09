@@ -9,9 +9,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class SearchBook extends JFrame {
@@ -42,10 +50,18 @@ public class SearchBook extends JFrame {
 	 */
 	String username;
 	public SearchBook(String uname) {
+		setResizable(false);
 
 		username = uname;
 		setTitle("Search Book");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(233, 150, 122));
@@ -59,11 +75,22 @@ public class SearchBook extends JFrame {
 				String name = textFieldName.getText().trim();
 				String author = textFieldAuthor.getText().trim();
 				String ISBN = textFieldISBN.getText().trim();
-				dispose();
+				
 				try {
 					BookDetails frame = new BookDetails(username);
-					frame.setVisible(true);
-					frame.showParams(name,author,ISBN);
+					Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+					Statement st = con.createStatement();
+					String query = "Select count(*) from books where ISBN='"+ISBN+"'";
+					ResultSet r = st.executeQuery(query);
+					r.next();
+					if(r.getInt(1)!=0){
+						setVisible(false);
+						frame.setVisible(true);
+						frame.showParams(name,author,ISBN);
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "No such book present");
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -76,17 +103,17 @@ public class SearchBook extends JFrame {
 		contentPane.add(btnSearch);
 		
 		textFieldISBN = new JTextField();
-		textFieldISBN.setBounds(171, 73, 231, 20);
+		textFieldISBN.setBounds(171, 73, 231, 22);
 		contentPane.add(textFieldISBN);
 		textFieldISBN.setColumns(10);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(171, 112, 231, 20);
+		textFieldName.setBounds(171, 112, 231, 22);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldAuthor = new JTextField();
-		textFieldAuthor.setBounds(171, 159, 231, 20);
+		textFieldAuthor.setBounds(171, 159, 231, 22);
 		contentPane.add(textFieldAuthor);
 		textFieldAuthor.setColumns(10);
 		
@@ -115,6 +142,7 @@ public class SearchBook extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
+				LastScreen.screen1.setVisible(true);
 			}
 		});
 		btnBack.setBackground(new Color(119, 136, 153));

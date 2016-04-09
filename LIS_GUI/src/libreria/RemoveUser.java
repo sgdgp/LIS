@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,6 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class RemoveUser extends JFrame {
 
@@ -26,6 +29,7 @@ public class RemoveUser extends JFrame {
 	private JTextField textFieldUsername;
 	private JLabel lblEnterUsername;
 	private JButton btnBack;
+	private JLabel lblRemoveUser;
 
 	/**
 	 * Launch the application.
@@ -47,8 +51,16 @@ public class RemoveUser extends JFrame {
 	 * Create the frame.
 	 */
 	public RemoveUser() {
+		setResizable(false);
 		setTitle("Remove user");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 102));
@@ -62,6 +74,7 @@ public class RemoveUser extends JFrame {
 		textFieldUsername.setColumns(10);
 		
 		JButton btnRemoveuser = new JButton("Remove user");
+		btnRemoveuser.setIcon(new ImageIcon(RemoveUser.class.getResource("/libreria/delete.png")));
 		btnRemoveuser.setFont(new Font("Trebuchet MS", Font.BOLD, 11));
 		btnRemoveuser.setBackground(new Color(102, 51, 153));
 		btnRemoveuser.addActionListener(new ActionListener() {
@@ -84,6 +97,8 @@ public class RemoveUser extends JFrame {
 						System.out.println("if line executed");
 						Statement stmt = con.createStatement();
 						stmt.executeUpdate(sql);
+						dispose();
+						LastScreen.screen1.setVisible(true);
 					}
 					else{
 						System.out.println("user not present");
@@ -106,9 +121,20 @@ public class RemoveUser extends JFrame {
 		contentPane.add(lblEnterUsername);
 		
 		btnBack = new JButton("Back");
+		btnBack.setIcon(new ImageIcon(RemoveUser.class.getResource("/libreria/back.png")));
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		btnBack.setFont(new Font("Trebuchet MS", Font.BOLD, 11));
 		btnBack.setBackground(new Color(102, 51, 153));
-		btnBack.setBounds(33, 227, 89, 23);
+		btnBack.setBounds(33, 220, 89, 30);
 		contentPane.add(btnBack);
+		
+		lblRemoveUser = new JLabel("REMOVE USER");
+		lblRemoveUser.setBounds(112, 23, 200, 14);
+		contentPane.add(lblRemoveUser);
 	}
 }

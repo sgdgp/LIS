@@ -57,10 +57,20 @@ private JTable tbl;
     	  l.returned(ReturnWrapper.uid.get(r).getIssuedBook(), ReturnWrapper.username);
       }
       
+      if(button.getText().equals("Issue")){
+    	  libraryfunc l = new libraryfunc();
+    	  l.returned(IssueWrapper.ISBN.get(r), IssueWrapper.username);
+      }
+      
+      if(button.getText().equals("Reserve")){
+    	  libraryfunc l = new libraryfunc();
+    	  l.returned(ReserveWrapper.ISBN.get(r), ReserveWrapper.username);
+      }
+      
       
       if(button.getText().equals("Dispose")){
     	try{
-    		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+    		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
 			con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
     		String query = "update books set delNotif=true where ISBN='"+DisposeNotifWrapper.ISBN[r]+"'";
     		Statement s = con.createStatement();
@@ -73,7 +83,7 @@ private JTable tbl;
      }
       if(button.getText().equals("Send Overdue Notification")){
       	try{
-      		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+      		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
   			con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
       		for(int i=0;i<SendOverNotifWrapper.uid.size();i++){
       			String z = SendOverNotifWrapper.ISBN.get(r);

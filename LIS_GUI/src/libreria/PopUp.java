@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import java.awt.Font;
 
-public class PopUpFrame extends JFrame {
+public class PopUp extends JFrame {
 
 	private JPanel contentPane;
 
@@ -21,7 +21,7 @@ public class PopUpFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PopUpFrame(String str) {
+	public PopUp(String str) {
 		setTitle("Message");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 452, 302);

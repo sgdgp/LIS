@@ -16,6 +16,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SendOverdueNotif extends JFrame {
 
@@ -42,7 +45,8 @@ public class SendOverdueNotif extends JFrame {
 	 * Create the frame.
 	 */
 	public SendOverdueNotif() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 404, 405);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -50,7 +54,7 @@ public class SendOverdueNotif extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 368, 344);
+		scrollPane.setBounds(10, 11, 368, 285);
 		contentPane.add(scrollPane);
 		
 		DefaultTableModel t = new DefaultTableModel() {
@@ -111,6 +115,15 @@ public class SendOverdueNotif extends JFrame {
 		}
 		scrollPane.setViewportView(table);
 		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
+		btnBack.setBounds(149, 318, 89, 23);
+		contentPane.add(btnBack);
+		
 	}
-
 }

@@ -4,9 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -50,8 +53,16 @@ public class AddBook extends JFrame {
 	 * Create the frame.
 	 */
 	public AddBook() {
+		setResizable(false);
 		setTitle("Book Details");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 467, 372);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 153));
@@ -76,17 +87,17 @@ public class AddBook extends JFrame {
 		contentPane.add(lblIsbnNumber);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(150, 59, 222, 20);
+		textFieldName.setBounds(150, 59, 222, 22);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldAuthor = new JTextField();
-		textFieldAuthor.setBounds(150, 85, 222, 20);
+		textFieldAuthor.setBounds(150, 85, 222, 22);
 		contentPane.add(textFieldAuthor);
 		textFieldAuthor.setColumns(10);
 		
 		textFieldISBN = new JTextField();
-		textFieldISBN.setBounds(150, 110, 222, 20);
+		textFieldISBN.setBounds(150, 110, 222, 22);
 		contentPane.add(textFieldISBN);
 		textFieldISBN.setColumns(10);
 		
@@ -99,7 +110,9 @@ public class AddBook extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				dispose();
+				LastScreen.screen1.setVisible(true);
+				
 			}
 		});
 		btnBack.setBackground(new Color(176, 224, 230));
@@ -124,7 +137,12 @@ public class AddBook extends JFrame {
 				String ISBN = textFieldISBN.getText().trim();
 				String year = textFieldYear.getText().trim();
 				String price = textFieldPrice.getText().trim();
-				addToDatabase(ISBN,name,author,publisher,year,rackno,price);
+				
+				boolean check = checkEntry(name,author,publisher,rackno,ISBN,year,price);
+				if(check){
+					addToDatabase(ISBN,name,author,publisher,year,rackno,price);
+					dispose();
+				}
 				
 			}
 		});
@@ -132,12 +150,12 @@ public class AddBook extends JFrame {
 		contentPane.add(btnReturnBook);
 		
 		textFieldRack = new JTextField();
-		textFieldRack.setBounds(150, 135, 222, 20);
+		textFieldRack.setBounds(150, 135, 222, 22);
 		contentPane.add(textFieldRack);
 		textFieldRack.setColumns(10);
 		
 		textFieldYear = new JTextField();
-		textFieldYear.setBounds(150, 162, 222, 20);
+		textFieldYear.setBounds(150, 162, 222, 22);
 		contentPane.add(textFieldYear);
 		textFieldYear.setColumns(10);
 		
@@ -157,20 +175,20 @@ public class AddBook extends JFrame {
 		contentPane.add(lblPublisher);
 		
 		textFieldPrice = new JTextField();
-		textFieldPrice.setBounds(150, 189, 224, 20);
+		textFieldPrice.setBounds(150, 189, 224, 22);
 		contentPane.add(textFieldPrice);
 		textFieldPrice.setColumns(10);
 		
 		textFieldPublisher = new JTextField();
-		textFieldPublisher.setBounds(150, 214, 222, 20);
+		textFieldPublisher.setBounds(150, 214, 222, 22);
 		contentPane.add(textFieldPublisher);
 		textFieldPublisher.setColumns(10);
 	}
 	@SuppressWarnings("unchecked")
 	public void addToDatabase(String ISBN,String name,String author, String publisher,String year,String rackno,String price){
 		try {
-			System.out.println("Add book reached");
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+//			System.out.println("Add book reached");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 			Statement st = con.createStatement();
 			ResultSet r = st.executeQuery("Select * from books where ISBN='"+ISBN+"'");
 			int count=0;
@@ -180,7 +198,7 @@ public class AddBook extends JFrame {
 				oS = r.getInt("onShelf");
 			}
 			
-			
+			ArrayList<Date>is = new ArrayList<Date>();
 			ArrayList<BookInfo> cd = new ArrayList<BookInfo>();
 			ArrayList<String> rl = new ArrayList<String>();
 			if(count!=0){
@@ -208,10 +226,10 @@ public class AddBook extends JFrame {
 				stmt.executeUpdate();
 			}
 			else{
-				System.out.println("else part of add book adtodatabase, count="+count);
+//				System.out.println("else part of add book adtodatabase, count="+count);
 				cd.add(new BookInfo(false));
 //				rl.add("-");
-				String sql = "INSERT INTO books (ISBN,name,author,publisher,yearOfPurchase,rackNo,onShelf,countID,issueStats,price,isReserved,copyDetails,reserveList,delNotif)" +
+				String sql = "INSERT INTO books (ISBN,name,author,publisher,yearOfPurchase,rackNo,onShelf,countID,price,isReserved,copyDetails,reserveList,delNotif,issueStats)" +
 	                    " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement stmt = con.prepareStatement(sql);
 				stmt.setString(1, ISBN);
@@ -222,12 +240,12 @@ public class AddBook extends JFrame {
 				stmt.setString(6, rackno);
 				stmt.setInt(7, oS+1);
 				stmt.setInt(8, count+1);
-				stmt.setInt(9, 0);
-				stmt.setString(10, price);
-				stmt.setBoolean(11, false);
-				stmt.setObject(12,cd);
-				stmt.setObject(13, rl);
-				stmt.setBoolean(14, false);
+				stmt.setString(9, price);
+				stmt.setBoolean(10, false);
+				stmt.setObject(11,cd);
+				stmt.setObject(12, rl);
+				stmt.setBoolean(13, false);
+				stmt.setObject(14, is);
 				stmt.executeUpdate();
 				
 			}
@@ -246,4 +264,70 @@ public class AddBook extends JFrame {
 		}
 		 
 	}
+	
+	
+	public boolean checkEntry(String name,String author,String publisher,String rackno,String ISBN,String year,String price){
+		if(name.equals("")|| author.equals("")||publisher.equals("")||rackno.equals("")||ISBN.equals("")||year.equals("")||price.equals("")){
+			JOptionPane.showMessageDialog(null,"Blank entries and invalid entries given!!!");
+			return false;
+		}
+		if(!isLong(rackno)){
+			JOptionPane.showMessageDialog(null,"Rack number not integer!!!");
+			return false;
+		}
+		if(!isYear(year)){
+			JOptionPane.showMessageDialog(null,"Wrong type of year inserted!!!");
+			return false;
+		}
+		if(!checkUnique(ISBN,author,publisher,name)){
+			JOptionPane.showMessageDialog(null,"Unique ISBN must be givn!!!");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private boolean isYear(String year) {
+		if(year.length()!=4)
+			return false;
+		if(!isLong(year))
+			return false;
+		
+		return true;
+	}
+	public static boolean checkUnique(String ISBN,String author,String publisher,String name){
+		Connection con;
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
+			ResultSet r = con.createStatement().executeQuery("Select * from books");
+			while(r.next()){
+				String a  = r.getString("ISBN");
+				String b = r.getString("author");
+				String c = r.getString("publisher");
+				String d = r.getString("name");
+				if(a.equals(ISBN)&& b.equals(author)&& c.equals(publisher)&& d.equals(name))
+					continue;
+				else if(a.compareTo(ISBN)!=0 && b.compareTo(author)!=0 && c.compareTo(publisher)!=0 && d.compareTo(name)!=0)
+					continue;
+				else
+					return false;
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	public static boolean isLong(String x){
+		try { 
+	        Long.parseLong(x); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    } catch(NullPointerException e) {
+	        return false;
+	    }
+		return true;
+	}
+
+
 }
