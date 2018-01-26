@@ -87,17 +87,17 @@ public class AddBook extends JFrame {
 		contentPane.add(lblIsbnNumber);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(150, 59, 222, 22);
+		textFieldName.setBounds(150, 59, 222, 30);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldAuthor = new JTextField();
-		textFieldAuthor.setBounds(150, 85, 222, 22);
+		textFieldAuthor.setBounds(150, 85, 222, 30);
 		contentPane.add(textFieldAuthor);
 		textFieldAuthor.setColumns(10);
 		
 		textFieldISBN = new JTextField();
-		textFieldISBN.setBounds(150, 110, 222, 22);
+		textFieldISBN.setBounds(150, 110, 222, 30);
 		contentPane.add(textFieldISBN);
 		textFieldISBN.setColumns(10);
 		
@@ -142,6 +142,9 @@ public class AddBook extends JFrame {
 				if(check){
 					addToDatabase(ISBN,name,author,publisher,year,rackno,price);
 					dispose();
+					PopUp frame = new PopUp("Book added successfully");
+					frame.setVisible(true);
+					LastScreen.screen1.setVisible(true);
 				}
 				
 			}
@@ -150,12 +153,12 @@ public class AddBook extends JFrame {
 		contentPane.add(btnReturnBook);
 		
 		textFieldRack = new JTextField();
-		textFieldRack.setBounds(150, 135, 222, 22);
+		textFieldRack.setBounds(150, 135, 222, 30);
 		contentPane.add(textFieldRack);
 		textFieldRack.setColumns(10);
 		
 		textFieldYear = new JTextField();
-		textFieldYear.setBounds(150, 162, 222, 22);
+		textFieldYear.setBounds(150, 162, 222, 30);
 		contentPane.add(textFieldYear);
 		textFieldYear.setColumns(10);
 		
@@ -175,12 +178,12 @@ public class AddBook extends JFrame {
 		contentPane.add(lblPublisher);
 		
 		textFieldPrice = new JTextField();
-		textFieldPrice.setBounds(150, 189, 224, 22);
+		textFieldPrice.setBounds(150, 189, 224, 30);
 		contentPane.add(textFieldPrice);
 		textFieldPrice.setColumns(10);
 		
 		textFieldPublisher = new JTextField();
-		textFieldPublisher.setBounds(150, 214, 222, 22);
+		textFieldPublisher.setBounds(150, 214, 222, 30);
 		contentPane.add(textFieldPublisher);
 		textFieldPublisher.setColumns(10);
 	}
@@ -193,14 +196,15 @@ public class AddBook extends JFrame {
 			ResultSet r = st.executeQuery("Select * from books where ISBN='"+ISBN+"'");
 			int count=0;
 			int oS=0;
-			while(r.next()){
-				count = r.getInt("countID");
-				oS = r.getInt("onShelf");
-			}
-			
 			ArrayList<Date>is = new ArrayList<Date>();
 			ArrayList<BookInfo> cd = new ArrayList<BookInfo>();
 			ArrayList<String> rl = new ArrayList<String>();
+			if(r.next()){
+				count = r.getInt("countID");
+				oS = r.getInt("onShelf");
+			
+			
+			
 			if(count!=0){
 				//set up the copy details arraylist
 				byte[] buf1 = r.getBytes("copyDetails");
@@ -216,15 +220,19 @@ public class AddBook extends JFrame {
 //                rl.add("-");
                 String sql = "UPDATE books SET reserveList = " + "?"
                         + ", copyDetails = " + "?"
+                        + ", countId = " + "?"
+                        + ", onShelf = " + "?"
                         + " WHERE ISBN = '" + ISBN + "'";
                 PreparedStatement stmt = con.prepareStatement(sql);
 				
 				stmt.setObject(2,cd);
 				stmt.setObject(1, rl);
-				stmt.setInt(7, oS+1);
-				stmt.setInt(8, count+1);
+				stmt.setInt(4, oS+1);
+				stmt.setInt(3, count+1);
 				stmt.executeUpdate();
 			}
+		}
+			
 			else{
 //				System.out.println("else part of add book adtodatabase, count="+count);
 				cd.add(new BookInfo(false));
@@ -280,14 +288,30 @@ public class AddBook extends JFrame {
 			return false;
 		}
 		if(!checkUnique(ISBN,author,publisher,name)){
-			JOptionPane.showMessageDialog(null,"Unique ISBN must be givn!!!");
+			JOptionPane.showMessageDialog(null,"Unique ISBN must be given!!!");
 			return false;
 		}
-		
+		if(!checkPrice(price)){
+			JOptionPane.showMessageDialog(null,"Invalid price entered!!!");
+			return false;
+		}
 		return true;
 	}
+	public static boolean checkPrice(String price){
+		try { 
+	        double d = Double.parseDouble(price);
+	        if(d<0){
+	        	return false;
+	        }
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    } catch(NullPointerException e) {
+	        return false;
+	    }
 	
-	private boolean isYear(String year) {
+		return true;
+	}
+	public static boolean isYear(String year) {
 		if(year.length()!=4)
 			return false;
 		if(!isLong(year))
@@ -305,12 +329,17 @@ public class AddBook extends JFrame {
 				String b = r.getString("author");
 				String c = r.getString("publisher");
 				String d = r.getString("name");
-				if(a.equals(ISBN)&& b.equals(author)&& c.equals(publisher)&& d.equals(name))
-					continue;
-				else if(a.compareTo(ISBN)!=0 && b.compareTo(author)!=0 && c.compareTo(publisher)!=0 && d.compareTo(name)!=0)
-					continue;
-				else
-					return false;
+//				if(a.equals(ISBN)&& b.equals(author)&& c.equals(publisher)&& d.equals(name))
+//					continue;
+//				else if(a.compareTo(ISBN)!=0 && b.compareTo(author)!=0 && c.compareTo(publisher)!=0 && d.compareTo(name)!=0)
+//					continue;
+//				else
+//					return false;
+
+				if(a.equals(ISBN)){
+					if(!(b.equals(author)&& c.equals(publisher)&& d.equals(name)))
+						return false;
+				}
 			}
 	
 		} catch (SQLException e) {

@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class UserReserveNotifications extends JFrame {
 
@@ -72,8 +73,9 @@ public class UserReserveNotifications extends JFrame {
 		}
 		scrollPane.setViewportView(table);
 		
-		JLabel lblReservedBooks = new JLabel("RESERVED BOOKS");
-		lblReservedBooks.setBounds(122, 11, 163, 14);
+		JLabel lblReservedBooks = new JLabel("RESERVED BOOKS THAT HAVE BEEN RETURNED");
+		lblReservedBooks.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		lblReservedBooks.setBounds(26, 11, 346, 14);
 		contentPane.add(lblReservedBooks);
 		
 		JButton btnBack = new JButton("Back");

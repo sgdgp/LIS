@@ -1,7 +1,6 @@
 package libreria;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,7 +12,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,6 +21,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
+@SuppressWarnings("serial")
 public class RemoveClerk extends JFrame {
 
 	private JPanel contentPane;
@@ -68,7 +67,7 @@ public class RemoveClerk extends JFrame {
 		contentPane.setLayout(null);
 		
 		textFieldUsername = new JTextField();
-		textFieldUsername.setBounds(161, 72, 239, 20);
+		textFieldUsername.setBounds(161, 72, 239, 33);
 		contentPane.add(textFieldUsername);
 		textFieldUsername.setColumns(10);
 		
@@ -97,6 +96,8 @@ public class RemoveClerk extends JFrame {
 						Statement stmt = con.createStatement();
 						stmt.executeUpdate(sql);
 						dispose();
+						PopUp frame = new PopUp("Clerk deleted successfully");
+						frame.setVisible(true);
 						LastScreen.screen1.setVisible(true);
 					}
 					else{

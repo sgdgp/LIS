@@ -109,7 +109,7 @@ public class BookDetails extends JFrame {
 		contentPane.add(lblBookDetails);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setIcon(new ImageIcon("D:\\LIS\\LIS_GUI\\src\\libreria\\1460225365_go-back.png"));
+		btnBack.setIcon(new ImageIcon(BookDetails.class.getResource("/libreria/back.png")));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -118,7 +118,7 @@ public class BookDetails extends JFrame {
 		});
 		btnBack.setBackground(new Color(176, 224, 230));
 		btnBack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		btnBack.setBounds(10, 328, 89, 23);
+		btnBack.setBounds(10, 328, 89, 30);
 		contentPane.add(btnBack);
 		
 		JLabel lblNumberOfCopies = new JLabel("Number of Copies");
@@ -139,15 +139,22 @@ public class BookDetails extends JFrame {
 		JButton btnIssueBook = new JButton("Issue Book");
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				libraryfunc l = new libraryfunc();
-				l.issue(ISBN, username);
+//				libraryfunc l = new libraryfunc();
+//				l.issue(ISBN, username);
+				
+//				System.out.println("ISBN fetched = "+ISBN);
+				
+				ISBN = textFieldISBN.getText().trim();
+				Issue I = new Issue();
+				I.issue(ISBN, username);
+				
 //				l.returned(ISBN, "i");
 			}
 			
 		});
 		btnIssueBook.setBackground(new Color(176, 224, 230));
 		btnIssueBook.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		btnIssueBook.setBounds(186, 328, 118, 23);
+		btnIssueBook.setBounds(186, 328, 118, 30);
 		contentPane.add(btnIssueBook);
 		
 		JButton btnReturnBook = new JButton("Reserve Book");
@@ -155,11 +162,14 @@ public class BookDetails extends JFrame {
 		btnReturnBook.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				libraryfunc l = new libraryfunc();
-				l.reserve(ISBN, username);
+//				libraryfunc l = new libraryfunc();
+//				l.reserve(ISBN, username);
+				ISBN = textFieldISBN.getText().trim();
+				Reserver R = new Reserver();
+				R.reserve(ISBN, username);
 			}
 		});
-		btnReturnBook.setBounds(339, 328, 144, 23);
+		btnReturnBook.setBounds(339, 328, 144, 30);
 		contentPane.add(btnReturnBook);
 		
 		textFieldCopies = new JTextField();
@@ -188,28 +198,38 @@ public class BookDetails extends JFrame {
 				LastScreen.screen1.setVisible(true);
 			}
 		});
-		btnBackToUser.setBounds(10, 291, 222, 23);
+		btnBackToUser.setBounds(10, 291, 222, 30);
 		contentPane.add(btnBackToUser);
 	}
 	
-	public void showParams(String name,String author,String ISBN){
+	public void showParams(String name,String ISBN){
 //		this.name = name;
 		this.ISBN = ISBN;
 		textFieldName.setText(name);
-		textFieldAuthor.setText(author);
+//		textFieldAuthor.setText(author);
 		textFieldISBN.setText(ISBN);
 		
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 			
 			Statement st = con.createStatement();
-			String query = "Select * from books where ISBN='"+ISBN+"'";
+			String query = null;
+			if(ISBN.compareTo("")!=0)
+				query = "Select * from books where ISBN='"+ISBN+"'";
+			else
+				query = "Select * from books where name='"+name+"'";
 			ResultSet r = st.executeQuery(query);
 			while(r.next()){
+				textFieldName.setText(r.getString("name"));
+				textFieldAuthor.setText(r.getString("author"));
+				textFieldISBN.setText(r.getString("ISBN"));
 				textFieldCopies.setText(r.getString("countID"));
 //				textFieldCopiesIssued.setText(r.getString("copyIssued"));
 				textFieldRackNo.setText(r.getString("rackNo"));
 				textFieldCopiesIssued.setText(r.getString("onShelf"));
+				
+				ISBN = textFieldISBN.getText().trim();
+//				System.out.println("ISBN set");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

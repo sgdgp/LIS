@@ -1,8 +1,5 @@
 package libreria;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,7 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -27,11 +23,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.sql.DriverManager;
-import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
+@SuppressWarnings("serial")
 public class CreateUser extends JFrame {
 
 	private JPanel contentPane;
@@ -60,6 +54,7 @@ public class CreateUser extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CreateUser() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -72,7 +67,7 @@ public class CreateUser extends JFrame {
 		});
 		setTitle("Create New User");
 		setBackground(new Color(138, 43, 226));
-		setBounds(100, 100, 494, 324);
+		setBounds(100, 100, 505, 365);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 228, 196));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,68 +77,68 @@ public class CreateUser extends JFrame {
 		JLabel lblName = new JLabel("Name");
 		lblName.setForeground(new Color(139, 0, 139));
 		lblName.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblName.setBounds(78, 56, 91, 14);
+		lblName.setBounds(78, 66, 91, 14);
 		contentPane.add(lblName);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setForeground(new Color(139, 0, 139));
 		lblUsername.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblUsername.setBounds(78, 81, 102, 14);
+		lblUsername.setBounds(78, 97, 102, 14);
 		contentPane.add(lblUsername);
 		
 		JLabel lblAddress = new JLabel("Address");
 		lblAddress.setForeground(new Color(139, 0, 139));
 		lblAddress.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblAddress.setBounds(78, 106, 101, 14);
+		lblAddress.setBounds(78, 136, 101, 14);
 		contentPane.add(lblAddress);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
 		lblPhoneNumber.setForeground(new Color(139, 0, 139));
 		lblPhoneNumber.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblPhoneNumber.setBounds(78, 131, 116, 14);
+		lblPhoneNumber.setBounds(78, 172, 116, 14);
 		contentPane.add(lblPhoneNumber);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setForeground(new Color(139, 0, 139));
 		lblPassword.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblPassword.setBounds(78, 156, 100, 14);
+		lblPassword.setBounds(78, 208, 100, 14);
 		contentPane.add(lblPassword);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBackground(new Color(173, 216, 230));
 		comboBox.setFont(new Font("Verdana", Font.BOLD, 12));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"UG Student", "PG Student", "Research Scholar", "Faculty"}));
-		comboBox.setBounds(228, 201, 169, 18);
+		comboBox.setBounds(233, 247, 169, 28);
 		contentPane.add(comboBox);
 		
 		JLabel lblChooseUserType = new JLabel("Choose User Type");
 		lblChooseUserType.setForeground(new Color(139, 0, 139));
 		lblChooseUserType.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblChooseUserType.setBounds(78, 203, 159, 14);
+		lblChooseUserType.setBounds(92, 254, 159, 14);
 		contentPane.add(lblChooseUserType);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(203, 54, 209, 22);
+		textFieldName.setBounds(203, 60, 209, 30);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldUsername = new JTextField();
-		textFieldUsername.setBounds(203, 79, 209, 22);
+		textFieldUsername.setBounds(203, 95, 209, 30);
 		contentPane.add(textFieldUsername);
 		textFieldUsername.setColumns(10);
 		
 		textFieldAddress = new JTextField();
-		textFieldAddress.setBounds(203, 104, 209, 22);
+		textFieldAddress.setBounds(203, 129, 209, 30);
 		contentPane.add(textFieldAddress);
 		textFieldAddress.setColumns(10);
 		
 		textFieldPhone = new JTextField();
-		textFieldPhone.setBounds(204, 129, 208, 22);
+		textFieldPhone.setBounds(204, 165, 208, 30);
 		contentPane.add(textFieldPhone);
 		textFieldPhone.setColumns(10);
 		
 		textFieldPassword = new JPasswordField();
-		textFieldPassword.setBounds(203, 154, 209, 22);
+		textFieldPassword.setBounds(203, 200, 209, 30);
 		contentPane.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
@@ -161,13 +156,15 @@ public class CreateUser extends JFrame {
 				if(check){
 					addtoDatabase(username,name,address,phone,password,type);
 					dispose();
+					PopUp frame = new PopUp("User created successfully");
+					frame.setVisible(true);
 					LastScreen.screen1.setVisible(true);
 				}
 			}
 		});
 		btnCreateUser.setBackground(new Color(255, 105, 180));
 		btnCreateUser.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		btnCreateUser.setBounds(305, 251, 124, 23);
+		btnCreateUser.setBounds(319, 302, 124, 23);
 		contentPane.add(btnCreateUser);
 		
 		JButton btnBack = new JButton("Back");
@@ -179,7 +176,7 @@ public class CreateUser extends JFrame {
 		});
 		btnBack.setBackground(new Color(255, 105, 180));
 		btnBack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		btnBack.setBounds(21, 251, 89, 23);
+		btnBack.setBounds(35, 302, 89, 23);
 		contentPane.add(btnBack);
 		
 		JLabel lblCreateNewUser = new JLabel("Create New User");
@@ -210,7 +207,7 @@ public class CreateUser extends JFrame {
 				bl = 6;
 				d = 3;
 				break;
-			case "Faculty ":
+			case "Faculty":
 				bl = 10;
 				d = 6;
 				break;

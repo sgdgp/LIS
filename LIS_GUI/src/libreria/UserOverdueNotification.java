@@ -1,7 +1,5 @@
 package libreria;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.ByteArrayInputStream;
@@ -20,7 +18,10 @@ import java.sql.*;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class UserOverdueNotification extends JFrame {
 
 	private JPanel contentPane;
@@ -35,6 +36,7 @@ public class UserOverdueNotification extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("unchecked")
 	public UserOverdueNotification(String username) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -60,7 +62,7 @@ public class UserOverdueNotification extends JFrame {
 		model.setColumnIdentifiers(new String[] {"ISBN"});
 		table.setModel(model);
 		try{
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis","root","qwerty");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
 			ResultSet r = con.createStatement().executeQuery("Select * from users WHERE username = '" + username+"'");
 			//String add = "SELECT * FROM users WHERE username = '" + username+"'";
 			while(r.next()){
@@ -88,5 +90,10 @@ public class UserOverdueNotification extends JFrame {
 		});
 		btnBack.setBounds(136, 314, 89, 23);
 		contentPane.add(btnBack);
+		
+		JLabel lblOverdueBookNotifications = new JLabel("OVERDUE BOOK NOTIFICATIONS");
+		lblOverdueBookNotifications.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		lblOverdueBookNotifications.setBounds(102, 11, 224, 14);
+		contentPane.add(lblOverdueBookNotifications);
 	}
 }

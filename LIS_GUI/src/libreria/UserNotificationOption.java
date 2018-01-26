@@ -61,6 +61,7 @@ public class UserNotificationOption extends JFrame {
 		btnReserveNotifications.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		btnReserveNotifications.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
 				UserReserveNotifications frame=new UserReserveNotifications(username);
 				frame.setVisible(true);
 				
@@ -74,6 +75,7 @@ public class UserNotificationOption extends JFrame {
 		btnOverdueNotifications.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		btnOverdueNotifications.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
 				UserOverdueNotification frame=new UserOverdueNotification(username);
 				frame.setVisible(true);
 			}

@@ -11,14 +11,19 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
@@ -49,7 +54,7 @@ public class DelBook extends JFrame {
 	 * Create the frame.
 	 */
 	public DelBook() {
-		setEnabled(false);
+		setResizable(false);
 		setTitle("Dispose Book");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
@@ -67,11 +72,12 @@ public class DelBook extends JFrame {
 		contentPane.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(120, 86, 261, 22);
+		textField.setBounds(120, 86, 261, 30);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnDisposeBook = new JButton("Dispose Book");
+		btnDisposeBook.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnDisposeBook.setIcon(new ImageIcon(DelBook.class.getResource("/libreria/delete.png")));
 		btnDisposeBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,31 +88,51 @@ public class DelBook extends JFrame {
 					String ISBN = textField.getText().trim();
 					con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 					con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
-					System.out.println("line executed");
+//					System.out.println("line executed");
 					String sql1 = "Select count(*) from books where ISBN='"+ISBN+"' and delNotif=true";
 					Statement st = con.createStatement();
 					ResultSet r = st.executeQuery(sql1);
 					r.next();
-					System.out.println(r.getInt(1));
+//					System.out.println(r.getInt(1));
+					ResultSet x = con.createStatement().executeQuery("select * from books where ISBN='"+ISBN+"'");
+					
+					x.next();
+					
+//					byte[] buf = x.getBytes("copyDetails");
+//                    ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
+//                    ArrayList<BookInfo> booksIssued = (ArrayList<BookInfo>) o.readObject();
+				
+					int onS = x.getInt("onShelf");
+					int c = x.getInt("countId");
+                    if(onS!=c){
+						JOptionPane.showMessageDialog(null, "Book is still issued, cannot delete !!!");
+						dispose();
+						LastScreen.screen1.setVisible(true);
+						return;
+					}
+//					System.out.println(r.getInt(1));
 					if(r.getInt(1)!=0){
 						String sql = "Delete from books where ISBN='"+ISBN+"' and delNotif=true";
-						System.out.println("if line executed");
+//						System.out.println("if line executed");
 						Statement stmt = con.createStatement();
 						stmt.executeUpdate(sql);
+						PopUp frame = new PopUp("Book disposed successfully !!");
+						frame.setVisible(true);
 					}
 					else{
-						System.out.println("not deleteds");
+						PopUp frame = new PopUp("Book not notified to be deleted");
+						frame.setVisible(true);
 					}
 				} catch (SQLException ex) {
-					System.out.println("Exception reached");
+//					System.out.println("Exception reached");
 //					e.printStackTrace();
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+//					e1.printStackTrace();
 				}
 			}
 		});
-		btnDisposeBook.setBounds(120, 185, 128, 30);
+		btnDisposeBook.setBounds(120, 185, 207, 30);
 		contentPane.add(btnDisposeBook);
 		
 		lblDeleteBook = new JLabel("DISPOSE BOOK");

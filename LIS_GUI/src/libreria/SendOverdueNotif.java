@@ -18,6 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 public class SendOverdueNotif extends JFrame {
@@ -46,7 +48,14 @@ public class SendOverdueNotif extends JFrame {
 	 */
 	public SendOverdueNotif() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				dispose();
+				LastScreen.screen1.setVisible(true);
+			}
+		});
 		setBounds(100, 100, 404, 405);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

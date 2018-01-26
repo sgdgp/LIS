@@ -35,8 +35,8 @@ public class IssueStat extends JFrame {
 	private JPanel contentPane;
 	public String[][] data1= new String[100][100];
 	
-	private String url1 = "jdbc:mysql://localhost:3306/";
-    private static String url = "jdbc:mysql://localhost:3306/lis";
+	private String url1 = "jdbc:mysql://localhost:3306/?useSSL=false";
+    private static String url = "jdbc:mysql://localhost:3306/lis?useSSL=false";
     private static final String user = "root";
     private static final String password = "qwerty";
     private JTable table;
@@ -138,10 +138,13 @@ public class IssueStat extends JFrame {
             }
         	String a[]={ISBN[i],name[i],Integer.toString(z),"Dispose"};
         	t.addRow(a);
+        	i++;
         
         }
         DisposeNotifWrapper.ISBN = ISBN;
-        
+//        System.out.println(DisposeNotifWrapper.ISBN[1]);
+//        System.out.println(ISBN[1]);
+       
 
 	
 		}

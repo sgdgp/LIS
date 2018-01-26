@@ -11,14 +11,20 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -69,7 +75,7 @@ public class RemoveUser extends JFrame {
 		contentPane.setLayout(null);
 		
 		textFieldUsername = new JTextField();
-		textFieldUsername.setBounds(161, 72, 239, 20);
+		textFieldUsername.setBounds(161, 72, 239, 33);
 		contentPane.add(textFieldUsername);
 		textFieldUsername.setColumns(10);
 		
@@ -86,29 +92,46 @@ public class RemoveUser extends JFrame {
 					String username = textFieldUsername.getText().trim();
 					con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
 					con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
-					System.out.println("line executed");
+//					System.out.println("line executed");
 					String sql1 = "Select count(*) from users where username='"+username+"'";
 					Statement st = con.createStatement();
 					ResultSet r = st.executeQuery(sql1);
 					r.next();
-					System.out.println(r.getInt(1));
+//					System.out.println(r.getInt(1));
 					if(r.getInt(1)!=0){
+						ResultSet x = con.createStatement().executeQuery("select * from users where username='"+username+"'");
+						x.next();
+						byte[] buf = x.getBytes("booksIssued");
+                        ObjectInputStream o = new ObjectInputStream(new ByteArrayInputStream(buf));
+                        ArrayList<UserIssueDetails> booksIssued = (ArrayList<UserIssueDetails>) o.readObject();
+						if(booksIssued.size()>0){
+							JOptionPane.showMessageDialog(null, "User still has issued books, cannot delete !!!");
+							dispose();
+							LastScreen.screen1.setVisible(true);
+							return;
+						}
 						String sql = "Delete from users where username='"+username+"'";
-						System.out.println("if line executed");
+//						System.out.println("if line executed");
 						Statement stmt = con.createStatement();
 						stmt.executeUpdate(sql);
+						
+						PopUp frame = new PopUp("User deleted successfully");
+						frame.setVisible(true);
 						dispose();
 						LastScreen.screen1.setVisible(true);
 					}
 					else{
-						System.out.println("user not present");
+//						System.out.println("user not present");
 					}
 				} catch (SQLException ex) {
-					System.out.println("Exception reached");
+//					System.out.println("Exception reached");
 //					e.printStackTrace();
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+//					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+//					e1.printStackTrace();
 				}
 			}
 		});
@@ -134,7 +157,8 @@ public class RemoveUser extends JFrame {
 		contentPane.add(btnBack);
 		
 		lblRemoveUser = new JLabel("REMOVE USER");
-		lblRemoveUser.setBounds(112, 23, 200, 14);
+		lblRemoveUser.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+		lblRemoveUser.setBounds(144, 23, 231, 38);
 		contentPane.add(lblRemoveUser);
 	}
 }

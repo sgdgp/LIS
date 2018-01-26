@@ -75,55 +75,55 @@ public class CreateClerk extends JFrame {
 		JLabel lblName = new JLabel("Name");
 		lblName.setForeground(new Color(139, 0, 139));
 		lblName.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblName.setBounds(78, 56, 91, 14);
+		lblName.setBounds(78, 69, 91, 14);
 		contentPane.add(lblName);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setForeground(new Color(139, 0, 139));
 		lblUsername.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblUsername.setBounds(78, 81, 102, 14);
+		lblUsername.setBounds(78, 102, 102, 14);
 		contentPane.add(lblUsername);
 		
 		JLabel lblAddress = new JLabel("Address");
 		lblAddress.setForeground(new Color(139, 0, 139));
 		lblAddress.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblAddress.setBounds(78, 106, 101, 14);
+		lblAddress.setBounds(78, 139, 101, 14);
 		contentPane.add(lblAddress);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
 		lblPhoneNumber.setForeground(new Color(139, 0, 139));
 		lblPhoneNumber.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblPhoneNumber.setBounds(78, 131, 116, 14);
+		lblPhoneNumber.setBounds(78, 172, 116, 14);
 		contentPane.add(lblPhoneNumber);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setForeground(new Color(139, 0, 139));
 		lblPassword.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblPassword.setBounds(78, 156, 100, 14);
+		lblPassword.setBounds(78, 204, 100, 14);
 		contentPane.add(lblPassword);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(203, 54, 209, 22);
+		textFieldName.setBounds(203, 61, 209, 30);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textFieldUsername = new JTextField();
-		textFieldUsername.setBounds(203, 79, 209, 22);
+		textFieldUsername.setBounds(203, 95, 209, 30);
 		contentPane.add(textFieldUsername);
 		textFieldUsername.setColumns(10);
 		
 		textFieldAddress = new JTextField();
-		textFieldAddress.setBounds(203, 104, 209, 22);
+		textFieldAddress.setBounds(203, 132, 209, 30);
 		contentPane.add(textFieldAddress);
 		textFieldAddress.setColumns(10);
 		
 		textFieldPhone = new JTextField();
-		textFieldPhone.setBounds(204, 129, 208, 22);
+		textFieldPhone.setBounds(204, 165, 208, 30);
 		contentPane.add(textFieldPhone);
 		textFieldPhone.setColumns(10);
 		
 		textFieldPassword = new JPasswordField();
-		textFieldPassword.setBounds(203, 154, 209, 22);
+		textFieldPassword.setBounds(203, 198, 209, 30);
 		contentPane.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
@@ -139,6 +139,8 @@ public class CreateClerk extends JFrame {
 				if(check){
 					addtoDatabase(username,name,address,phone,password);
 					dispose();
+					PopUp frame = new PopUp("Clerk created successfully");
+					frame.setVisible(true);
 					LastScreen.screen1.setVisible(true);
 
 				}

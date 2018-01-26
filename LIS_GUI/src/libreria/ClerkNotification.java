@@ -64,6 +64,7 @@ public class ClerkNotification extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
 		scrollPane.setViewportView(textArea);
 		try{
 			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");

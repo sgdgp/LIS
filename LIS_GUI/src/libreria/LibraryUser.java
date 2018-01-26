@@ -139,13 +139,14 @@ public class LibraryUser extends JFrame {
 						Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
 						ResultSet r = con1.createStatement().executeQuery("Select * from books where ISBN = 'b'");
 						r.next();
-						System.out.println("is reserved value :"+r.getBoolean("isReserved"));
+						
 					}catch(Exception e){
 						e.printStackTrace();
 					}
 					ReturnWindow d1=new ReturnWindow(username);
 					d1.setVisible(true);
 					d1.setLocationRelativeTo(null);
+					LastScreen.screen2 = d1;
 					
 					
 				} catch (ClassNotFoundException e) {
@@ -187,6 +188,7 @@ public class LibraryUser extends JFrame {
 		JButton btnPayFine = new JButton("Pay Fine");
 		btnPayFine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				double fine = 0;
 //				setVisible(false);
 				Connection con;
 				try {
@@ -194,10 +196,22 @@ public class LibraryUser extends JFrame {
 				
 				ResultSet r = con.createStatement().executeQuery("Select * from users where username='"+username+"'");
 				r.next();
+				fine=r.getDouble("fine");
 				if(r.getDouble("fine")==0.0){
 					JOptionPane.showMessageDialog(null, "No fine is charged yet");
 					return;
 				}
+				byte[] buf0 = r.getBytes("booksIssued");
+	            ObjectInputStream o0 = new ObjectInputStream(new ByteArrayInputStream(buf0));
+	            ArrayList<UserIssueDetails> bookList = (ArrayList<UserIssueDetails>) o0.readObject();
+	            for(int i=0;i<bookList.size();i++){
+	            	
+	            		PopUp pop = new PopUp("First you need to return all Books to pay fine!");
+	                    pop.setVisible(true);
+	                    return;
+	            	
+	            		
+	            }
 				Statement st = con.createStatement();
 
 				String add = "UPDATE users SET fine = " +0
@@ -207,8 +221,14 @@ public class LibraryUser extends JFrame {
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				PopUp frame=new PopUp("Fine Paid");
+				PopUp frame=new PopUp("Fine Paid of Rs."+fine);
 				frame.setVisible(true);
 //				setVisible(true);
 			}
@@ -248,7 +268,7 @@ public class LibraryUser extends JFrame {
 		btnLogout.setBounds(280, 11, 144, 33);
 		contentPane.add(btnLogout);
 		
-		JLabel lblNameOfUser = new JLabel(name);
+		JLabel lblNameOfUser = new JLabel("Name:"+name);
 		lblNameOfUser.setForeground(new Color(51, 51, 255));
 		lblNameOfUser.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 12));
 		lblNameOfUser.setBounds(24, 11, 112, 31);

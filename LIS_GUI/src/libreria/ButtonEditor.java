@@ -53,30 +53,48 @@ private JTable tbl;
   public Object getCellEditorValue() {
     if (isPushed) {          
       if(button.getText().equals("Return")){
-    	  libraryfunc l = new libraryfunc();
-    	  l.returned(ReturnWrapper.uid.get(r).getIssuedBook(), ReturnWrapper.username);
+    	  LastScreen.screen2.dispose();
+//    	  libraryfunc l = new libraryfunc();
+//    	  l.returned(ReturnWrapper.uid.get(r).getIssuedBook(), ReturnWrapper.username);
+    	  
+    	  
+    	  ReturnAndInform RI = new ReturnAndInform();
+    	  RI.returned(ReturnWrapper.uid.get(r).getIssuedBook(), ReturnWrapper.username);
+    	  
+    	  
+    	  LastScreen .screen1.setVisible(true);
       }
       
       if(button.getText().equals("Issue")){
-    	  libraryfunc l = new libraryfunc();
-    	  l.returned(IssueWrapper.ISBN.get(r), IssueWrapper.username);
+//    	  libraryfunc l = new libraryfunc();
+//    	  l.issue(IssueWrapper.ISBN.get(r), IssueWrapper.username);
+    	  
+    	  Issue I = new Issue();
+		  I.issue(IssueWrapper.ISBN.get(r), IssueWrapper.username);
       }
       
       if(button.getText().equals("Reserve")){
-    	  libraryfunc l = new libraryfunc();
-    	  l.returned(ReserveWrapper.ISBN.get(r), ReserveWrapper.username);
+//    	  libraryfunc l = new libraryfunc();
+//    	  l.reserve(ReserveWrapper.ISBN.get(r), ReserveWrapper.username);
+    	  
+    	  Reserver R = new Reserver();
+    	  R.reserve(ReserveWrapper.ISBN.get(r), ReserveWrapper.username);
       }
       
       
       if(button.getText().equals("Dispose")){
     	try{
+//    		System.out.println("reached");
+    		
+//    		System.out.println(DisposeNotifWrapper.ISBN[r]);
     		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
 			con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");
-    		String query = "update books set delNotif=true where ISBN='"+DisposeNotifWrapper.ISBN[r]+"'";
-    		Statement s = con.createStatement();
-    		s.executeUpdate(query);
+    		String query = "update books set delNotif=? where ISBN='"+DisposeNotifWrapper.ISBN[r]+"'";
+    		PreparedStatement s = con.prepareStatement(query);
+    		s.setBoolean(1, true);
+    		s.executeUpdate();
     	}catch(Exception e){
-    	
+//    		System.out.println("Ex");
     	}
     	
     	
@@ -89,6 +107,8 @@ private JTable tbl;
       			String z = SendOverNotifWrapper.ISBN.get(r);
       			if(SendOverNotifWrapper.uid.get(i).getIssuedBook().equals(z)){
       				SendOverNotifWrapper.uid.get(i).setNotif(true);
+      				SendOverNotifWrapper.uid.get(i).setOverdue(true);
+      				
       			}
       		}
       		con.createStatement().executeQuery("SET SQL_SAFE_UPDATES=0");

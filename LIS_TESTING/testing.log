@@ -1,0 +1,1587 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.4.13)  13 APR 2016 23:37
+entering extended mode
+**testing.tex
+(D:\LIS\LIS_TESTING\testing.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen103
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks17
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks18
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count99
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count100
+\lst@gtempboxa=\box28
+\lst@token=\toks22
+\lst@length=\count101
+\lst@currlwidth=\dimen114
+\lst@column=\count102
+\lst@pos=\count103
+\lst@lostspace=\dimen115
+\lst@width=\dimen116
+\lst@newlines=\count104
+\lst@lineno=\count105
+\lst@maxwidth=\dimen117
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count106
+\lst@skipnumbers=\count107
+\lst@framebox=\box29
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\sectsty\sectsty.sty"
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty"
+Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
+\ttl@box=\box30
+\beforetitleunit=\skip46
+\aftertitleunit=\skip47
+\ttl@plus=\dimen118
+\ttl@minus=\dimen119
+\ttl@toksa=\toks23
+\titlewidth=\dimen120
+\titlewidthlast=\dimen121
+\titlewidthfirst=\dimen122
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ulem\ulem.sty"
+\UL@box=\box31
+\UL@hyphenbox=\box32
+\UL@skip=\skip48
+\UL@hook=\toks24
+\UL@height=\dimen123
+\UL@pe=\count108
+\UL@pixel=\dimen124
+\ULC@box=\box33
+Package: ulem 2011/03/18
+\ULdepth=\dimen125
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen126
+\Hy@linkcounter=\count109
+\Hy@pagecounter=\count110
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count111
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4062.
+Package hyperref Info: Link nesting OFF on input line 4067.
+Package hyperref Info: Hyper index ON on input line 4070.
+Package hyperref Info: Plain pages OFF on input line 4077.
+Package hyperref Info: Backreferencing OFF on input line 4082.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4300.
+\c@Hy@tempcnt=\count112
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4653.
+\Fld@menulength=\count113
+\Field@Width=\dimen127
+\Fld@charsize=\dimen128
+Package hyperref Info: Hyper figures OFF on input line 5773.
+Package hyperref Info: Link nesting OFF on input line 5778.
+Package hyperref Info: Hyper index ON on input line 5781.
+Package hyperref Info: backreferencing OFF on input line 5788.
+Package hyperref Info: Link coloring OFF on input line 5793.
+Package hyperref Info: Link coloring with OCG OFF on input line 5798.
+Package hyperref Info: PDF/A mode OFF on input line 5803.
+LaTeX Info: Redefining \ref on input line 5843.
+LaTeX Info: Redefining \pageref on input line 5847.
+\Hy@abspage=\count114
+\c@Item=\count115
+\c@Hfootnote=\count116
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
+\Fld@listcount=\count117
+\c@bookmark@seq@number=\count118
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip49
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count119
+\Gm@cntv=\count120
+\c@Gm@tempcnt=\count121
+\Gm@bindingoffset=\dimen129
+\Gm@wd@mp=\dimen130
+\Gm@odd@mp=\dimen131
+\Gm@even@mp=\dimen132
+\Gm@layoutwidth=\dimen133
+\Gm@layoutheight=\dimen134
+\Gm@layouthoffset=\dimen135
+\Gm@layoutvoffset=\dimen136
+\Gm@dimlist=\toks25
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+(D:\LIS\LIS_TESTING\testing.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count122
+\scratchdimen=\dimen137
+\scratchbox=\box34
+\nofMPsegments=\count123
+\nofMParguments=\count124
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen138
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
+\everyMPtoPDFconversion=\toks27
+)
+\c@lstlisting=\count128
+\AtBeginShipoutBox=\box35
+Package hyperref Info: Link coloring OFF on input line 27.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count129
+)
+LaTeX Info: Redefining \ref on input line 27.
+LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \nameref on input line 27.
+
+(D:\LIS\LIS_TESTING\testing.out) (D:\LIS\LIS_TESTING\testing.out)
+\@outlinefile=\write3
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 450.97528pt, 89.62709pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=450.97528pt
+* \textheight=591.5302pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-7.86334pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<images/logoLIS_modified.jpg, id=47, 501.875pt x 368.37625pt>
+File: images/logoLIS_modified.jpg Graphic file (type jpg)
+
+<use images/logoLIS_modified.jpg>
+Package pdftex.def Info: images/logoLIS_modified.jpg used on input line 31.
+(pdftex.def)             Requested size: 301.12732pt x 221.02744pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 39.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
+ [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <D:/LIS/LIS_TESTING/images
+/logoLIS_modified.jpg>] (D:\LIS\LIS_TESTING\testing.toc)
+\tf@toc=\write4
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+[3] <images/Tables/MainWindow.PNG, id=81, 455.45157pt x 174.6525pt>
+File: images/Tables/MainWindow.PNG Graphic file (type png)
+
+<use images/Tables/MainWindow.PNG>
+Package pdftex.def Info: images/Tables/MainWindow.PNG used on input line 98.
+(pdftex.def)             Requested size: 364.36174pt x 139.72218pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--99
+
+ []
+
+<images/Tables/MainWindow1.PNG, id=83, 458.46281pt x 174.6525pt>
+File: images/Tables/MainWindow1.PNG Graphic file (type png)
+
+<use images/Tables/MainWindow1.PNG>
+Package pdftex.def Info: images/Tables/MainWindow1.PNG used on input line 100.
+(pdftex.def)             Requested size: 366.77074pt x 139.72218pt.
+ [4 <D:/LIS/LIS_TESTING/images/Tables/MainWindow.PNG>] <images/Tables/CreateUse
+r.PNG, id=98, 474.27188pt x 161.10187pt>
+File: images/Tables/CreateUser.PNG Graphic file (type png)
+
+<use images/Tables/CreateUser.PNG>
+Package pdftex.def Info: images/Tables/CreateUser.PNG used on input line 105.
+(pdftex.def)             Requested size: 379.41801pt x 128.88167pt.
+
+<images/Tables/CreateClerk.PNG, id=99, 472.01344pt x 152.82094pt>
+File: images/Tables/CreateClerk.PNG Graphic file (type png)
+
+<use images/Tables/CreateClerk.PNG>
+Package pdftex.def Info: images/Tables/CreateClerk.PNG used on input line 109.
+(pdftex.def)             Requested size: 377.61127pt x 122.2569pt.
+
+<images/Tables/AddBook.PNG, id=100, 475.02469pt x 213.79875pt>
+File: images/Tables/AddBook.PNG Graphic file (type png)
+
+<use images/Tables/AddBook.PNG>
+Package pdftex.def Info: images/Tables/AddBook.PNG used on input line 113.
+(pdftex.def)             Requested size: 380.02025pt x 171.03922pt.
+ [5 <D:/LIS/LIS_TESTING/images/Tables/MainWindow1.PNG> <D:/LIS/LIS_TESTING/imag
+es/Tables/CreateUser.PNG> <D:/LIS/LIS_TESTING/images/Tables/CreateClerk.PNG>]
+<images/Tables/Issue.PNG, id=108, 484.05844pt x 164.11313pt>
+File: images/Tables/Issue.PNG Graphic file (type png)
+
+<use images/Tables/Issue.PNG>
+Package pdftex.def Info: images/Tables/Issue.PNG used on input line 119.
+(pdftex.def)             Requested size: 387.24727pt x 131.29066pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
+
+ []
+
+<images/Tables/ReturnAndInform.PNG, id=109, 358.33875pt x 170.13562pt>
+File: images/Tables/ReturnAndInform.PNG Graphic file (type png)
+
+<use images/Tables/ReturnAndInform.PNG>
+Package pdftex.def Info: images/Tables/ReturnAndInform.PNG used on input line 1
+24.
+(pdftex.def)             Requested size: 286.67139pt x 136.10867pt.
+
+<images/Tables/ReturnAndInform2.PNG, id=110, 356.83313pt x 231.86626pt>
+File: images/Tables/ReturnAndInform2.PNG Graphic file (type png)
+
+<use images/Tables/ReturnAndInform2.PNG>
+Package pdftex.def Info: images/Tables/ReturnAndInform2.PNG used on input line 
+128.
+(pdftex.def)             Requested size: 285.46687pt x 185.49324pt.
+ [6 <D:/LIS/LIS_TESTING/images/Tables/AddBook.PNG> <D:/LIS/LIS_TESTING/images/T
+ables/Issue.PNG> <D:/LIS/LIS_TESTING/images/Tables/ReturnAndInform.PNG>]
+<images/Tables/Reserver.PNG, id=118, 457.71pt x 177.66376pt>
+File: images/Tables/Reserver.PNG Graphic file (type png)
+
+<use images/Tables/Reserver.PNG>
+Package pdftex.def Info: images/Tables/Reserver.PNG used on input line 132.
+(pdftex.def)             Requested size: 366.1685pt x 142.13118pt.
+
+<images/Tables/FineChecker.PNG, id=119, 456.20438pt x 216.81pt>
+File: images/Tables/FineChecker.PNG Graphic file (type png)
+
+<use images/Tables/FineChecker.PNG>
+Package pdftex.def Info: images/Tables/FineChecker.PNG used on input line 136.
+(pdftex.def)             Requested size: 228.10162pt x 108.40472pt.
+
+<images/Tables/RemoveUser.PNG, id=120, 458.46281pt x 161.10187pt>
+File: images/Tables/RemoveUser.PNG Graphic file (type png)
+
+<use images/Tables/RemoveUser.PNG>
+Package pdftex.def Info: images/Tables/RemoveUser.PNG used on input line 140.
+(pdftex.def)             Requested size: 366.77074pt x 128.88167pt.
+ [7 <D:/LIS/LIS_TESTING/images/Tables/ReturnAndInform2.PNG> <D:/LIS/LIS_TESTING
+/images/Tables/Reserver.PNG> <D:/LIS/LIS_TESTING/images/Tables/FineChecker.PNG>
+]
+<images/Tables/RemoveClerk.PNG, id=129, 401.24907pt x 161.85469pt>
+File: images/Tables/RemoveClerk.PNG Graphic file (type png)
+
+<use images/Tables/RemoveClerk.PNG>
+Package pdftex.def Info: images/Tables/RemoveClerk.PNG used on input line 144.
+(pdftex.def)             Requested size: 320.99968pt x 129.4839pt.
+
+<images/Tables/DelBook.PNG, id=130, 453.19313pt x 247.67531pt>
+File: images/Tables/DelBook.PNG Graphic file (type png)
+
+<use images/Tables/DelBook.PNG>
+Package pdftex.def Info: images/Tables/DelBook.PNG used on input line 149.
+(pdftex.def)             Requested size: 362.555pt x 198.1405pt.
+ [8 <D:/LIS/LIS_TESTING/images/Tables/RemoveUser.PNG> <D:/LIS/LIS_TESTING/image
+s/Tables/RemoveClerk.PNG> <D:/LIS/LIS_TESTING/images/Tables/DelBook.PNG>]
+<images/LibrarianLogin/Login.PNG, id=138, 373.395pt x 254.45062pt>
+File: images/LibrarianLogin/Login.PNG Graphic file (type png)
+
+<use images/LibrarianLogin/Login.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Login.PNG used on input line 164
+.
+(pdftex.def)             Requested size: 298.7164pt x 203.56076pt.
+
+<images/LibrarianLogin/LibrarianHomeScreen.PNG, id=139, 348.55219pt x 243.15843
+pt>
+File: images/LibrarianLogin/LibrarianHomeScreen.PNG Graphic file (type png)
+ <use images/LibrarianLogin/LibrarianHomeScreen.PNG>
+Package pdftex.def Info: images/LibrarianLogin/LibrarianHomeScreen.PNG used on 
+input line 166.
+(pdftex.def)             Requested size: 278.8421pt x 194.52701pt.
+
+<images/ClerkLogin/LoginScreen.PNG, id=140, 373.395pt x 254.45062pt>
+File: images/ClerkLogin/LoginScreen.PNG Graphic file (type png)
+
+<use images/ClerkLogin/LoginScreen.PNG>
+Package pdftex.def Info: images/ClerkLogin/LoginScreen.PNG used on input line 1
+69.
+(pdftex.def)             Requested size: 298.7164pt x 203.56076pt.
+
+<images/ClerkLogin/ClerkActions.PNG, id=141, 351.56343pt x 249.18094pt>
+File: images/ClerkLogin/ClerkActions.PNG Graphic file (type png)
+
+<use images/ClerkLogin/ClerkActions.PNG>
+Package pdftex.def Info: images/ClerkLogin/ClerkActions.PNG used on input line 
+171.
+(pdftex.def)             Requested size: 281.25111pt x 199.345pt.
+ [9 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Login.PNG> <D:/LIS/LIS_TESTING/im
+ages/LibrarianLogin/LibrarianHomeScreen.PNG>] <images/UserLogin/LoginScreen.PNG
+, id=149, 373.395pt x 254.45062pt>
+File: images/UserLogin/LoginScreen.PNG Graphic file (type png)
+
+<use images/UserLogin/LoginScreen.PNG>
+Package pdftex.def Info: images/UserLogin/LoginScreen.PNG used on input line 17
+4.
+(pdftex.def)             Requested size: 298.7164pt x 203.56076pt.
+
+<images/UserLogin/UserActions.PNG, id=150, 351.56343pt x 246.9225pt>
+File: images/UserLogin/UserActions.PNG Graphic file (type png)
+
+<use images/UserLogin/UserActions.PNG>
+Package pdftex.def Info: images/UserLogin/UserActions.PNG used on input line 17
+6.
+(pdftex.def)             Requested size: 281.25111pt x 197.53824pt.
+ [10 <D:/LIS/LIS_TESTING/images/ClerkLogin/LoginScreen.PNG> <D:/LIS/LIS_TESTING
+/images/ClerkLogin/ClerkActions.PNG>]
+File: images/LibrarianLogin/LibrarianHomeScreen.PNG Graphic file (type png)
+
+<use images/LibrarianLogin/LibrarianHomeScreen.PNG>
+Package pdftex.def Info: images/LibrarianLogin/LibrarianHomeScreen.PNG used on 
+input line 184.
+(pdftex.def)             Requested size: 278.8421pt x 194.52701pt.
+ [11 <D:/LIS/LIS_TESTING/images/UserLogin/LoginScreen.PNG> <D:/LIS/LIS_TESTING/
+images/UserLogin/UserActions.PNG>]
+<images/LibrarianLogin/Actions/CreateUser/CreateUGStudent.PNG, id=164, 377.1590
+6pt x 273.27094pt>
+File: images/LibrarianLogin/Actions/CreateUser/CreateUGStudent.PNG Graphic file
+ (type png)
+
+<use images/LibrarianLogin/Actions/CreateUser/CreateUGStudent.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateUser/CreateUGStude
+nt.PNG used on input line 189.
+(pdftex.def)             Requested size: 301.72766pt x 218.61702pt.
+
+<images/LibrarianLogin/Actions/CreateUser/CreatePGStudent.PNG, id=165, 377.1590
+6pt x 273.27094pt>
+File: images/LibrarianLogin/Actions/CreateUser/CreatePGStudent.PNG Graphic file
+ (type png)
+
+<use images/LibrarianLogin/Actions/CreateUser/CreatePGStudent.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateUser/CreatePGStude
+nt.PNG used on input line 191.
+(pdftex.def)             Requested size: 301.72766pt x 218.61702pt.
+ [12 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/CreateUser/CreateUGStude
+nt.PNG>]
+<images/LibrarianLogin/Actions/CreateUser/CreateResearchScholar.PNG, id=171, 37
+7.15906pt x 273.27094pt>
+File: images/LibrarianLogin/Actions/CreateUser/CreateResearchScholar.PNG Graphi
+c file (type png)
+
+<use images/LibrarianLogin/Actions/CreateUser/CreateResearchScholar.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateUser/CreateResearc
+hScholar.PNG used on input line 193.
+(pdftex.def)             Requested size: 301.72766pt x 218.61702pt.
+
+<images/LibrarianLogin/Actions/CreateUser/CreateFaculty.PNG, id=172, 377.15906p
+t x 273.27094pt>
+File: images/LibrarianLogin/Actions/CreateUser/CreateFaculty.PNG Graphic file (
+type png)
+
+<use images/LibrarianLogin/Actions/CreateUser/CreateFaculty.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateUser/CreateFaculty
+.PNG used on input line 195.
+(pdftex.def)             Requested size: 301.72766pt x 218.61702pt.
+
+<images/LibrarianLogin/Actions/CreateUser/SuccessfullyCreated.PNG, id=173, 329.
+73187pt x 222.07968pt>
+File: images/LibrarianLogin/Actions/CreateUser/SuccessfullyCreated.PNG Graphic 
+file (type png)
+
+<use images/LibrarianLogin/Actions/CreateUser/SuccessfullyCreated.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateUser/SuccessfullyC
+reated.PNG used on input line 198.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/LibrarianLogin/Actions/CreateUser/SuccessfullyCreated.PNG Graphic 
+file (type png)
+
+<use images/LibrarianLogin/Actions/CreateUser/SuccessfullyCreated.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateUser/SuccessfullyC
+reated.PNG used on input line 201.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--203
+
+ []
+
+[13 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/CreateUser/CreatePGStuden
+t.PNG> <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/CreateUser/CreateResea
+rchScholar.PNG>] [14 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/CreateUs
+er/CreateFaculty.PNG> <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/CreateU
+ser/SuccessfullyCreated.PNG>]
+File: images/LibrarianLogin/LibrarianHomeScreen.PNG Graphic file (type png)
+
+<use images/LibrarianLogin/LibrarianHomeScreen.PNG>
+Package pdftex.def Info: images/LibrarianLogin/LibrarianHomeScreen.PNG used on 
+input line 209.
+(pdftex.def)             Requested size: 278.8421pt x 194.52701pt.
+
+<images/LibrarianLogin/Actions/CreateClerk/ClerkDetails.PNG, id=187, 368.87813p
+t x 242.40562pt>
+File: images/LibrarianLogin/Actions/CreateClerk/ClerkDetails.PNG Graphic file (
+type png)
+
+<use images/LibrarianLogin/Actions/CreateClerk/ClerkDetails.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateClerk/ClerkDetails
+.PNG used on input line 210.
+(pdftex.def)             Requested size: 295.10289pt x 193.92474pt.
+
+<images/LibrarianLogin/Actions/CreateClerk/ClerkCreated.PNG, id=188, 329.73187p
+t x 222.07968pt>
+File: images/LibrarianLogin/Actions/CreateClerk/ClerkCreated.PNG Graphic file (
+type png)
+
+<use images/LibrarianLogin/Actions/CreateClerk/ClerkCreated.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateClerk/ClerkCreated
+.PNG used on input line 212.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/LibrarianLogin/Actions/CreateClerk/ClerkCreated.PNG Graphic file (
+type png)
+
+<use images/LibrarianLogin/Actions/CreateClerk/ClerkCreated.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/CreateClerk/ClerkCreated
+.PNG used on input line 214.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--215
+
+ []
+
+[15]
+File: images/ClerkLogin/ClerkActions.PNG Graphic file (type png)
+ <use images/ClerkLogin/ClerkActions.PNG>
+Package pdftex.def Info: images/ClerkLogin/ClerkActions.PNG used on input line 
+220.
+(pdftex.def)             Requested size: 281.25111pt x 199.345pt.
+
+<images/ClerkLogin/Actions/AddBook/BookDetails.PNG, id=193, 348.55219pt x 278.5
+4062pt>
+File: images/ClerkLogin/Actions/AddBook/BookDetails.PNG Graphic file (type png)
+
+ <use images/ClerkLogin/Actions/AddBook/BookDetails.PNG>
+Package pdftex.def Info: images/ClerkLogin/Actions/AddBook/BookDetails.PNG used
+ on input line 221.
+(pdftex.def)             Requested size: 278.8421pt x 222.8328pt.
+
+<images/ClerkLogin/Actions/AddBook/BookAdded.PNG, id=194, 329.73187pt x 222.079
+68pt>
+File: images/ClerkLogin/Actions/AddBook/BookAdded.PNG Graphic file (type png)
+ <use images/ClerkLogin/Actions/AddBook/BookAdded.PNG>
+Package pdftex.def Info: images/ClerkLogin/Actions/AddBook/BookAdded.PNG used o
+n input line 224.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/ClerkLogin/Actions/AddBook/BookAdded.PNG Graphic file (type png)
+
+<use images/ClerkLogin/Actions/AddBook/BookAdded.PNG>
+Package pdftex.def Info: images/ClerkLogin/Actions/AddBook/BookAdded.PNG used o
+n input line 226.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--227
+
+ []
+
+[16 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/CreateClerk/ClerkDetails.
+PNG> <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/CreateClerk/ClerkCreated
+.PNG>] [17 <D:/LIS/LIS_TESTING/images/ClerkLogin/Actions/AddBook/BookDetails.PN
+G>]
+Underfull \hbox (badness 10000) in paragraph at lines 228--230
+
+ []
+
+
+<images/UserLogin/Actions/SearchExisting/SearchByISBN/SearchExistingBook.PNG, i
+d=207, 335.75438pt x 224.33812pt>
+File: images/UserLogin/Actions/SearchExisting/SearchByISBN/SearchExistingBook.P
+NG Graphic file (type png)
+
+<use images/UserLogin/Actions/SearchExisting/SearchByISBN/SearchExistingBook.PN
+G>
+Package pdftex.def Info: images/UserLogin/Actions/SearchExisting/SearchByISBN/S
+earchExistingBook.PNG used on input line 232.
+(pdftex.def)             Requested size: 268.60387pt x 179.47073pt.
+
+<images/UserLogin/Actions/SearchExisting/SearchByISBN/SearchExistingBookFound.P
+NG, id=208, 402.00188pt x 300.3722pt>
+File: images/UserLogin/Actions/SearchExisting/SearchByISBN/SearchExistingBookFo
+und.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/SearchExisting/SearchByISBN/SearchExistingBookFou
+nd.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/SearchExisting/SearchByISBN/S
+earchExistingBookFound.PNG used on input line 233.
+(pdftex.def)             Requested size: 321.60193pt x 240.29807pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--234
+
+ []
+
+[18 <D:/LIS/LIS_TESTING/images/ClerkLogin/Actions/AddBook/BookAdded.PNG>]
+<images/UserLogin/Actions/SearchExisting/SearchByName/SearchExistingBook.PNG, i
+d=215, 335.75438pt x 224.33812pt>
+File: images/UserLogin/Actions/SearchExisting/SearchByName/SearchExistingBook.P
+NG Graphic file (type png)
+
+<use images/UserLogin/Actions/SearchExisting/SearchByName/SearchExistingBook.PN
+G>
+Package pdftex.def Info: images/UserLogin/Actions/SearchExisting/SearchByName/S
+earchExistingBook.PNG used on input line 235.
+(pdftex.def)             Requested size: 268.60387pt x 179.47073pt.
+
+<images/UserLogin/Actions/SearchExisting/SearchByName/Found.PNG, id=216, 402.00
+188pt x 300.3722pt>
+File: images/UserLogin/Actions/SearchExisting/SearchByName/Found.PNG Graphic fi
+le (type png)
+
+<use images/UserLogin/Actions/SearchExisting/SearchByName/Found.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/SearchExisting/SearchByName/F
+ound.PNG used on input line 236.
+(pdftex.def)             Requested size: 321.60193pt x 240.29807pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--237
+
+ []
+
+[19 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/SearchExisting/SearchByISBN/Se
+archExistingBook.PNG> <D:/LIS/LIS_TESTING/images/UserLogin/Actions/SearchExisti
+ng/SearchByISBN/SearchExistingBookFound.PNG>]
+File: images/UserLogin/Actions/SearchExisting/SearchByName/Found.PNG Graphic fi
+le (type png)
+
+<use images/UserLogin/Actions/SearchExisting/SearchByName/Found.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/SearchExisting/SearchByName/F
+ound.PNG used on input line 241.
+(pdftex.def)             Requested size: 321.60193pt x 240.29807pt.
+
+<images/UserLogin/Actions/BookIssued.PNG, id=224, 329.73187pt x 222.07968pt>
+File: images/UserLogin/Actions/BookIssued.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/BookIssued.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/BookIssued.PNG used on input 
+line 243.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/UserLogin/Actions/BookIssued.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/BookIssued.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/BookIssued.PNG used on input 
+line 245.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--246
+
+ []
+
+[20 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/SearchExisting/SearchByName/Se
+archExistingBook.PNG> <D:/LIS/LIS_TESTING/images/UserLogin/Actions/SearchExisti
+ng/SearchByName/Found.PNG>] [21 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/Bo
+okIssued.PNG>]
+<images/UserLogin/Actions/Reserve_reserveNotif/Issuefirst.PNG, id=236, 765.6103
+pt x 217.5628pt>
+File: images/UserLogin/Actions/Reserve_reserveNotif/Issuefirst.PNG Graphic file
+ (type png)
+
+<use images/UserLogin/Actions/Reserve_reserveNotif/Issuefirst.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/Reserve_reserveNotif/Issuefir
+st.PNG used on input line 249.
+(pdftex.def)             Requested size: 382.80421pt x 108.78113pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--250
+
+ []
+
+
+<images/UserLogin/Actions/IssuedAlreadyError.PNG, id=237, 329.73187pt x 222.079
+68pt>
+File: images/UserLogin/Actions/IssuedAlreadyError.PNG Graphic file (type png)
+ <use images/UserLogin/Actions/IssuedAlreadyError.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/IssuedAlreadyError.PNG used o
+n input line 253.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--254
+
+ []
+
+File: images/UserLogin/Actions/SearchExisting/SearchByName/Found.PNG Graphic fi
+le (type png)
+<use images/UserLogin/Actions/SearchExisting/SearchByName/Found.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/SearchExisting/SearchByName/F
+ound.PNG used on input line 258.
+(pdftex.def)             Requested size: 321.60193pt x 240.29807pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--259
+
+ []
+
+[22 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/Reserve_reserveNotif/Issuefirs
+t.PNG> <D:/LIS/LIS_TESTING/images/UserLogin/Actions/IssuedAlreadyError.PNG>]
+<images/BookReserved.PNG, id=244, 440.39531pt x 291.33844pt>
+File: images/BookReserved.PNG Graphic file (type png)
+
+<use images/BookReserved.PNG>
+Package pdftex.def Info: images/BookReserved.PNG used on input line 261.
+(pdftex.def)             Requested size: 352.31671pt x 233.07106pt.
+File: images/BookReserved.PNG Graphic file (type png)
+ <use images/BookReserved.PNG>
+Package pdftex.def Info: images/BookReserved.PNG used on input line 263.
+(pdftex.def)             Requested size: 352.31671pt x 233.07106pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--264
+
+ []
+
+[23 <D:/LIS/LIS_TESTING/images/BookReserved.PNG>]
+<images/UserLogin/Actions/Reserve_reserveNotif/BookReserved.PNG, id=250, 762.59
+906pt x 219.06844pt>
+File: images/UserLogin/Actions/Reserve_reserveNotif/BookReserved.PNG Graphic fi
+le (type png)
+
+<use images/UserLogin/Actions/Reserve_reserveNotif/BookReserved.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/Reserve_reserveNotif/BookRese
+rved.PNG used on input line 267.
+(pdftex.def)             Requested size: 381.2986pt x 109.53394pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--268
+
+ []
+
+File: images/UserLogin/Actions/IssuedAlreadyError.PNG Graphic file (type png)
+<use images/UserLogin/Actions/IssuedAlreadyError.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/IssuedAlreadyError.PNG used o
+n input line 271.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--272
+
+ []
+
+[24 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/Reserve_reserveNotif/BookReser
+ved.PNG>]
+<images/UserLogin/Actions/ReserveError.PNG, id=256, 329.73187pt x 222.07968pt>
+File: images/UserLogin/Actions/ReserveError.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/ReserveError.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/ReserveError.PNG used on inpu
+t line 274.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 273--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--281
+
+ []
+
+
+<images/UserLogin/Actions/ReturnScreen.PNG, id=257, 437.38406pt x 224.33812pt>
+File: images/UserLogin/Actions/ReturnScreen.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/ReturnScreen.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/ReturnScreen.PNG used on inpu
+t line 282.
+(pdftex.def)             Requested size: 349.90771pt x 179.47073pt.
+
+<images/UserLogin/Actions/BookReturned.PNG, id=258, 329.73187pt x 222.07968pt>
+File: images/UserLogin/Actions/BookReturned.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/BookReturned.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/BookReturned.PNG used on inpu
+t line 284.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--285
+
+ []
+
+[25 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/ReserveError.PNG>]
+File: images/UserLogin/UserActions.PNG Graphic file (type png)
+
+<use images/UserLogin/UserActions.PNG>
+Package pdftex.def Info: images/UserLogin/UserActions.PNG used on input line 28
+7.
+(pdftex.def)             Requested size: 281.25111pt x 197.53824pt.
+
+<images/UserLogin/Actions/NotificationWindow.PNG, id=265, 335.75438pt x 224.338
+12pt>
+File: images/UserLogin/Actions/NotificationWindow.PNG Graphic file (type png)
+ <use images/UserLogin/Actions/NotificationWindow.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/NotificationWindow.PNG used o
+n input line 288.
+(pdftex.def)             Requested size: 268.60387pt x 179.47073pt.
+
+<images/UserLogin/Actions/Reserve_reserveNotif/ReserveNotif.PNG, id=266, 296.60
+812pt x 286.06876pt>
+File: images/UserLogin/Actions/Reserve_reserveNotif/ReserveNotif.PNG Graphic fi
+le (type png)
+
+<use images/UserLogin/Actions/Reserve_reserveNotif/ReserveNotif.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/Reserve_reserveNotif/ReserveN
+otif.PNG used on input line 289.
+(pdftex.def)             Requested size: 237.2868pt x 228.85532pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--290
+
+ []
+
+[26 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/ReturnScreen.PNG> <D:/LIS/LIS_
+TESTING/images/UserLogin/Actions/BookReturned.PNG>] [27 <D:/LIS/LIS_TESTING/ima
+ges/UserLogin/Actions/NotificationWindow.PNG>]
+<images/UserLogin/Actions/Reserve_reserveNotif/Reservenotifcancelledafter7days.
+PNG, id=278, 296.60812pt x 286.06876pt>
+File: images/UserLogin/Actions/Reserve_reserveNotif/Reservenotifcancelledafter7
+days.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/Reserve_reserveNotif/Reservenotifcancelledafter7d
+ays.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/Reserve_reserveNotif/Reserven
+otifcancelledafter7days.PNG used on input line 292.
+(pdftex.def)             Requested size: 237.2868pt x 228.85532pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
+
+ []
+
+
+<images/LibrarianLogin/Actions/DeleteUser/DeleteUserScreen.PNG, id=279, 335.754
+38pt x 224.33812pt>
+File: images/LibrarianLogin/Actions/DeleteUser/DeleteUserScreen.PNG Graphic fil
+e (type png)
+
+<use images/LibrarianLogin/Actions/DeleteUser/DeleteUserScreen.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/DeleteUser/DeleteUserScr
+een.PNG used on input line 301.
+(pdftex.def)             Requested size: 268.60387pt x 179.47073pt.
+
+<images/LibrarianLogin/Actions/DeleteUser/UserDeleted.PNG, id=280, 329.73187pt 
+x 222.07968pt>
+File: images/LibrarianLogin/Actions/DeleteUser/UserDeleted.PNG Graphic file (ty
+pe png)
+ <use images/LibrarianLogin/Actions/DeleteUser/UserDeleted.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/DeleteUser/UserDeleted.P
+NG used on input line 304.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/LibrarianLogin/Actions/DeleteUser/UserDeleted.PNG Graphic file (ty
+pe png)
+
+<use images/LibrarianLogin/Actions/DeleteUser/UserDeleted.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/DeleteUser/UserDeleted.P
+NG used on input line 306.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--307
+
+ []
+
+[28 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/Reserve_reserveNotif/ReserveNo
+tif.PNG> <D:/LIS/LIS_TESTING/images/UserLogin/Actions/Reserve_reserveNotif/Rese
+rvenotifcancelledafter7days.PNG>]
+<images/LibrarianLogin/Actions/DeleteClerk/DeleteScreen.PNG, id=288, 335.75438p
+t x 224.33812pt>
+File: images/LibrarianLogin/Actions/DeleteClerk/DeleteScreen.PNG Graphic file (
+type png)
+
+<use images/LibrarianLogin/Actions/DeleteClerk/DeleteScreen.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/DeleteClerk/DeleteScreen
+.PNG used on input line 311.
+(pdftex.def)             Requested size: 268.60387pt x 179.47073pt.
+
+<images/LibrarianLogin/Actions/DeleteClerk/ClerkDeleted.PNG, id=289, 329.73187p
+t x 222.07968pt>
+File: images/LibrarianLogin/Actions/DeleteClerk/ClerkDeleted.PNG Graphic file (
+type png)
+
+<use images/LibrarianLogin/Actions/DeleteClerk/ClerkDeleted.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/DeleteClerk/ClerkDeleted
+.PNG used on input line 314.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/LibrarianLogin/Actions/DeleteClerk/ClerkDeleted.PNG Graphic file (
+type png)
+
+<use images/LibrarianLogin/Actions/DeleteClerk/ClerkDeleted.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/DeleteClerk/ClerkDeleted
+.PNG used on input line 316.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--317
+
+ []
+
+[29 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/DeleteUser/DeleteUserScre
+en.PNG> <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/DeleteUser/UserDelete
+d.PNG>] [30 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/DeleteClerk/Delet
+eScreen.PNG> <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/DeleteClerk/Cler
+kDeleted.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
+
+ []
+
+
+<images/ClerkLogin/Actions/DeleteBook/ClerkNotif.PNG, id=302, 278.54062pt x 264
+.23718pt>
+File: images/ClerkLogin/Actions/DeleteBook/ClerkNotif.PNG Graphic file (type pn
+g)
+ <use images/ClerkLogin/Actions/DeleteBook/ClerkNotif.PNG>
+Package pdftex.def Info: images/ClerkLogin/Actions/DeleteBook/ClerkNotif.PNG us
+ed on input line 324.
+(pdftex.def)             Requested size: 222.8328pt x 211.39001pt.
+
+<images/ClerkLogin/Actions/DeleteBook/DisposeWindow.PNG, id=303, 335.75438pt x 
+224.33812pt>
+File: images/ClerkLogin/Actions/DeleteBook/DisposeWindow.PNG Graphic file (type
+ png)
+ <use images/ClerkLogin/Actions/DeleteBook/DisposeWindow.PNG>
+Package pdftex.def Info: images/ClerkLogin/Actions/DeleteBook/DisposeWindow.PNG
+ used on input line 325.
+(pdftex.def)             Requested size: 268.60387pt x 179.47073pt.
+
+<images/BookDisposed.PNG, id=304, 335.00156pt x 222.07968pt>
+File: images/BookDisposed.PNG Graphic file (type png)
+
+<use images/BookDisposed.PNG>
+Package pdftex.def Info: images/BookDisposed.PNG used on input line 326.
+(pdftex.def)             Requested size: 268.0016pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--327
+
+ []
+
+[31 <D:/LIS/LIS_TESTING/images/ClerkLogin/Actions/DeleteBook/ClerkNotif.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 328--329
+
+ []
+
+<images/BookLimitUG.PNG, id=312, 437.38406pt x 224.33812pt>
+File: images/BookLimitUG.PNG Graphic file (type png)
+
+<use images/BookLimitUG.PNG>
+Package pdftex.def Info: images/BookLimitUG.PNG used on input line 335.
+(pdftex.def)             Requested size: 349.90771pt x 179.47073pt.
+
+<images/BookLimitError.PNG, id=313, 329.73187pt x 222.07968pt>
+File: images/BookLimitError.PNG Graphic file (type png)
+
+<use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 338.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/BookLimitError.PNG Graphic file (type png)
+ <use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 340.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 333--341
+
+ []
+
+[32 <D:/LIS/LIS_TESTING/images/ClerkLogin/Actions/DeleteBook/DisposeWindow.PNG>
+ <D:/LIS/LIS_TESTING/images/BookDisposed.PNG>]
+<images/BookLimitPG.png, id=321, 583.17876pt x 299.1175pt>
+File: images/BookLimitPG.png Graphic file (type png)
+
+<use images/BookLimitPG.png>
+Package pdftex.def Info: images/BookLimitPG.png used on input line 343.
+(pdftex.def)             Requested size: 466.54364pt x 239.29431pt.
+File: images/BookLimitError.PNG Graphic file (type png)
+ <use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 346.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/BookLimitError.PNG Graphic file (type png)
+
+<use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 348.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Overfull \hbox (62.56839pt too wide) in paragraph at lines 341--349
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--349
+
+ []
+
+[33 <D:/LIS/LIS_TESTING/images/BookLimitUG.PNG> <D:/LIS/LIS_TESTING/images/Book
+LimitError.PNG>] [34 <D:/LIS/LIS_TESTING/images/BookLimitPG.png>]
+<images/BookLimitRS.PNG, id=332, 437.38406pt x 224.33812pt>
+File: images/BookLimitRS.PNG Graphic file (type png)
+
+<use images/BookLimitRS.PNG>
+Package pdftex.def Info: images/BookLimitRS.PNG used on input line 351.
+(pdftex.def)             Requested size: 349.90771pt x 179.47073pt.
+File: images/BookLimitError.PNG Graphic file (type png)
+ <use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 354.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/BookLimitError.PNG Graphic file (type png)
+
+<use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 356.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--357
+
+ []
+
+[35 <D:/LIS/LIS_TESTING/images/BookLimitRS.PNG>]
+<images/BookLimitFaculty.PNG, id=338, 437.38406pt x 224.33812pt>
+File: images/BookLimitFaculty.PNG Graphic file (type png)
+
+<use images/BookLimitFaculty.PNG>
+Package pdftex.def Info: images/BookLimitFaculty.PNG used on input line 359.
+(pdftex.def)             Requested size: 349.90771pt x 179.47073pt.
+File: images/BookLimitError.PNG Graphic file (type png)
+ <use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 362.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/BookLimitError.PNG Graphic file (type png)
+
+<use images/BookLimitError.PNG>
+Package pdftex.def Info: images/BookLimitError.PNG used on input line 364.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--365
+
+ []
+
+[36 <D:/LIS/LIS_TESTING/images/BookLimitFaculty.PNG>]
+<images/UserLogin/Actions/OverdueBookFine.PNG, id=344, 437.38406pt x 224.33812p
+t>
+File: images/UserLogin/Actions/OverdueBookFine.PNG Graphic file (type png)
+ <use images/UserLogin/Actions/OverdueBookFine.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/OverdueBookFine.PNG used on i
+nput line 371.
+(pdftex.def)             Requested size: 349.90771pt x 179.47073pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--372
+
+ []
+
+[37]
+File: images/UserLogin/UserActions.PNG Graphic file (type png)
+ <use images/UserLogin/UserActions.PNG>
+Package pdftex.def Info: images/UserLogin/UserActions.PNG used on input line 37
+5.
+(pdftex.def)             Requested size: 281.25111pt x 197.53824pt.
+File: images/UserLogin/Actions/NotificationWindow.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/NotificationWindow.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/NotificationWindow.PNG used o
+n input line 376.
+(pdftex.def)             Requested size: 268.60387pt x 179.47073pt.
+
+<images/UserLogin/Actions/OverdueNotifications.PNG, id=351, 296.60812pt x 286.0
+6876pt>
+File: images/UserLogin/Actions/OverdueNotifications.PNG Graphic file (type png)
+
+ <use images/UserLogin/Actions/OverdueNotifications.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/OverdueNotifications.PNG used
+ on input line 377.
+(pdftex.def)             Requested size: 237.2868pt x 228.85532pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 375--379
+
+ []
+
+[38 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/OverdueBookFine.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
+
+ []
+
+
+<images/UserLogin/Actions/PayFineSucessful.PNG, id=357, 329.73187pt x 222.07968
+pt>
+File: images/UserLogin/Actions/PayFineSucessful.PNG Graphic file (type png)
+ <use images/UserLogin/Actions/PayFineSucessful.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/PayFineSucessful.PNG used on 
+input line 383.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+File: images/UserLogin/Actions/PayFineSucessful.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/PayFineSucessful.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/PayFineSucessful.PNG used on 
+input line 385.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--386
+
+ []
+
+[39 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/OverdueNotifications.PNG>]
+<images/UserLogin/Actions/PayFineError.PNG, id=363, 329.73187pt x 222.07968pt>
+File: images/UserLogin/Actions/PayFineError.PNG Graphic file (type png)
+
+<use images/UserLogin/Actions/PayFineError.PNG>
+Package pdftex.def Info: images/UserLogin/Actions/PayFineError.PNG used on inpu
+t line 389.
+(pdftex.def)             Requested size: 263.78584pt x 177.66397pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--390
+
+ []
+
+
+<images/LibrarianLogin/Actions/IssueStats/NormalIssueStats.PNG, id=364, 436.631
+26pt x 234.8775pt>
+File: images/LibrarianLogin/Actions/IssueStats/NormalIssueStats.PNG Graphic fil
+e (type png)
+
+<use images/LibrarianLogin/Actions/IssueStats/NormalIssueStats.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/IssueStats/NormalIssueSt
+ats.PNG used on input line 394.
+(pdftex.def)             Requested size: 349.30548pt x 187.90225pt.
+
+<images/LibrarianLogin/Actions/IssueStats/IssueStatsAfter5years.PNG, id=365, 43
+6.63126pt x 234.8775pt>
+File: images/LibrarianLogin/Actions/IssueStats/IssueStatsAfter5years.PNG Graphi
+c file (type png)
+
+<use images/LibrarianLogin/Actions/IssueStats/IssueStatsAfter5years.PNG>
+Package pdftex.def Info: images/LibrarianLogin/Actions/IssueStats/IssueStatsAft
+er5years.PNG used on input line 396.
+(pdftex.def)             Requested size: 349.30548pt x 187.90225pt.
+
+[40 <D:/LIS/LIS_TESTING/images/UserLogin/Actions/PayFineSucessful.PNG> <D:/LIS/
+LIS_TESTING/images/UserLogin/Actions/PayFineError.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 402--406
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 407--410
+
+ []
+
+[41 <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/IssueStats/NormalIssueSta
+ts.PNG> <D:/LIS/LIS_TESTING/images/LibrarianLogin/Actions/IssueStats/IssueStats
+After5years.PNG>] <images/WrongUsername.PNG, id=379, 373.395pt x 254.45062pt>
+File: images/WrongUsername.PNG Graphic file (type png)
+
+<use images/WrongUsername.PNG>
+Package pdftex.def Info: images/WrongUsername.PNG used on input line 412.
+(pdftex.def)             Requested size: 298.7164pt x 203.56076pt.
+
+<images/LoginError1.PNG, id=380, 258.9675pt x 109.91063pt>
+File: images/LoginError1.PNG Graphic file (type png)
+
+<use images/LoginError1.PNG>
+Package pdftex.def Info: images/LoginError1.PNG used on input line 414.
+(pdftex.def)             Requested size: 207.17426pt x 87.9286pt.
+File: images/LoginError1.PNG Graphic file (type png)
+ <use images/LoginError1.PNG>
+Package pdftex.def Info: images/LoginError1.PNG used on input line 416.
+(pdftex.def)             Requested size: 207.17426pt x 87.9286pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 411--417
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
+[42 <D:/LIS/LIS_TESTING/images/WrongUsername.PNG> <D:/LIS/LIS_TESTING/images/Lo
+ginError1.PNG>] [43]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
+ (D:\LIS\LIS_TESTING\testing.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
+Package rerunfilecheck Info: File `testing.out' has not changed.
+(rerunfilecheck)             Checksum: EA5B64A1FEBE3CBB140613AF9EE57B51;609.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
+ ) 
+Here is how much of TeX's memory you used:
+ 8725 strings out of 493923
+ 131008 string characters out of 3147331
+ 219566 words of memory out of 3000000
+ 11775 multiletter control sequences out of 15000+200000
+ 9436 words of font info for 35 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 29i,5n,35p,414b,541s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on testing.pdf (43 pages, 783832 bytes).
+PDF statistics:
+ 427 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 409 words of extra memory for PDF output out of 10000 (max. 10000000)
+

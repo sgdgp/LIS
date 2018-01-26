@@ -27,7 +27,6 @@ public class SearchBook extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldISBN;
 	private JTextField textFieldName;
-	private JTextField textFieldAuthor;
 
 	/**
 	 * Launch the application.
@@ -73,20 +72,22 @@ public class SearchBook extends JFrame {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String name = textFieldName.getText().trim();
-				String author = textFieldAuthor.getText().trim();
+//				String author = textFieldAuthor.getText().trim();
 				String ISBN = textFieldISBN.getText().trim();
 				
 				try {
 					BookDetails frame = new BookDetails(username);
-					Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis", "root", "qwerty");
+					Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", "root", "qwerty");
 					Statement st = con.createStatement();
-					String query = "Select count(*) from books where ISBN='"+ISBN+"'";
+					String query = "Select count(*) from books where ISBN='"+ISBN+"' or name='"+name+"'";
 					ResultSet r = st.executeQuery(query);
 					r.next();
 					if(r.getInt(1)!=0){
 						setVisible(false);
+						frame.setLocationRelativeTo(null);
 						frame.setVisible(true);
-						frame.showParams(name,author,ISBN);
+						
+						frame.showParams(name,ISBN);
 					}
 					else{
 						JOptionPane.showMessageDialog(null, "No such book present");
@@ -103,19 +104,14 @@ public class SearchBook extends JFrame {
 		contentPane.add(btnSearch);
 		
 		textFieldISBN = new JTextField();
-		textFieldISBN.setBounds(171, 73, 231, 22);
+		textFieldISBN.setBounds(171, 73, 231, 30);
 		contentPane.add(textFieldISBN);
 		textFieldISBN.setColumns(10);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(171, 112, 231, 22);
+		textFieldName.setBounds(171, 112, 231, 30);
 		contentPane.add(textFieldName);
 		textFieldName.setColumns(10);
-		
-		textFieldAuthor = new JTextField();
-		textFieldAuthor.setBounds(171, 159, 231, 22);
-		contentPane.add(textFieldAuthor);
-		textFieldAuthor.setColumns(10);
 		
 		JLabel lblIsbnNumber = new JLabel("ISBN Number");
 		lblIsbnNumber.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
@@ -126,11 +122,6 @@ public class SearchBook extends JFrame {
 		lblNameOfThe.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblNameOfThe.setBounds(30, 115, 131, 14);
 		contentPane.add(lblNameOfThe);
-		
-		JLabel lblAuthorsName = new JLabel("Author's Name");
-		lblAuthorsName.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblAuthorsName.setBounds(30, 162, 123, 14);
-		contentPane.add(lblAuthorsName);
 		
 		JLabel lblSearchBook = new JLabel("Search Book");
 		lblSearchBook.setForeground(new Color(51, 102, 204));

@@ -174,6 +174,7 @@ public class LibrarianHomePage extends JFrame {
 					SendOverdueNotif frame = new SendOverdueNotif();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+					LastScreen.screen2 = frame;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

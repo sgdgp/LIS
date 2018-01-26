@@ -160,8 +160,11 @@ public class ReturnWindow extends JFrame {
             	      // do some action if appropriate column
             	      if(column==4)
             	      {
-            	    	  libraryfunc l1=new libraryfunc();
-            	    	  l1.returned(booksIssued.get(row).getIssuedBook(), username);
+//            	    	  libraryfunc l1=new libraryfunc();
+//            	    	  l1.returned(booksIssued.get(row).getIssuedBook(), username);
+            	    	  
+            	    	  ReturnAndInform RI = new ReturnAndInform();
+            	    	  RI.returned(booksIssued.get(row).getIssuedBook(), username);
             	      }
             	    }
             	  }

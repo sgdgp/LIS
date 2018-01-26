@@ -7,7 +7,6 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
 
 
 //import com.sun.org.apache.xml.internal.security.Init;
@@ -19,14 +18,16 @@ import javax.swing.JOptionPane;
 public class Initialize {
 
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://127.0.0.1:3306/";
+    @SuppressWarnings("unused")
+	private static String url = "jdbc:mysql://127.0.0.1:3306/";
     private static final String user = "root";
     private static final String password = "qwerty";
     Statement stmt = null;
    	String query = null;
    	boolean dbExist = false;
+	@SuppressWarnings("resource")
 	public boolean init() {
-    	System.out.println("Init reached");
+//    	System.out.println("Init reached");
     	try {
         	try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -34,7 +35,7 @@ public class Initialize {
 				System.out.println("Exception 1");
 				e.printStackTrace();
 			}
-        	Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
+        	Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?useSSL=false", user, password);
         	
 //        	String sql1 = "DROP DATABASE lis";
 //        	stmt = con.createStatement();
@@ -51,24 +52,25 @@ public class Initialize {
         	}
         	dbSet.close();
         	
-        	
+//        	System.out.println("1");
             if(dbExist){
-        		System.out.println("Database exists");
+//        		System.out.println("Database exists");
         		con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
         		
         		Connection con1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false","root","qwerty");
 				ResultSet r1 = con1.createStatement().executeQuery("Select * from books where ISBN = 'b'");
 				r1.next();
-				System.out.println("is reserved after initialize value :"+r1.getBoolean("isReserved"));
+//				System.out.println("is reserved after initialize value :"+r1.getBoolean("isReserved"));
         		Statement s = con.createStatement();
         		
         		ResultSet r  = s.executeQuery("Select * from clerks ");
         		while(r.next()){
-        			System.out.println(r.getString("username"));
+//        			System.out.println(r.getString("username"));
         		}
-        		System.out.println("exit if");
+//        		System.out.println("exit if");
             }
         	else{
+//        		System.out.println("reached else part");
         		query = "CREATE DATABASE lis";
         		stmt = con.createStatement();
         		stmt.executeUpdate(query);
@@ -92,7 +94,7 @@ public class Initialize {
         				+ " issueStats LONGBLOB) ";
         		stmt = con.createStatement();
                 stmt.executeUpdate(sql);
-                System.out.println("books table created");
+//                System.out.println("books table created");
                 sql = "CREATE TABLE users "
                         + " (username VARCHAR(255), "
                         + " name VARCHAR(255), "
@@ -107,7 +109,7 @@ public class Initialize {
                         + " overNotif BOOLEAN)";
                 stmt = con.createStatement();
                 stmt.executeUpdate(sql);
-                System.out.println("users table created");
+//                System.out.println("users table created");
                 
                 sql = "CREATE TABLE clerks "
                         + "(username VARCHAR(255), "
@@ -117,7 +119,7 @@ public class Initialize {
                         + " password VARCHAR(12))";
                 stmt = con.createStatement();
                 stmt.executeUpdate(sql);
-                System.out.println("clerks table created");
+//                System.out.println("clerks table created");
                 
                 sql = "create table rbList (username VARCHAR(255), ISBN VARCHAR(255))";
                 stmt = con.createStatement();
@@ -131,7 +133,7 @@ public class Initialize {
                         + " password VARCHAR(12))";
                 stmt = con.createStatement();
                 stmt.executeUpdate(sql);
-                System.out.println("librarian table created");
+//                System.out.println("librarian table created");
                 
                 sql = "INSERT INTO librarian " +
                         "VALUES('librarian', 'Sumit','1234567890','abcd', 'password')";
@@ -139,15 +141,16 @@ public class Initialize {
                 stmt.executeUpdate(sql);
         	}
         	
-            System.out.println(query);
+//            System.out.println(query);
             
-            System.out.println("Success");	
+//            System.out.println("Success");	
             Timer t = new Timer();
             t.scheduleAtFixedRate(
                     new TimerTask() {
                         public void run() {
                             try {
-                                libraryfunc ls = new libraryfunc();
+//                                libraryfunc ls = new libraryfunc();
+                                FineChecker F = new FineChecker();
                                 Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
 //                                System.out.println("Success");
                                 Statement stmt = con.createStatement();
@@ -155,7 +158,8 @@ public class Initialize {
                                 ResultSet rs = stmt.executeQuery(add);
                                 while(rs.next()){
                                 	String n = rs.getString("username");
-                                	ls.fine(n);
+//                                	ls.fine(n);
+                                	F.fine(n);
                                 }
                             } catch (SQLException ex) {
                                 Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);
@@ -167,15 +171,18 @@ public class Initialize {
                     new TimerTask() {
                         public void run() {
                             try {
-                                libraryfunc ls = new libraryfunc();
+//                                libraryfunc ls = new libraryfunc();
+                                ReserveChecker R = new ReserveChecker();
                                 Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lis?useSSL=false", user, password);
-                                System.out.println("Success");
+//                                System.out.println("Success");
                                 Statement stmt = con.createStatement();
                                 String add = "SELECT * FROM books";
                                 ResultSet rs = stmt.executeQuery(add);
                                 while (rs.next()) {
                                     String isbn = rs.getString("ISBN");
-                                    ls.checkReserve(isbn);
+//                                    ls.checkReserve(isbn);
+                                    R.checkReserve(isbn);
+                                    
                                 }
                             } catch (SQLException ex) {
                                 Logger.getLogger(Initialize.class.getName()).log(Level.SEVERE, null, ex);

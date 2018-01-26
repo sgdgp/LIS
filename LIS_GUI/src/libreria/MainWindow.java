@@ -117,7 +117,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(lblPassword);
 		
 		textFieldPassword = new JPasswordField();
-		textFieldPassword.setBounds(170, 133, 241, 22);
+		textFieldPassword.setBounds(170, 133, 241, 30);
 		contentPane.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
@@ -128,7 +128,7 @@ public class MainWindow extends JFrame {
 		
 		textFieldUsername = new JTextField();
 		textFieldUsername.setColumns(10);
-		textFieldUsername.setBounds(170, 99, 241, 22);
+		textFieldUsername.setBounds(170, 99, 241, 30);
 		contentPane.add(textFieldUsername);
 		
 		lblUsertype = new JLabel("Type :");
@@ -137,7 +137,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(lblUsertype);
 		
 		comboBoxUserType = new JComboBox<String>();
-		comboBoxUserType.setBounds(170, 173, 241, 24);
+		comboBoxUserType.setBounds(170, 173, 241, 28);
 		contentPane.add(comboBoxUserType);
 		
 		JButton btnProceed = new JButton("Proceed");
